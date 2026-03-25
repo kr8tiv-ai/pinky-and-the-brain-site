@@ -13,11 +13,11 @@ export const metadata: Metadata = {
 export default function WarRoomPage() {
   return (
     <main className="relative w-full min-h-screen bg-[#0a0a0a] text-[#cccccc] overflow-x-hidden">
-      {/* ── Layer 1: Ambient glow orbs ── */}
+      {/* ── Layer 1: Ambient glow orbs (drifting) ── */}
       <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-[-10%] left-[15%] w-[50vw] h-[40vw] max-w-3xl bg-[#d4f000] rounded-full mix-blend-screen filter blur-[200px] opacity-[0.04]" />
-        <div className="absolute bottom-[-5%] right-[10%] w-[40vw] h-[35vw] max-w-2xl bg-[#ff9e9e] rounded-full mix-blend-screen filter blur-[180px] opacity-[0.03]" />
-        <div className="absolute top-[40%] left-[60%] w-[30vw] h-[25vw] max-w-xl bg-[#4a90e2] rounded-full mix-blend-screen filter blur-[200px] opacity-[0.02]" />
+        <div className="absolute top-[-10%] left-[15%] w-[50vw] h-[40vw] max-w-3xl bg-[#d4f000] rounded-full mix-blend-screen filter blur-[200px] opacity-[0.04] wr-orb-1" />
+        <div className="absolute bottom-[-5%] right-[10%] w-[40vw] h-[35vw] max-w-2xl bg-[#ff9e9e] rounded-full mix-blend-screen filter blur-[180px] opacity-[0.03] wr-orb-2" />
+        <div className="absolute top-[40%] left-[60%] w-[30vw] h-[25vw] max-w-xl bg-[#4a90e2] rounded-full mix-blend-screen filter blur-[200px] opacity-[0.02] wr-orb-3" />
       </div>
 
       {/* ── Layer 2: Grid background ── */}
@@ -68,9 +68,15 @@ export default function WarRoomPage() {
           <BurnOperations />
         </SectionReveal>
 
-        {/* Phase 7+ sections */}
-        {/* <SectionReveal><FeeDistribution /></SectionReveal> */}
-        {/* <SectionReveal><ReflectionsTerminal /></SectionReveal> */}
+        {/* Separator before classified zone */}
+        <div className="relative py-2">
+          <div className="wr-divider" />
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#0a0a0a] px-6 flex items-center gap-3">
+            <div className="w-6 h-px bg-gradient-to-r from-transparent to-[#333]/30" />
+            <span className="font-mono text-[7px] uppercase tracking-[0.4em] text-[#333]/50">CLASSIFIED ZONE</span>
+            <div className="w-6 h-px bg-gradient-to-l from-transparent to-[#333]/30" />
+          </div>
+        </div>
 
         {/* Staking stub — dramatic classified section */}
         <SectionReveal>
