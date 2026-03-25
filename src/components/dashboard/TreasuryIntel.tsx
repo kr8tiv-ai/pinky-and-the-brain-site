@@ -231,7 +231,7 @@ function TreasuryValueChart({
                 tickFormatter={(v) => v >= 1000 ? `$${(v / 1000).toFixed(1)}k` : `$${v.toFixed(0)}`}
                 width={42}
               />
-              <Tooltip content={(props) => <CustomChartTooltip {...(props as TooltipContentProps)} />} cursor={{ stroke: 'rgba(212, 240, 0, 0.2)', strokeDasharray: '3 3', strokeWidth: 1 }} />
+              <Tooltip content={(props) => <CustomChartTooltip {...(props as TooltipContentProps)} />} cursor={{ stroke: 'rgba(212, 240, 0, 0.15)', strokeDasharray: '2 4', strokeWidth: 1 }} />
               <Area
                 type="monotone"
                 dataKey="valueUsd"
