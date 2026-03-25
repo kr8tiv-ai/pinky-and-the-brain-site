@@ -36,7 +36,7 @@ body {
   width: 100vw;
   height: 100vh;
   background-image: url('/noise.gif');
-  opacity: 0.03;
+  opacity: 0.025;
   pointer-events: none;
   z-index: 9999;
   mix-blend-mode: overlay;
@@ -312,7 +312,7 @@ body {
   height: 100%;
   background: linear-gradient(90deg, #ff6b35 0%, #ff9e9e 35%, #ff6b35 65%, #ffadad 100%);
   background-size: 200% 100%;
-  animation: wr-burn-sweep 4s ease-in-out infinite;
+  animation: wr-burn-sweep 4.5s ease-in-out infinite;
   transition: width 2.2s cubic-bezier(0.25, 1, 0.5, 1);
   box-shadow: 0 0 8px rgba(255, 107, 53, 0.3), 0 0 2.5px rgba(255, 107, 53, 0.4);
 }
@@ -1036,7 +1036,7 @@ section:hover > .wr-section-badge-fire {
 /* ── Card Stagger Index (per-card entrance delay) ── */
 .wr-card-stagger {
   --stagger-i: 0;
-  animation-delay: calc(var(--stagger-i) * 80ms);
+  animation-delay: calc(var(--stagger-i) * 70ms);
 }
 
 /* ── Classified Peek Reveal ── */
