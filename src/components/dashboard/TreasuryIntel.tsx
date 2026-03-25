@@ -142,7 +142,7 @@ function CustomChartTooltip({ active, payload, label }: TooltipContentProps) {
   return (
     <div className="wr-tooltip-enhanced wr-tooltip-caret wr-tooltip-entrance px-4 py-3.5 font-mono text-xs">
       <div className="flex items-center gap-2 mb-2.5">
-        <div className="w-1.5 h-1.5 bg-[#d4f000] rounded-full" style={{ boxShadow: '0 0 4px #d4f000' }} />
+        <div className="w-1.5 h-1.5 bg-[#d4f000] rounded-full" style={{ boxShadow: '0 0 3px #d4f000' }} />
         <span className="text-[#666] text-[8px] uppercase tracking-[0.25em] font-black">{label}</span>
       </div>
       <div className="text-[#d4f000] font-black text-lg tabular-nums wr-gradient-text-lime leading-none">{formatUsd(numericValue)}</div>
@@ -280,7 +280,7 @@ function SummaryCell({
     gsap.fromTo(
       valueRef.current,
       { color: '#d4f000', textShadow: '0 0 14px rgba(212, 240, 0, 0.6)' },
-      { color: '#ffffff', textShadow: '0 0 0px transparent', duration: 1.4, ease: 'power2.out' }
+      { color: '#ffffff', textShadow: '0 0 0px transparent', duration: 1.2, ease: 'power2.out' }
     )
   }, [isLoading, isError])
 
@@ -314,7 +314,7 @@ function LoadingCard({ index = 0 }: { index?: number }) {
     <div className="relative p-[1px] overflow-hidden rounded-sm">
       {/* Subtle scanning border */}
       <div
-        className="absolute inset-[-100%] animate-spin opacity-10 pointer-events-none"
+        className="absolute inset-[-100%] animate-spin opacity-[0.08] pointer-events-none"
         style={{
           background: 'conic-gradient(from 0deg, transparent 80%, #333 95%, transparent 100%)',
           animationDuration: '5s',
