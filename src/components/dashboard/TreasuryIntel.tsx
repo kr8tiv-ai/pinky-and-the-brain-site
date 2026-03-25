@@ -384,7 +384,7 @@ function ClassifiedCard({ mint }: { mint: string }) {
 
         <div className="relative">
           <div className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#444] mb-3 font-bold flex items-center gap-2">
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-[#ff9e9e]/25">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-[#ff9e9e]/20">
               <rect x="3" y="11" width="18" height="11" rx="2" />
               <path d="M7 11V7a5 5 0 0110 0v4" />
             </svg>

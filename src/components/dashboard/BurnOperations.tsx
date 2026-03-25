@@ -417,7 +417,7 @@ export default function BurnOperations() {
           {[25, 50, 75].map(pct => (
             <div key={pct} className="absolute top-0 bottom-0 group/milestone" style={{ left: `${pct}%` }}>
               <div className="w-px h-full bg-[#333]/40 group-hover/milestone:bg-[#ff6b35]/20 transition-colors duration-300" />
-              <div className="absolute -top-[2px] left-1/2 -translate-x-1/2 w-1 h-1 bg-[#333]/30 group-hover/milestone:bg-[#ff6b35]/40 rounded-full transition-colors duration-300" />
+              <div className="absolute -top-[2px] left-1/2 -translate-x-1/2 w-1 h-1 bg-[#333]/25 group-hover/milestone:bg-[#ff6b35]/35 rounded-full transition-colors duration-300" />
               <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 font-mono text-[5px] text-[#333]/0 group-hover/milestone:text-[#ff6b35]/30 transition-colors duration-300 tabular-nums tracking-wider">{pct}</div>
             </div>
           ))}

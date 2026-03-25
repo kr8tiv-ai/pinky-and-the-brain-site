@@ -1181,7 +1181,7 @@ section:hover > .wr-section-badge-fire {
 /* ── Logo Hover Pulse ── */
 @keyframes wr-logo-pulse {
   0% { text-shadow: 0 0 0 transparent; }
-  50% { text-shadow: 0 0 12px rgba(212, 240, 0, 0.4); }
+  50% { text-shadow: 0 0 10px rgba(212, 240, 0, 0.35); }
   100% { text-shadow: 0 0 0 transparent; }
 }
 .wr-logo-pulse:hover {
