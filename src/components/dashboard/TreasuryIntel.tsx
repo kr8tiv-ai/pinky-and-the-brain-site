@@ -210,7 +210,7 @@ function TreasuryValueChart({
                   <stop offset="100%" stopColor="#d4f000" stopOpacity={0.6} />
                 </linearGradient>
                 <filter id="chartGlow">
-                  <feGaussianBlur stdDeviation="2.5" result="blur" />
+                  <feGaussianBlur stdDeviation="2" result="blur" />
                   <feMerge>
                     <feMergeNode in="blur" />
                     <feMergeNode in="SourceGraphic" />
@@ -478,7 +478,7 @@ function HoldingCard({
         <div className="flex items-center gap-2.5">
           {/* Monogram avatar */}
           <div className="w-8 h-8 flex items-center justify-center font-black text-xs font-mono shrink-0 wr-monogram">
-            <span className="wr-gradient-text-lime">{(holding.symbol || holding.name).charAt(0)}</span>
+            <span className="wr-gradient-text-lime group-hover/card:drop-shadow-[0_0_4px_rgba(212,240,0,0.3)] transition-all duration-300">{(holding.symbol || holding.name).charAt(0)}</span>
           </div>
           <div>
             <div className="text-[#d4f000] font-black text-sm uppercase tracking-wider font-mono transition-all duration-300 group-hover/card:text-shadow-[0_0_12px_rgba(212,240,0,0.3)]">

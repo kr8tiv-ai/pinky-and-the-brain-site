@@ -96,7 +96,7 @@ body {
 .ticker-track {
   display: flex;
   width: max-content;
-  animation: ticker-scroll 18s linear infinite;
+  animation: ticker-scroll 20s linear infinite;
   will-change: transform;
 }
 .ticker-track:hover {
