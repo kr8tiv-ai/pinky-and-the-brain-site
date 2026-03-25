@@ -4,6 +4,7 @@ import TokenInfoStrip from '@/components/dashboard/TokenInfoStrip'
 import TreasuryIntel from '@/components/dashboard/TreasuryIntel'
 import BurnOperations from '@/components/dashboard/BurnOperations'
 import SectionReveal from '@/components/dashboard/SectionReveal'
+import ScrollProgress from '@/components/dashboard/ScrollProgress'
 
 export const metadata: Metadata = {
   title: 'War Room | $BRAIN Token',
@@ -31,6 +32,9 @@ export default function WarRoomPage() {
 
       {/* ── Layer 5: Top vignette ── */}
       <div className="fixed inset-0 z-0 pointer-events-none bg-[radial-gradient(ellipse_80%_50%_at_50%_0%,rgba(212,240,0,0.04),transparent_70%)]" />
+
+      {/* ── Scroll Progress ── */}
+      <ScrollProgress />
 
       {/* ── Content ── */}
       <div className="relative z-10">

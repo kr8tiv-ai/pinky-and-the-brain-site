@@ -344,7 +344,7 @@ function ClassifiedCard({ mint }: { mint: string }) {
               href={`https://solscan.io/token/${mint}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-mono text-[10px] text-[#d4f000]/60 hover:text-[#d4f000] transition-colors"
+              className="font-mono text-[10px] text-[#d4f000]/60 hover:text-[#d4f000] transition-colors wr-link-hover"
             >
               SOLSCAN ↗
             </a>
@@ -463,7 +463,7 @@ function HoldingCard({
           href={`https://solscan.io/token/${holding.mint}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="font-mono text-[10px] text-[#d4f000]/60 hover:text-[#d4f000] transition-colors"
+          className="font-mono text-[10px] text-[#d4f000]/60 hover:text-[#d4f000] transition-colors wr-link-hover"
         >
           SOLSCAN ↗
         </a>
@@ -472,7 +472,7 @@ function HoldingCard({
             href={holding.bagsLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="font-mono text-[10px] text-[#d4f000]/60 hover:text-[#d4f000] transition-colors"
+            className="font-mono text-[10px] text-[#d4f000]/60 hover:text-[#d4f000] transition-colors wr-link-hover"
           >
             BAGS.FM ↗
           </a>
@@ -482,7 +482,7 @@ function HoldingCard({
             href={holding.xAccount}
             target="_blank"
             rel="noopener noreferrer"
-            className="font-mono text-[10px] text-[#d4f000]/60 hover:text-[#d4f000] transition-colors"
+            className="font-mono text-[10px] text-[#d4f000]/60 hover:text-[#d4f000] transition-colors wr-link-hover"
           >
             𝕏 ↗
           </a>

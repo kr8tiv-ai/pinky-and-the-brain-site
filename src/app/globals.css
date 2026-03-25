@@ -524,6 +524,24 @@ body {
   pointer-events: none;
 }
 
+/* ── External Link Hover Underline ── */
+.wr-link-hover {
+  position: relative;
+}
+.wr-link-hover::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: currentColor;
+  transition: width 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.wr-link-hover:hover::after {
+  width: 100%;
+}
+
 /* ── Data Cell Value Underline ── */
 .wr-value-underline {
   position: relative;
