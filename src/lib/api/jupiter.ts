@@ -6,13 +6,18 @@
 const DEXSCREENER_BASE = 'https://api.dexscreener.com/tokens/v1/solana'
 
 interface DexScreenerPair {
-  baseToken: { address: string }
+  baseToken: { address: string; name: string; symbol: string }
   priceUsd: string | null
   priceChange: { h24?: number }
   marketCap?: number
   fdv?: number
   volume: { h24?: number }
   liquidity: { usd?: number }
+}
+
+export interface DexTokenMeta {
+  name: string
+  symbol: string
 }
 
 export interface DexScreenerEnriched {
@@ -59,6 +64,44 @@ export async function getJupiterPrices(
     }
   }
   return result
+}
+
+/**
+ * Fetches prices AND token metadata (name, symbol) from DexScreener in a single call.
+ * Used by the treasury module to resolve names for tokens not in investments.config.
+ */
+export async function getPricesWithMetadata(
+  mints: string[]
+): Promise<{ prices: Record<string, number>; metadata: Record<string, DexTokenMeta> }> {
+  if (mints.length === 0) return { prices: {}, metadata: {} }
+
+  const prices: Record<string, number> = {}
+  const metadata: Record<string, DexTokenMeta> = {}
+  const addresses = mints.join(',')
+  const res = await fetch(`${DEXSCREENER_BASE}/${addresses}`, {
+    next: { revalidate: 60 },
+  })
+  if (!res.ok) {
+    throw new Error(`DexScreener price fetch failed: ${res.status} ${res.statusText}`)
+  }
+  const pairs = (await res.json()) as DexScreenerPair[]
+
+  for (const mint of mints) {
+    const mintPairs = pairs.filter(
+      (p) => p.baseToken.address.toLowerCase() === mint.toLowerCase()
+    )
+    if (mintPairs.length > 0) {
+      mintPairs.sort((a, b) => (b.liquidity?.usd ?? 0) - (a.liquidity?.usd ?? 0))
+      prices[mint] = mintPairs[0].priceUsd ? parseFloat(mintPairs[0].priceUsd) : 0
+      metadata[mint] = {
+        name: mintPairs[0].baseToken.name,
+        symbol: mintPairs[0].baseToken.symbol,
+      }
+    } else {
+      prices[mint] = 0
+    }
+  }
+  return { prices, metadata }
 }
 
 /**

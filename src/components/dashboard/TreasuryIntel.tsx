@@ -2,16 +2,6 @@
 
 import { useState, useRef, useEffect, useCallback, type MouseEvent as ReactMouseEvent } from 'react'
 import { format, fromUnixTime } from 'date-fns'
-import {
-  AreaChart,
-  Area,
-  XAxis,
-  YAxis,
-  Tooltip,
-  ResponsiveContainer,
-  CartesianGrid,
-} from 'recharts'
-import type { TooltipContentProps, TooltipValueType } from 'recharts'
 import gsap from 'gsap'
 import { useTreasury } from '@/hooks/useTreasury'
 import { TREASURY_HOLDINGS } from '@/lib/investments.config'
@@ -111,146 +101,211 @@ function useMagneticHover(ref: React.RefObject<HTMLElement | null>, strength = 0
   }, [ref, handleMouseMove, handleMouseLeave])
 }
 
-// ─── Chart utilities ──────────────────────────────────────────────────────────
+// ─── Allocation colors ────────────────────────────────────────────────────────
 
-interface ChartPoint { label: string; valueUsd: number }
+const ALLOC_COLORS = [
+  { stroke: '#d4f000', fill: 'rgba(212, 240, 0, 0.12)', glow: 'rgba(212, 240, 0, 0.3)' },
+  { stroke: '#e4ff57', fill: 'rgba(228, 255, 87, 0.10)', glow: 'rgba(228, 255, 87, 0.25)' },
+  { stroke: '#ff9e9e', fill: 'rgba(255, 158, 158, 0.10)', glow: 'rgba(255, 158, 158, 0.25)' },
+  { stroke: '#ffadad', fill: 'rgba(255, 173, 173, 0.08)', glow: 'rgba(255, 173, 173, 0.2)' },
+  { stroke: '#a8e6cf', fill: 'rgba(168, 230, 207, 0.08)', glow: 'rgba(168, 230, 207, 0.2)' },
+  { stroke: '#ffd3a5', fill: 'rgba(255, 211, 165, 0.08)', glow: 'rgba(255, 211, 165, 0.2)' },
+  { stroke: '#c3b1e1', fill: 'rgba(195, 177, 225, 0.08)', glow: 'rgba(195, 177, 225, 0.2)' },
+  { stroke: '#87ceeb', fill: 'rgba(135, 206, 235, 0.08)', glow: 'rgba(135, 206, 235, 0.2)' },
+  { stroke: '#f0e68c', fill: 'rgba(240, 230, 140, 0.08)', glow: 'rgba(240, 230, 140, 0.2)' },
+  { stroke: '#dda0dd', fill: 'rgba(221, 160, 221, 0.08)', glow: 'rgba(221, 160, 221, 0.2)' },
+]
 
-function buildChartData(holdings: TreasuryResponse['holdings']): ChartPoint[] {
-  const withDates = holdings
-    .filter(h => h.purchaseDate && h.costBasisUsd !== undefined)
-    .sort((a, b) => (a.purchaseDate ?? 0) - (b.purchaseDate ?? 0))
-
-  if (withDates.length === 0) return []
-
-  let cumulative = 0
-  const points: ChartPoint[] = withDates.map(h => {
-    cumulative += h.costBasisUsd ?? 0
-    return { label: format(fromUnixTime(h.purchaseDate!), 'MMM dd'), valueUsd: cumulative }
-  })
-
-  const totalCurrent = holdings.reduce((s, h) => s + h.currentValueUsd, 0)
-  points.push({ label: '● NOW', valueUsd: totalCurrent })
-  return points
+interface AllocSlice {
+  symbol: string
+  name: string
+  valueUsd: number
+  pct: number
+  color: typeof ALLOC_COLORS[number]
 }
 
-// ─── Custom Chart Tooltip ─────────────────────────────────────────────────────
+function buildAllocData(holdings: TreasuryResponse['holdings']): AllocSlice[] {
+  const total = holdings.reduce((s, h) => s + h.currentValueUsd, 0)
+  if (total === 0) return []
 
-function CustomChartTooltip({ active, payload, label }: TooltipContentProps) {
-  if (!active || !payload?.length) return null
-  const rawValue = (payload[0] as { value?: TooltipValueType }).value
-  const numericValue = typeof rawValue === 'number' ? rawValue : 0
-  return (
-    <div className="wr-tooltip-enhanced wr-tooltip-caret wr-tooltip-entrance px-4 py-3.5 font-mono text-xs">
-      <div className="flex items-center gap-2 mb-2.5">
-        <div className="w-1.5 h-1.5 bg-[#d4f000] rounded-full" style={{ boxShadow: '0 0 2.5px #d4f000' }} />
-        <span className="text-[#5a5a5a] text-[8px] uppercase tracking-[0.25em] font-black">{label}</span>
-      </div>
-      <div className="text-[#d4f000] font-black text-lg tabular-nums wr-gradient-text-lime leading-none">{formatUsd(numericValue)}</div>
-      <div className="mt-1.5 font-mono text-[7px] text-[#333]/60 uppercase tracking-[0.2em]">PORTFOLIO VALUE</div>
-    </div>
-  )
+  const sorted = [...holdings].sort((a, b) => b.currentValueUsd - a.currentValueUsd)
+  return sorted.map((h, i) => ({
+    symbol: h.symbol,
+    name: h.name,
+    valueUsd: h.currentValueUsd,
+    pct: (h.currentValueUsd / total) * 100,
+    color: ALLOC_COLORS[i % ALLOC_COLORS.length],
+  }))
 }
 
-// ─── Treasury Value Chart ─────────────────────────────────────────────────────
+// ─── Portfolio Allocation Ring ────────────────────────────────────────────────
 
-function TreasuryValueChart({
+function PortfolioAllocationRing({
   holdings,
+  totalValueUsd,
   isLoading,
 }: {
   holdings: TreasuryResponse['holdings']
+  totalValueUsd: number
   isLoading: boolean
 }) {
-  const chartData = buildChartData(holdings)
+  const ringRef = useRef<SVGSVGElement>(null)
+  const slices = buildAllocData(holdings)
+
+  // Animate ring segments on mount
+  useEffect(() => {
+    if (!ringRef.current || slices.length === 0) return
+    const circles = ringRef.current.querySelectorAll<SVGCircleElement>('[data-alloc-arc]')
+    if (!circles.length) return
+
+    const ctx = gsap.context(() => {
+      // Set initial state, then animate to 0
+      circles.forEach(el => {
+        const dashLen = el.getAttribute('data-dash-len') ?? '0'
+        gsap.set(el, { attr: { 'stroke-dashoffset': dashLen } })
+      })
+      gsap.to(circles, {
+        attr: { 'stroke-dashoffset': 0 },
+        duration: 1.8,
+        ease: 'power3.out',
+        stagger: 0.08,
+        delay: 0.3,
+      })
+    }, ringRef)
+    return () => ctx.revert()
+  }, [slices])
+
+  // SVG donut math
+  const size = 220
+  const cx = size / 2
+  const cy = size / 2
+  const radius = 85
+  const strokeWidth = 18
+  const circumference = 2 * Math.PI * radius
+
+  // Build arc segments
+  let accumulated = 0
+  const arcs = slices.map((slice) => {
+    const dashLen = (slice.pct / 100) * circumference
+    const gap = circumference - dashLen
+    const rotation = (accumulated / 100) * 360 - 90
+    accumulated += slice.pct
+    return { ...slice, dashLen, gap, rotation }
+  })
 
   return (
-    <div className="px-5 lg:px-8 py-6 relative">
+    <div className="px-5 lg:px-8 py-8 relative">
       {/* Subtle glow behind chart */}
-      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_60%_50%_at_50%_60%,rgba(212,240,0,0.01),transparent_70%)]" />
+      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_60%_50%_at_50%_60%,rgba(212,240,0,0.015),transparent_70%)]" />
 
-      <div className="relative font-mono text-[9px] uppercase tracking-[0.25em] text-[#666] font-bold mb-5 flex items-center gap-3 wr-sub-header">
+      <div className="relative font-mono text-[9px] uppercase tracking-[0.25em] text-[#666] font-bold mb-6 flex items-center gap-3 wr-sub-header">
         <span className="text-[#d4f000]/30 text-[6px] wr-sub-diamond">◆</span>
-        <span>TREASURY VALUE OVER TIME</span>
+        <span>PORTFOLIO ALLOCATION</span>
         <div className="flex-1 h-px bg-gradient-to-r from-[#333]/30 to-transparent" />
-        <span className="text-[#333]">CUMULATIVE</span>
+        <span className="text-[#333]">BREAKDOWN</span>
       </div>
+
       {isLoading ? (
-        <div className="h-[240px] flex items-center justify-center">
-          <div className="wr-skeleton h-[200px] w-full rounded" />
+        <div className="h-[300px] flex items-center justify-center">
+          <div className="wr-skeleton h-[220px] w-[220px] rounded-full" />
         </div>
-      ) : chartData.length < 2 ? (
+      ) : slices.length === 0 ? (
         <div className="h-[240px] flex flex-col items-center justify-center gap-3">
-          <div className="w-8 h-8 border border-[#333]/25 flex items-center justify-center wr-float wr-empty-ring hover:border-[#d4f000]/20 transition-colors duration-500">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-[#333]">
-              <path d="M3 3v18h18" />
-              <path d="M7 16l4-4 4 4 5-5" />
-            </svg>
-          </div>
-          <span className="text-[#666] font-mono text-[10px] tracking-[0.2em]">INSUFFICIENT DATA POINTS</span>
+          <span className="text-[#666] font-mono text-[10px] tracking-[0.2em]">NO HOLDINGS DATA</span>
         </div>
       ) : (
-        <div className="h-[260px] relative border border-[#333]/6 bg-[#0a0a0a]/50 p-3 rounded wr-chart-frame wr-chart-entrance">
-          {/* Animated corner brackets */}
-          <div className="wr-chart-corner wr-chart-corner--tl" />
-          <div className="wr-chart-corner wr-chart-corner--tr" />
-          <div className="wr-chart-corner wr-chart-corner--bl" />
-          <div className="wr-chart-corner wr-chart-corner--br" />
-          <ResponsiveContainer width="100%" height="100%">
-            <AreaChart data={chartData} margin={{ top: 8, right: 8, left: 0, bottom: 4 }}>
+        <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+          {/* SVG Donut Ring */}
+          <div className="relative shrink-0">
+            <svg ref={ringRef} width={size} height={size} viewBox={`0 0 ${size} ${size}`} className="drop-shadow-[0_0_30px_rgba(212,240,0,0.08)]">
               <defs>
-                <linearGradient id="treasuryGradient" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#d4f000" stopOpacity={0.25} />
-                  <stop offset="20%" stopColor="#d4f000" stopOpacity={0.1} />
-                  <stop offset="50%" stopColor="#d4f000" stopOpacity={0.025} />
-                  <stop offset="100%" stopColor="#d4f000" stopOpacity={0} />
-                </linearGradient>
-                <linearGradient id="treasuryStroke" x1="0" y1="0" x2="1" y2="0">
-                  <stop offset="0%" stopColor="#d4f000" stopOpacity={0.18} />
-                  <stop offset="30%" stopColor="#d4f000" stopOpacity={0.7} />
-                  <stop offset="60%" stopColor="#e4ff57" stopOpacity={1} />
-                  <stop offset="100%" stopColor="#d4f000" stopOpacity={0.6} />
-                </linearGradient>
-                <filter id="chartGlow">
-                  <feGaussianBlur stdDeviation="1.5" result="blur" />
-                  <feMerge>
-                    <feMergeNode in="blur" />
-                    <feMergeNode in="SourceGraphic" />
-                  </feMerge>
-                </filter>
+                {arcs.map((arc, i) => (
+                  <filter key={`glow-${i}`} id={`alloc-glow-${i}`}>
+                    <feGaussianBlur stdDeviation="3" result="blur" />
+                    <feMerge>
+                      <feMergeNode in="blur" />
+                      <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                  </filter>
+                ))}
               </defs>
-              <CartesianGrid strokeDasharray="4 10" stroke="rgba(51,51,51,0.1)" vertical={false} />
-              <XAxis
-                dataKey="label"
-                tick={{ fill: '#4a4a4a', fontSize: 8, fontFamily: 'var(--font-mono)' }}
-                axisLine={false}
-                tickLine={false}
-              />
-              <YAxis
-                tick={{ fill: '#4a4a4a', fontSize: 8, fontFamily: 'var(--font-mono)' }}
-                axisLine={false}
-                tickLine={false}
-                tickFormatter={(v) => v >= 1000 ? `$${(v / 1000).toFixed(1)}k` : `$${v.toFixed(0)}`}
-                width={40}
-              />
-              <Tooltip content={(props) => <CustomChartTooltip {...(props as TooltipContentProps)} />} cursor={{ stroke: 'rgba(212, 240, 0, 0.08)', strokeDasharray: '2 4', strokeWidth: 1 }} />
-              <Area
-                type="monotone"
-                dataKey="valueUsd"
-                stroke="url(#treasuryStroke)"
-                strokeWidth={1.1}
-                strokeLinecap="round"
-                fill="url(#treasuryGradient)"
-                dot={false}
-                activeDot={{
-                  r: 4.5,
-                  fill: '#d4f000',
-                  stroke: '#0a0a0a',
-                  strokeWidth: 2,
-                  style: { filter: 'drop-shadow(0 0 5px rgba(212, 240, 0, 0.45)) drop-shadow(0 0 10px rgba(212, 240, 0, 0.18))' },
-                }}
-                style={{ filter: 'url(#chartGlow)' }}
-              />
-            </AreaChart>
-          </ResponsiveContainer>
+              {/* Background ring */}
+              <circle cx={cx} cy={cy} r={radius} fill="none" stroke="rgba(51,51,51,0.15)" strokeWidth={strokeWidth} />
+              {/* Allocation arcs */}
+              {arcs.map((arc, i) => (
+                <circle
+                  key={i}
+                  data-alloc-arc
+                  data-dash-len={arc.dashLen.toFixed(2)}
+                  cx={cx}
+                  cy={cy}
+                  r={radius}
+                  fill="none"
+                  stroke={arc.color.stroke}
+                  strokeWidth={strokeWidth - 2}
+                  strokeDasharray={`${arc.dashLen.toFixed(2)} ${arc.gap.toFixed(2)}`}
+                  strokeLinecap="round"
+                  transform={`rotate(${arc.rotation} ${cx} ${cy})`}
+                  style={{ filter: `url(#alloc-glow-${i})` }}
+                  className="transition-opacity duration-300"
+                />
+              ))}
+              {/* Center text */}
+              <text x={cx} y={cy - 12} textAnchor="middle" className="fill-[#666] font-mono text-[8px] uppercase tracking-widest" style={{ fontSize: '8px' }}>
+                TOTAL VALUE
+              </text>
+              <text x={cx} y={cy + 10} textAnchor="middle" className="fill-white font-mono font-black" style={{ fontSize: '18px' }}>
+                {formatUsd(totalValueUsd)}
+              </text>
+              <text x={cx} y={cx + 28} textAnchor="middle" className="fill-[#d4f000]/50 font-mono" style={{ fontSize: '9px' }}>
+                {holdings.length} ASSETS
+              </text>
+            </svg>
+            {/* Ambient ring glow */}
+            <div className="absolute inset-0 pointer-events-none rounded-full" style={{
+              background: 'radial-gradient(circle at 50% 50%, rgba(212, 240, 0, 0.04), transparent 70%)',
+            }} />
+          </div>
+
+          {/* Allocation breakdown bars */}
+          <div className="flex-1 w-full space-y-1.5 max-w-md">
+            {slices.map((slice, i) => (
+              <div key={i} className="group/bar flex items-center gap-3 py-1.5 px-2 rounded-sm hover:bg-white/[0.02] transition-colors duration-200">
+                {/* Color dot */}
+                <div className="w-2.5 h-2.5 rounded-full shrink-0 transition-shadow duration-300 group-hover/bar:shadow-[0_0_8px_var(--dot-glow)]"
+                  style={{ backgroundColor: slice.color.stroke, '--dot-glow': slice.color.glow } as React.CSSProperties}
+                />
+                {/* Name + symbol */}
+                <div className="flex-1 min-w-0">
+                  <div className="font-mono text-[10px] text-white font-bold truncate leading-tight">
+                    {slice.symbol}
+                  </div>
+                  <div className="font-mono text-[8px] text-[#555] truncate leading-tight">
+                    {slice.name}
+                  </div>
+                </div>
+                {/* Bar */}
+                <div className="w-24 h-2 bg-[#1a1a1a] rounded-full overflow-hidden shrink-0 hidden sm:block">
+                  <div
+                    className="h-full rounded-full transition-all duration-700 ease-out"
+                    style={{
+                      width: `${Math.max(slice.pct, 1.5)}%`,
+                      background: `linear-gradient(90deg, ${slice.color.stroke}80, ${slice.color.stroke})`,
+                      boxShadow: `0 0 6px ${slice.color.glow}`,
+                    }}
+                  />
+                </div>
+                {/* Percentage */}
+                <div className="font-mono text-[10px] font-black tabular-nums w-14 text-right" style={{ color: slice.color.stroke }}>
+                  {slice.pct.toFixed(1)}%
+                </div>
+                {/* Value */}
+                <div className="font-mono text-[9px] text-[#666] tabular-nums w-20 text-right hidden md:block">
+                  {formatUsd(slice.valueUsd)}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       )}
     </div>
@@ -788,8 +843,8 @@ export default function TreasuryIntel() {
         </div>
       </div>
 
-      {/* Treasury value chart */}
-      <TreasuryValueChart holdings={data?.holdings ?? []} isLoading={isLoading} />
+      {/* Portfolio allocation ring */}
+      <PortfolioAllocationRing holdings={data?.holdings ?? []} totalValueUsd={data?.totalValueUsd ?? 0} isLoading={isLoading} />
 
       {/* Divested assets */}
       <DivestedSection />
