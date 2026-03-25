@@ -383,7 +383,7 @@ body {
   80% { clip-path: inset(10% 0 70% 0); transform: translateX(1px); }
 }
 .wr-glitch-hover:hover {
-  animation: wr-glitch 0.3s ease-in-out;
+  animation: wr-glitch 0.25s ease-in-out;
 }
 
 /* ── Dot Grid Pattern (alternative to line grid) ── */
@@ -759,7 +759,7 @@ button:focus-visible {
   width: 3px;
   height: 40px;
   background: linear-gradient(to bottom, transparent, currentColor, transparent);
-  opacity: 0.15;
+  opacity: 0.12;
   pointer-events: none;
   display: none;
 }
@@ -783,7 +783,7 @@ button:focus-visible {
   writing-mode: vertical-rl;
   text-orientation: mixed;
   color: rgba(212, 240, 0, 0.1);
-  padding: 8px 3px;
+  padding: 6px 3px;
   border-left: 1px solid rgba(212, 240, 0, 0.08);
 }
 .wr-section-badge-fire {
