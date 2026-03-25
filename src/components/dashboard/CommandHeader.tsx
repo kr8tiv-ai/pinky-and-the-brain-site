@@ -129,7 +129,7 @@ function DataCell({
       <div className="font-mono text-[8px] uppercase tracking-[0.2em] text-[#555] mb-2 font-bold group-hover:text-[#888] transition-colors duration-300">
         {label}
       </div>
-      <div className="font-mono text-lg md:text-xl font-black text-white tabular-nums leading-none group-hover:text-shadow-[0_0_20px_rgba(255,255,255,0.1)] transition-all duration-300">
+      <div className="font-mono text-base md:text-xl font-black text-white tabular-nums leading-none group-hover:text-shadow-[0_0_20px_rgba(255,255,255,0.1)] transition-all duration-300">
         {children}
       </div>
     </div>
@@ -258,7 +258,7 @@ export default function CommandHeader() {
       </div>
 
       {/* Data grid */}
-      <div className="grid grid-cols-2 md:grid-cols-5 divide-x divide-[#333]/20">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 divide-x divide-[#333]/20">
         <DataCell label="Price (USD)" index={0}>
           {isLoading ? (
             <div className="wr-skeleton h-5 w-24" style={{ animationDelay: '0ms' }} />

@@ -139,7 +139,7 @@ function TransactionRow({
   return (
     <div
       ref={rowRef}
-      className="grid grid-cols-[24px_1fr_1fr_1.2fr] gap-3 items-center py-3 px-4 wr-row-stripe border-b border-[#333]/10 font-mono text-[10px] transition-colors duration-200"
+      className="grid grid-cols-[24px_1fr_1fr] md:grid-cols-[24px_1fr_1fr_1.2fr] gap-2 md:gap-3 items-center py-3 px-3 md:px-4 wr-row-stripe border-b border-[#333]/10 font-mono text-[10px] transition-colors duration-200"
     >
       <div className="wr-row-num">{String(index + 1).padStart(2, '0')}</div>
       <div className="text-[#666] tabular-nums flex items-center gap-2">
@@ -149,7 +149,7 @@ function TransactionRow({
       <div className="text-[#ff6b35] font-black tabular-nums wr-fire-text">
         −{formatBurnAmount(tx.amount)}
       </div>
-      <div className="flex items-center gap-2">
+      <div className="hidden md:flex items-center gap-2">
         <a
           href={`https://solscan.io/tx/${tx.txHash}`}
           target="_blank"
@@ -187,24 +187,27 @@ function BurnTransactionsTable({
       </div>
 
       {/* Table header */}
-      <div className="grid grid-cols-[24px_1fr_1fr_1.2fr] gap-3 px-4 pb-2 wr-table-header">
+      <div className="grid grid-cols-[24px_1fr_1fr] md:grid-cols-[24px_1fr_1fr_1.2fr] gap-2 md:gap-3 px-3 md:px-4 pb-2 wr-table-header">
         <div className="font-mono text-[7px] font-bold uppercase tracking-[0.2em] text-[#333]">#</div>
-        {['DATE', 'AMOUNT', 'TX HASH'].map(h => (
+        {['DATE', 'AMOUNT'].map(h => (
           <div key={h} className="font-mono text-[8px] font-bold uppercase tracking-[0.2em] text-[#444]">
             {h}
           </div>
         ))}
+        <div className="hidden md:block font-mono text-[8px] font-bold uppercase tracking-[0.2em] text-[#444]">
+          TX HASH
+        </div>
       </div>
 
       {/* Rows */}
       <div className="max-h-[400px] overflow-y-auto wr-scroll">
         {isLoading ? (
           Array.from({ length: 5 }).map((_, i) => (
-            <div key={i} className="grid grid-cols-[24px_1fr_1fr_1.2fr] gap-3 py-3 px-4 border-b border-[#333]/10">
+            <div key={i} className="grid grid-cols-[24px_1fr_1fr] md:grid-cols-[24px_1fr_1fr_1.2fr] gap-2 md:gap-3 py-3 px-3 md:px-4 border-b border-[#333]/10">
               <div className="wr-skeleton h-3 w-4" style={{ animationDelay: `${i * 120}ms` }} />
               <div className="wr-skeleton h-3 w-28" style={{ animationDelay: `${i * 120 + 50}ms` }} />
               <div className="wr-skeleton h-3 w-24" style={{ animationDelay: `${i * 120 + 100}ms` }} />
-              <div className="wr-skeleton h-3 w-32" style={{ animationDelay: `${i * 120 + 150}ms` }} />
+              <div className="hidden md:block wr-skeleton h-3 w-32" style={{ animationDelay: `${i * 120 + 150}ms` }} />
             </div>
           ))
         ) : isError ? (
