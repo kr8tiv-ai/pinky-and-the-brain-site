@@ -209,8 +209,8 @@ export default function CommandHeader() {
             filter: 'blur(0px)',
             duration: 0.5,
             ease: 'power3.out',
-            stagger: 0.08,
-            delay: 0.3,
+            stagger: 0.06,
+            delay: 0.25,
           }
         )
       }
