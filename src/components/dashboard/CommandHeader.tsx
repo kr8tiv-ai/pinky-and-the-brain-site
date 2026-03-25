@@ -221,9 +221,9 @@ export default function CommandHeader() {
       {/* Top bar */}
       <div className="flex justify-between items-center px-5 lg:px-8 py-3 border-b border-[#333]/20">
         <div className="flex items-center gap-4">
-          <div className="flex items-center gap-2">
-            <div className="w-1.5 h-1.5 bg-[#d4f000]" />
-            <div className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#d4f000] font-black">
+          <div className="flex items-center gap-2 group/logo cursor-default">
+            <div className="w-1.5 h-1.5 bg-[#d4f000] transition-shadow duration-300 group-hover/logo:shadow-[0_0_8px_#d4f000,0_0_16px_rgba(212,240,0,0.3)]" />
+            <div className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#d4f000] font-black transition-all duration-300 group-hover/logo:text-shadow-[0_0_12px_rgba(212,240,0,0.4)]">
               $BRAIN
             </div>
           </div>
@@ -232,8 +232,9 @@ export default function CommandHeader() {
             War Room
           </div>
           <div className="hidden md:block w-px h-3 bg-[#333]/30" />
-          <div className="hidden md:block font-mono text-[8px] uppercase tracking-[0.2em] text-[#333]">
-            Intelligence Dashboard v2.0
+          <div className="hidden md:flex md:items-center md:gap-2 font-mono text-[8px] uppercase tracking-[0.2em] text-[#333]">
+            <span>Intelligence Dashboard</span>
+            <span className="text-[#d4f000]/15">v2.0</span>
           </div>
         </div>
         <div className="flex items-center gap-4">
@@ -247,7 +248,7 @@ export default function CommandHeader() {
       <div className="grid grid-cols-2 md:grid-cols-5 divide-x divide-[#333]/20">
         <DataCell label="Price (USD)" index={0}>
           {isLoading ? (
-            <div className="wr-skeleton h-5 w-24" />
+            <div className="wr-skeleton h-5 w-24" style={{ animationDelay: '0ms' }} />
           ) : (
             <span ref={priceUsdRef}>{formatUsd(data?.priceUsd ?? 0)}</span>
           )}
@@ -255,7 +256,7 @@ export default function CommandHeader() {
 
         <DataCell label="Price (SOL)" index={1}>
           {isLoading ? (
-            <div className="wr-skeleton h-5 w-28" />
+            <div className="wr-skeleton h-5 w-28" style={{ animationDelay: '150ms' }} />
           ) : (
             <span ref={priceSolRef}>{formatSol(data?.priceSol ?? 0)}</span>
           )}
@@ -263,7 +264,7 @@ export default function CommandHeader() {
 
         <DataCell label="24H Change" index={2}>
           {isLoading ? (
-            <div className="wr-skeleton h-5 w-16" />
+            <div className="wr-skeleton h-5 w-16" style={{ animationDelay: '300ms' }} />
           ) : (
             <span ref={changeRef} className={changeColor}>
               {formatChange(data?.priceChange24h ?? 0)}
@@ -273,7 +274,7 @@ export default function CommandHeader() {
 
         <DataCell label="Market Cap" index={3}>
           {isLoading ? (
-            <div className="wr-skeleton h-5 w-20" />
+            <div className="wr-skeleton h-5 w-20" style={{ animationDelay: '450ms' }} />
           ) : data?.marketCap != null ? (
             formatUsd(data.marketCap)
           ) : (
@@ -283,7 +284,7 @@ export default function CommandHeader() {
 
         <DataCell label="Volume 24H" index={4}>
           {isLoading ? (
-            <div className="wr-skeleton h-5 w-20" />
+            <div className="wr-skeleton h-5 w-20" style={{ animationDelay: '600ms' }} />
           ) : data?.volume24h != null ? (
             formatUsd(data.volume24h)
           ) : (

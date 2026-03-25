@@ -52,8 +52,10 @@ export default function TokenInfoStrip() {
         ))}
       </div>
 
-      {/* Ticker tape */}
-      <div className="border-t border-[#333]/10 overflow-hidden py-1.5">
+      {/* Ticker tape with gradient fade edges */}
+      <div className="border-t border-[#333]/10 overflow-hidden py-1.5 relative">
+        <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-[#0a0a0a] to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-[#0a0a0a] to-transparent z-10 pointer-events-none" />
         <div className="ticker-track">
           {/* Duplicate full set for seamless scroll */}
           {[...TICKER_ITEMS, ...TICKER_ITEMS].map((item, i) => (

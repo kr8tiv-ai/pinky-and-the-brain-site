@@ -147,8 +147,11 @@ export default function WarRoomPage() {
           {/* Subtle dot grid */}
           <div className="absolute inset-0 wr-dot-grid opacity-20 pointer-events-none" />
 
-          {/* Footer ticker */}
-          <div className="border-b border-[#333]/10 overflow-hidden py-1.5">
+          {/* Footer ticker with gradient fade edges */}
+          <div className="border-b border-[#333]/10 overflow-hidden py-1.5 relative">
+            {/* Left/right fade masks */}
+            <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-[#0a0a0a] to-transparent z-10 pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-[#0a0a0a] to-transparent z-10 pointer-events-none" />
             <div className="ticker-track">
               {['WAR ROOM v2.0', '$BRAIN INTELLIGENCE COMMAND', 'ALL DATA LIVE ON-CHAIN', 'NARF!', 'DEFLATIONARY SPL TOKEN', 'COMMUNITY GOVERNED',
                 'WAR ROOM v2.0', '$BRAIN INTELLIGENCE COMMAND', 'ALL DATA LIVE ON-CHAIN', 'NARF!', 'DEFLATIONARY SPL TOKEN', 'COMMUNITY GOVERNED'].map((item, i) => (
