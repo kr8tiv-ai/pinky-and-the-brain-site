@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, useCallback, useState } from 'react'
 import { format, fromUnixTime } from 'date-fns'
 import gsap from 'gsap'
 import { useBurns } from '@/hooks/useBurns'
@@ -224,6 +224,7 @@ function BurnTransactionsTable({
 export default function BurnOperations() {
   const { data, isLoading, isError } = useBurns()
   const sectionRef = useRef<HTMLElement>(null)
+  const glowRef = useRef<HTMLDivElement>(null)
 
   // Section entrance animation
   useEffect(() => {
@@ -238,8 +239,25 @@ export default function BurnOperations() {
     return () => ctx.revert()
   }, [])
 
+  // Mouse-tracking fire glow
+  const handleMouseMove = useCallback((e: React.MouseEvent) => {
+    if (!glowRef.current || !sectionRef.current) return
+    const rect = sectionRef.current.getBoundingClientRect()
+    const x = e.clientX - rect.left
+    const y = e.clientY - rect.top
+    glowRef.current.style.background = `radial-gradient(300px circle at ${x}px ${y}px, rgba(255, 107, 53, 0.06), transparent 60%)`
+  }, [])
+
+  const handleMouseLeave = useCallback(() => {
+    if (!glowRef.current) return
+    glowRef.current.style.background = 'transparent'
+  }, [])
+
   return (
-    <section ref={sectionRef} className="w-full bg-[#0a0a0a] relative overflow-hidden">
+    <section ref={sectionRef} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} className="w-full bg-[#0a0a0a] relative overflow-hidden">
+      {/* Mouse-tracking fire glow */}
+      <div ref={glowRef} className="absolute inset-0 pointer-events-none z-[1] transition-opacity duration-300" />
+
       {/* Unique section background — ember gradient mesh */}
       <div className="absolute inset-0 wr-bg-burn pointer-events-none" />
 

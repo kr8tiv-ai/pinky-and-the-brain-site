@@ -70,11 +70,16 @@ function useMagneticHover(ref: React.RefObject<HTMLElement | null>, strength = 0
     const rect = ref.current.getBoundingClientRect()
     const x = e.clientX - rect.left - rect.width / 2
     const y = e.clientY - rect.top - rect.height / 2
+    const normalX = x / (rect.width / 2)
+    const normalY = y / (rect.height / 2)
     gsap.to(ref.current, {
       x: x * strength,
       y: y * strength,
+      rotationY: normalX * 4,
+      rotationX: -normalY * 4,
       duration: 0.4,
       ease: 'power2.out',
+      transformPerspective: 800,
     })
   }, [ref, strength])
 
@@ -83,6 +88,8 @@ function useMagneticHover(ref: React.RefObject<HTMLElement | null>, strength = 0
     gsap.to(ref.current, {
       x: 0,
       y: 0,
+      rotationY: 0,
+      rotationX: 0,
       duration: 0.7,
       ease: 'elastic.out(1, 0.3)',
     })
@@ -532,10 +539,29 @@ function DivestedSection() {
 export default function TreasuryIntel() {
   const { data, isLoading, isError } = useTreasury()
   const gridRef = useRef<HTMLDivElement>(null)
+  const sectionRef = useRef<HTMLElement>(null)
+  const spotlightRef = useRef<HTMLDivElement>(null)
   useStaggerReveal(gridRef)
 
+  // Mouse-tracking lime spotlight
+  const handleMouseMove = useCallback((e: ReactMouseEvent) => {
+    if (!spotlightRef.current || !sectionRef.current) return
+    const rect = sectionRef.current.getBoundingClientRect()
+    const x = e.clientX - rect.left
+    const y = e.clientY - rect.top
+    spotlightRef.current.style.background = `radial-gradient(400px circle at ${x}px ${y}px, rgba(212, 240, 0, 0.03), transparent 60%)`
+  }, [])
+
+  const handleMouseLeave = useCallback(() => {
+    if (!spotlightRef.current) return
+    spotlightRef.current.style.background = 'transparent'
+  }, [])
+
   return (
-    <section className="w-full bg-[#0a0a0a] relative overflow-hidden">
+    <section ref={sectionRef} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} className="w-full bg-[#0a0a0a] relative overflow-hidden">
+      {/* Mouse-tracking lime spotlight */}
+      <div ref={spotlightRef} className="absolute inset-0 pointer-events-none z-[1] transition-opacity duration-300" />
+
       {/* Unique section background — dot grid + gradient mesh */}
       <div className="absolute inset-0 wr-dot-grid opacity-40 pointer-events-none" />
       <div className="absolute inset-0 wr-bg-treasury pointer-events-none" />
