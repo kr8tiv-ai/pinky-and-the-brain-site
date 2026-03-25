@@ -612,7 +612,7 @@ body {
               box-shadow 0.35s cubic-bezier(0.25, 1, 0.5, 1);
 }
 .wr-card-lift:hover {
-  transform: translateY(-2px);
+  transform: translateY(-1.5px);
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45), 0 4px 10px rgba(0, 0, 0, 0.25), 0 0 1px rgba(212, 240, 0, 0.06);
 }
 
@@ -759,7 +759,7 @@ button:focus-visible {
   width: 3px;
   height: 40px;
   background: linear-gradient(to bottom, transparent, currentColor, transparent);
-  opacity: 0.12;
+  opacity: 0.1;
   pointer-events: none;
   display: none;
 }
@@ -1175,7 +1175,7 @@ section:hover > .wr-section-badge-fire {
   left: 0;
   right: 0;
   background: linear-gradient(90deg, transparent 0%, rgba(255, 107, 53, 0.1) 40%, rgba(255, 158, 158, 0.06) 60%, transparent 100%);
-  filter: blur(3px);
+  filter: blur(2.5px);
   pointer-events: none;
   opacity: 0.5;
 }
