@@ -195,7 +195,7 @@ export default function WarRoomPage() {
               <div className="mt-4 wr-burn-bar w-36" style={{ height: '3px' }}>
                 <div className="wr-burn-bar-fill" style={{ width: '0%' }} />
               </div>
-              <div className="font-mono text-[7px] uppercase tracking-[0.3em] text-[#1a1a1a] mb-2 wr-cursor">
+              <div className="font-mono text-[7px] uppercase tracking-[0.3em] text-[#1a1a1a]/80 mb-2 wr-cursor">
                 DEPLOYMENT PROGRESS: 0%
               </div>
               <div className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#1a1a1a] flex items-center gap-2">
