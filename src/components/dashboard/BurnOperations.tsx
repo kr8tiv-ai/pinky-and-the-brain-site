@@ -175,8 +175,9 @@ function BurnTransactionsTable({
   return (
     <div className="px-5 lg:px-8 py-6">
       <div className="font-mono text-[9px] uppercase tracking-[0.25em] text-[#666] font-bold mb-4 flex items-center gap-3">
+        <span className="text-[#ff6b35]/30 text-[6px]">◆</span>
         <span>BURN LEDGER</span>
-        <div className="flex-1 h-px bg-[#333]/30" />
+        <div className="flex-1 h-px bg-gradient-to-r from-[#ff6b35]/20 to-transparent" />
         {!isLoading && !isError && (
           <span className="text-[#444] tabular-nums">{transactions.length} RECORDS</span>
         )}

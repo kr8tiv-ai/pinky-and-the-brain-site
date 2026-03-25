@@ -163,8 +163,9 @@ function TreasuryValueChart({
       <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_60%_50%_at_50%_60%,rgba(212,240,0,0.015),transparent_70%)]" />
 
       <div className="relative font-mono text-[9px] uppercase tracking-[0.25em] text-[#666] font-bold mb-5 flex items-center gap-3">
+        <span className="text-[#d4f000]/30 text-[6px]">◆</span>
         <span>TREASURY VALUE OVER TIME</span>
-        <div className="flex-1 h-px bg-[#333]/30" />
+        <div className="flex-1 h-px bg-gradient-to-r from-[#333]/30 to-transparent" />
         <span className="text-[#333]">CUMULATIVE</span>
       </div>
       {isLoading ? (
@@ -438,18 +439,21 @@ function HoldingCard({
       </div>
 
       {/* Data grid */}
-      <div className="grid grid-cols-2 gap-x-4 gap-y-3.5 text-[10px] mb-4 pl-2">
+      <div className="grid grid-cols-2 gap-x-4 gap-y-0 text-[10px] mb-4 pl-2">
         {[
-          { label: 'AMOUNT', value: holding.uiAmount.toLocaleString(undefined, { maximumFractionDigits: 4 }) },
-          { label: 'VALUE (USD)', value: formatUsd(holding.currentValueUsd) },
-          { label: 'VALUE (SOL)', value: formatSol(holding.currentValueSol) },
-          { label: 'ACQUIRED', value: purchaseDateStr },
-          { label: 'COST (USD)', value: holding.purchasePriceUsd !== undefined ? formatUsd(holding.purchasePriceUsd) : '—' },
-          { label: '~PRICE (SOL)', value: purchasePriceSol !== undefined ? formatSol(purchasePriceSol) : '—' },
-        ].map(({ label, value }) => (
-          <div key={label}>
-            <div className="uppercase tracking-[0.15em] text-[#444] mb-0.5 font-bold font-mono">{label}</div>
-            <div className="text-white tabular-nums font-bold font-mono">{value}</div>
+          { label: 'AMOUNT', value: holding.uiAmount.toLocaleString(undefined, { maximumFractionDigits: 4 }), highlight: false },
+          { label: 'VALUE (USD)', value: formatUsd(holding.currentValueUsd), highlight: true },
+          { label: 'VALUE (SOL)', value: formatSol(holding.currentValueSol), highlight: false },
+          { label: 'ACQUIRED', value: purchaseDateStr, highlight: false },
+          { label: 'COST (USD)', value: holding.purchasePriceUsd !== undefined ? formatUsd(holding.purchasePriceUsd) : '—', highlight: false },
+          { label: '~PRICE (SOL)', value: purchasePriceSol !== undefined ? formatSol(purchasePriceSol) : '—', highlight: false },
+        ].map(({ label, value, highlight }, i) => (
+          <div key={label} className={`py-2 ${i >= 2 ? 'border-t border-[#333]/10' : ''}`}>
+            <div className="uppercase tracking-[0.15em] text-[#444] mb-1 font-bold font-mono flex items-center gap-1.5">
+              <span className="text-[#d4f000]/15 text-[6px]">▸</span>
+              {label}
+            </div>
+            <div className={`tabular-nums font-bold font-mono ${highlight ? 'text-[#d4f000]' : 'text-white'}`}>{value}</div>
           </div>
         ))}
       </div>
@@ -505,8 +509,9 @@ function DivestedSection() {
   return (
     <div className="px-5 lg:px-8 py-6 border-t border-[#333]/10">
       <div className="font-mono text-[9px] uppercase tracking-[0.25em] text-[#666] font-bold mb-4 flex items-center gap-3">
+        <span className="text-[#ff9e9e]/30 text-[6px]">◆</span>
         <span className="text-[#ff9e9e]/50">DIVESTED ASSETS</span>
-        <div className="flex-1 h-px bg-[#ff9e9e]/10" />
+        <div className="flex-1 h-px bg-gradient-to-r from-[#ff9e9e]/10 to-transparent" />
         {soldTokens.length > 0 && (
           <span className="text-[#444] tabular-nums">{soldTokens.length} EXITED</span>
         )}
@@ -521,27 +526,28 @@ function DivestedSection() {
         <div className="overflow-x-auto wr-scroll">
           <table className="w-full font-mono text-[10px]">
             <thead>
-              <tr className="border-b border-[#333]/30">
-                <th className="text-left uppercase tracking-[0.15em] text-[#444] pb-2 pr-6 font-bold">TOKEN</th>
-                <th className="text-left uppercase tracking-[0.15em] text-[#444] pb-2 pr-6 font-bold">SOLD DATE</th>
-                <th className="text-left uppercase tracking-[0.15em] text-[#444] pb-2 pr-6 font-bold">AMOUNT</th>
-                <th className="text-left uppercase tracking-[0.15em] text-[#444] pb-2 font-bold">STATUS</th>
+              <tr className="border-b border-[#ff9e9e]/10">
+                {['TOKEN', 'SOLD DATE', 'AMOUNT', 'STATUS'].map(h => (
+                  <th key={h} className="text-left uppercase tracking-[0.15em] text-[#444] pb-2.5 pr-6 font-bold text-[9px]">{h}</th>
+                ))}
               </tr>
             </thead>
             <tbody>
-              {soldTokens.map(h => (
-                <tr key={h.mint} className="border-b border-[#333]/15 wr-row-hover">
-                  <td className="py-3 pr-6 text-white font-black uppercase">{h.symbol}</td>
-                  <td className="py-3 pr-6 text-[#666]">
+              {soldTokens.map((h, i) => (
+                <tr key={h.mint} className={`border-b border-[#333]/10 wr-row-hover transition-colors ${i % 2 === 1 ? 'bg-white/[0.005]' : ''}`}>
+                  <td className="py-3.5 pr-6">
+                    <span className="text-[#ff9e9e]/80 font-black uppercase">{h.symbol}</span>
+                  </td>
+                  <td className="py-3.5 pr-6 text-[#555] tabular-nums">
                     {h.soldDate ? format(fromUnixTime(h.soldDate), 'yyyy-MM-dd') : '—'}
                   </td>
-                  <td className="py-3 pr-6 text-[#666] tabular-nums">
+                  <td className="py-3.5 pr-6 text-[#555] tabular-nums">
                     {h.soldAmount !== undefined
                       ? h.soldAmount.toLocaleString(undefined, { maximumFractionDigits: 4 })
                       : '—'}
                   </td>
-                  <td className="py-3">
-                    <span className="wr-tag border-[#ff9e9e]/30 text-[#ff9e9e]">
+                  <td className="py-3.5">
+                    <span className="wr-tag border-[#ff9e9e]/20 text-[#ff9e9e]/60">
                       DIVESTED
                     </span>
                   </td>
@@ -631,8 +637,9 @@ export default function TreasuryIntel() {
       {/* Holdings grid */}
       <div className="px-5 lg:px-8 py-6">
         <div className="font-mono text-[9px] uppercase tracking-[0.25em] text-[#666] font-bold mb-5 flex items-center gap-3">
+          <span className="text-[#d4f000]/30 text-[6px]">◆</span>
           <span>ACTIVE POSITIONS</span>
-          <div className="flex-1 h-px bg-[#333]/30" />
+          <div className="flex-1 h-px bg-gradient-to-r from-[#333]/30 to-transparent" />
           {!isLoading && data && (
             <span className="text-[#d4f000]/40 tabular-nums">{data.holdings.length} ASSETS</span>
           )}
