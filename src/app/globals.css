@@ -408,9 +408,9 @@ body {
   50% { transform: translate(-3vw, 2vh); }
 }
 
-.wr-orb-1 { animation: wr-orb-drift-1 20s ease-in-out infinite; will-change: transform; }
-.wr-orb-2 { animation: wr-orb-drift-2 25s ease-in-out infinite; will-change: transform; }
-.wr-orb-3 { animation: wr-orb-drift-3 18s ease-in-out infinite; will-change: transform; }
+.wr-orb-1 { animation: wr-orb-drift-1 22s ease-in-out infinite; will-change: transform; }
+.wr-orb-2 { animation: wr-orb-drift-2 28s ease-in-out infinite; will-change: transform; }
+.wr-orb-3 { animation: wr-orb-drift-3 19s ease-in-out infinite; will-change: transform; }
 
 /* ── External Link Hover Underline ── */
 .wr-link-hover {
@@ -551,7 +551,7 @@ body {
   98% { transform: translate(1px, -1px); opacity: 0.95; }
 }
 .wr-classified-glitch {
-  animation: wr-classified-glitch 5s ease-in-out infinite;
+  animation: wr-classified-glitch 4.5s ease-in-out infinite;
 }
 
 /* ── Radar Sweep ── */
