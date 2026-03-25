@@ -1131,6 +1131,33 @@ section:hover > .wr-section-badge-fire {
   background: rgba(255, 107, 53, 0.4);
 }
 
+/* ── Burn Bar Glow Trail ── */
+.wr-burn-bar-glow {
+  position: relative;
+}
+.wr-burn-bar-glow::after {
+  content: '';
+  position: absolute;
+  top: -4px;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 107, 53, 0.1) 40%, rgba(255, 158, 158, 0.06) 60%, transparent 100%);
+  filter: blur(4px);
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+/* ── Logo Hover Pulse ── */
+@keyframes wr-logo-pulse {
+  0% { text-shadow: 0 0 0 transparent; }
+  50% { text-shadow: 0 0 16px rgba(212, 240, 0, 0.5); }
+  100% { text-shadow: 0 0 0 transparent; }
+}
+.wr-logo-pulse:hover {
+  animation: wr-logo-pulse 1.5s ease-in-out;
+}
+
 /* ── Card Hover Cue ── */
 .wr-hover-cue {
   position: absolute;

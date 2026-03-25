@@ -392,7 +392,7 @@ export default function BurnOperations() {
             {isLoading ? '—' : `${(data?.burnedPct ?? 0).toFixed(2)}%`}
           </div>
         </div>
-        <div className="wr-burn-bar relative">
+        <div className="wr-burn-bar wr-burn-bar-glow relative">
           <div
             className="wr-burn-bar-fill"
             style={{ width: isLoading ? '0%' : `${Math.min(data?.burnedPct ?? 0, 100)}%` }}

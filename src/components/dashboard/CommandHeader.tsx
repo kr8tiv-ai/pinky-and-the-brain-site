@@ -263,7 +263,7 @@ export default function CommandHeader() {
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-2 group/logo cursor-default">
             <div className="w-1.5 h-1.5 bg-[#d4f000] transition-shadow duration-300 group-hover/logo:shadow-[0_0_8px_#d4f000,0_0_16px_rgba(212,240,0,0.3)]" />
-            <div className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#d4f000] font-black transition-all duration-300 group-hover/logo:text-shadow-[0_0_12px_rgba(212,240,0,0.4)]">
+            <div className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#d4f000] font-black transition-all duration-300 wr-logo-pulse">
               $BRAIN
             </div>
           </div>
