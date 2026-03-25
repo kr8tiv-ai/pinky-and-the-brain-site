@@ -777,17 +777,11 @@ export default function TreasuryIntel() {
         <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-3">
           {isLoading
             ? Array.from({ length: 3 }).map((_, i) => <LoadingCard key={i} index={i} />)
-            : (data?.holdings ?? []).map((h, idx) =>
-                h.category === 'unknown' ? (
-                  <div key={h.mint} style={{ '--stagger-i': idx } as React.CSSProperties} className="wr-card-stagger">
-                    <ClassifiedCard mint={h.mint} />
-                  </div>
-                ) : (
+            : (data?.holdings ?? []).map((h, idx) => (
                   <div key={h.mint} style={{ '--stagger-i': idx } as React.CSSProperties} className="wr-card-stagger">
                     <HoldingCard holding={h} solPriceUsd={data?.solPriceUsd ?? 0} />
                   </div>
-                )
-              )}
+              ))}
         </div>
       </div>
 
