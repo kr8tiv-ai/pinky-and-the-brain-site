@@ -1000,12 +1000,12 @@ section:hover > .wr-section-badge-fire {
   50% { box-shadow: 0 0 6px #ff6b35, 0 0 12px rgba(255, 107, 53, 0.5); }
 }
 .wr-progress-marker {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
   background: #ff6b35;
   border: 2px solid #0a0a0a;
-  animation: wr-progress-pulse 2s ease-in-out infinite;
+  animation: wr-progress-pulse 2.5s ease-in-out infinite;
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);

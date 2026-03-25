@@ -287,7 +287,7 @@ export default function CommandHeader() {
       </div>
 
       {/* Data grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 divide-x divide-[#333]/20 wr-header-grid-glow" role="region" aria-label="Live price data" aria-live="polite">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 divide-x divide-[#333]/15 wr-header-grid-glow" role="region" aria-label="Live price data" aria-live="polite">
         <DataCell label="Price (USD)" index={0}>
           {isLoading ? (
             <div className="wr-skeleton h-5 w-24" style={{ animationDelay: '0ms' }} />

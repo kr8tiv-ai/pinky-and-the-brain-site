@@ -353,7 +353,7 @@ function ClassifiedCard({ mint }: { mint: string }) {
         className="absolute inset-[-100%] animate-spin opacity-[0.08] group-hover/classified:opacity-40 transition-opacity duration-700 pointer-events-none"
         style={{
           background: 'conic-gradient(from 0deg, transparent 60%, #ff9e9e 80%, #333 90%, transparent 100%)',
-          animationDuration: '6s',
+          animationDuration: '7s',
         }}
       />
 
