@@ -1532,6 +1532,30 @@ section:hover > .wr-section-badge-fire {
   letter-spacing: 0.7em;
 }
 
+/* ── Section Enter Accent ── */
+.wr-section-enter-accent {
+  position: relative;
+}
+.wr-section-enter-accent::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10%;
+  bottom: 10%;
+  width: 2px;
+  background: linear-gradient(to bottom, transparent, rgba(212, 240, 0, 0.15), transparent);
+  opacity: 0.4;
+  pointer-events: none;
+  transition: opacity 0.6s ease;
+  z-index: 2;
+}
+.wr-section-enter-accent:hover::after {
+  opacity: 1;
+}
+.wr-section-enter-accent-fire::after {
+  background: linear-gradient(to bottom, transparent, rgba(255, 107, 53, 0.15), transparent);
+}
+
 /* ── Vignette Corners ── */
 .wr-vignette-corners::before {
   content: '';
