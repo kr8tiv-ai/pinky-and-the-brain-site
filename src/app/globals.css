@@ -458,7 +458,7 @@ body {
   transition: color 0.2s ease;
 }
 .wr-row-stripe:hover .wr-row-num {
-  color: rgba(255, 107, 53, 0.5);
+  color: rgba(255, 107, 53, 0.45);
 }
 
 /* ── Enhanced Tooltip ── */
@@ -810,7 +810,7 @@ button:focus-visible {
   50% { transform: translateY(3px); opacity: 0.7; }
 }
 .wr-scroll-hint {
-  animation: wr-scroll-bounce 3s ease-in-out 1s infinite;
+  animation: wr-scroll-bounce 3s ease-in-out 0.8s infinite;
   transition: opacity 0.4s ease;
 }
 
@@ -916,7 +916,7 @@ button:focus-visible {
 
 /* ── Fire Gradient Text ── */
 .wr-gradient-text-fire {
-  background: linear-gradient(135deg, #ff6b35 0%, #ff9e9e 50%, #ff6b35 100%);
+  background: linear-gradient(135deg, #ff6b35 0%, #ff9e9e 45%, #ff6b35 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
