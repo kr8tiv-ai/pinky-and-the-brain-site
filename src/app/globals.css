@@ -837,7 +837,7 @@ button:focus-visible {
 /* ── Section Accent Bar Pulse ── */
 @keyframes wr-accent-pulse {
   0%, 100% { opacity: 1; }
-  50% { opacity: 0.55; }
+  50% { opacity: 0.6; }
 }
 .wr-accent-bar-pulse:hover {
   animation: wr-accent-pulse 2.5s ease-in-out infinite;
@@ -1070,7 +1070,7 @@ section:hover > .wr-section-badge-fire {
 
 /* ── Section Number Gradient ── */
 .wr-section-num {
-  background: linear-gradient(180deg, #555 0%, #333 100%);
+  background: linear-gradient(180deg, #4a4a4a 0%, #2a2a2a 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
