@@ -243,7 +243,7 @@ body {
   100% { transform: scale(2.8); opacity: 0; }
 }
 .wr-pulse-ring {
-  animation: wr-pulse-ring 1.8s ease-out infinite;
+  animation: wr-pulse-ring 2s ease-out infinite;
 }
 
 /* ── Stagger Reveal Base State ── */
@@ -911,7 +911,7 @@ button:focus-visible {
 .wr-fire-line {
   background: linear-gradient(90deg, transparent 0%, #ff6b35 15%, #ff9e9e 50%, #ff6b35 85%, transparent 100%);
   background-size: 200% 100%;
-  animation: wr-fire-line 3.5s linear infinite;
+  animation: wr-fire-line 4s linear infinite;
 }
 
 /* ── Fire Gradient Text ── */
@@ -1119,7 +1119,7 @@ section:hover > .wr-section-badge-fire {
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(212, 240, 0, 0.07), rgba(212, 240, 0, 0.035), transparent);
+  background: linear-gradient(90deg, transparent, rgba(212, 240, 0, 0.06), rgba(212, 240, 0, 0.03), transparent);
 }
 
 /* ── Fire Summary Bar Bottom Accent ── */
