@@ -240,11 +240,11 @@ function TreasuryValueChart({
                 fill="url(#treasuryGradient)"
                 dot={false}
                 activeDot={{
-                  r: 6,
+                  r: 5,
                   fill: '#d4f000',
                   stroke: '#0a0a0a',
-                  strokeWidth: 2.5,
-                  style: { filter: 'drop-shadow(0 0 10px rgba(212, 240, 0, 0.7)) drop-shadow(0 0 20px rgba(212, 240, 0, 0.3))' },
+                  strokeWidth: 2,
+                  style: { filter: 'drop-shadow(0 0 8px rgba(212, 240, 0, 0.6)) drop-shadow(0 0 16px rgba(212, 240, 0, 0.25))' },
                 }}
                 style={{ filter: 'url(#chartGlow)' }}
               />
