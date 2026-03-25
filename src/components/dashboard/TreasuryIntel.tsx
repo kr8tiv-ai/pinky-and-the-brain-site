@@ -245,7 +245,7 @@ function TreasuryValueChart({
                   fill: '#d4f000',
                   stroke: '#0a0a0a',
                   strokeWidth: 2,
-                  style: { filter: 'drop-shadow(0 0 6px rgba(212, 240, 0, 0.5)) drop-shadow(0 0 12px rgba(212, 240, 0, 0.2))' },
+                  style: { filter: 'drop-shadow(0 0 5px rgba(212, 240, 0, 0.45)) drop-shadow(0 0 10px rgba(212, 240, 0, 0.18))' },
                 }}
                 style={{ filter: 'url(#chartGlow)' }}
               />

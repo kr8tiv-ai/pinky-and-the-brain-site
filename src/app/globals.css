@@ -483,7 +483,7 @@ body {
 
 /* ── Fire Amount Text Shadow ── */
 .wr-fire-text {
-  text-shadow: 0 0 6px rgba(255, 107, 53, 0.25);
+  text-shadow: 0 0 5px rgba(255, 107, 53, 0.22);
 }
 
 /* ── Table Header Bar ── */
@@ -1117,7 +1117,7 @@ section:hover > .wr-section-badge-fire {
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(212, 240, 0, 0.08), rgba(212, 240, 0, 0.04), transparent);
+  background: linear-gradient(90deg, transparent, rgba(212, 240, 0, 0.07), rgba(212, 240, 0, 0.035), transparent);
 }
 
 /* ── Fire Summary Bar Bottom Accent ── */
