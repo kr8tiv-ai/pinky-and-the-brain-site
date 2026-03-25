@@ -169,7 +169,7 @@ body {
     #1a1a1a 65%
   );
   background-size: 400% 100%;
-  animation: wr-shimmer 2.4s ease infinite;
+  animation: wr-shimmer 2.6s ease infinite;
   border-radius: 2px;
 }
 
@@ -1374,7 +1374,7 @@ section:hover > .wr-section-badge-fire {
   position: absolute;
   inset: 0;
   padding: 1px;
-  background: linear-gradient(90deg, transparent 15%, rgba(212, 240, 0, 0.12) 50%, transparent 85%);
+  background: linear-gradient(90deg, transparent 15%, rgba(212, 240, 0, 0.1) 50%, transparent 85%);
   background-size: 200% 100%;
   -webkit-mask:
     linear-gradient(#fff 0 0) content-box,
@@ -1489,7 +1489,7 @@ section:hover > .wr-section-badge-fire {
 
 /* ── Tooltip Entrance Scale ── */
 .wr-tooltip-entrance {
-  animation: wr-tooltip-pop 0.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  animation: wr-tooltip-pop 0.18s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 @keyframes wr-tooltip-pop {
   0% { opacity: 0; transform: scale(0.94) translateY(3px); }
