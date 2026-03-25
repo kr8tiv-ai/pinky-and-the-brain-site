@@ -128,6 +128,7 @@ body {
   display: flex;
   width: max-content;
   animation: ticker-scroll 20s linear infinite;
+  will-change: transform;
 }
 .ticker-track:hover {
   animation-play-state: paused;
@@ -136,6 +137,29 @@ body {
 /* ═══════════════════════════════════════════════════════════════════════════
    WAR ROOM — Dashboard Design System
    ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Reduced Motion Support ── */
+@media (prefers-reduced-motion: reduce) {
+  .ticker-track,
+  .wr-orb-1, .wr-orb-2, .wr-orb-3,
+  .wr-scan-line,
+  .wr-pulse-ring,
+  .wr-burn-bar-fill,
+  .flicker,
+  .wr-breathe {
+    animation: none !important;
+  }
+  .wr-shine:hover::after {
+    animation: none !important;
+  }
+  [data-wr-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .animate-spin {
+    animation: none !important;
+  }
+}
 
 /* ── Animated Conic Border (scanning radar effect) ── */
 @property --conic-angle {
@@ -504,9 +528,9 @@ body {
   50% { transform: translate(-3vw, 2vh); }
 }
 
-.wr-orb-1 { animation: wr-orb-drift-1 20s ease-in-out infinite; }
-.wr-orb-2 { animation: wr-orb-drift-2 25s ease-in-out infinite; }
-.wr-orb-3 { animation: wr-orb-drift-3 18s ease-in-out infinite; }
+.wr-orb-1 { animation: wr-orb-drift-1 20s ease-in-out infinite; will-change: transform; }
+.wr-orb-2 { animation: wr-orb-drift-2 25s ease-in-out infinite; will-change: transform; }
+.wr-orb-3 { animation: wr-orb-drift-3 18s ease-in-out infinite; will-change: transform; }
 
 /* ── Section Crosshair Markers ── */
 .wr-crosshair {
@@ -809,4 +833,5 @@ button:focus-visible {
   animation: wr-scan 8s linear infinite;
   pointer-events: none;
   z-index: 2;
+  will-change: transform;
 }
