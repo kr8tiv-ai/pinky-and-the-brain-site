@@ -452,6 +452,10 @@ body {
   min-width: 18px;
   text-align: right;
   user-select: none;
+  transition: color 0.2s ease;
+}
+.wr-row-stripe:hover .wr-row-num {
+  color: rgba(255, 107, 53, 0.5);
 }
 
 /* ── Enhanced Tooltip ── */
@@ -623,6 +627,41 @@ body {
 }
 .wr-data-dot-fire {
   background: #ff6b35;
+}
+
+/* ── Chart Container Hover ── */
+.wr-chart-frame {
+  position: relative;
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+.wr-chart-frame:hover {
+  border-color: rgba(212, 240, 0, 0.08);
+  box-shadow: inset 0 0 40px rgba(212, 240, 0, 0.02);
+}
+.wr-chart-frame:hover .wr-chart-corner {
+  opacity: 1;
+  width: 10px;
+  height: 10px;
+}
+.wr-chart-corner {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  opacity: 0.3;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  pointer-events: none;
+}
+.wr-chart-corner--tl { top: 2px; left: 2px; border-top: 1px solid #d4f000; border-left: 1px solid #d4f000; }
+.wr-chart-corner--tr { top: 2px; right: 2px; border-top: 1px solid #d4f000; border-right: 1px solid #d4f000; }
+.wr-chart-corner--bl { bottom: 2px; left: 2px; border-bottom: 1px solid #d4f000; border-left: 1px solid #d4f000; }
+.wr-chart-corner--br { bottom: 2px; right: 2px; border-bottom: 1px solid #d4f000; border-right: 1px solid #d4f000; }
+
+/* ── Value Highlight Chip ── */
+.wr-value-highlight {
+  background: linear-gradient(135deg, rgba(212, 240, 0, 0.06) 0%, rgba(212, 240, 0, 0.02) 100%);
+  padding: 1px 6px;
+  border-radius: 2px;
+  border: 1px solid rgba(212, 240, 0, 0.08);
 }
 
 /* ── Animated Horizontal Line ── */

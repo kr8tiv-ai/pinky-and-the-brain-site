@@ -183,12 +183,12 @@ function TreasuryValueChart({
           <span className="text-[#333] font-mono text-[10px] tracking-[0.2em]">INSUFFICIENT DATA POINTS</span>
         </div>
       ) : (
-        <div className="h-[260px] relative border border-[#333]/10 bg-[#0a0a0a]/50 p-3 rounded-sm">
-          {/* Corner dots */}
-          <div className="absolute top-1 left-1 w-1 h-1 bg-[#d4f000]/10" />
-          <div className="absolute top-1 right-1 w-1 h-1 bg-[#d4f000]/10" />
-          <div className="absolute bottom-1 left-1 w-1 h-1 bg-[#d4f000]/10" />
-          <div className="absolute bottom-1 right-1 w-1 h-1 bg-[#d4f000]/10" />
+        <div className="h-[260px] relative border border-[#333]/10 bg-[#0a0a0a]/50 p-3 rounded-sm wr-chart-frame">
+          {/* Animated corner brackets */}
+          <div className="wr-chart-corner wr-chart-corner--tl" />
+          <div className="wr-chart-corner wr-chart-corner--tr" />
+          <div className="wr-chart-corner wr-chart-corner--bl" />
+          <div className="wr-chart-corner wr-chart-corner--br" />
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart data={chartData} margin={{ top: 10, right: 4, left: 0, bottom: 0 }}>
               <defs>
@@ -503,7 +503,7 @@ function HoldingCard({
               <span className="text-[#d4f000]/15 text-[6px]">▸</span>
               {label}
             </div>
-            <div className={`tabular-nums font-bold font-mono ${highlight ? 'text-[#d4f000]' : 'text-white'}`}>{value}</div>
+            <div className={`tabular-nums font-bold font-mono ${highlight ? 'text-[#d4f000] wr-value-highlight' : 'text-white'}`}>{value}</div>
           </div>
         ))}
       </div>
