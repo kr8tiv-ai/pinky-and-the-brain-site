@@ -419,7 +419,7 @@ body {
 .wr-link-hover::after {
   content: '';
   position: absolute;
-  bottom: -2px;
+  bottom: -1px;
   left: 0;
   width: 0;
   height: 1px;
