@@ -84,7 +84,7 @@ function LiveIndicator({ status }: { status: 'live' | 'connecting' | 'offline' }
   }
 
   return (
-    <div className="flex items-center gap-2.5">
+    <div className="flex items-center gap-2.5" role="status" aria-label={`Data feed ${status}`}>
       <div className="relative flex items-center justify-center w-4 h-4">
         <div className={`w-2 h-2 rounded-full ${colorMap[status]} relative z-10`}
           style={status === 'live' ? { boxShadow: '0 0 8px #d4f000, 0 0 20px rgba(212, 240, 0, 0.4), 0 0 40px rgba(212, 240, 0, 0.1)' } : undefined}
@@ -287,7 +287,7 @@ export default function CommandHeader() {
       </div>
 
       {/* Data grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 divide-x divide-[#333]/20">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 divide-x divide-[#333]/20" role="region" aria-label="Live price data" aria-live="polite">
         <DataCell label="Price (USD)" index={0}>
           {isLoading ? (
             <div className="wr-skeleton h-5 w-24" style={{ animationDelay: '0ms' }} />

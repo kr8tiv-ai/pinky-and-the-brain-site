@@ -726,7 +726,7 @@ export default function TreasuryIntel() {
       </div>
 
       {/* Summary bar */}
-      <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-[#333]/20 border-b border-[#333]/20 wr-summary-accent">
+      <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-[#333]/20 border-b border-[#333]/20 wr-summary-accent" role="region" aria-label="Treasury summary statistics">
         <SummaryCell label="Total Value (USD)" isLoading={isLoading} isError={isError}>
           <span className="flex items-center">
             {formatUsd(data?.totalValueUsd ?? 0)}

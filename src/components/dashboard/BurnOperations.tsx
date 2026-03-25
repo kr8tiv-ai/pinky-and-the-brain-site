@@ -105,7 +105,7 @@ function BurnSummaryBar({
   ]
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-[#333]/20 border-b border-[#333]/20 wr-summary-accent wr-summary-accent-fire">
+    <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-[#333]/20 border-b border-[#333]/20 wr-summary-accent wr-summary-accent-fire" role="region" aria-label="Burn statistics summary">
       {cells.map(({ label, content }) => (
         <div key={label} className="px-5 lg:px-6 py-5 group/cell relative transition-colors duration-300 hover:bg-[#ff6b35]/[0.015] wr-stat-scale">
           {/* Hover accent */}
@@ -392,7 +392,7 @@ export default function BurnOperations() {
             {isLoading ? '—' : `${(data?.burnedPct ?? 0).toFixed(2)}%`}
           </div>
         </div>
-        <div className="wr-burn-bar wr-burn-bar-glow relative">
+        <div className="wr-burn-bar wr-burn-bar-glow relative" role="progressbar" aria-valuenow={data?.burnedPct ?? 0} aria-valuemin={0} aria-valuemax={100} aria-label="Token burn progress">
           <div
             className="wr-burn-bar-fill"
             style={{ width: isLoading ? '0%' : `${Math.min(data?.burnedPct ?? 0, 100)}%` }}
