@@ -17,12 +17,13 @@ export default function WarRoomPage() {
       {/* Skip to content */}
       <a href="#war-room-content" className="wr-skip-link">Skip to content</a>
 
-      {/* ── Layer 1: Ambient glow orbs (drifting) ── */}
+      {/* ── Layer 1: Ambient glow orbs (vibrant, drifting) ── */}
       <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-[-10%] left-[15%] w-[50vw] h-[40vw] max-w-3xl bg-[#d4f000] rounded-full mix-blend-screen filter blur-[200px] opacity-[0.04] wr-orb-1" />
-        <div className="absolute bottom-[-5%] right-[10%] w-[40vw] h-[35vw] max-w-2xl bg-[#ff9e9e] rounded-full mix-blend-screen filter blur-[180px] opacity-[0.03] wr-orb-2" />
-        <div className="absolute top-[40%] left-[60%] w-[30vw] h-[25vw] max-w-xl bg-[#4a90e2] rounded-full mix-blend-screen filter blur-[200px] opacity-[0.02] wr-orb-3" />
-        <div className="absolute bottom-[20%] left-[5%] w-[25vw] h-[20vw] max-w-lg bg-[#ff6b35] rounded-full mix-blend-screen filter blur-[200px] opacity-[0.015] wr-orb-2" />
+        <div className="absolute top-[-10%] left-[15%] w-[50vw] h-[40vw] max-w-3xl bg-[#d4f000] rounded-full mix-blend-screen filter blur-[120px] opacity-[0.10] animate-pulse wr-orb-1" style={{ animationDuration: '8s' }} />
+        <div className="absolute bottom-[-5%] right-[10%] w-[40vw] h-[35vw] max-w-2xl bg-[#ff9e9e] rounded-full mix-blend-screen filter blur-[150px] opacity-[0.08] wr-orb-2" />
+        <div className="absolute top-[40%] left-[60%] w-[30vw] h-[25vw] max-w-xl bg-[#4a90e2] rounded-full mix-blend-screen filter blur-[160px] opacity-[0.06] wr-orb-3" />
+        <div className="absolute bottom-[20%] left-[5%] w-[25vw] h-[20vw] max-w-lg bg-[#ff6b35] rounded-full mix-blend-screen filter blur-[140px] opacity-[0.05] animate-pulse wr-orb-2" style={{ animationDuration: '6s' }} />
+        <div className="absolute top-[60%] right-[30%] w-[20vw] h-[15vw] max-w-md bg-[#e4ff57] rounded-full mix-blend-screen filter blur-[180px] opacity-[0.04] wr-orb-1" />
       </div>
 
       {/* ── Layer 1.5: Atmospheric video underlay ── */}
@@ -32,7 +33,7 @@ export default function WarRoomPage() {
           loop
           muted
           playsInline
-          className="w-full h-full object-cover opacity-[0.08] mix-blend-screen"
+          className="w-full h-full object-cover opacity-[0.14] mix-blend-screen"
           src="/videos/war-room-bg.mp4"
         />
       </div>
@@ -44,17 +45,17 @@ export default function WarRoomPage() {
       <div className="fixed inset-0 z-0 pointer-events-none wr-scanlines" />
 
       {/* ── Layer 4: Noise texture ── */}
-      <div className="fixed inset-0 z-0 pointer-events-none bg-[url('/noise.gif')] opacity-[0.04] mix-blend-overlay" />
+      <div className="fixed inset-0 z-0 pointer-events-none bg-[url('/noise.gif')] opacity-[0.05] mix-blend-overlay" />
 
       {/* ── Layer 5: Bottom depth gradient ── */}
       <div className="wr-depth-gradient" />
 
-      {/* ── Layer 6: Top vignette ── */}
-      <div className="fixed inset-0 z-0 pointer-events-none bg-[radial-gradient(ellipse_80%_50%_at_50%_0%,rgba(212,240,0,0.03),transparent_70%)]" />
+      {/* ── Layer 6: Top vignette — warm lime glow ── */}
+      <div className="fixed inset-0 z-0 pointer-events-none bg-[radial-gradient(ellipse_80%_50%_at_50%_0%,rgba(212,240,0,0.06),transparent_70%)]" />
 
       {/* ── Layer 6: Corner vignettes ── */}
-      <div className="fixed inset-0 z-0 pointer-events-none bg-[radial-gradient(ellipse_50%_50%_at_0%_0%,rgba(0,0,0,0.2),transparent_70%)]" />
-      <div className="fixed inset-0 z-0 pointer-events-none bg-[radial-gradient(ellipse_50%_50%_at_100%_100%,rgba(0,0,0,0.2),transparent_70%)]" />
+      <div className="fixed inset-0 z-0 pointer-events-none bg-[radial-gradient(ellipse_50%_50%_at_0%_0%,rgba(0,0,0,0.15),transparent_70%)]" />
+      <div className="fixed inset-0 z-0 pointer-events-none bg-[radial-gradient(ellipse_50%_50%_at_100%_100%,rgba(0,0,0,0.15),transparent_70%)]" />
 
       {/* ── Scroll Progress ── */}
       <ScrollProgress />
@@ -83,7 +84,7 @@ export default function WarRoomPage() {
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#0a0a0a] px-5 flex items-center gap-2.5">
             <div className="w-5 h-px bg-[#d4f000]/10" />
             <div className="wr-divider-dot text-[#d4f000]" style={{ animationDelay: '0s' }} />
-            <span className="font-mono text-[7px] uppercase tracking-[0.5em] text-[#d4f000]/55 font-bold wr-divider-label">▼ INTEL</span>
+            <span className="font-mono text-[7px] uppercase tracking-[0.5em] text-[#d4f000]/70 font-bold wr-divider-label drop-shadow-[0_0_8px_rgba(212,240,0,0.15)]">▼ INTEL</span>
             <div className="wr-divider-dot text-[#d4f000]" style={{ animationDelay: '1.5s' }} />
             <div className="w-5 h-px bg-[#d4f000]/10" />
           </div>
@@ -110,7 +111,7 @@ export default function WarRoomPage() {
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#0a0a0a] px-6 flex items-center gap-3">
             <div className="w-6 h-px bg-gradient-to-r from-transparent to-[#ff6b35]/20" />
             <div className="wr-divider-dot text-[#ff6b35]" />
-            <span className="font-mono text-[7px] uppercase tracking-[0.5em] text-[#ff6b35]/60 font-bold wr-divider-label">INCINERATION ZONE</span>
+            <span className="font-mono text-[7px] uppercase tracking-[0.5em] text-[#ff6b35]/75 font-bold wr-divider-label drop-shadow-[0_0_8px_rgba(255,107,53,0.2)]">INCINERATION ZONE</span>
             <div className="wr-divider-dot text-[#ff6b35]" />
             <div className="w-6 h-px bg-gradient-to-l from-transparent to-[#ff6b35]/20" />
           </div>

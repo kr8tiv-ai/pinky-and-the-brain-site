@@ -185,7 +185,7 @@ function TreasuryValueChart({
               <path d="M7 16l4-4 4 4 5-5" />
             </svg>
           </div>
-          <span className="text-[#2a2a2a] font-mono text-[10px] tracking-[0.2em]">INSUFFICIENT DATA POINTS</span>
+          <span className="text-[#666] font-mono text-[10px] tracking-[0.2em]">INSUFFICIENT DATA POINTS</span>
         </div>
       ) : (
         <div className="h-[260px] relative border border-[#333]/6 bg-[#0a0a0a]/50 p-3 rounded wr-chart-frame wr-chart-entrance">
@@ -285,13 +285,13 @@ function SummaryCell({
   }, [isLoading, isError])
 
   return (
-    <div className="px-5 lg:px-6 py-5 group/cell relative transition-colors duration-300 hover:bg-white/[0.015] wr-stat-scale">
+    <div className="px-5 lg:px-6 py-5 group/cell relative transition-colors duration-300 hover:bg-[#d4f000]/[0.02] wr-stat-scale">
       {/* Hover accent top */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-[#d4f000]/0 group-hover/cell:bg-[#d4f000]/8 transition-colors duration-300" />
+      <div className="absolute top-0 left-0 right-0 h-[2px] bg-[#d4f000]/0 group-hover/cell:bg-[#d4f000]/15 transition-colors duration-300" />
       {/* Hover accent bottom gradient */}
-      <div className="absolute bottom-0 left-[5%] right-[5%] h-px bg-[#d4f000]/0 group-hover/cell:bg-[#d4f000]/[0.06] transition-colors duration-500" />
-      <div className="font-mono text-[8px] uppercase tracking-[0.2em] text-[#555] mb-2 font-bold group-hover/cell:text-[#888] transition-colors flex items-center gap-1.5">
-        <span className="text-[#d4f000]/20 text-[5px]" aria-hidden="true">◆</span>
+      <div className="absolute bottom-0 left-[5%] right-[5%] h-px bg-[#d4f000]/0 group-hover/cell:bg-[#d4f000]/10 transition-colors duration-500" />
+      <div className="font-mono text-[8px] uppercase tracking-[0.2em] text-[#666] mb-2 font-bold group-hover/cell:text-[#d4f000]/60 transition-colors flex items-center gap-1.5">
+        <span className="text-[#d4f000]/30 text-[5px] group-hover/cell:text-[#d4f000]/60 transition-colors" aria-hidden="true">◆</span>
         {label}
       </div>
       <div ref={valueRef} className="font-mono text-xl lg:text-2xl font-black text-white tabular-nums leading-none">
@@ -453,25 +453,28 @@ function HoldingCard({
     : 'UNKNOWN'
 
   return (
-    <div ref={cardRef} data-wr-reveal className="relative p-[1px] overflow-hidden group/card wr-brackets wr-shine wr-card-lift wr-card-spotlight rounded-sm">
+    <div ref={cardRef} data-wr-reveal className="relative p-[2px] overflow-hidden group/card wr-brackets wr-shine wr-card-lift wr-card-spotlight rounded-sm shadow-2xl">
       {/* Mouse-tracking spotlight */}
-      <div className="wr-spotlight-layer bg-[radial-gradient(320px_circle_at_var(--mouse-x,50%)_var(--mouse-y,50%),rgba(212,240,0,0.035),transparent_60%)]" />
-      {/* Conic gradient spinner — like Tokenomics cards */}
+      <div className="wr-spotlight-layer bg-[radial-gradient(320px_circle_at_var(--mouse-x,50%)_var(--mouse-y,50%),rgba(212,240,0,0.06),transparent_60%)]" />
+      {/* Conic gradient spinner — always visible like Tokenomics cards */}
       <div
-        className="absolute inset-[-100%] animate-spin opacity-0 group-hover/card:opacity-60 transition-opacity duration-700 pointer-events-none"
+        className="absolute inset-[-100%] animate-spin opacity-30 group-hover/card:opacity-80 transition-opacity duration-700 pointer-events-none"
         style={{
           background: 'conic-gradient(from 0deg, transparent 60%, #e4ff57 80%, #ffadad 100%)',
-          animationDuration: '7s',
+          animationDuration: '6s',
         }}
       />
 
       {/* Inner card */}
       <div className="relative h-full w-full bg-[#0d0d0d] p-4 md:p-5 overflow-hidden z-10 wr-border-shimmer wr-card-inner-glow wr-card-top-line">
-      {/* Accent border left — color reflects position status */}
-      <div className="absolute top-0 left-0 w-[2px] md:w-[3px] h-full bg-gradient-to-b to-transparent" style={{
-        backgroundImage: holding.gainLossPct !== undefined && holding.gainLossPct < -5
-          ? 'linear-gradient(to bottom, #ff9e9e, rgba(255, 158, 158, 0.4) 50%, transparent)'
-          : 'linear-gradient(to bottom, #d4f000, rgba(212, 240, 0, 0.4) 50%, transparent)',
+      {/* Accent border left — thick like landing page cards */}
+      <div className="absolute top-0 left-0 w-[4px] md:w-[6px] h-full" style={{
+        background: holding.gainLossPct !== undefined && holding.gainLossPct < -5
+          ? 'linear-gradient(to bottom, #ff9e9e, rgba(255, 158, 158, 0.6) 60%, transparent)'
+          : 'linear-gradient(to bottom, #d4f000, rgba(228, 255, 87, 0.6) 60%, transparent)',
+        boxShadow: holding.gainLossPct !== undefined && holding.gainLossPct < -5
+          ? '0 0 12px rgba(255, 158, 158, 0.15)'
+          : '0 0 12px rgba(212, 240, 0, 0.15)',
       }} />
 
       {/* Header: token name + gain/loss */}
@@ -482,7 +485,7 @@ function HoldingCard({
             <span className="wr-gradient-text-lime group-hover/card:drop-shadow-[0_0_4px_rgba(212,240,0,0.3)] transition-all duration-300">{(holding.symbol || holding.name).charAt(0)}</span>
           </div>
           <div>
-            <div className="text-[#d4f000] font-black text-sm uppercase tracking-wider font-mono transition-all duration-300 group-hover/card:text-shadow-[0_0_10px_rgba(212,240,0,0.25)]">
+            <div className="text-[#d4f000] font-black text-sm uppercase tracking-wider font-mono transition-all duration-300 drop-shadow-[0_0_6px_rgba(212,240,0,0.12)] group-hover/card:drop-shadow-[0_0_14px_rgba(212,240,0,0.35)]">
               {holding.name}
             </div>
             {holding.symbol && holding.symbol !== holding.name && (
@@ -675,7 +678,7 @@ export default function TreasuryIntel() {
     const rect = sectionRef.current.getBoundingClientRect()
     const x = e.clientX - rect.left
     const y = e.clientY - rect.top
-    spotlightRef.current.style.background = `radial-gradient(380px circle at ${x}px ${y}px, rgba(212, 240, 0, 0.025), transparent 60%)`
+    spotlightRef.current.style.background = `radial-gradient(380px circle at ${x}px ${y}px, rgba(212, 240, 0, 0.06), transparent 60%)`
   }, [])
 
   const handleMouseLeave = useCallback(() => {
@@ -707,16 +710,16 @@ export default function TreasuryIntel() {
       </div>
 
       {/* Section header */}
-      <div className="px-5 lg:px-8 py-6 border-b border-[#333]/20 wr-brackets wr-header-line text-[#d4f000] wr-glass">
+      <div className="px-5 lg:px-8 py-6 border-b border-[#d4f000]/10 wr-brackets wr-header-line text-[#d4f000] wr-glass">
         <div className="flex justify-between items-center">
-          <div className="flex items-center gap-3">
-            <div className="w-1 bg-[#d4f000] wr-accent-bar wr-accent-bar-pulse" />
+          <div className="flex items-center gap-4">
+            <div className="w-1.5 bg-[#d4f000] wr-accent-bar wr-accent-bar-pulse" style={{ boxShadow: '0 0 8px rgba(212,240,0,0.3)' }} />
             <div>
-              <div className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#555] font-bold mb-0.5 wr-section-num">
+              <div className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#666] font-bold mb-1 wr-section-num">
                 SECTION 01
               </div>
-              <h2 className="text-lg md:text-xl font-black uppercase tracking-wide text-[#cccccc] font-sans wr-cursor">
-                Treasury <span className="wr-gradient-text-lime">Intel</span>
+              <h2 className="text-xl md:text-2xl font-black uppercase tracking-tight text-white font-sans wr-cursor">
+                Treasury <span className="wr-gradient-text-lime drop-shadow-[0_0_10px_rgba(212,240,0,0.2)]">Intel</span>
               </h2>
             </div>
           </div>

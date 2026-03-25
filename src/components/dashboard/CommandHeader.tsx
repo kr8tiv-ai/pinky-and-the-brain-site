@@ -117,7 +117,7 @@ function DataCell({
   return (
     <div
       data-wr-reveal
-      className="group relative px-5 lg:px-6 py-5 transition-all duration-300 hover:bg-white/[0.012]"
+      className="group relative px-5 lg:px-6 py-5 transition-all duration-300 hover:bg-[#d4f000]/[0.02]"
       style={{ transitionDelay: `${index * 50}ms` }}
     >
       {/* Hover accent line at top */}
@@ -130,11 +130,11 @@ function DataCell({
       {/* Subtle bottom glow on hover */}
       <div className="absolute bottom-0 left-[10%] right-[10%] h-px bg-[#d4f000]/0 group-hover:bg-[#d4f000]/[0.04] transition-colors duration-500" />
 
-      <div className="font-mono text-[8px] uppercase tracking-[0.22em] text-[#555] mb-2 font-bold group-hover:text-[#888] transition-colors duration-300 flex items-center gap-1.5">
-        <span className="text-[#d4f000]/12 text-[5px]">◆</span>
+      <div className="font-mono text-[8px] uppercase tracking-[0.22em] text-[#666] mb-2 font-bold group-hover:text-[#d4f000]/60 transition-colors duration-300 flex items-center gap-1.5">
+        <span className="text-[#d4f000]/30 text-[5px] group-hover:text-[#d4f000]/60 transition-colors">◆</span>
         {label}
       </div>
-      <div className="font-mono text-sm md:text-lg font-black text-white tabular-nums leading-none group-hover:text-shadow-[0_0_16px_rgba(255,255,255,0.08)] transition-all duration-300">
+      <div className="font-mono text-sm md:text-lg font-black text-white tabular-nums leading-none group-hover:drop-shadow-[0_0_12px_rgba(212,240,0,0.12)] transition-all duration-300">
         {children}
       </div>
     </div>
@@ -249,22 +249,22 @@ export default function CommandHeader() {
     : 'text-white'
 
   return (
-    <header ref={headerRef} className="relative w-full bg-[#0a0a0a]/80 backdrop-blur-xl border-b border-[#333]/30 overflow-hidden">
-      {/* Ambient mesh glow */}
+    <header ref={headerRef} className="relative w-full bg-[#0a0a0a]/80 backdrop-blur-xl border-b border-[#d4f000]/10 overflow-hidden">
+      {/* Ambient mesh glow — warmer, more visible */}
       <div className="absolute inset-0 pointer-events-none" style={{
-        background: 'radial-gradient(ellipse 40% 60% at 20% 50%, rgba(212, 240, 0, 0.012), transparent 70%), radial-gradient(ellipse 30% 50% at 80% 50%, rgba(74, 144, 226, 0.01), transparent 70%)',
+        background: 'radial-gradient(ellipse 40% 60% at 20% 50%, rgba(212, 240, 0, 0.04), transparent 70%), radial-gradient(ellipse 30% 50% at 80% 50%, rgba(255, 158, 158, 0.025), transparent 70%)',
       }} />
-      {/* Top gradient accent line */}
-      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#d4f000]/3 via-[#d4f000]/12 to-[#d4f000]/3 z-10" />
+      {/* Top gradient accent line — bold lime */}
+      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#d4f000]/10 via-[#d4f000]/40 to-[#ff9e9e]/15 z-10" />
       {/* Bottom gradient accent line */}
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#d4f000]/5 to-transparent z-10" />
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#d4f000]/12 to-transparent z-10" />
 
       {/* Top bar */}
       <div className="flex justify-between items-center px-5 lg:px-8 py-2.5 border-b border-[#333]/15">
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-2 group/logo cursor-default">
-            <div className="w-1.5 h-1.5 bg-[#d4f000] transition-shadow duration-300 group-hover/logo:shadow-[0_0_8px_#d4f000,0_0_16px_rgba(212,240,0,0.3)]" />
-            <div className="font-mono text-[11px] uppercase tracking-[0.3em] text-[#d4f000] font-black transition-all duration-300 wr-logo-pulse">
+            <div className="w-2 h-2 bg-[#d4f000] shadow-[0_0_6px_#d4f000,0_0_12px_rgba(212,240,0,0.25)] transition-shadow duration-300 group-hover/logo:shadow-[0_0_10px_#d4f000,0_0_24px_rgba(212,240,0,0.4)]" />
+            <div className="font-mono text-[12px] uppercase tracking-[0.3em] text-[#d4f000] font-black transition-all duration-300 drop-shadow-[0_0_8px_rgba(212,240,0,0.2)] wr-logo-pulse">
               $BRAIN
             </div>
           </div>

@@ -464,7 +464,7 @@ export default function BurnOperations() {
     const rect = sectionRef.current.getBoundingClientRect()
     const x = e.clientX - rect.left
     const y = e.clientY - rect.top
-    glowRef.current.style.background = `radial-gradient(280px circle at ${x}px ${y}px, rgba(255, 107, 53, 0.06), transparent 60%)`
+    glowRef.current.style.background = `radial-gradient(350px circle at ${x}px ${y}px, rgba(255, 107, 53, 0.10), transparent 60%)`
   }, [])
 
   const handleMouseLeave = useCallback(() => {
@@ -494,8 +494,8 @@ export default function BurnOperations() {
         02
       </div>
 
-      {/* Fire glow at top */}
-      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-[#ff6b35]/[0.03] to-transparent pointer-events-none" />
+      {/* Fire glow at top — vibrant */}
+      <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-[#ff6b35]/[0.08] to-transparent pointer-events-none" />
 
       {/* Fire ember particles */}
       <div className="absolute bottom-0 left-0 right-0 h-40 pointer-events-none overflow-hidden" aria-hidden="true">
@@ -508,15 +508,15 @@ export default function BurnOperations() {
       <div className="h-[2px] wr-fire-line" aria-hidden="true" />
 
       {/* Section header */}
-      <div className="relative flex justify-between items-center px-5 lg:px-8 py-6 border-b border-[#333]/20 wr-brackets wr-brackets-fire wr-header-line text-[#ff6b35] wr-glass">
-        <div className="flex items-center gap-3">
-          <div className="w-1 bg-[#ff6b35] wr-accent-bar wr-accent-bar-pulse" />
+      <div className="relative flex justify-between items-center px-5 lg:px-8 py-6 border-b border-[#ff6b35]/10 wr-brackets wr-brackets-fire wr-header-line text-[#ff6b35] wr-glass">
+        <div className="flex items-center gap-4">
+          <div className="w-1.5 bg-[#ff6b35] wr-accent-bar wr-accent-bar-pulse" style={{ boxShadow: '0 0 8px rgba(255,107,53,0.3)' }} />
           <div>
-            <div className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#555] font-bold mb-0.5 wr-section-num">
+            <div className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#666] font-bold mb-1 wr-section-num">
               SECTION 02
             </div>
-            <h2 className="text-lg md:text-xl font-black uppercase tracking-wide text-[#cccccc] font-sans wr-cursor wr-cursor-fire">
-              Burn <span className="wr-gradient-text-fire">Operations</span>
+            <h2 className="text-xl md:text-2xl font-black uppercase tracking-tight text-white font-sans wr-cursor wr-cursor-fire">
+              Burn <span className="wr-gradient-text-fire drop-shadow-[0_0_10px_rgba(255,107,53,0.25)]">Operations</span>
             </h2>
           </div>
         </div>
