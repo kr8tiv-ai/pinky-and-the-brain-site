@@ -561,6 +561,9 @@ function HoldingCard({
       {/* Corner timestamp — visible on hover */}
       <div className="wr-corner-ts">{purchaseDateStr}</div>
 
+      {/* Hover cue */}
+      <div className="wr-hover-cue">EXPAND</div>
+
       {/* External links — reveal on hover */}
       <div className="flex flex-wrap gap-3 pt-3 border-t border-[#333]/20 pl-2 wr-links-reveal">
         {[

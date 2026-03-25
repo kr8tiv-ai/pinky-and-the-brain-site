@@ -82,6 +82,15 @@ export default function WarRoomPage() {
           <TreasuryIntel />
         </SectionReveal>
 
+        {/* Transition marker */}
+        <div className="flex justify-center py-1">
+          <div className="flex items-center gap-1.5">
+            {[1, 2, 3].map(i => (
+              <div key={i} className="w-[3px] h-[3px] bg-[#333]/20 rounded-full" />
+            ))}
+          </div>
+        </div>
+
         {/* Decorative fire divider with transition marker */}
         <div className="relative py-5">
           <div className="wr-divider-fire" />
@@ -227,6 +236,13 @@ export default function WarRoomPage() {
             {/* Big watermark — breathing glow */}
             <div className="absolute right-8 bottom-4 text-[6rem] font-black text-white/[0.01] leading-none select-none pointer-events-none font-sans tracking-tighter wr-breathe wr-watermark" style={{ WebkitTextStroke: '1px rgba(212, 240, 0, 0.015)' }}>
               $BRAIN
+            </div>
+
+            {/* Disclaimer */}
+            <div className="text-center mb-4">
+              <span className="font-mono text-[6px] uppercase tracking-[0.2em] text-[#1a1a1a]">
+                NOT FINANCIAL ADVICE — DYOR — ALL DATA FOR INFORMATIONAL PURPOSES ONLY
+              </span>
             </div>
 
             <div className="flex flex-col md:flex-row justify-between items-center gap-6">
