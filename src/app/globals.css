@@ -220,7 +220,7 @@ body {
     transparent 100%
   );
   animation: wr-divider-pulse 4.5s ease-in-out infinite;
-  box-shadow: 0 0 6px rgba(212, 240, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 5px rgba(212, 240, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .wr-divider-fire {
@@ -291,7 +291,7 @@ body {
   border-radius: 2px;
 }
 .wr-scroll::-webkit-scrollbar-thumb:hover {
-  background: rgba(212, 240, 0, 0.4);
+  background: rgba(212, 240, 0, 0.35);
 }
 
 /* ── Burn Progress Bar ── */
