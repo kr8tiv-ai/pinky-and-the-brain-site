@@ -279,11 +279,11 @@ export default function WarRoomPage() {
                 </span>
                 <span className="w-px h-3 bg-[#333]/20 hidden md:block" />
                 <span className="font-mono text-[7px] uppercase tracking-[0.1em] text-[#1a1a1a] hover:text-[#333] transition-colors duration-300">
-                  © 2025 $BRAIN
+                  © 2025–2026 $BRAIN
                 </span>
                 <span className="w-px h-3 bg-[#333]/20 hidden md:block" />
                 <span className="font-mono text-[6px] uppercase tracking-[0.15em] text-[#1a1a1a]">
-                  v2.0.80
+                  v2.0.100
                 </span>
               </div>
             </div>

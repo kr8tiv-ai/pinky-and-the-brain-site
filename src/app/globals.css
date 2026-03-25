@@ -1302,6 +1302,24 @@ section:hover > .wr-section-badge-fire {
   transition: stroke 0.4s ease;
 }
 
+/* ── Summary Divider Glow ── */
+.wr-summary-glow-divider {
+  position: relative;
+}
+.wr-summary-glow-divider > * + * {
+  position: relative;
+}
+.wr-summary-glow-divider > * + *::before {
+  content: '';
+  position: absolute;
+  top: 20%;
+  left: -1px;
+  width: 1px;
+  bottom: 20%;
+  background: linear-gradient(to bottom, transparent, rgba(212, 240, 0, 0.06), transparent);
+  pointer-events: none;
+}
+
 /* ── Stat Cell Hover Scale ── */
 .wr-stat-scale {
   transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);

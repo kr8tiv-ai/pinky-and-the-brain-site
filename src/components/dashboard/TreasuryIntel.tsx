@@ -727,7 +727,7 @@ export default function TreasuryIntel() {
       </div>
 
       {/* Summary bar */}
-      <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-[#333]/20 border-b border-[#333]/20 wr-summary-accent" role="region" aria-label="Treasury summary statistics">
+      <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-[#333]/20 border-b border-[#333]/20 wr-summary-accent wr-summary-glow-divider" role="region" aria-label="Treasury summary statistics">
         <SummaryCell label="Total Value (USD)" isLoading={isLoading} isError={isError}>
           <span className="flex items-center">
             {formatUsd(data?.totalValueUsd ?? 0)}
@@ -766,7 +766,7 @@ export default function TreasuryIntel() {
             <span className="text-[#d4f000]/40 tabular-nums">{data.holdings.length} ASSETS</span>
           )}
         </div>
-        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-3">
           {isLoading
             ? Array.from({ length: 3 }).map((_, i) => <LoadingCard key={i} index={i} />)
             : (data?.holdings ?? []).map((h, idx) =>
