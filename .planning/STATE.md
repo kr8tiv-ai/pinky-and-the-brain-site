@@ -1,16 +1,19 @@
 # Project State
 
 ## Current Phase
-Phase 4: War Room Page Shell & Command Header — COMPLETE
+Phase 5: Treasury Intel Section — IN PROGRESS (05-01 complete)
 
 ## Current Plan
-04-01 COMPLETE — Phase 4 complete, next: Phase 5
+05-01 COMPLETE — TreasuryIntel.tsx built and wired into war-room/page.tsx
 
 ## Completed Phases
 - Phase 1: Project Setup & Dependencies (commit 04c6c1c)
 - Phase 2: API Layer (02-01, 02-02, 02-03 all complete)
 - Phase 3: Next.js API Routes & React Query Setup (03-01, 03-02 all complete)
 - Phase 4: War Room Page Shell & Command Header (04-01 complete)
+
+## Completed Plans (Phase 5)
+- 05-01: TreasuryIntel.tsx (summary bar, holdings grid, CLASSIFIED cards, Recharts chart, divested section) — commits e5998b0, 86b7de8
 
 ## Completed Plans (Phase 4)
 - 04-01: War Room page shell + CommandHeader + landing navigation — commits 7173cef, 65e5642
@@ -59,9 +62,12 @@ Phase 4: War Room Page Shell & Command Header — COMPLETE
 - Connection status derived from usePrice hook state: isError=OFFLINE, isLoading=CONNECTING..., data=LIVE
 - Dashboard components directory: src/components/dashboard/ (CommandHeader.tsx is first)
 - War Room CommandHeader: full viewport width (no max-width) for command bar aesthetic
+- TreasuryIntel uses TooltipContentProps (not TooltipProps) for Recharts 3.x custom tooltip — active/payload/label only available on ContentProps
+- Recharts 3.x tooltip content passed as render function (props) => <Component {...props} /> instead of JSX element to resolve generic type mismatch
+- purchasePriceSol derived in UI as purchasePriceUsd / solPriceUsd — labeled "~PRICE (SOL) AT PURCHASE" to indicate approximation
 
 ## Last Session
-- Stopped at: Phase 4 complete — verification passed 8/8 must-haves, human-approved visual check
+- Stopped at: Phase 5, 05-01 complete — TreasuryIntel.tsx built, TypeScript clean, wired into war-room/page.tsx
 - Date: 2026-03-25
 
 ## API Keys Configured

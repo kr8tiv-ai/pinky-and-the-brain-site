@@ -75,7 +75,7 @@ Plans:
 **Requirements:** [R2, R10]
 
 Plans:
-- [ ] 05-01-PLAN.md — Build TreasuryIntel.tsx (summary bar, holdings grid, CLASSIFIED cards, Recharts chart, divested section)
+- [x] 05-01-PLAN.md — Build TreasuryIntel.tsx (summary bar, holdings grid, CLASSIFIED cards, Recharts chart, divested section) ✓ 2026-03-25
 - [ ] 05-02-PLAN.md — Wire TreasuryIntel into war-room/page.tsx and human-verify visual quality
 
 ### Phase 6: Burn Operations Section
