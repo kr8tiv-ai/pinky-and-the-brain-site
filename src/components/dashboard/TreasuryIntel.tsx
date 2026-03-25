@@ -482,7 +482,7 @@ function HoldingCard({
             <span className="wr-gradient-text-lime group-hover/card:drop-shadow-[0_0_4px_rgba(212,240,0,0.3)] transition-all duration-300">{(holding.symbol || holding.name).charAt(0)}</span>
           </div>
           <div>
-            <div className="text-[#d4f000] font-black text-sm uppercase tracking-wider font-mono transition-all duration-300 group-hover/card:text-shadow-[0_0_12px_rgba(212,240,0,0.3)]">
+            <div className="text-[#d4f000] font-black text-sm uppercase tracking-wider font-mono transition-all duration-300 group-hover/card:text-shadow-[0_0_10px_rgba(212,240,0,0.25)]">
               {holding.name}
             </div>
             {holding.symbol && holding.symbol !== holding.name && (

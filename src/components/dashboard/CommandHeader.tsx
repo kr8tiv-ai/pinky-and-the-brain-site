@@ -131,7 +131,7 @@ function DataCell({
       <div className="absolute bottom-0 left-[10%] right-[10%] h-px bg-[#d4f000]/0 group-hover:bg-[#d4f000]/[0.05] transition-colors duration-500" />
 
       <div className="font-mono text-[8px] uppercase tracking-[0.22em] text-[#555] mb-2 font-bold group-hover:text-[#888] transition-colors duration-300 flex items-center gap-1.5">
-        <span className="text-[#d4f000]/15 text-[5px]">◆</span>
+        <span className="text-[#d4f000]/12 text-[5px]">◆</span>
         {label}
       </div>
       <div className="font-mono text-sm md:text-lg font-black text-white tabular-nums leading-none group-hover:text-shadow-[0_0_20px_rgba(255,255,255,0.1)] transition-all duration-300">

@@ -305,6 +305,7 @@ body {
   height: 3px;
   background: rgba(51, 51, 51, 0.22);
   overflow: hidden;
+  border-radius: 2px;
 }
 
 .wr-burn-bar-fill {
