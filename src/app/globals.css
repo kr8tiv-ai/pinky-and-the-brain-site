@@ -985,6 +985,7 @@ section:hover > .wr-section-badge-fire {
 }
 .wr-data-cell:hover .wr-data-cell-value {
   text-shadow: 0 0 12px rgba(255, 255, 255, 0.1);
+  color: #fff;
 }
 
 /* ── Burn Progress Live Marker ── */

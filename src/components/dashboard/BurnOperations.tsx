@@ -206,8 +206,11 @@ function BurnTransactionsTable({
         <span className="text-[#ff6b35]/30 text-[6px] wr-sub-diamond">◆</span>
         <span>BURN LEDGER</span>
         <div className="flex-1 h-px bg-gradient-to-r from-[#ff6b35]/20 to-transparent" />
-        {!isLoading && !isError && (
-          <span className="text-[#444] tabular-nums">{transactions.length} RECORDS</span>
+        {!isLoading && !isError && transactions.length > 0 && (
+          <span className="text-[#444] tabular-nums flex items-center gap-1.5">
+            <span className="text-[8px] text-[#ff6b35]/40 font-black px-1.5 py-0.5 bg-[#ff6b35]/[0.04] border border-[#ff6b35]/10 rounded-sm">{transactions.length}</span>
+            RECORDS
+          </span>
         )}
       </div>
 
