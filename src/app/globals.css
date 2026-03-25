@@ -444,7 +444,7 @@ body {
   background: rgba(255, 255, 255, 0.005);
 }
 .wr-row-stripe:hover {
-  background: rgba(255, 107, 53, 0.025) !important;
+  background: rgba(255, 107, 53, 0.02) !important;
 }
 
 /* ── Row Number Marker ── */
@@ -743,7 +743,7 @@ button:focus-visible {
   padding: 0.5rem 1rem;
   background: #0a0a0a;
   color: #d4f000;
-  border: 1px solid rgba(212, 240, 0, 0.3);
+  border: 1px solid rgba(212, 240, 0, 0.25);
   transition: top 0.2s;
 }
 .wr-skip-link:focus {
