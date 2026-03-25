@@ -1533,6 +1533,13 @@ section:hover > .wr-section-badge-fire {
   letter-spacing: 0.7em;
 }
 
+/* ── Glass Surface ── */
+.wr-glass {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  background: rgba(10, 10, 10, 0.6);
+}
+
 /* ── Section Enter Accent ── */
 .wr-section-enter-accent {
   position: relative;

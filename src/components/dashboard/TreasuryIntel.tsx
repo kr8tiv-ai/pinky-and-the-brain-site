@@ -706,7 +706,7 @@ export default function TreasuryIntel() {
       </div>
 
       {/* Section header */}
-      <div className="px-5 lg:px-8 py-6 border-b border-[#333]/20 wr-brackets wr-header-line text-[#d4f000]">
+      <div className="px-5 lg:px-8 py-6 border-b border-[#333]/20 wr-brackets wr-header-line text-[#d4f000] wr-glass">
         <div className="flex justify-between items-center">
           <div className="flex items-center gap-3">
             <div className="w-1 bg-[#d4f000] wr-accent-bar wr-accent-bar-pulse" />

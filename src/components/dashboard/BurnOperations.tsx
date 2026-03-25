@@ -111,7 +111,7 @@ function BurnSummaryBar({
           {/* Hover accent */}
           <div className="absolute top-0 left-0 right-0 h-px bg-[#ff6b35]/0 group-hover/cell:bg-[#ff6b35]/10 transition-colors duration-300" />
           <div className="font-mono text-[8px] uppercase tracking-[0.2em] text-[#555] mb-2 font-bold group-hover/cell:text-[#888] transition-colors flex items-center gap-1.5">
-            <span className="text-[#ff6b35]/20 text-[5px]">◆</span>
+            <span className="text-[#ff6b35]/20 text-[5px]" aria-hidden="true">◆</span>
             {label}
           </div>
           <div className="font-mono text-xl lg:text-2xl font-black tabular-nums leading-none">
@@ -341,7 +341,7 @@ export default function BurnOperations() {
       <div className="h-[2px] wr-fire-line" aria-hidden="true" />
 
       {/* Section header */}
-      <div className="relative flex justify-between items-center px-5 lg:px-8 py-6 border-b border-[#333]/20 wr-brackets wr-brackets-fire wr-header-line text-[#ff6b35]">
+      <div className="relative flex justify-between items-center px-5 lg:px-8 py-6 border-b border-[#333]/20 wr-brackets wr-brackets-fire wr-header-line text-[#ff6b35] wr-glass">
         <div className="flex items-center gap-3">
           <div className="w-1 bg-[#ff6b35] wr-accent-bar wr-accent-bar-pulse" />
           <div>
