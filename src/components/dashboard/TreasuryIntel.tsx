@@ -45,15 +45,16 @@ function useStaggerReveal(containerRef: React.RefObject<HTMLElement | null>) {
     const ctx = gsap.context(() => {
       gsap.fromTo(
         cards,
-        { y: 20, opacity: 0, scale: 0.97, filter: 'blur(4px)' },
+        { y: 30, opacity: 0, scale: 0.95, rotationX: 8, filter: 'blur(4px)', transformPerspective: 800 },
         {
           y: 0,
           opacity: 1,
           scale: 1,
+          rotationX: 0,
           filter: 'blur(0px)',
-          duration: 0.5,
+          duration: 0.6,
           ease: 'power3.out',
-          stagger: { amount: 0.4, from: 'start' },
+          stagger: { amount: 0.5, from: 'start' },
           delay: 0.2,
         }
       )
@@ -602,7 +603,7 @@ function DivestedSection() {
             </thead>
             <tbody>
               {soldTokens.map((h, i) => (
-                <tr key={h.mint} className={`border-b border-[#333]/10 wr-row-hover transition-colors ${i % 2 === 1 ? 'bg-white/[0.005]' : ''}`}>
+                <tr key={h.mint} className={`border-b border-[#333]/10 transition-colors duration-200 hover:bg-[#ff9e9e]/[0.02] ${i % 2 === 1 ? 'bg-white/[0.008]' : ''}`}>
                   <td className="py-3.5 pr-6">
                     <span className="text-[#ff9e9e]/80 font-black uppercase">{h.symbol}</span>
                   </td>
