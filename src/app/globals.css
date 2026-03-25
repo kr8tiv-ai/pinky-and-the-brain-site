@@ -379,7 +379,7 @@ body {
 /* ── Dot Grid Pattern (alternative to line grid) ── */
 .wr-dot-grid {
   background-image: radial-gradient(circle, rgba(212, 240, 0, 0.06) 1px, transparent 1px);
-  background-size: 24px 24px;
+  background-size: 20px 20px;
 }
 
 /* ── Ambient Orb Drift ── */
