@@ -36,7 +36,7 @@ body {
   width: 100vw;
   height: 100vh;
   background-image: url('/noise.gif');
-  opacity: 0.04;
+  opacity: 0.035;
   pointer-events: none;
   z-index: 9999;
   mix-blend-mode: overlay;
@@ -1260,7 +1260,7 @@ section:hover > .wr-section-badge-fire {
   pointer-events: none;
   border-radius: inherit;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.4s ease;
   z-index: 1;
 }
 .wr-card-spotlight:hover .wr-spotlight-layer {
