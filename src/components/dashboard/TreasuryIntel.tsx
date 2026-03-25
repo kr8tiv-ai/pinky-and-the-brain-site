@@ -45,7 +45,7 @@ function useStaggerReveal(containerRef: React.RefObject<HTMLElement | null>) {
     const ctx = gsap.context(() => {
       gsap.fromTo(
         cards,
-        { y: 24, opacity: 0, scale: 0.97, rotationX: 5, filter: 'blur(3px)', transformPerspective: 800 },
+        { y: 24, opacity: 0, scale: 0.97, rotationX: 4, filter: 'blur(3px)', transformPerspective: 800 },
         {
           y: 0,
           opacity: 1,

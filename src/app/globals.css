@@ -639,7 +639,7 @@ body {
 }
 .wr-chart-frame:hover {
   border-color: rgba(212, 240, 0, 0.06);
-  box-shadow: inset 0 0 25px rgba(212, 240, 0, 0.012);
+  box-shadow: inset 0 0 22px rgba(212, 240, 0, 0.01);
 }
 .wr-chart-frame:hover .wr-chart-corner {
   opacity: 1;
@@ -861,7 +861,7 @@ button:focus-visible {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
 }
 .group\/card:hover .wr-desc-clamp {
   -webkit-line-clamp: unset;
