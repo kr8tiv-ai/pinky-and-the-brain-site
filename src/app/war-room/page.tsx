@@ -48,12 +48,15 @@ export default function WarRoomPage() {
         <TokenInfoStrip />
 
         {/* Decorative divider with label */}
-        <div className="relative py-1">
+        <div className="relative py-2">
           <div className="wr-divider" />
-          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#0a0a0a] px-4 flex items-center gap-2">
-            <div className="w-4 h-px bg-[#d4f000]/10" />
+          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#d4f000]/[0.06] to-transparent" />
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#0a0a0a] px-5 flex items-center gap-2.5">
+            <div className="w-5 h-px bg-[#d4f000]/10" />
+            <div className="wr-divider-dot text-[#d4f000]" />
             <span className="font-mono text-[7px] uppercase tracking-[0.4em] text-[#d4f000]/20">▼ INTEL</span>
-            <div className="w-4 h-px bg-[#d4f000]/10" />
+            <div className="wr-divider-dot text-[#d4f000]" />
+            <div className="w-5 h-px bg-[#d4f000]/10" />
           </div>
         </div>
 
@@ -63,11 +66,14 @@ export default function WarRoomPage() {
         </SectionReveal>
 
         {/* Decorative fire divider with transition marker */}
-        <div className="relative py-4">
+        <div className="relative py-5">
           <div className="wr-divider-fire" />
+          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#ff6b35]/[0.06] to-transparent" />
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#0a0a0a] px-6 flex items-center gap-3">
             <div className="w-6 h-px bg-gradient-to-r from-transparent to-[#ff6b35]/20" />
+            <div className="wr-divider-dot text-[#ff6b35]" />
             <span className="font-mono text-[7px] uppercase tracking-[0.4em] text-[#ff6b35]/30">INCINERATION ZONE</span>
+            <div className="wr-divider-dot text-[#ff6b35]" />
             <div className="w-6 h-px bg-gradient-to-l from-transparent to-[#ff6b35]/20" />
           </div>
         </div>
@@ -78,11 +84,14 @@ export default function WarRoomPage() {
         </SectionReveal>
 
         {/* Separator before classified zone */}
-        <div className="relative py-2">
+        <div className="relative py-3">
           <div className="wr-divider" />
+          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#333]/[0.08] to-transparent" />
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#0a0a0a] px-6 flex items-center gap-3">
             <div className="w-6 h-px bg-gradient-to-r from-transparent to-[#333]/30" />
+            <div className="wr-divider-dot text-[#555]" />
             <span className="font-mono text-[7px] uppercase tracking-[0.4em] text-[#333]/50">CLASSIFIED ZONE</span>
+            <div className="wr-divider-dot text-[#555]" />
             <div className="w-6 h-px bg-gradient-to-l from-transparent to-[#333]/30" />
           </div>
         </div>
@@ -197,7 +206,7 @@ export default function WarRoomPage() {
                   href="https://pinkyandthebrain.fun"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-mono text-[9px] uppercase tracking-[0.15em] text-[#444] hover:text-[#d4f000] transition-colors wr-glitch-hover wr-link-hover"
+                  className="font-mono text-[9px] uppercase tracking-[0.15em] text-[#444] hover:text-[#d4f000] transition-colors wr-glitch-hover wr-link-hover wr-footer-link"
                 >
                   PINKYANDTHEBRAIN.FUN ↗
                 </a>

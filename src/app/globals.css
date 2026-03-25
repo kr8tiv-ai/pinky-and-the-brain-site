@@ -153,7 +153,8 @@ body {
     animation: none !important;
   }
   .wr-data-dot,
-  .wr-data-dot-fire {
+  .wr-data-dot-fire,
+  .wr-divider-dot {
     animation: none !important;
   }
   [data-wr-reveal] {
@@ -781,6 +782,27 @@ button:focus-visible {
 .wr-section-badge-fire {
   color: rgba(255, 107, 53, 0.1);
   border-left-color: rgba(255, 107, 53, 0.08);
+}
+
+/* ── Divider Center Dot ── */
+@keyframes wr-dot-breathe {
+  0%, 100% { opacity: 0.2; box-shadow: none; }
+  50% { opacity: 0.8; box-shadow: 0 0 8px currentColor; }
+}
+.wr-divider-dot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: currentColor;
+  animation: wr-dot-breathe 3s ease-in-out infinite;
+}
+
+/* ── Footer Link Glow ── */
+.wr-footer-link {
+  transition: all 0.3s ease;
+}
+.wr-footer-link:hover {
+  text-shadow: 0 0 12px rgba(212, 240, 0, 0.3);
 }
 
 /* ── Horizontal Scan Line (animated) ── */
