@@ -94,7 +94,7 @@ function useMagneticHover(ref: React.RefObject<HTMLElement | null>, strength = 0
       y: 0,
       rotationY: 0,
       rotationX: 0,
-      duration: 0.7,
+      duration: 0.6,
       ease: 'elastic.out(1, 0.5)',
     })
   }, [ref])
@@ -179,7 +179,7 @@ function TreasuryValueChart({
         </div>
       ) : chartData.length < 2 ? (
         <div className="h-[240px] flex flex-col items-center justify-center gap-3">
-          <div className="w-8 h-8 border border-[#333]/30 flex items-center justify-center wr-float wr-empty-ring hover:border-[#d4f000]/20 transition-colors duration-500">
+          <div className="w-8 h-8 border border-[#333]/25 flex items-center justify-center wr-float wr-empty-ring hover:border-[#d4f000]/20 transition-colors duration-500">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-[#333]">
               <path d="M3 3v18h18" />
               <path d="M7 16l4-4 4 4 5-5" />
@@ -351,7 +351,7 @@ function ClassifiedCard({ mint }: { mint: string }) {
     <div data-wr-reveal className="relative p-[1px] overflow-hidden group/classified wr-card-lift rounded-sm">
       {/* Conic gradient spinner — pulsing red/dark */}
       <div
-        className="absolute inset-[-100%] animate-spin opacity-[0.08] group-hover/classified:opacity-40 transition-opacity duration-700 pointer-events-none"
+        className="absolute inset-[-100%] animate-spin opacity-[0.08] group-hover/classified:opacity-30 transition-opacity duration-700 pointer-events-none"
         style={{
           background: 'conic-gradient(from 0deg, transparent 60%, #ff9e9e 80%, #333 90%, transparent 100%)',
           animationDuration: '8s',
