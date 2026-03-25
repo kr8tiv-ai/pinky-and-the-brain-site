@@ -195,7 +195,7 @@ export default function WarRoomPage() {
               <div className="mt-4 wr-burn-bar w-36" style={{ height: '3px' }}>
                 <div className="wr-burn-bar-fill" style={{ width: '0%' }} />
               </div>
-              <div className="font-mono text-[7px] uppercase tracking-[0.3em] text-[#1a1a1a]/80 mb-2 wr-cursor">
+              <div className="font-mono text-[7px] uppercase tracking-[0.35em] text-[#1a1a1a]/70 mb-2 wr-cursor">
                 DEPLOYMENT PROGRESS: 0%
               </div>
               <div className="font-mono text-[8px] uppercase tracking-[0.25em] text-[#1a1a1a] flex items-center gap-2">
@@ -237,7 +237,7 @@ export default function WarRoomPage() {
 
           <div className="relative px-5 lg:px-8 py-8">
             {/* Big watermark — breathing glow */}
-            <div className="absolute right-8 bottom-4 text-[6rem] font-black text-white/[0.01] leading-none select-none pointer-events-none font-sans tracking-tighter wr-breathe wr-watermark" style={{ WebkitTextStroke: '1px rgba(212, 240, 0, 0.02)' }}>
+            <div className="absolute right-8 bottom-4 text-[6rem] font-black text-white/[0.008] leading-none select-none pointer-events-none font-sans tracking-tighter wr-breathe wr-watermark" style={{ WebkitTextStroke: '1px rgba(212, 240, 0, 0.015)' }}>
               $BRAIN
             </div>
 
