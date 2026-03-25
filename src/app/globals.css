@@ -133,6 +133,7 @@ body {
   .wr-footer-border::before,
   .wr-row-flash,
   .wr-count-badge,
+  .wr-border-shimmer::before,
   .animate-spin {
     animation: none !important;
   }
@@ -1080,6 +1081,34 @@ section:hover > .wr-section-badge-fire {
 }
 .wr-stat-scale:hover {
   transform: scale(1.02);
+}
+
+/* ── Card Border Shimmer ── */
+@keyframes wr-border-shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+.wr-border-shimmer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  background: linear-gradient(90deg, transparent 25%, rgba(212, 240, 0, 0.15) 50%, transparent 75%);
+  background-size: 200% 100%;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: 20;
+}
+.group\/card:hover .wr-border-shimmer::before,
+.wr-border-shimmer:hover::before {
+  opacity: 1;
+  animation: wr-border-shimmer 2s linear infinite;
 }
 
 /* ── Corner Timestamp ── */
