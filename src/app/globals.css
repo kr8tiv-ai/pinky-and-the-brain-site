@@ -131,6 +131,8 @@ body {
   .wr-skeleton,
   .wr-progress-marker,
   .wr-footer-border::before,
+  .wr-row-flash,
+  .wr-count-badge,
   .animate-spin {
     animation: none !important;
   }
@@ -1028,6 +1030,40 @@ section:hover > .wr-section-badge-fire {
 }
 .wr-micro-spark-bar:last-child {
   opacity: 0.8;
+}
+
+/* ── Section Number Gradient ── */
+.wr-section-num {
+  background: linear-gradient(180deg, #555 0%, #333 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Tooltip Caret ── */
+.wr-tooltip-caret {
+  position: relative;
+}
+.wr-tooltip-caret::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 4px;
+  background: rgba(10, 10, 10, 0.97);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  border-bottom: 1px solid rgba(51, 51, 51, 0.5);
+}
+
+/* ── Row Flash Entrance ── */
+@keyframes wr-row-flash {
+  0% { background-color: rgba(255, 107, 53, 0.06); }
+  100% { background-color: transparent; }
+}
+.wr-row-flash {
+  animation: wr-row-flash 1s ease-out;
 }
 
 /* ── Count Badge Pulse ── */

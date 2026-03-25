@@ -143,7 +143,7 @@ function TransactionRow({
   return (
     <div
       ref={rowRef}
-      className="grid grid-cols-[24px_1fr_1fr] md:grid-cols-[24px_1fr_1fr_1.2fr] gap-2 md:gap-3 items-center py-3 px-3 md:px-4 wr-row-stripe border-b border-[#333]/10 font-mono text-[10px] transition-colors duration-200 relative"
+      className="grid grid-cols-[24px_1fr_1fr] md:grid-cols-[24px_1fr_1fr_1.2fr] gap-2 md:gap-3 items-center py-3 px-3 md:px-4 wr-row-stripe wr-row-flash border-b border-[#333]/10 font-mono text-[10px] transition-colors duration-200 relative"
     >
       {/* Burn intensity bar (background) */}
       <div
@@ -319,7 +319,7 @@ export default function BurnOperations() {
         <div className="flex items-center gap-3">
           <div className="w-1 bg-[#ff6b35] wr-accent-bar" />
           <div>
-            <div className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#555] font-bold mb-0.5">
+            <div className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#555] font-bold mb-0.5 wr-section-num">
               SECTION 02
             </div>
             <h2 className="text-lg md:text-xl font-black uppercase tracking-tight text-[#cccccc] font-sans wr-cursor wr-cursor-fire">
