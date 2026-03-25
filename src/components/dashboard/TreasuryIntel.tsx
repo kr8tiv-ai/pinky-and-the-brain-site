@@ -2,6 +2,15 @@
 
 import { useState, useRef, useEffect, useCallback, type MouseEvent as ReactMouseEvent } from 'react'
 import { format, fromUnixTime } from 'date-fns'
+import {
+  AreaChart,
+  Area,
+  XAxis,
+  YAxis,
+  Tooltip,
+  ResponsiveContainer,
+  CartesianGrid,
+} from 'recharts'
 import gsap from 'gsap'
 import { useTreasury } from '@/hooks/useTreasury'
 import { TREASURY_HOLDINGS } from '@/lib/investments.config'
@@ -312,6 +321,193 @@ function PortfolioAllocationRing({
   )
 }
 
+// ─── Portfolio P&L Helpers ────────────────────────────────────────────────────
+
+function computePortfolioPnL(holdings: TreasuryResponse['holdings']) {
+  let totalCost = 0
+  let totalCurrent = 0
+  let wins = 0
+  let losses = 0
+
+  for (const h of holdings) {
+    if (h.costBasisUsd !== undefined && h.costBasisUsd > 0) {
+      totalCost += h.costBasisUsd
+      totalCurrent += h.currentValueUsd
+      if (h.gainLossPct !== undefined) {
+        if (h.gainLossPct >= 0) wins++
+        else losses++
+      }
+    }
+  }
+
+  const pnlUsd = totalCurrent - totalCost
+  const pnlPct = totalCost > 0 ? (pnlUsd / totalCost) * 100 : 0
+  return { totalCost, totalCurrent, pnlUsd, pnlPct, wins, losses }
+}
+
+// ─── Treasury Value Over Time Chart ──────────────────────────────────────────
+
+interface ChartPoint { label: string; valueUsd: number }
+
+function buildChartData(holdings: TreasuryResponse['holdings']): ChartPoint[] {
+  const withDates = holdings
+    .filter(h => h.purchaseDate && h.costBasisUsd !== undefined && h.costBasisUsd > 0)
+    .sort((a, b) => (a.purchaseDate ?? 0) - (b.purchaseDate ?? 0))
+
+  if (withDates.length === 0) return []
+
+  let cumulative = 0
+  const points: ChartPoint[] = withDates.map(h => {
+    cumulative += h.costBasisUsd ?? 0
+    return {
+      label: format(fromUnixTime(h.purchaseDate!), 'MMM dd'),
+      valueUsd: cumulative,
+    }
+  })
+
+  // Final point = current total value
+  const totalCurrent = holdings.reduce((s, h) => s + h.currentValueUsd, 0)
+  points.push({ label: '● NOW', valueUsd: totalCurrent })
+  return points
+}
+
+function TreasuryValueChart({
+  holdings,
+  isLoading,
+}: {
+  holdings: TreasuryResponse['holdings']
+  isLoading: boolean
+}) {
+  const chartRef = useRef<HTMLDivElement>(null)
+  const chartData = buildChartData(holdings)
+  const pnl = computePortfolioPnL(holdings)
+
+  // Entrance animation
+  useEffect(() => {
+    if (!chartRef.current || chartData.length < 2) return
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        chartRef.current,
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', delay: 0.5 }
+      )
+    }, chartRef)
+    return () => ctx.revert()
+  }, [chartData.length])
+
+  if (isLoading) {
+    return (
+      <div className="px-5 lg:px-8 py-6">
+        <div className="h-[300px] flex items-center justify-center">
+          <div className="wr-skeleton h-[260px] w-full rounded" />
+        </div>
+      </div>
+    )
+  }
+
+  if (chartData.length < 2) return null
+
+  const isUp = pnl.pnlUsd >= 0
+
+  return (
+    <div className="px-5 lg:px-8 py-6 relative border-t border-[#333]/10">
+      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_60%_50%_at_50%_60%,rgba(212,240,0,0.01),transparent_70%)]" />
+
+      <div className="relative font-mono text-[9px] uppercase tracking-[0.25em] text-[#666] font-bold mb-5 flex items-center gap-3 wr-sub-header">
+        <span className="text-[#d4f000]/30 text-[6px] wr-sub-diamond">◆</span>
+        <span>TREASURY VALUE OVER TIME</span>
+        <div className="flex-1 h-px bg-gradient-to-r from-[#333]/30 to-transparent" />
+        {/* P&L summary inline */}
+        <span className={`tabular-nums font-black ${isUp ? 'text-[#d4f000]' : 'text-[#ff9e9e]'}`}>
+          {isUp ? '▲' : '▼'} {isUp ? '+' : ''}{formatUsd(pnl.pnlUsd)} ({pnl.pnlPct >= 0 ? '+' : ''}{pnl.pnlPct.toFixed(1)}%)
+        </span>
+      </div>
+
+      <div ref={chartRef} className="h-[280px] relative border border-[#333]/8 bg-[#0a0a0a]/50 p-4 rounded wr-chart-frame">
+        {/* Corner brackets */}
+        <div className="wr-chart-corner wr-chart-corner--tl" />
+        <div className="wr-chart-corner wr-chart-corner--tr" />
+        <div className="wr-chart-corner wr-chart-corner--bl" />
+        <div className="wr-chart-corner wr-chart-corner--br" />
+        <ResponsiveContainer width="100%" height="100%">
+          <AreaChart data={chartData} margin={{ top: 10, right: 10, left: 0, bottom: 4 }}>
+            <defs>
+              <linearGradient id="treasuryGradient" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor={isUp ? '#d4f000' : '#ff9e9e'} stopOpacity={0.3} />
+                <stop offset="30%" stopColor={isUp ? '#d4f000' : '#ff9e9e'} stopOpacity={0.12} />
+                <stop offset="60%" stopColor={isUp ? '#d4f000' : '#ff9e9e'} stopOpacity={0.03} />
+                <stop offset="100%" stopColor={isUp ? '#d4f000' : '#ff9e9e'} stopOpacity={0} />
+              </linearGradient>
+              <linearGradient id="treasuryStroke" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stopColor={isUp ? '#d4f000' : '#ff9e9e'} stopOpacity={0.25} />
+                <stop offset="30%" stopColor={isUp ? '#d4f000' : '#ff9e9e'} stopOpacity={0.8} />
+                <stop offset="60%" stopColor={isUp ? '#e4ff57' : '#ffadad'} stopOpacity={1} />
+                <stop offset="100%" stopColor={isUp ? '#d4f000' : '#ff9e9e'} stopOpacity={0.7} />
+              </linearGradient>
+              <filter id="chartGlow">
+                <feGaussianBlur stdDeviation="2" result="blur" />
+                <feMerge>
+                  <feMergeNode in="blur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+            </defs>
+            <CartesianGrid strokeDasharray="4 10" stroke="rgba(51,51,51,0.08)" vertical={false} />
+            <XAxis
+              dataKey="label"
+              tick={{ fill: '#4a4a4a', fontSize: 9, fontFamily: 'var(--font-mono)' }}
+              axisLine={false}
+              tickLine={false}
+            />
+            <YAxis
+              tick={{ fill: '#4a4a4a', fontSize: 9, fontFamily: 'var(--font-mono)' }}
+              axisLine={false}
+              tickLine={false}
+              tickFormatter={(v: number) => v >= 1000 ? `$${(v / 1000).toFixed(1)}k` : `$${v.toFixed(0)}`}
+              width={48}
+            />
+            <Tooltip
+              content={({ active, payload, label }) => {
+                if (!active || !payload?.length) return null
+                const val = typeof payload[0].value === 'number' ? payload[0].value : 0
+                return (
+                  <div className="bg-[#0d0d0d] border border-[#333]/30 px-4 py-3 font-mono text-xs rounded shadow-xl">
+                    <div className="flex items-center gap-2 mb-2">
+                      <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: isUp ? '#d4f000' : '#ff9e9e', boxShadow: `0 0 4px ${isUp ? '#d4f000' : '#ff9e9e'}` }} />
+                      <span className="text-[#666] text-[8px] uppercase tracking-[0.2em] font-bold">{label}</span>
+                    </div>
+                    <div className={`font-black text-lg tabular-nums ${isUp ? 'text-[#d4f000]' : 'text-[#ff9e9e]'}`}>
+                      {formatUsd(val)}
+                    </div>
+                  </div>
+                )
+              }}
+              cursor={{ stroke: 'rgba(212, 240, 0, 0.06)', strokeDasharray: '2 4', strokeWidth: 1 }}
+            />
+            <Area
+              type="monotone"
+              dataKey="valueUsd"
+              stroke="url(#treasuryStroke)"
+              strokeWidth={2}
+              strokeLinecap="round"
+              fill="url(#treasuryGradient)"
+              dot={false}
+              activeDot={{
+                r: 5,
+                fill: isUp ? '#d4f000' : '#ff9e9e',
+                stroke: '#0a0a0a',
+                strokeWidth: 2,
+                style: { filter: `drop-shadow(0 0 6px ${isUp ? 'rgba(212,240,0,0.5)' : 'rgba(255,158,158,0.5)'})` },
+              }}
+              style={{ filter: 'url(#chartGlow)' }}
+            />
+          </AreaChart>
+        </ResponsiveContainer>
+      </div>
+    </div>
+  )
+}
+
 // ─── Summary Stat Cell ───────────────────────────────────────────────────────
 
 function SummaryCell({
@@ -592,19 +788,19 @@ function HoldingCard({
       {/* Data grid */}
       <div className="grid grid-cols-2 gap-x-2.5 md:gap-x-3 gap-y-0 text-[9px] md:text-[10px] mb-4 pl-2">
         {[
-          { label: 'AMOUNT', value: holding.uiAmount.toLocaleString(undefined, { maximumFractionDigits: 4 }), highlight: false },
-          { label: 'VALUE (USD)', value: formatUsd(holding.currentValueUsd), highlight: true },
-          { label: 'VALUE (SOL)', value: formatSol(holding.currentValueSol), highlight: false },
-          { label: 'ACQUIRED', value: purchaseDateStr, highlight: false },
-          { label: 'COST (USD)', value: holding.purchasePriceUsd !== undefined ? formatUsd(holding.purchasePriceUsd) : '—', highlight: false },
-          { label: '~PRICE (SOL)', value: purchasePriceSol !== undefined ? formatSol(purchasePriceSol) : '—', highlight: false },
-        ].map(({ label, value, highlight }, i) => (
+          { label: 'AMOUNT', value: holding.uiAmount.toLocaleString(undefined, { maximumFractionDigits: 4 }), highlight: false, color: '' },
+          { label: 'VALUE (USD)', value: formatUsd(holding.currentValueUsd), highlight: true, color: '' },
+          { label: 'ACQUIRED', value: purchaseDateStr, highlight: false, color: '' },
+          { label: 'COST BASIS', value: holding.costBasisUsd !== undefined ? formatUsd(holding.costBasisUsd) : '—', highlight: false, color: '' },
+          { label: 'P&L (USD)', value: holding.gainLossUsd !== undefined ? `${holding.gainLossUsd >= 0 ? '+' : ''}${formatUsd(holding.gainLossUsd)}` : '—', highlight: false, color: holding.gainLossUsd !== undefined ? (holding.gainLossUsd >= 0 ? 'text-[#d4f000]' : 'text-[#ff9e9e]') : '' },
+          { label: 'P&L (%)', value: holding.gainLossPct !== undefined ? `${holding.gainLossPct >= 0 ? '+' : ''}${holding.gainLossPct.toFixed(1)}%` : '—', highlight: false, color: holding.gainLossPct !== undefined ? (holding.gainLossPct >= 0 ? 'text-[#d4f000]' : 'text-[#ff9e9e]') : '' },
+        ].map(({ label, value, highlight, color }, i) => (
           <div key={label} className={`py-2.5 relative wr-data-cell ${i >= 2 ? 'border-t border-[#333]/8' : ''}`}>
             <div className="uppercase tracking-[0.15em] text-[#444] mb-1 font-bold font-mono flex items-center gap-1.5">
               <span className="text-[#d4f000]/8 text-[6px] group-hover/card:text-[#d4f000]/20 transition-colors duration-300">▸</span>
               {label}
             </div>
-            <div className={`tabular-nums font-bold font-mono wr-data-cell-value ${highlight ? 'text-[#d4f000] wr-value-highlight' : 'text-white'}`}>{value}</div>
+            <div className={`tabular-nums font-bold font-mono wr-data-cell-value ${color || (highlight ? 'text-[#d4f000] wr-value-highlight' : 'text-white')}`}>{value}</div>
           </div>
         ))}
       </div>
@@ -793,34 +989,51 @@ export default function TreasuryIntel() {
       </div>
 
       {/* Summary bar */}
-      <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-[#333]/20 border-b border-[#333]/20 wr-summary-accent wr-summary-glow-divider" role="region" aria-label="Treasury summary statistics">
-        <SummaryCell label="Total Value (USD)" isLoading={isLoading} isError={isError}>
-          <span className="flex items-center">
-            {formatUsd(data?.totalValueUsd ?? 0)}
-            <span className="wr-micro-spark text-[#d4f000]">
-              {[4, 6, 5, 8, 7, 10, 9, 12].map((h, i) => (
-                <span key={i} className="wr-micro-spark-bar" style={{ height: `${h}px` }} />
-              ))}
-            </span>
-          </span>
-        </SummaryCell>
-        <SummaryCell label="SOL Balance" isLoading={isLoading} isError={isError}>
-          {formatSol(data?.solBalance ?? 0)}
-        </SummaryCell>
-        <SummaryCell label="Portfolio (SOL)" isLoading={isLoading} isError={isError}>
-          {formatSol(data?.totalValueSol ?? 0)}
-        </SummaryCell>
-        <SummaryCell label="Active Holdings" isLoading={isLoading} isError={isError}>
-          <span className="flex items-center gap-2">
-            {data?.holdings.length ?? 0}
-            {!isLoading && data && data.holdings.length > 0 && (
-              <span className="text-[8px] text-[#d4f000]/40 font-mono font-bold px-1.5 py-0.5 bg-[#d4f000]/[0.04] border border-[#d4f000]/10 rounded-sm wr-count-badge">
-                LIVE
+      {(() => {
+        const pnl = data ? computePortfolioPnL(data.holdings) : null
+        const isUp = pnl ? pnl.pnlUsd >= 0 : true
+        return (
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 divide-x divide-[#333]/20 border-b border-[#333]/20 wr-summary-accent wr-summary-glow-divider" role="region" aria-label="Treasury summary statistics">
+            <SummaryCell label="Total Value (USD)" isLoading={isLoading} isError={isError}>
+              <span className="flex items-center">
+                {formatUsd(data?.totalValueUsd ?? 0)}
+                <span className="wr-micro-spark text-[#d4f000]">
+                  {[4, 6, 5, 8, 7, 10, 9, 12].map((h, i) => (
+                    <span key={i} className="wr-micro-spark-bar" style={{ height: `${h}px` }} />
+                  ))}
+                </span>
               </span>
-            )}
-          </span>
-        </SummaryCell>
-      </div>
+            </SummaryCell>
+            <SummaryCell label="Total Cost Basis" isLoading={isLoading} isError={isError}>
+              {formatUsd(pnl?.totalCost ?? 0)}
+            </SummaryCell>
+            <SummaryCell label="Total P&L" isLoading={isLoading} isError={isError}>
+              <span className={`flex items-center gap-1.5 ${isUp ? 'text-[#d4f000]' : 'text-[#ff9e9e]'}`}>
+                <span className="text-[10px]">{isUp ? '▲' : '▼'}</span>
+                {isUp ? '+' : ''}{formatUsd(pnl?.pnlUsd ?? 0)}
+                <span className="text-[10px] opacity-60">({pnl ? (pnl.pnlPct >= 0 ? '+' : '') + pnl.pnlPct.toFixed(1) + '%' : '—'})</span>
+              </span>
+            </SummaryCell>
+            <SummaryCell label="W / L Ratio" isLoading={isLoading} isError={isError}>
+              <span className="flex items-center gap-2">
+                <span className="text-[#d4f000]">{pnl?.wins ?? 0}W</span>
+                <span className="text-[#555]">/</span>
+                <span className="text-[#ff9e9e]">{pnl?.losses ?? 0}L</span>
+              </span>
+            </SummaryCell>
+            <SummaryCell label="Active Holdings" isLoading={isLoading} isError={isError}>
+              <span className="flex items-center gap-2">
+                {data?.holdings.length ?? 0}
+                {!isLoading && data && data.holdings.length > 0 && (
+                  <span className="text-[8px] text-[#d4f000]/40 font-mono font-bold px-1.5 py-0.5 bg-[#d4f000]/[0.04] border border-[#d4f000]/10 rounded-sm wr-count-badge">
+                    LIVE
+                  </span>
+                )}
+              </span>
+            </SummaryCell>
+          </div>
+        )
+      })()}
 
       {/* Holdings grid */}
       <div className="px-5 lg:px-8 py-6">
@@ -845,6 +1058,9 @@ export default function TreasuryIntel() {
 
       {/* Portfolio allocation ring */}
       <PortfolioAllocationRing holdings={data?.holdings ?? []} totalValueUsd={data?.totalValueUsd ?? 0} isLoading={isLoading} />
+
+      {/* Treasury value over time chart */}
+      <TreasuryValueChart holdings={data?.holdings ?? []} isLoading={isLoading} />
 
       {/* Divested assets */}
       <DivestedSection />
