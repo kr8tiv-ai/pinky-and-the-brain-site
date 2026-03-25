@@ -195,7 +195,7 @@ function TreasuryValueChart({
           <div className="wr-chart-corner wr-chart-corner--bl" />
           <div className="wr-chart-corner wr-chart-corner--br" />
           <ResponsiveContainer width="100%" height="100%">
-            <AreaChart data={chartData} margin={{ top: 8, right: 6, left: 0, bottom: 4 }}>
+            <AreaChart data={chartData} margin={{ top: 8, right: 8, left: 0, bottom: 4 }}>
               <defs>
                 <linearGradient id="treasuryGradient" x1="0" y1="0" x2="0" y2="1">
                   <stop offset="0%" stopColor="#d4f000" stopOpacity={0.3} />
