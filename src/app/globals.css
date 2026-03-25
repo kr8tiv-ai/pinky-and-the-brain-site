@@ -1422,11 +1422,11 @@ section:hover > .wr-section-badge-fire {
 
 /* ── Row Flash Entrance ── */
 @keyframes wr-row-flash {
-  0% { background-color: rgba(255, 107, 53, 0.06); }
+  0% { background-color: rgba(255, 107, 53, 0.05); }
   100% { background-color: transparent; }
 }
 .wr-row-flash {
-  animation: wr-row-flash 1s ease-out;
+  animation: wr-row-flash 1.2s ease-out;
 }
 
 /* ── Count Badge Pulse ── */

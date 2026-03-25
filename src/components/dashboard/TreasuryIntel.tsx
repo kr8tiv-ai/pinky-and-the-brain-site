@@ -409,10 +409,10 @@ function ClassifiedCard({ mint }: { mint: string }) {
               href={`https://solscan.io/token/${mint}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-mono text-[9px] text-[#d4f000]/50 hover:text-[#d4f000] transition-all duration-200 wr-link-hover flex items-center gap-1 group/link"
+              className="font-mono text-[9px] text-[#d4f000]/40 hover:text-[#d4f000] transition-all duration-200 wr-link-hover flex items-center gap-1 group/link"
             >
               SOLSCAN
-              <span className="text-[7px] opacity-50 group-hover/link:opacity-100 transition-opacity">↗</span>
+              <span className="text-[7px] opacity-40 group-hover/link:opacity-100 transition-opacity">↗</span>
             </a>
           </div>
         </div>

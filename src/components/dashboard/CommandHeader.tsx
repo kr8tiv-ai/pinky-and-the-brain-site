@@ -260,7 +260,7 @@ export default function CommandHeader() {
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#d4f000]/10 to-transparent z-10" />
 
       {/* Top bar */}
-      <div className="flex justify-between items-center px-5 lg:px-8 py-3 border-b border-[#333]/20">
+      <div className="flex justify-between items-center px-5 lg:px-8 py-3 border-b border-[#333]/15">
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-2 group/logo cursor-default">
             <div className="w-1.5 h-1.5 bg-[#d4f000] transition-shadow duration-300 group-hover/logo:shadow-[0_0_8px_#d4f000,0_0_16px_rgba(212,240,0,0.3)]" />
