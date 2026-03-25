@@ -227,7 +227,7 @@ export default function CommandHeader() {
       gsap.fromTo(
         priceUsdRef.current,
         { textShadow: `0 0 6px ${flashColor}` },
-        { textShadow: '0 0 0px transparent', duration: 1.8, ease: 'power2.out' }
+        { textShadow: '0 0 0px transparent', duration: 2.0, ease: 'power2.out' }
       )
     }
     prevPriceRef.current = data.priceUsd
