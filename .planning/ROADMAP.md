@@ -23,7 +23,7 @@
 **Requirements:** [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11]
 
 Plans:
-- [ ] 02-01-PLAN.md — Foundational API wrappers (helius.ts, birdeye.ts, solscan.ts)
+- [x] 02-01-PLAN.md — Foundational API wrappers (helius.ts, birdeye.ts, solscan.ts) ✓ 2026-03-25
 - [ ] 02-02-PLAN.md — Composite API functions (treasury.ts, burns.ts, reflections.ts)
 - [ ] 02-03-PLAN.md — Shared types, upgrade treasury route, real hall-of-fame route
 
