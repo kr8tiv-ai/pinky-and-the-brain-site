@@ -67,7 +67,7 @@ function BurnSummaryBar({
       ) : isError ? (
         <span className="text-[#ff9e9e]">&mdash;</span>
       ) : (
-        <span ref={totalRef} className="text-[#ff6b35]">{formatBurnAmount(totalBurned)}</span>
+        <span ref={totalRef} className="text-[#ff6b35] wr-fire-text">{formatBurnAmount(totalBurned)}</span>
       ),
     },
     {
@@ -348,15 +348,28 @@ export default function BurnOperations() {
             {isLoading ? '—' : `${(data?.burnedPct ?? 0).toFixed(2)}%`}
           </div>
         </div>
-        <div className="wr-burn-bar">
+        <div className="wr-burn-bar relative">
           <div
             className="wr-burn-bar-fill"
             style={{ width: isLoading ? '0%' : `${Math.min(data?.burnedPct ?? 0, 100)}%` }}
           />
+          {/* Milestone markers */}
+          {[25, 50, 75].map(pct => (
+            <div
+              key={pct}
+              className="absolute top-0 bottom-0 w-px bg-[#333]/40"
+              style={{ left: `${pct}%` }}
+            />
+          ))}
         </div>
-        <div className="flex justify-between mt-1.5">
+        <div className="flex justify-between mt-1.5 relative">
           <span className="font-mono text-[7px] text-[#333] uppercase tracking-[0.15em]">0%</span>
-          <span className="font-mono text-[7px] text-[#333] uppercase tracking-[0.15em]">100% SUPPLY</span>
+          {[25, 50, 75].map(pct => (
+            <span key={pct} className="font-mono text-[6px] text-[#222] uppercase tracking-[0.1em] absolute" style={{ left: `${pct}%`, transform: 'translateX(-50%)' }}>
+              {pct}%
+            </span>
+          ))}
+          <span className="font-mono text-[7px] text-[#333] uppercase tracking-[0.15em]">100%</span>
         </div>
       </div>
 
