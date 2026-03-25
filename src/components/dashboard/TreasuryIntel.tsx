@@ -229,7 +229,7 @@ function TreasuryValueChart({
                 tickFormatter={(v) => `$${(v / 1000).toFixed(0)}k`}
                 width={42}
               />
-              <Tooltip content={(props) => <CustomChartTooltip {...(props as TooltipContentProps)} />} cursor={{ stroke: 'rgba(212, 240, 0, 0.15)', strokeDasharray: '4 4' }} />
+              <Tooltip content={(props) => <CustomChartTooltip {...(props as TooltipContentProps)} />} cursor={{ stroke: 'rgba(212, 240, 0, 0.2)', strokeDasharray: '3 3', strokeWidth: 1 }} />
               <Area
                 type="monotone"
                 dataKey="valueUsd"
@@ -591,7 +591,7 @@ function DivestedSection() {
   const soldTokens = TREASURY_HOLDINGS.filter(h => h.soldDate !== undefined)
 
   return (
-    <div className="px-5 lg:px-8 py-6 border-t border-[#333]/10">
+    <div className="px-5 lg:px-8 py-6 border-t border-[#333]/10 wr-divested-gradient">
       <div className="font-mono text-[9px] uppercase tracking-[0.25em] text-[#666] font-bold mb-4 flex items-center gap-3 wr-sub-header">
         <span className="text-[#ff9e9e]/30 text-[6px] wr-sub-diamond">◆</span>
         <span className="text-[#ff9e9e]/50">DIVESTED ASSETS</span>

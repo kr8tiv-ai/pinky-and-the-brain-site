@@ -1113,6 +1113,39 @@ section:hover > .wr-section-badge-fire {
   border-color: currentColor;
 }
 
+/* ── Row Hover Accent Bar ── */
+.wr-row-accent {
+  position: relative;
+}
+.wr-row-accent::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: rgba(255, 107, 53, 0);
+  transition: background 0.2s ease;
+}
+.wr-row-accent:hover::before {
+  background: rgba(255, 107, 53, 0.4);
+}
+
+/* ── Divested Table Gradient ── */
+.wr-divested-gradient {
+  position: relative;
+}
+.wr-divested-gradient::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background: linear-gradient(to top, #0a0a0a, transparent);
+  pointer-events: none;
+}
+
 /* ── External Link Arrow Animation ── */
 .wr-arrow-hover .wr-arrow {
   transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.2s ease;
