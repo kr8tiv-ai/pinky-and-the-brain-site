@@ -70,9 +70,9 @@ export default function WarRoomPage() {
           <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#d4f000]/[0.06] to-transparent" />
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#0a0a0a] px-5 flex items-center gap-2.5">
             <div className="w-5 h-px bg-[#d4f000]/10" />
-            <div className="wr-divider-dot text-[#d4f000]" />
+            <div className="wr-divider-dot text-[#d4f000]" style={{ animationDelay: '0s' }} />
             <span className="font-mono text-[7px] uppercase tracking-[0.5em] text-[#d4f000]/25 font-bold">▼ INTEL</span>
-            <div className="wr-divider-dot text-[#d4f000]" />
+            <div className="wr-divider-dot text-[#d4f000]" style={{ animationDelay: '1.5s' }} />
             <div className="w-5 h-px bg-[#d4f000]/10" />
           </div>
         </div>
@@ -160,7 +160,7 @@ export default function WarRoomPage() {
             <div className="relative flex flex-col items-center justify-center gap-6 wr-brackets" style={{ padding: '2rem' }}>
               <div className="flex items-center gap-3">
                 <div className="w-8 h-px bg-[#333]/40" />
-                <div className="font-mono text-[9px] uppercase tracking-[0.3em] text-[#333] font-bold">
+                <div className="font-mono text-[9px] uppercase tracking-[0.3em] text-[#333] font-bold wr-section-num">
                   SECTION 03 — PHASE 2
                 </div>
                 <div className="w-8 h-px bg-[#333]/40" />

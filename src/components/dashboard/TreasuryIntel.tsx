@@ -519,7 +519,7 @@ function HoldingCard({
           className="font-mono text-[10px] text-[#444] hover:text-[#d4f000] transition-all duration-200 flex items-center gap-1.5 group/copy"
           title="Copy full address"
         >
-          <svg width="10" height="10" viewBox="0 0 16 16" fill="currentColor" className="opacity-50 group-hover/copy:opacity-100 transition-opacity">
+          <svg width="10" height="10" viewBox="0 0 16 16" fill="currentColor" className="opacity-40 group-hover/copy:opacity-100 group-hover/copy:drop-shadow-[0_0_4px_rgba(212,240,0,0.3)] transition-all duration-200">
             <path d="M4 4V1h11v11h-3v3H1V4h3zm1-1V1.5a.5.5 0 01.5-.5h9a.5.5 0 01.5.5v9a.5.5 0 01-.5.5H13V4.5a.5.5 0 00-.5-.5H5z" />
             <path d="M1.5 5a.5.5 0 00-.5.5v9a.5.5 0 00.5.5h9a.5.5 0 00.5-.5v-9a.5.5 0 00-.5-.5h-9z" />
           </svg>
