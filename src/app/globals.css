@@ -320,14 +320,14 @@ body {
 /* ── Gradient Mesh Background (per-section) ── */
 .wr-bg-treasury {
   background:
-    radial-gradient(ellipse 50% 40% at 15% 30%, rgba(212, 240, 0, 0.02) 0%, transparent 70%),
-    radial-gradient(ellipse 40% 50% at 85% 70%, rgba(74, 144, 226, 0.012) 0%, transparent 70%);
+    radial-gradient(ellipse 50% 40% at 15% 30%, rgba(212, 240, 0, 0.018) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 50% at 85% 70%, rgba(74, 144, 226, 0.01) 0%, transparent 70%);
 }
 
 .wr-bg-burn {
   background:
-    radial-gradient(ellipse 60% 40% at 80% 20%, rgba(255, 107, 53, 0.035) 0%, transparent 70%),
-    radial-gradient(ellipse 40% 50% at 20% 80%, rgba(255, 158, 158, 0.015) 0%, transparent 70%);
+    radial-gradient(ellipse 60% 40% at 80% 20%, rgba(255, 107, 53, 0.03) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 50% at 20% 80%, rgba(255, 158, 158, 0.012) 0%, transparent 70%);
 }
 
 /* ── Animated Corner Brackets (awwwards-style) ── */
