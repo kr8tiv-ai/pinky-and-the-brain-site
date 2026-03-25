@@ -374,7 +374,7 @@ function ClassifiedCard({ mint }: { mint: string }) {
               className="absolute left-2 right-2 h-[5px] bg-[#111]/90 group-hover/classified:translate-x-[-110%] transition-transform duration-700"
               style={{
                 top: `${top}%`,
-                transitionDelay: `${i * 120}ms`,
+                transitionDelay: `${i * 100}ms`,
                 transitionTimingFunction: 'cubic-bezier(0.7, 0, 0.3, 1)',
               }}
             />

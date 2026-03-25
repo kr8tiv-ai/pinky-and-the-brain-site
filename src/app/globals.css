@@ -1387,7 +1387,7 @@ section:hover > .wr-section-badge-fire {
 .group\/card:hover .wr-border-shimmer::before,
 .wr-border-shimmer:hover::before {
   opacity: 1;
-  animation: wr-border-shimmer 2s linear infinite;
+  animation: wr-border-shimmer 2.5s linear infinite;
 }
 
 /* ── Corner Timestamp ── */

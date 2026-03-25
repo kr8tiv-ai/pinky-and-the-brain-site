@@ -177,7 +177,7 @@ function TransactionRow({
         </a>
         <button
           onClick={() => navigator.clipboard.writeText(tx.txHash)}
-          className="text-[#333] hover:text-[#ff6b35]/60 transition-colors"
+          className="text-[#333] hover:text-[#ff6b35]/50 transition-colors duration-200"
           title="Copy TX hash"
         >
           <svg width="10" height="10" viewBox="0 0 16 16" fill="currentColor">
