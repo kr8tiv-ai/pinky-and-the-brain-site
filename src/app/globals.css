@@ -1206,7 +1206,7 @@ section:hover > .wr-section-badge-fire {
   z-index: 20;
 }
 .group\/card:hover .wr-hover-cue {
-  color: rgba(212, 240, 0, 0.1);
+  color: rgba(212, 240, 0, 0.08);
 }
 
 /* ── Divested Table Gradient ── */

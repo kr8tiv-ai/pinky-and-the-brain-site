@@ -60,7 +60,7 @@ function LiveIndicator({ status }: { status: 'live' | 'connecting' | 'offline' }
     tl.fromTo(
       ringRef.current,
       { scale: 1, opacity: 0.6 },
-      { scale: 2.2, opacity: 0, duration: 1.5, ease: 'power1.out' }
+      { scale: 2.2, opacity: 0, duration: 1.8, ease: 'power1.out' }
     )
     return () => { tl.kill() }
   }, [status])
@@ -128,7 +128,7 @@ function DataCell({
       </div>
 
       {/* Subtle bottom glow on hover */}
-      <div className="absolute bottom-0 left-[10%] right-[10%] h-px bg-[#d4f000]/0 group-hover:bg-[#d4f000]/[0.05] transition-colors duration-500" />
+      <div className="absolute bottom-0 left-[10%] right-[10%] h-px bg-[#d4f000]/0 group-hover:bg-[#d4f000]/[0.04] transition-colors duration-500" />
 
       <div className="font-mono text-[8px] uppercase tracking-[0.22em] text-[#555] mb-2 font-bold group-hover:text-[#888] transition-colors duration-300 flex items-center gap-1.5">
         <span className="text-[#d4f000]/12 text-[5px]">◆</span>
