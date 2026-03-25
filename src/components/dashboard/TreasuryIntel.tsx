@@ -354,14 +354,14 @@ function ClassifiedCard({ mint }: { mint: string }) {
         className="absolute inset-[-100%] animate-spin opacity-[0.08] group-hover/classified:opacity-40 transition-opacity duration-700 pointer-events-none"
         style={{
           background: 'conic-gradient(from 0deg, transparent 60%, #ff9e9e 80%, #333 90%, transparent 100%)',
-          animationDuration: '7s',
+          animationDuration: '8s',
         }}
       />
 
       {/* Inner card */}
       <div className="relative h-full w-full bg-[#0d0d0d] p-5 overflow-hidden z-10">
         {/* Diagonal line pattern */}
-        <div className="absolute inset-0 opacity-[0.04] pointer-events-none"
+        <div className="absolute inset-0 opacity-[0.035] pointer-events-none"
           style={{
             backgroundImage: 'repeating-linear-gradient(-45deg, transparent, transparent 10px, rgba(255,158,158,0.1) 10px, rgba(255,158,158,0.1) 11px)',
           }}
@@ -372,7 +372,7 @@ function ClassifiedCard({ mint }: { mint: string }) {
           {[15, 35, 55, 75].map((top, i) => (
             <div
               key={i}
-              className="absolute left-2 right-2 h-[5px] bg-[#111]/90 group-hover/classified:translate-x-[-110%] transition-transform duration-700"
+              className="absolute left-2 right-2 h-[5px] bg-[#111]/90 group-hover/classified:translate-x-[-110%] transition-transform duration-[800ms]"
               style={{
                 top: `${top}%`,
                 transitionDelay: `${i * 100}ms`,
