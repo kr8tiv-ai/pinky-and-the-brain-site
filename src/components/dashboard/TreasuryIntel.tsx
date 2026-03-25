@@ -188,7 +188,7 @@ function TreasuryValueChart({
           <span className="text-[#333] font-mono text-[10px] tracking-[0.2em]">INSUFFICIENT DATA POINTS</span>
         </div>
       ) : (
-        <div className="h-[260px] relative border border-[#333]/8 bg-[#0a0a0a]/50 p-3 rounded wr-chart-frame wr-chart-entrance">
+        <div className="h-[260px] relative border border-[#333]/6 bg-[#0a0a0a]/50 p-3 rounded wr-chart-frame wr-chart-entrance">
           {/* Animated corner brackets */}
           <div className="wr-chart-corner wr-chart-corner--tl" />
           <div className="wr-chart-corner wr-chart-corner--tr" />
@@ -384,7 +384,7 @@ function ClassifiedCard({ mint }: { mint: string }) {
 
         <div className="relative">
           <div className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#444] mb-3 font-bold flex items-center gap-2">
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-[#ff9e9e]/20">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-[#ff9e9e]/15">
               <rect x="3" y="11" width="18" height="11" rx="2" />
               <path d="M7 11V7a5 5 0 0110 0v4" />
             </svg>

@@ -1525,7 +1525,7 @@ section:hover > .wr-section-badge-fire {
   width: 0;
   height: 1px;
   background: currentColor;
-  transition: width 0.3s cubic-bezier(0.25, 1, 0.5, 1), left 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: width 0.25s cubic-bezier(0.25, 1, 0.5, 1), left 0.25s cubic-bezier(0.25, 1, 0.5, 1);
 }
 .wr-footer-link-grow:hover::after {
   left: 0;
