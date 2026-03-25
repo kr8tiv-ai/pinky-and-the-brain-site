@@ -529,7 +529,7 @@ function HoldingCard({
       </div>
 
       {/* Data grid */}
-      <div className="grid grid-cols-2 gap-x-4 gap-y-0 text-[10px] mb-4 pl-2">
+      <div className="grid grid-cols-2 gap-x-4 gap-y-0 text-[9px] md:text-[10px] mb-4 pl-2">
         {[
           { label: 'AMOUNT', value: holding.uiAmount.toLocaleString(undefined, { maximumFractionDigits: 4 }), highlight: false },
           { label: 'VALUE (USD)', value: formatUsd(holding.currentValueUsd), highlight: true },

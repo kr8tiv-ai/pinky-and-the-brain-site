@@ -56,7 +56,7 @@ export default function WarRoomPage() {
         <TokenInfoStrip />
 
         {/* Scroll indicator */}
-        <div className="flex flex-col items-center py-4 wr-scroll-hint">
+        <div className="flex flex-col items-center py-4 wr-scroll-hint md:py-5">
           <span className="font-mono text-[7px] uppercase tracking-[0.3em] text-[#333] mb-1.5">SCROLL TO EXPLORE</span>
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-[#d4f000]/30">
             <path d="M12 5v14" />
@@ -221,7 +221,7 @@ export default function WarRoomPage() {
             <div className="ticker-track">
               {['WAR ROOM v2.0', '$BRAIN INTELLIGENCE COMMAND', 'ALL DATA LIVE ON-CHAIN', 'NARF!', 'DEFLATIONARY SPL TOKEN', 'COMMUNITY GOVERNED',
                 'WAR ROOM v2.0', '$BRAIN INTELLIGENCE COMMAND', 'ALL DATA LIVE ON-CHAIN', 'NARF!', 'DEFLATIONARY SPL TOKEN', 'COMMUNITY GOVERNED'].map((item, i) => (
-                <span key={i} className="font-mono text-[7px] uppercase tracking-[0.3em] text-[#222] mx-6 whitespace-nowrap">
+                <span key={i} className="font-mono text-[6px] md:text-[7px] uppercase tracking-[0.3em] text-[#222] mx-4 md:mx-6 whitespace-nowrap">
                   <span className="text-[#d4f000]/15 mr-2">◆</span>
                   {item}
                 </span>
