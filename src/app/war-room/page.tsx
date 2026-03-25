@@ -147,7 +147,7 @@ export default function WarRoomPage() {
             </div>
 
             {/* Watermark */}
-            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-[16rem] font-black text-white/[0.01] leading-none select-none pointer-events-none font-sans wr-breathe wr-watermark" style={{ animationDuration: '6s' }}>
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-[16rem] font-black text-white/[0.01] leading-none select-none pointer-events-none font-sans tracking-tighter wr-breathe wr-watermark" style={{ animationDuration: '6s' }}>
               03
             </div>
 
@@ -242,7 +242,8 @@ export default function WarRoomPage() {
             </div>
 
             {/* Disclaimer */}
-            <div className="text-center mb-4">
+            <div className="text-center mb-4 relative">
+              <div className="absolute left-1/2 -translate-x-1/2 bottom-0 w-24 h-px bg-gradient-to-r from-transparent via-[#333]/10 to-transparent" />
               <span className="font-mono text-[6px] uppercase tracking-[0.25em] text-[#1a1a1a]/80">
                 NOT FINANCIAL ADVICE — DYOR — ALL DATA FOR INFORMATIONAL PURPOSES ONLY
               </span>
