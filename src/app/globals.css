@@ -624,7 +624,7 @@ body {
   height: 3px;
   border-radius: 50%;
   background: #d4f000;
-  animation: wr-data-pulse 2s ease-in-out infinite;
+  animation: wr-data-pulse 2.2s ease-in-out infinite;
 }
 .wr-data-dot-fire {
   background: #ff6b35;

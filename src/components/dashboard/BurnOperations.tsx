@@ -285,7 +285,7 @@ export default function BurnOperations() {
       gsap.fromTo(
         sectionRef.current,
         { opacity: 0, y: 14 },
-        { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }
+        { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }
       )
     }, sectionRef)
     return () => ctx.revert()
