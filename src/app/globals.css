@@ -999,7 +999,7 @@ section:hover > .wr-section-badge-fire {
 /* ── Burn Progress Live Marker ── */
 @keyframes wr-progress-pulse {
   0%, 100% { box-shadow: 0 0 3px #ff6b35, 0 0 5px rgba(255, 107, 53, 0.25); }
-  50% { box-shadow: 0 0 5px #ff6b35, 0 0 10px rgba(255, 107, 53, 0.45); }
+  50% { box-shadow: 0 0 4px #ff6b35, 0 0 8px rgba(255, 107, 53, 0.4); }
 }
 .wr-progress-marker {
   width: 7px;
@@ -1320,7 +1320,7 @@ section:hover > .wr-section-badge-fire {
   height: 240px;
   border-radius: 50%;
   background: radial-gradient(circle, rgba(212, 240, 0, 0.015) 0%, transparent 70%);
-  animation: wr-breathe 7s ease-in-out infinite;
+  animation: wr-breathe 8s ease-in-out infinite;
 }
 
 /* ── Grid Shimmer on Chart Hover ── */
@@ -1438,7 +1438,7 @@ section:hover > .wr-section-badge-fire {
   100% { transform: scale(1); opacity: 1; }
 }
 .wr-count-badge {
-  animation: wr-count-pop 0.55s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  animation: wr-count-pop 0.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
 /* ── Chart Entrance Fade ── */
