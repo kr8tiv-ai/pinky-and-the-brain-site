@@ -96,7 +96,7 @@ function BurnSummaryBar({
       ) : (
         <span className="text-[#ff6b35]">
           <span className="text-[#ff6b35]">{formatPct(burnedPct)}</span>
-          <span className="text-[#666] mx-1.5">+</span>
+          <span className="text-[#666] mx-2">+</span>
           <span className="text-[#ff6b35]">{LP_LOCKED_PCT}%</span>
           <span className="text-[#444] text-[8px] ml-1.5 tracking-[0.1em]">LOCKED</span>
         </span>

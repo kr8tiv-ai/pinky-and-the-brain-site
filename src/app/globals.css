@@ -359,8 +359,8 @@ body {
 }
 .wr-brackets:hover::before,
 .wr-brackets:hover::after {
-  width: 24px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
   border-color: rgba(212, 240, 0, 0.5);
 }
 
