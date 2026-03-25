@@ -1075,6 +1075,40 @@ section:hover > .wr-section-badge-fire {
   pointer-events: none;
 }
 
+/* ── Summary Bar Bottom Accent ── */
+.wr-summary-accent {
+  position: relative;
+}
+.wr-summary-accent::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212, 240, 0, 0.08), rgba(212, 240, 0, 0.04), transparent);
+}
+
+/* ── Fire Summary Bar Bottom Accent ── */
+.wr-summary-accent-fire::after {
+  background: linear-gradient(90deg, transparent, rgba(255, 107, 53, 0.08), rgba(255, 107, 53, 0.04), transparent);
+}
+
+/* ── Enhanced Grid Cell Separator ── */
+.wr-grid-glow-divider {
+  position: relative;
+}
+.wr-grid-glow-divider::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 20%;
+  bottom: 20%;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, rgba(212, 240, 0, 0.06), transparent);
+  pointer-events: none;
+}
+
 /* ── Monogram Gradient ── */
 .wr-monogram {
   background: linear-gradient(135deg, rgba(212, 240, 0, 0.1) 0%, rgba(212, 240, 0, 0.04) 100%);
