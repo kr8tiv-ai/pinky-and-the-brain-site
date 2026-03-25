@@ -613,7 +613,7 @@ body {
 }
 .wr-card-lift:hover {
   transform: translateY(-1.5px);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45), 0 4px 10px rgba(0, 0, 0, 0.25), 0 0 1px rgba(212, 240, 0, 0.06);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.4), 0 4px 10px rgba(0, 0, 0, 0.22), 0 0 1px rgba(212, 240, 0, 0.05);
 }
 
 /* ── Live Data Pulse Dot ── */
@@ -1466,7 +1466,7 @@ section:hover > .wr-section-badge-fire {
   left: -1px;
   width: 1px;
   bottom: 30%;
-  background: linear-gradient(to bottom, transparent, rgba(212, 240, 0, 0.06), transparent);
+  background: linear-gradient(to bottom, transparent, rgba(212, 240, 0, 0.05), transparent);
   pointer-events: none;
 }
 
