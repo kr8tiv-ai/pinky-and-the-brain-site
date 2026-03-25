@@ -136,13 +136,14 @@ function TransactionRow({
   return (
     <div
       ref={rowRef}
-      className="grid grid-cols-[1fr_1fr_1.2fr] gap-4 items-center py-3 px-4 wr-row-hover-fire border-b border-[#333]/10 font-mono text-[10px]"
+      className="grid grid-cols-[24px_1fr_1fr_1.2fr] gap-3 items-center py-3 px-4 wr-row-stripe border-b border-[#333]/10 font-mono text-[10px] transition-colors duration-200"
     >
+      <div className="wr-row-num">{String(index + 1).padStart(2, '0')}</div>
       <div className="text-[#666] tabular-nums flex items-center gap-2">
         <span className="text-[#ff6b35]/30 text-[8px]">●</span>
         {format(fromUnixTime(tx.timestamp), 'yyyy-MM-dd HH:mm')}
       </div>
-      <div className="text-[#ff6b35] font-black tabular-nums">
+      <div className="text-[#ff6b35] font-black tabular-nums wr-fire-text">
         −{formatBurnAmount(tx.amount)}
       </div>
       <div className="flex items-center gap-2">
@@ -150,7 +151,7 @@ function TransactionRow({
           href={`https://solscan.io/tx/${tx.txHash}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-[#ff6b35]/60 hover:text-[#ff6b35] transition-colors flex items-center gap-1"
+          className="text-[#ff6b35]/60 hover:text-[#ff6b35] transition-colors flex items-center gap-1 wr-link-hover"
         >
           <span className="tabular-nums">{tx.txHash.slice(0, 8)}...{tx.txHash.slice(-6)}</span>
           <span className="text-[8px]">↗</span>
@@ -182,7 +183,8 @@ function BurnTransactionsTable({
       </div>
 
       {/* Table header */}
-      <div className="grid grid-cols-[1fr_1fr_1.2fr] gap-4 px-4 pb-2 border-b border-[#333]/30">
+      <div className="grid grid-cols-[24px_1fr_1fr_1.2fr] gap-3 px-4 pb-2 wr-table-header">
+        <div className="font-mono text-[7px] font-bold uppercase tracking-[0.2em] text-[#333]">#</div>
         {['DATE', 'AMOUNT', 'TX HASH'].map(h => (
           <div key={h} className="font-mono text-[8px] font-bold uppercase tracking-[0.2em] text-[#444]">
             {h}
@@ -194,7 +196,8 @@ function BurnTransactionsTable({
       <div className="max-h-[400px] overflow-y-auto wr-scroll">
         {isLoading ? (
           Array.from({ length: 5 }).map((_, i) => (
-            <div key={i} className="grid grid-cols-[1fr_1fr_1.2fr] gap-4 py-3 px-4 border-b border-[#333]/10">
+            <div key={i} className="grid grid-cols-[24px_1fr_1fr_1.2fr] gap-3 py-3 px-4 border-b border-[#333]/10">
+              <div className="wr-skeleton h-3 w-4" />
               <div className="wr-skeleton h-3 w-28" />
               <div className="wr-skeleton h-3 w-24" />
               <div className="wr-skeleton h-3 w-32" />
@@ -263,7 +266,7 @@ export default function BurnOperations() {
       <div className="absolute inset-0 wr-bg-burn pointer-events-none" />
 
       {/* Watermark section number */}
-      <div className="absolute -right-4 -top-8 text-[12rem] font-black text-white/[0.015] leading-none select-none pointer-events-none font-sans">
+      <div className="absolute -right-4 -top-8 text-[12rem] font-black text-white/[0.02] leading-none select-none pointer-events-none font-sans" style={{ WebkitTextStroke: '1px rgba(255, 107, 53, 0.02)' }}>
         02
       </div>
 

@@ -556,3 +556,85 @@ body {
   background: linear-gradient(90deg, currentColor 0%, transparent 100%);
   opacity: 0.1;
 }
+
+/* ── Gradient Text (section numbers, accents) ── */
+.wr-gradient-text-lime {
+  background: linear-gradient(135deg, #d4f000 0%, #e4ff57 50%, #d4f000 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.wr-gradient-text-fire {
+  background: linear-gradient(135deg, #ff6b35 0%, #ffadad 50%, #ff6b35 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Alternating Row Stripes ── */
+.wr-row-stripe:nth-child(even) {
+  background: rgba(255, 255, 255, 0.008);
+}
+.wr-row-stripe:hover {
+  background: rgba(255, 107, 53, 0.03) !important;
+}
+
+/* ── Row Number Marker ── */
+.wr-row-num {
+  font-family: var(--font-mono);
+  font-size: 7px;
+  color: rgba(255, 107, 53, 0.2);
+  min-width: 18px;
+  text-align: right;
+  user-select: none;
+}
+
+/* ── Enhanced Tooltip ── */
+.wr-tooltip-enhanced {
+  background: rgba(10, 10, 10, 0.97);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(51, 51, 51, 0.5);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.6),
+    0 0 1px rgba(212, 240, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  position: relative;
+  overflow: hidden;
+}
+.wr-tooltip-enhanced::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, #d4f000 50%, transparent 100%);
+}
+
+/* ── Chart Active Dot Pulse ── */
+@keyframes wr-dot-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(212, 240, 0, 0.4); }
+  50% { box-shadow: 0 0 0 6px rgba(212, 240, 0, 0); }
+}
+.wr-chart-dot {
+  animation: wr-dot-pulse 2s ease-in-out infinite;
+}
+
+/* ── Fire Amount Text Shadow ── */
+.wr-fire-text {
+  text-shadow: 0 0 8px rgba(255, 107, 53, 0.3);
+}
+
+/* ── Table Header Bar ── */
+.wr-table-header {
+  position: relative;
+}
+.wr-table-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(255, 107, 53, 0.3) 0%, rgba(51, 51, 51, 0.3) 50%, transparent 100%);
+}

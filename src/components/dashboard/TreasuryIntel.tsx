@@ -136,9 +136,12 @@ function CustomChartTooltip({ active, payload, label }: TooltipContentProps) {
   const rawValue = (payload[0] as { value?: TooltipValueType }).value
   const numericValue = typeof rawValue === 'number' ? rawValue : 0
   return (
-    <div className="wr-tooltip px-4 py-3 font-mono text-xs">
-      <div className="text-[#666] mb-1 text-[10px] uppercase tracking-[0.15em] font-bold">{label}</div>
-      <div className="text-[#d4f000] font-black text-sm">{formatUsd(numericValue)}</div>
+    <div className="wr-tooltip-enhanced px-5 py-4 font-mono text-xs">
+      <div className="flex items-center gap-2 mb-2">
+        <div className="w-1.5 h-1.5 bg-[#d4f000] rounded-full" style={{ boxShadow: '0 0 6px #d4f000' }} />
+        <span className="text-[#666] text-[9px] uppercase tracking-[0.2em] font-bold">{label}</span>
+      </div>
+      <div className="text-[#d4f000] font-black text-base tabular-nums wr-gradient-text-lime">{formatUsd(numericValue)}</div>
     </div>
   )
 }
@@ -196,7 +199,7 @@ function TreasuryValueChart({
                 tickFormatter={(v) => `$${(v / 1000).toFixed(0)}k`}
                 width={45}
               />
-              <Tooltip content={(props) => <CustomChartTooltip {...(props as TooltipContentProps)} />} cursor={{ stroke: 'rgba(212, 240, 0, 0.15)' }} />
+              <Tooltip content={(props) => <CustomChartTooltip {...(props as TooltipContentProps)} />} cursor={{ stroke: 'rgba(212, 240, 0, 0.2)', strokeDasharray: '4 4' }} />
               <Area
                 type="monotone"
                 dataKey="valueUsd"
@@ -205,10 +208,11 @@ function TreasuryValueChart({
                 fill="url(#treasuryGradient)"
                 dot={false}
                 activeDot={{
-                  r: 4,
+                  r: 5,
                   fill: '#d4f000',
                   stroke: '#0a0a0a',
                   strokeWidth: 2,
+                  style: { filter: 'drop-shadow(0 0 6px rgba(212, 240, 0, 0.6))' },
                 }}
               />
             </AreaChart>
@@ -584,7 +588,7 @@ export default function TreasuryIntel() {
       <div className="absolute inset-0 wr-bg-treasury pointer-events-none" />
 
       {/* Watermark section number */}
-      <div className="absolute -right-4 -top-8 text-[12rem] font-black text-white/[0.015] leading-none select-none pointer-events-none font-sans">
+      <div className="absolute -right-4 -top-8 text-[12rem] font-black text-white/[0.02] leading-none select-none pointer-events-none font-sans" style={{ WebkitTextStroke: '1px rgba(212, 240, 0, 0.02)' }}>
         01
       </div>
 
