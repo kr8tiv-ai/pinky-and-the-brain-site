@@ -129,7 +129,7 @@ function buildChartData(holdings: TreasuryResponse['holdings']): ChartPoint[] {
   })
 
   const totalCurrent = holdings.reduce((s, h) => s + h.currentValueUsd, 0)
-  points.push({ label: 'NOW', valueUsd: totalCurrent })
+  points.push({ label: '● NOW', valueUsd: totalCurrent })
   return points
 }
 
@@ -282,7 +282,7 @@ function SummaryCell({
   }, [isLoading, isError])
 
   return (
-    <div className="px-5 lg:px-6 py-5 group/cell relative transition-colors duration-300 hover:bg-white/[0.015]">
+    <div className="px-5 lg:px-6 py-5 group/cell relative transition-colors duration-300 hover:bg-white/[0.015] wr-stat-scale">
       {/* Hover accent top */}
       <div className="absolute top-0 left-0 right-0 h-px bg-[#d4f000]/0 group-hover/cell:bg-[#d4f000]/10 transition-colors duration-300" />
       {/* Hover accent bottom gradient */}
@@ -318,7 +318,7 @@ function LoadingCard({ index = 0 }: { index?: number }) {
           animationDelay: `${index * 0.3}s`,
         }}
       />
-      <div className="relative bg-[#0d0d0d] p-5 border border-[#333]/5">
+      <div className="relative bg-[#0d0d0d] p-5 border border-[#333]/5" style={{ boxShadow: 'inset 0 0 30px rgba(51, 51, 51, 0.03)' }}>
         {/* Accent bar */}
         <div className="absolute top-0 left-0 w-[3px] h-full bg-gradient-to-b from-[#333]/40 via-[#333]/20 to-transparent" />
         <div className="pl-2">
