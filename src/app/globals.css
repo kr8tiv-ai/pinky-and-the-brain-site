@@ -1241,7 +1241,7 @@ section:hover > .wr-section-badge-fire {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   padding: 2px 5px;
-  background: linear-gradient(135deg, rgba(212, 240, 0, 0.05) 0%, rgba(212, 240, 0, 0.015) 100%);
+  background: linear-gradient(135deg, rgba(212, 240, 0, 0.04) 0%, rgba(212, 240, 0, 0.012) 100%);
   border: 1px solid rgba(212, 240, 0, 0.06);
   color: rgba(212, 240, 0, 0.45);
   transition: all 0.3s ease;
@@ -1309,7 +1309,7 @@ section:hover > .wr-section-badge-fire {
   96% { border-color: rgba(255, 158, 158, 0.12); }
 }
 .wr-classified-border {
-  animation: wr-classified-border 6s ease-in-out infinite;
+  animation: wr-classified-border 7s ease-in-out infinite;
   border: 1px solid rgba(255, 158, 158, 0.05);
 }
 
@@ -1343,7 +1343,7 @@ section:hover > .wr-section-badge-fire {
   left: -1px;
   width: 1px;
   bottom: 15%;
-  background: linear-gradient(to bottom, transparent, rgba(212, 240, 0, 0.08), transparent);
+  background: linear-gradient(to bottom, transparent, rgba(212, 240, 0, 0.06), transparent);
   pointer-events: none;
 }
 
