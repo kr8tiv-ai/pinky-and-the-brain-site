@@ -411,7 +411,7 @@ body {
 
 .wr-orb-1 { animation: wr-orb-drift-1 24s ease-in-out infinite; will-change: transform; }
 .wr-orb-2 { animation: wr-orb-drift-2 28s ease-in-out infinite; will-change: transform; }
-.wr-orb-3 { animation: wr-orb-drift-3 19s ease-in-out infinite; will-change: transform; }
+.wr-orb-3 { animation: wr-orb-drift-3 21s ease-in-out infinite; will-change: transform; }
 
 /* ── External Link Hover Underline ── */
 .wr-link-hover {
@@ -425,7 +425,7 @@ body {
   width: 0;
   height: 1px;
   background: currentColor;
-  opacity: 0.7;
+  opacity: 0.6;
   transition: width 0.3s cubic-bezier(0.25, 1, 0.5, 1);
 }
 .wr-link-hover:hover::after {
@@ -1505,7 +1505,7 @@ section:hover > .wr-section-badge-fire {
     #1a1a1a 63%
   );
   background-size: 400% 400%;
-  animation: wr-shimmer-diagonal 2.8s ease infinite;
+  animation: wr-shimmer-diagonal 3s ease infinite;
   border-radius: 2px;
 }
 @keyframes wr-shimmer-diagonal {
