@@ -1181,11 +1181,11 @@ section:hover > .wr-section-badge-fire {
 /* ── Logo Hover Pulse ── */
 @keyframes wr-logo-pulse {
   0% { text-shadow: 0 0 0 transparent; }
-  50% { text-shadow: 0 0 16px rgba(212, 240, 0, 0.5); }
+  50% { text-shadow: 0 0 12px rgba(212, 240, 0, 0.4); }
   100% { text-shadow: 0 0 0 transparent; }
 }
 .wr-logo-pulse:hover {
-  animation: wr-logo-pulse 1.5s ease-in-out;
+  animation: wr-logo-pulse 1.2s ease-in-out;
 }
 
 /* ── Card Hover Cue ── */
@@ -1238,10 +1238,10 @@ section:hover > .wr-section-badge-fire {
   font-weight: 900;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  padding: 2px 6px;
-  background: linear-gradient(135deg, rgba(212, 240, 0, 0.08) 0%, rgba(212, 240, 0, 0.02) 100%);
-  border: 1px solid rgba(212, 240, 0, 0.1);
-  color: rgba(212, 240, 0, 0.6);
+  padding: 2px 5px;
+  background: linear-gradient(135deg, rgba(212, 240, 0, 0.06) 0%, rgba(212, 240, 0, 0.02) 100%);
+  border: 1px solid rgba(212, 240, 0, 0.08);
+  color: rgba(212, 240, 0, 0.5);
   transition: all 0.3s ease;
 }
 .group\/card:hover .wr-symbol-badge {

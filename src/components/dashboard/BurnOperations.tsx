@@ -366,7 +366,7 @@ export default function BurnOperations() {
                 {new Date(dataUpdatedAt).toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' })}
               </span>
             )}
-            <span className="wr-tag wr-tag-glow border-[#ff6b35]/30 text-[#ff6b35]/80">
+            <span className="wr-tag wr-tag-glow border-[#ff6b35]/25 text-[#ff6b35]/70">
               INCINERATED
             </span>
           </div>
