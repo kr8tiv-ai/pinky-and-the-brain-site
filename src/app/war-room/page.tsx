@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import CommandHeader from '@/components/dashboard/CommandHeader'
+import TreasuryIntel from '@/components/dashboard/TreasuryIntel'
 
 export const metadata: Metadata = {
   title: 'War Room | $BRAIN Token',
@@ -18,7 +19,8 @@ export default function WarRoomPage() {
 
       <div className="relative z-10">
         <CommandHeader />
-        {/* Phase 5+ sections: <TreasuryIntel />, <BurnOperations />, <FeeDistribution />, etc. */}
+        <TreasuryIntel />
+        {/* Phase 6+ sections: <BurnOperations />, <FeeDistribution />, etc. */}
       </div>
     </main>
   )
