@@ -87,7 +87,7 @@ function LiveIndicator({ status }: { status: 'live' | 'connecting' | 'offline' }
     <div className="flex items-center gap-2.5">
       <div className="relative flex items-center justify-center w-4 h-4">
         <div className={`w-2 h-2 rounded-full ${colorMap[status]} relative z-10`}
-          style={status === 'live' ? { boxShadow: '0 0 8px #d4f000, 0 0 16px rgba(212, 240, 0, 0.3)' } : undefined}
+          style={status === 'live' ? { boxShadow: '0 0 8px #d4f000, 0 0 20px rgba(212, 240, 0, 0.4), 0 0 40px rgba(212, 240, 0, 0.1)' } : undefined}
         />
         {status === 'live' && (
           <div
