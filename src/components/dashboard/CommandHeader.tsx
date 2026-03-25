@@ -276,7 +276,7 @@ export default function CommandHeader() {
           <div className="hidden md:block w-px h-3 bg-[#333]/30" />
           <div className="hidden md:flex md:items-center md:gap-2 font-mono text-[8px] uppercase tracking-[0.2em] text-[#333]">
             <span>Intelligence Dashboard</span>
-            <span className="text-[#d4f000]/15">v2.0</span>
+            <span className="text-[#d4f000]/20 font-bold">v2.0</span>
           </div>
         </div>
         <div className="flex items-center gap-4">

@@ -239,11 +239,11 @@ function TreasuryValueChart({
                 fill="url(#treasuryGradient)"
                 dot={false}
                 activeDot={{
-                  r: 5,
+                  r: 6,
                   fill: '#d4f000',
                   stroke: '#0a0a0a',
-                  strokeWidth: 2,
-                  style: { filter: 'drop-shadow(0 0 8px rgba(212, 240, 0, 0.6))' },
+                  strokeWidth: 2.5,
+                  style: { filter: 'drop-shadow(0 0 10px rgba(212, 240, 0, 0.7)) drop-shadow(0 0 20px rgba(212, 240, 0, 0.3))' },
                 }}
                 style={{ filter: 'url(#chartGlow)' }}
               />
@@ -552,9 +552,9 @@ function HoldingCard({
       {/* Description */}
       {holding.description && (
         <div className="relative border-t border-[#333]/20 pt-3 pl-4 mb-3">
-          <div className="absolute top-3 left-0 w-[2px] h-[calc(100%-12px)] bg-gradient-to-b from-[#d4f000]/20 to-transparent" />
-          <div className="text-[#555] text-[10px] italic leading-relaxed font-mono wr-desc-clamp">
-            &ldquo;{holding.description}&rdquo;
+          <div className="absolute top-3 left-0 w-[2px] h-[calc(100%-12px)] bg-gradient-to-b from-[#d4f000]/20 via-[#d4f000]/10 to-transparent" />
+          <div className="text-[#555] text-[10px] italic leading-relaxed font-mono wr-desc-clamp group-hover/card:text-[#666] transition-colors duration-300">
+            <span className="text-[#d4f000]/20 not-italic">&ldquo;</span>{holding.description}<span className="text-[#d4f000]/20 not-italic">&rdquo;</span>
           </div>
         </div>
       )}
