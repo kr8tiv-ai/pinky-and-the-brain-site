@@ -217,7 +217,7 @@ function TreasuryValueChart({
                   </feMerge>
                 </filter>
               </defs>
-              <CartesianGrid strokeDasharray="4 10" stroke="rgba(51,51,51,0.12)" vertical={false} />
+              <CartesianGrid strokeDasharray="4 10" stroke="rgba(51,51,51,0.1)" vertical={false} />
               <XAxis
                 dataKey="label"
                 tick={{ fill: '#555', fontSize: 8, fontFamily: 'var(--font-mono)' }}

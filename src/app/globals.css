@@ -259,7 +259,7 @@ body {
 .wr-row-hover:hover {
   background: rgba(212, 240, 0, 0.03);
   padding-left: calc(1rem + 2px);
-  border-left: 2px solid rgba(212, 240, 0, 0.2);
+  border-left: 2px solid rgba(212, 240, 0, 0.18);
 }
 
 /* ── Section Header Tag ── */
@@ -1293,7 +1293,7 @@ section:hover > .wr-section-badge-fire {
   width: 0;
   height: 1px;
   background: linear-gradient(90deg, currentColor, transparent 80%);
-  transition: width 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: width 0.9s cubic-bezier(0.25, 1, 0.5, 1);
 }
 .wr-header-line:hover::after {
   width: 100%;
