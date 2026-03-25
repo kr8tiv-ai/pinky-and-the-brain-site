@@ -183,16 +183,34 @@ function TreasuryValueChart({
           <span className="text-[#333] font-mono text-[10px] tracking-[0.2em]">INSUFFICIENT DATA POINTS</span>
         </div>
       ) : (
-        <div className="h-[240px] relative">
+        <div className="h-[260px] relative border border-[#333]/10 bg-[#0a0a0a]/50 p-3 rounded-sm">
+          {/* Corner dots */}
+          <div className="absolute top-1 left-1 w-1 h-1 bg-[#d4f000]/10" />
+          <div className="absolute top-1 right-1 w-1 h-1 bg-[#d4f000]/10" />
+          <div className="absolute bottom-1 left-1 w-1 h-1 bg-[#d4f000]/10" />
+          <div className="absolute bottom-1 right-1 w-1 h-1 bg-[#d4f000]/10" />
           <ResponsiveContainer width="100%" height="100%">
-            <AreaChart data={chartData} margin={{ top: 10, right: 0, left: 0, bottom: 0 }}>
+            <AreaChart data={chartData} margin={{ top: 10, right: 4, left: 0, bottom: 0 }}>
               <defs>
                 <linearGradient id="treasuryGradient" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#d4f000" stopOpacity={0.25} />
-                  <stop offset="95%" stopColor="#d4f000" stopOpacity={0} />
+                  <stop offset="0%" stopColor="#d4f000" stopOpacity={0.2} />
+                  <stop offset="50%" stopColor="#d4f000" stopOpacity={0.06} />
+                  <stop offset="100%" stopColor="#d4f000" stopOpacity={0} />
                 </linearGradient>
+                <linearGradient id="treasuryStroke" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stopColor="#d4f000" stopOpacity={0.4} />
+                  <stop offset="50%" stopColor="#d4f000" stopOpacity={1} />
+                  <stop offset="100%" stopColor="#e4ff57" stopOpacity={1} />
+                </linearGradient>
+                <filter id="chartGlow">
+                  <feGaussianBlur stdDeviation="3" result="blur" />
+                  <feMerge>
+                    <feMergeNode in="blur" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
+                </filter>
               </defs>
-              <CartesianGrid strokeDasharray="3 6" stroke="rgba(51,51,51,0.15)" vertical={false} />
+              <CartesianGrid strokeDasharray="3 6" stroke="rgba(51,51,51,0.12)" vertical={false} />
               <XAxis
                 dataKey="label"
                 tick={{ fill: '#444', fontSize: 9, fontFamily: 'var(--font-mono)' }}
@@ -200,17 +218,17 @@ function TreasuryValueChart({
                 tickLine={false}
               />
               <YAxis
-                tick={{ fill: '#444', fontSize: 9, fontFamily: 'var(--font-mono)' }}
+                tick={{ fill: '#333', fontSize: 8, fontFamily: 'var(--font-mono)' }}
                 axisLine={false}
                 tickLine={false}
                 tickFormatter={(v) => `$${(v / 1000).toFixed(0)}k`}
-                width={45}
+                width={42}
               />
-              <Tooltip content={(props) => <CustomChartTooltip {...(props as TooltipContentProps)} />} cursor={{ stroke: 'rgba(212, 240, 0, 0.2)', strokeDasharray: '4 4' }} />
+              <Tooltip content={(props) => <CustomChartTooltip {...(props as TooltipContentProps)} />} cursor={{ stroke: 'rgba(212, 240, 0, 0.15)', strokeDasharray: '4 4' }} />
               <Area
                 type="monotone"
                 dataKey="valueUsd"
-                stroke="#d4f000"
+                stroke="url(#treasuryStroke)"
                 strokeWidth={2}
                 fill="url(#treasuryGradient)"
                 dot={false}
@@ -219,8 +237,9 @@ function TreasuryValueChart({
                   fill: '#d4f000',
                   stroke: '#0a0a0a',
                   strokeWidth: 2,
-                  style: { filter: 'drop-shadow(0 0 6px rgba(212, 240, 0, 0.6))' },
+                  style: { filter: 'drop-shadow(0 0 8px rgba(212, 240, 0, 0.6))' },
                 }}
+                style={{ filter: 'url(#chartGlow)' }}
               />
             </AreaChart>
           </ResponsiveContainer>
