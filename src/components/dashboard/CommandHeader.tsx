@@ -255,7 +255,7 @@ export default function CommandHeader() {
         background: 'radial-gradient(ellipse 40% 60% at 20% 50%, rgba(212, 240, 0, 0.02), transparent 70%), radial-gradient(ellipse 30% 50% at 80% 50%, rgba(74, 144, 226, 0.015), transparent 70%)',
       }} />
       {/* Top gradient accent line */}
-      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#d4f000]/20 to-transparent z-10" />
+      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#d4f000]/5 via-[#d4f000]/25 to-[#d4f000]/5 z-10" />
       {/* Bottom gradient accent line */}
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#d4f000]/15 to-transparent z-10" />
 

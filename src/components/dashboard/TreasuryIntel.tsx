@@ -198,9 +198,9 @@ function TreasuryValueChart({
             <AreaChart data={chartData} margin={{ top: 8, right: 6, left: 0, bottom: 2 }}>
               <defs>
                 <linearGradient id="treasuryGradient" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#d4f000" stopOpacity={0.25} />
-                  <stop offset="30%" stopColor="#d4f000" stopOpacity={0.1} />
-                  <stop offset="70%" stopColor="#d4f000" stopOpacity={0.03} />
+                  <stop offset="0%" stopColor="#d4f000" stopOpacity={0.3} />
+                  <stop offset="25%" stopColor="#d4f000" stopOpacity={0.12} />
+                  <stop offset="60%" stopColor="#d4f000" stopOpacity={0.04} />
                   <stop offset="100%" stopColor="#d4f000" stopOpacity={0} />
                 </linearGradient>
                 <linearGradient id="treasuryStroke" x1="0" y1="0" x2="1" y2="0">
@@ -567,7 +567,7 @@ function HoldingCard({
       <div className="wr-hover-cue">● EXPAND ●</div>
 
       {/* External links — reveal on hover */}
-      <div className="flex flex-wrap gap-3 pt-3 border-t border-[#333]/20 pl-2 wr-links-reveal">
+      <div className="flex flex-wrap gap-3 pt-3 border-t border-[#333]/15 pl-2 wr-links-reveal">
         {[
           { label: 'SOLSCAN', href: `https://solscan.io/token/${holding.mint}` },
           ...(holding.bagsLink ? [{ label: 'BAGS.FM', href: holding.bagsLink }] : []),
