@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useEffect, useState } from "react";
+import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -170,6 +171,15 @@ export default function WarRoom() {
           <div className="opacity-80 pb-2">[10:42:05] INFO  - Found 12 new holders. Distributing 0.05 SOL.</div>
           <div className="opacity-80 pb-2">[10:42:06] INFO  - Awaiting next command.</div>
           <div className="animate-pulse mt-4 inline-block w-4 h-6 bg-[#d4f000] shadow-[0_0_10px_#d4f000]"></div>
+        </div>
+
+        <div className="mt-8 flex justify-center">
+          <Link
+            href="/war-room"
+            className="font-mono text-sm uppercase tracking-widest border-2 border-[#d4f000] text-[#d4f000] px-8 py-3 hover:bg-[#d4f000] hover:text-black transition-all duration-300 font-bold"
+          >
+            ENTER WAR ROOM
+          </Link>
         </div>
 
       </div>
