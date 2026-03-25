@@ -232,12 +232,26 @@ function SummaryCell({
   isLoading: boolean
   isError: boolean
 }) {
+  const valueRef = useRef<HTMLDivElement>(null)
+  const hasFlashed = useRef(false)
+
+  // Flash animation when value first loads
+  useEffect(() => {
+    if (isLoading || isError || hasFlashed.current || !valueRef.current) return
+    hasFlashed.current = true
+    gsap.fromTo(
+      valueRef.current,
+      { color: '#d4f000', textShadow: '0 0 12px rgba(212, 240, 0, 0.5)' },
+      { color: '#ffffff', textShadow: '0 0 0px transparent', duration: 1.2, ease: 'power2.out' }
+    )
+  }, [isLoading, isError])
+
   return (
-    <div className="px-5 lg:px-6 py-5">
-      <div className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#666] mb-2 font-bold">
+    <div className="px-5 lg:px-6 py-5 group/cell relative transition-colors duration-300 hover:bg-white/[0.01]">
+      <div className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#666] mb-2 font-bold group-hover/cell:text-[#888] transition-colors">
         {label}
       </div>
-      <div className="font-mono text-xl lg:text-2xl font-black text-white tabular-nums leading-none">
+      <div ref={valueRef} className="font-mono text-xl lg:text-2xl font-black text-white tabular-nums leading-none">
         {isLoading ? (
           <div className="wr-skeleton h-6 w-28" />
         ) : isError ? (
