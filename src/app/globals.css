@@ -516,7 +516,7 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  width: 40%;
+  width: 35%;
   height: 100%;
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.03), transparent);
   pointer-events: none;
@@ -586,7 +586,7 @@ body {
   50% { opacity: 0.018; text-shadow: 0 0 30px rgba(212, 240, 0, 0.02); }
 }
 .wr-breathe {
-  animation: wr-breathe 4.5s ease-in-out infinite;
+  animation: wr-breathe 5s ease-in-out infinite;
 }
 
 /* ── Sub-header Hover Effect ── */

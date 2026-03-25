@@ -209,7 +209,7 @@ export default function CommandHeader() {
             filter: 'blur(0px)',
             duration: 0.5,
             ease: 'power3.out',
-            stagger: 0.06,
+            stagger: 0.05,
             delay: 0.25,
           }
         )
