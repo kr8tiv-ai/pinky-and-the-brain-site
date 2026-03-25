@@ -206,7 +206,7 @@ body {
 /* ── Horizontal Rule / Section Divider ── */
 @keyframes wr-divider-pulse {
   0%, 100% { opacity: 1; }
-  50% { opacity: 0.55; }
+  50% { opacity: 0.5; }
 }
 
 .wr-divider {
@@ -535,7 +535,7 @@ body {
 }
 .wr-cursor::after {
   content: '▌';
-  color: rgba(212, 240, 0, 0.3);
+  color: rgba(212, 240, 0, 0.25);
   font-size: 0.75em;
   margin-left: 2px;
   animation: wr-cursor-blink 1s step-end infinite;
@@ -1160,7 +1160,7 @@ section:hover > .wr-section-badge-fire {
   transition: background 0.2s ease;
 }
 .wr-row-accent:hover::before {
-  background: rgba(255, 107, 53, 0.35);
+  background: rgba(255, 107, 53, 0.3);
 }
 
 /* ── Burn Bar Glow Trail ── */
