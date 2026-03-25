@@ -287,7 +287,7 @@ export default function BurnOperations() {
   }, [])
 
   return (
-    <section ref={sectionRef} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} className="w-full bg-[#0a0a0a] relative overflow-hidden wr-noise wr-section-tint wr-section-tint-fire" aria-label="Burn Operations">
+    <section ref={sectionRef} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} className="w-full bg-[#0a0a0a] relative overflow-hidden wr-noise wr-section-tint wr-section-tint-fire wr-inner-shadow" aria-label="Burn Operations">
       {/* Mouse-tracking fire glow */}
       <div ref={glowRef} className="absolute inset-0 pointer-events-none z-[1] transition-opacity duration-300" />
 

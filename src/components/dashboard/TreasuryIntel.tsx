@@ -219,7 +219,7 @@ function TreasuryValueChart({
                 tickLine={false}
               />
               <YAxis
-                tick={{ fill: '#333', fontSize: 8, fontFamily: 'var(--font-mono)' }}
+                tick={{ fill: '#444', fontSize: 8, fontFamily: 'var(--font-mono)' }}
                 axisLine={false}
                 tickLine={false}
                 tickFormatter={(v) => `$${(v / 1000).toFixed(0)}k`}
@@ -656,7 +656,7 @@ export default function TreasuryIntel() {
   }, [])
 
   return (
-    <section ref={sectionRef} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} className="w-full bg-[#0a0a0a] relative overflow-hidden wr-noise wr-section-tint" aria-label="Treasury Intelligence">
+    <section ref={sectionRef} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} className="w-full bg-[#0a0a0a] relative overflow-hidden wr-noise wr-section-tint wr-inner-shadow" aria-label="Treasury Intelligence">
       {/* Mouse-tracking lime spotlight */}
       <div ref={spotlightRef} className="absolute inset-0 pointer-events-none z-[1] transition-opacity duration-300" />
 

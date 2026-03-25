@@ -834,6 +834,12 @@ button:focus-visible {
   -webkit-line-clamp: unset;
 }
 
+/* ── Section Inner Shadow ── */
+.wr-inner-shadow {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.02),
+              inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+}
+
 /* ── Ticker Diamond Rotate ── */
 .ticker-track span .wr-ticker-diamond {
   display: inline-block;
