@@ -1,7 +1,9 @@
 import type { Metadata } from 'next'
 import CommandHeader from '@/components/dashboard/CommandHeader'
+import TokenInfoStrip from '@/components/dashboard/TokenInfoStrip'
 import TreasuryIntel from '@/components/dashboard/TreasuryIntel'
 import BurnOperations from '@/components/dashboard/BurnOperations'
+import SectionReveal from '@/components/dashboard/SectionReveal'
 
 export const metadata: Metadata = {
   title: 'War Room | $BRAIN Token',
@@ -32,45 +34,79 @@ export default function WarRoomPage() {
 
       {/* ── Content ── */}
       <div className="relative z-10">
+        {/* Command bar */}
         <CommandHeader />
 
-        {/* Decorative divider between header and content */}
-        <div className="wr-divider" />
-
-        <TreasuryIntel />
+        {/* Quick intel strip with links + ticker */}
+        <TokenInfoStrip />
 
         {/* Decorative divider */}
+        <div className="wr-divider" />
+
+        {/* Treasury Intel — scroll-triggered reveal */}
+        <SectionReveal>
+          <TreasuryIntel />
+        </SectionReveal>
+
+        {/* Decorative fire divider */}
         <div className="wr-divider-fire" />
 
-        <BurnOperations />
+        {/* Burn Operations — scroll-triggered reveal */}
+        <SectionReveal>
+          <BurnOperations />
+        </SectionReveal>
 
         {/* Phase 7+ sections */}
-        {/* <FeeDistribution /> */}
-        {/* <ReflectionsTerminal /> */}
+        {/* <SectionReveal><FeeDistribution /></SectionReveal> */}
+        {/* <SectionReveal><ReflectionsTerminal /></SectionReveal> */}
 
         {/* Staking stub */}
-        <section className="w-full border-b border-[#333]/30 bg-[#0a0a0a] py-16">
-          <div className="flex flex-col items-center justify-center gap-4">
-            <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#333] font-bold">
-              PHASE 2
+        <SectionReveal>
+          <section className="w-full bg-[#0a0a0a] py-20 relative overflow-hidden">
+            <div className="absolute inset-0 opacity-[0.015] pointer-events-none"
+              style={{
+                backgroundImage: 'repeating-linear-gradient(-45deg, transparent, transparent 20px, rgba(255,255,255,0.05) 20px, rgba(255,255,255,0.05) 21px)',
+              }}
+            />
+            <div className="relative flex flex-col items-center justify-center gap-5">
+              <div className="font-mono text-[9px] uppercase tracking-[0.3em] text-[#333] font-bold">
+                PHASE 2 — COMING SOON
+              </div>
+              <div className="font-mono text-3xl font-black text-[#1a1a1a] tracking-wider select-none flicker">
+                ████████████████████████████
+              </div>
+              <div className="wr-tag border-[#333]/40 text-[#333]">
+                CLASSIFIED
+              </div>
+              <div className="font-mono text-[8px] uppercase tracking-[0.2em] text-[#222] mt-2">
+                STAKING · GOVERNANCE · YIELD MECHANICS
+              </div>
             </div>
-            <div className="font-mono text-2xl font-black text-[#1a1a1a] tracking-wider">
-              ████████████████████
-            </div>
-            <div className="wr-tag border-[#333] text-[#333]">
-              CLASSIFIED
-            </div>
-          </div>
-        </section>
+          </section>
+        </SectionReveal>
 
-        {/* Footer bar */}
-        <footer className="w-full border-t border-[#333]/30 bg-[#0a0a0a] px-6 lg:px-12 py-6">
-          <div className="flex justify-between items-center">
-            <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#333]">
-              $BRAIN INTELLIGENCE COMMAND &mdash; ALL DATA LIVE ON-CHAIN
+        {/* Footer */}
+        <footer className="w-full border-t border-[#333]/15 bg-[#0a0a0a] px-5 lg:px-8 py-8">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <div className="flex items-center gap-3">
+              <div className="w-1 h-3 bg-[#d4f000]/30" />
+              <div className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#333]">
+                $BRAIN INTELLIGENCE COMMAND
+              </div>
             </div>
-            <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#333]">
-              PINKYANDTHEBRAIN.FUN
+            <div className="flex items-center gap-6">
+              <span className="font-mono text-[8px] uppercase tracking-[0.15em] text-[#333]">
+                ALL DATA LIVE ON-CHAIN
+              </span>
+              <span className="w-px h-3 bg-[#333]/30" />
+              <a
+                href="https://pinkyandthebrain.fun"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-mono text-[9px] uppercase tracking-[0.15em] text-[#444] hover:text-[#d4f000] transition-colors"
+              >
+                PINKYANDTHEBRAIN.FUN ↗
+              </a>
             </div>
           </div>
         </footer>
