@@ -477,7 +477,7 @@ body {
   top: 0;
   left: 0;
   right: 0;
-  height: 2px;
+  height: 1px;
   background: linear-gradient(90deg, transparent 0%, #d4f000 50%, transparent 100%);
 }
 
@@ -1337,10 +1337,10 @@ section:hover > .wr-section-badge-fire {
 .wr-summary-glow-divider > * + *::before {
   content: '';
   position: absolute;
-  top: 20%;
+  top: 15%;
   left: -1px;
   width: 1px;
-  bottom: 20%;
+  bottom: 15%;
   background: linear-gradient(to bottom, transparent, rgba(212, 240, 0, 0.08), transparent);
   pointer-events: none;
 }
