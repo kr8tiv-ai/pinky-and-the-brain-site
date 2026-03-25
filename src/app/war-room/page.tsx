@@ -244,7 +244,7 @@ export default function WarRoomPage() {
             {/* Disclaimer */}
             <div className="text-center mb-4 relative">
               <div className="absolute left-1/2 -translate-x-1/2 bottom-0 w-24 h-px bg-gradient-to-r from-transparent via-[#333]/10 to-transparent" />
-              <span className="font-mono text-[6px] uppercase tracking-[0.25em] text-[#1a1a1a]/80 font-bold">
+              <span className="font-mono text-[6px] uppercase tracking-[0.3em] text-[#1a1a1a]/70 font-bold">
                 NOT FINANCIAL ADVICE — DYOR — ALL DATA FOR INFORMATIONAL PURPOSES ONLY
               </span>
             </div>
@@ -283,7 +283,7 @@ export default function WarRoomPage() {
                 <span className="font-mono text-[7px] uppercase tracking-[0.1em] text-[#1a1a1a] hover:text-[#444] transition-colors duration-300 flex items-center gap-1.5">
                   © 2025–2026 $BRAIN
                   <span className="text-[5px] text-[#333]/20">·</span>
-                  <span className="text-[6px] text-[#1a1a1a]/60">v2.0.210</span>
+                  <span className="text-[6px] text-[#1a1a1a]/60">v2.0.220</span>
                 </span>
               </div>
             </div>
