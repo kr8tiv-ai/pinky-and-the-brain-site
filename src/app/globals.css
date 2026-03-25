@@ -725,7 +725,7 @@ body {
 /* ── Focus Ring (war room style) ── */
 a:focus-visible,
 button:focus-visible {
-  outline: 1px solid rgba(212, 240, 0, 0.4);
+  outline: 1px solid rgba(212, 240, 0, 0.3);
   outline-offset: 2px;
 }
 
@@ -807,7 +807,7 @@ button:focus-visible {
 /* ── Scroll Indicator ── */
 @keyframes wr-scroll-bounce {
   0%, 100% { transform: translateY(0); opacity: 0.4; }
-  50% { transform: translateY(4px); opacity: 0.8; }
+  50% { transform: translateY(3px); opacity: 0.7; }
 }
 .wr-scroll-hint {
   animation: wr-scroll-bounce 3s ease-in-out 1s infinite;
