@@ -173,7 +173,7 @@ function TransactionRow({
           className="text-[#ff6b35]/60 hover:text-[#ff6b35] transition-colors flex items-center gap-1 wr-link-hover"
         >
           <span className="tabular-nums">{tx.txHash.slice(0, 6)}<span className="text-[#333] mx-0.5">···</span>{tx.txHash.slice(-4)}</span>
-          <span className="text-[8px]">↗</span>
+          <span className="text-[7px]">↗</span>
         </a>
         <button
           onClick={() => navigator.clipboard.writeText(tx.txHash)}
