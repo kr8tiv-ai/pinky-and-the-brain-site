@@ -231,7 +231,7 @@ function TreasuryValueChart({
                 tickFormatter={(v) => v >= 1000 ? `$${(v / 1000).toFixed(1)}k` : `$${v.toFixed(0)}`}
                 width={42}
               />
-              <Tooltip content={(props) => <CustomChartTooltip {...(props as TooltipContentProps)} />} cursor={{ stroke: 'rgba(212, 240, 0, 0.15)', strokeDasharray: '2 4', strokeWidth: 1 }} />
+              <Tooltip content={(props) => <CustomChartTooltip {...(props as TooltipContentProps)} />} cursor={{ stroke: 'rgba(212, 240, 0, 0.12)', strokeDasharray: '2 4', strokeWidth: 1 }} />
               <Area
                 type="monotone"
                 dataKey="valueUsd"
@@ -542,7 +542,7 @@ function HoldingCard({
         ].map(({ label, value, highlight }, i) => (
           <div key={label} className={`py-2.5 relative wr-data-cell ${i >= 2 ? 'border-t border-[#333]/8' : ''}`}>
             <div className="uppercase tracking-[0.15em] text-[#444] mb-1 font-bold font-mono flex items-center gap-1.5">
-              <span className="text-[#d4f000]/10 text-[6px] group-hover/card:text-[#d4f000]/25 transition-colors duration-300">▸</span>
+              <span className="text-[#d4f000]/8 text-[6px] group-hover/card:text-[#d4f000]/20 transition-colors duration-300">▸</span>
               {label}
             </div>
             <div className={`tabular-nums font-bold font-mono wr-data-cell-value ${highlight ? 'text-[#d4f000] wr-value-highlight' : 'text-white'}`}>{value}</div>
