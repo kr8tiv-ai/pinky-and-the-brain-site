@@ -608,8 +608,8 @@ body {
 
 /* ── Card Hover Lift ── */
 .wr-card-lift {
-  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1),
-              box-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1),
+              box-shadow 0.35s cubic-bezier(0.25, 1, 0.5, 1);
 }
 .wr-card-lift:hover {
   transform: translateY(-2px);
@@ -787,7 +787,7 @@ button:focus-visible {
   border-left: 1px solid rgba(212, 240, 0, 0.08);
 }
 .wr-section-badge-fire {
-  color: rgba(255, 107, 53, 0.1);
+  color: rgba(255, 107, 53, 0.08);
   border-left-color: rgba(255, 107, 53, 0.08);
 }
 
@@ -1090,7 +1090,7 @@ section:hover > .wr-section-badge-fire {
   height: 3px;
   background: rgba(10, 10, 10, 0.97);
   clip-path: polygon(0 0, 100% 0, 50% 100%);
-  border-bottom: 1px solid rgba(51, 51, 51, 0.4);
+  border-bottom: 1px solid rgba(51, 51, 51, 0.3);
 }
 
 /* ── Fire Particle Dots ── */
