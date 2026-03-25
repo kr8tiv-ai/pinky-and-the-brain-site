@@ -340,7 +340,7 @@ export default function BurnOperations() {
       {/* Section header */}
       <div className="relative flex justify-between items-center px-5 lg:px-8 py-6 border-b border-[#333]/20 wr-brackets wr-brackets-fire wr-header-line text-[#ff6b35]">
         <div className="flex items-center gap-3">
-          <div className="w-1 bg-[#ff6b35] wr-accent-bar" />
+          <div className="w-1 bg-[#ff6b35] wr-accent-bar wr-accent-bar-pulse" />
           <div>
             <div className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#555] font-bold mb-0.5 wr-section-num">
               SECTION 02
@@ -412,9 +412,9 @@ export default function BurnOperations() {
           )}
           {/* Milestone markers */}
           {[25, 50, 75].map(pct => (
-            <div key={pct} className="absolute top-0 bottom-0" style={{ left: `${pct}%` }}>
-              <div className="w-px h-full bg-[#333]/40" />
-              <div className="absolute -top-[2px] left-1/2 -translate-x-1/2 w-1 h-1 bg-[#333]/30 rounded-full" />
+            <div key={pct} className="absolute top-0 bottom-0 group/milestone" style={{ left: `${pct}%` }}>
+              <div className="w-px h-full bg-[#333]/40 group-hover/milestone:bg-[#ff6b35]/20 transition-colors duration-300" />
+              <div className="absolute -top-[2px] left-1/2 -translate-x-1/2 w-1 h-1 bg-[#333]/30 group-hover/milestone:bg-[#ff6b35]/40 rounded-full transition-colors duration-300" />
             </div>
           ))}
         </div>

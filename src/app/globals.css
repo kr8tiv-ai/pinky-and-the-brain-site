@@ -140,6 +140,7 @@ body {
   .wr-chart-entrance,
   .wr-tooltip-entrance,
   .wr-skeleton-diagonal,
+  .wr-accent-bar-pulse:hover,
   .animate-spin {
     animation: none !important;
   }
@@ -824,6 +825,24 @@ button:focus-visible {
 }
 .wr-float {
   animation: wr-float 3s ease-in-out infinite;
+}
+
+/* ── Section Accent Bar Pulse ── */
+@keyframes wr-accent-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+.wr-accent-bar-pulse:hover {
+  animation: wr-accent-pulse 2s ease-in-out infinite;
+}
+
+/* ── External Link Icon Shift ── */
+.wr-ext-link-icon {
+  transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1), color 0.2s ease;
+  display: inline-block;
+}
+.wr-ext-link-icon:hover {
+  transform: translate(1px, -1px) scale(1.1);
 }
 
 /* ── Section Accent Bar Entry ── */
