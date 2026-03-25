@@ -147,7 +147,7 @@ export default function WarRoomPage() {
             </div>
 
             {/* Watermark */}
-            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-[16rem] font-black text-white/[0.01] leading-none select-none pointer-events-none font-sans tracking-tighter wr-breathe wr-watermark" style={{ animationDuration: '6s' }}>
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-[14rem] font-black text-white/[0.01] leading-none select-none pointer-events-none font-sans tracking-tighter wr-breathe wr-watermark" style={{ animationDuration: '6s' }}>
               03
             </div>
 
@@ -237,7 +237,7 @@ export default function WarRoomPage() {
 
           <div className="relative px-5 lg:px-8 py-8">
             {/* Big watermark — breathing glow */}
-            <div className="absolute right-8 bottom-4 text-[6rem] font-black text-white/[0.008] leading-none select-none pointer-events-none font-sans tracking-tighter wr-breathe wr-watermark" style={{ WebkitTextStroke: '1px rgba(212, 240, 0, 0.015)' }}>
+            <div className="absolute right-8 bottom-4 text-[5rem] font-black text-white/[0.008] leading-none select-none pointer-events-none font-sans tracking-tighter wr-breathe wr-watermark" style={{ WebkitTextStroke: '1px rgba(212, 240, 0, 0.015)' }}>
               $BRAIN
             </div>
 
