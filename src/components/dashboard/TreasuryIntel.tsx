@@ -185,7 +185,7 @@ function TreasuryValueChart({
               <path d="M7 16l4-4 4 4 5-5" />
             </svg>
           </div>
-          <span className="text-[#333] font-mono text-[10px] tracking-[0.2em]">INSUFFICIENT DATA POINTS</span>
+          <span className="text-[#2a2a2a] font-mono text-[10px] tracking-[0.2em]">INSUFFICIENT DATA POINTS</span>
         </div>
       ) : (
         <div className="h-[260px] relative border border-[#333]/6 bg-[#0a0a0a]/50 p-3 rounded wr-chart-frame wr-chart-entrance">
