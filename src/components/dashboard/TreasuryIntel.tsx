@@ -675,7 +675,7 @@ export default function TreasuryIntel() {
     const rect = sectionRef.current.getBoundingClientRect()
     const x = e.clientX - rect.left
     const y = e.clientY - rect.top
-    spotlightRef.current.style.background = `radial-gradient(400px circle at ${x}px ${y}px, rgba(212, 240, 0, 0.03), transparent 60%)`
+    spotlightRef.current.style.background = `radial-gradient(380px circle at ${x}px ${y}px, rgba(212, 240, 0, 0.025), transparent 60%)`
   }, [])
 
   const handleMouseLeave = useCallback(() => {
