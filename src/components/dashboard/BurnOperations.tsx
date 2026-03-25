@@ -284,7 +284,7 @@ export default function BurnOperations() {
     const ctx = gsap.context(() => {
       gsap.fromTo(
         sectionRef.current,
-        { opacity: 0, y: 16 },
+        { opacity: 0, y: 14 },
         { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }
       )
     }, sectionRef)

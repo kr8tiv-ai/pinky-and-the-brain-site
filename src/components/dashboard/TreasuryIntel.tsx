@@ -146,7 +146,7 @@ function CustomChartTooltip({ active, payload, label }: TooltipContentProps) {
         <span className="text-[#666] text-[8px] uppercase tracking-[0.25em] font-black">{label}</span>
       </div>
       <div className="text-[#d4f000] font-black text-lg tabular-nums wr-gradient-text-lime leading-tight">{formatUsd(numericValue)}</div>
-      <div className="mt-1.5 font-mono text-[7px] text-[#333]/60 uppercase tracking-[0.2em]">PORTFOLIO VALUE</div>
+      <div className="mt-1.5 font-mono text-[7px] text-[#333]/70 uppercase tracking-[0.2em]">PORTFOLIO VALUE</div>
     </div>
   )
 }
@@ -362,7 +362,7 @@ function ClassifiedCard({ mint }: { mint: string }) {
         {/* Diagonal line pattern */}
         <div className="absolute inset-0 opacity-[0.04] pointer-events-none"
           style={{
-            backgroundImage: 'repeating-linear-gradient(-45deg, transparent, transparent 8px, rgba(255,158,158,0.1) 8px, rgba(255,158,158,0.1) 9px)',
+            backgroundImage: 'repeating-linear-gradient(-45deg, transparent, transparent 10px, rgba(255,158,158,0.1) 10px, rgba(255,158,158,0.1) 11px)',
           }}
         />
 
