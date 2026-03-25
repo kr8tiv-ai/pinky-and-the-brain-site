@@ -55,6 +55,13 @@ Plans:
 - "LIVE" pulsing indicator with connection status
 - Match classified/dark ops aesthetic exactly
 
+**Goal:** Working /war-room page with live CommandHeader and navigation from landing page
+**Plans:** 1 plan
+**Requirements:** [R1, R10]
+
+Plans:
+- [ ] 04-01-PLAN.md — Page shell, CommandHeader with live price, landing page navigation
+
 ### Phase 5: Treasury Intel Section
 - TreasuryIntel.tsx: SOL balance + all SPL token holdings
 - Per-token display: name, contract, amount, current value, purchase date/price, gain/loss
