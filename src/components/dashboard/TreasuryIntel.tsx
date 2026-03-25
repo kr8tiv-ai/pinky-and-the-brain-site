@@ -454,7 +454,7 @@ function HoldingCard({
   return (
     <div ref={cardRef} data-wr-reveal className="relative p-[1px] overflow-hidden group/card wr-brackets wr-shine wr-card-lift wr-card-spotlight rounded-sm">
       {/* Mouse-tracking spotlight */}
-      <div className="wr-spotlight-layer bg-[radial-gradient(300px_circle_at_var(--mouse-x,50%)_var(--mouse-y,50%),rgba(212,240,0,0.04),transparent_60%)]" />
+      <div className="wr-spotlight-layer bg-[radial-gradient(350px_circle_at_var(--mouse-x,50%)_var(--mouse-y,50%),rgba(212,240,0,0.035),transparent_60%)]" />
       {/* Conic gradient spinner — like Tokenomics cards */}
       <div
         className="absolute inset-[-100%] animate-spin opacity-0 group-hover/card:opacity-60 transition-opacity duration-700 pointer-events-none"
