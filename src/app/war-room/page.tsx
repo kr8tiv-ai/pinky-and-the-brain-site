@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import CommandHeader from '@/components/dashboard/CommandHeader'
 
 export const metadata: Metadata = {
   title: 'War Room | $BRAIN Token',
@@ -7,17 +8,17 @@ export const metadata: Metadata = {
 
 export default function WarRoomPage() {
   return (
-    <main className="min-h-screen bg-[#0d0d0d] flex items-center justify-center">
-      <div className="text-center">
-        <h1 className="text-4xl md:text-6xl font-black text-white tracking-tighter uppercase mb-4">
-          War <span className="text-[#d4f000]">Room</span>
-        </h1>
-        <p className="font-mono text-[#cccccc] text-sm tracking-widest uppercase">
-          Dashboard under construction
-        </p>
-        <div className="mt-6 font-mono text-xs text-[#d4f000] animate-pulse">
-          Phase 2 incoming...
-        </div>
+    <main className="relative w-full min-h-screen bg-[#0d0d0d] text-[#cccccc] overflow-x-hidden">
+      {/* Ambient glow background */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <div className="absolute top-0 left-1/4 w-[60vw] h-[40vw] max-w-4xl bg-[#d4f000] rounded-full mix-blend-screen filter blur-[160px] opacity-[0.06]" />
+        <div className="absolute bottom-0 right-1/4 w-[40vw] h-[30vw] max-w-3xl bg-[#ff9e9e] rounded-full mix-blend-screen filter blur-[160px] opacity-[0.05]" />
+        <div className="absolute inset-0 bg-[url('/noise.gif')] opacity-[0.03] mix-blend-screen pointer-events-none" />
+      </div>
+
+      <div className="relative z-10">
+        <CommandHeader />
+        {/* Phase 5+ sections: <TreasuryIntel />, <BurnOperations />, <FeeDistribution />, etc. */}
       </div>
     </main>
   )
