@@ -265,7 +265,7 @@ export default function WarRoomPage() {
                   href="https://pinkyandthebrain.fun"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-mono text-[9px] uppercase tracking-[0.15em] text-[#444] hover:text-[#d4f000] transition-colors wr-glitch-hover wr-link-hover wr-footer-link"
+                  className="font-mono text-[9px] uppercase tracking-[0.15em] text-[#444] hover:text-[#d4f000] transition-colors wr-glitch-hover wr-footer-link wr-footer-link-grow"
                 >
                   PINKYANDTHEBRAIN.FUN ↗
                 </a>

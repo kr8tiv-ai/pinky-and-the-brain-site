@@ -140,7 +140,7 @@ function CustomChartTooltip({ active, payload, label }: TooltipContentProps) {
   const rawValue = (payload[0] as { value?: TooltipValueType }).value
   const numericValue = typeof rawValue === 'number' ? rawValue : 0
   return (
-    <div className="wr-tooltip-enhanced wr-tooltip-caret px-5 py-4 font-mono text-xs">
+    <div className="wr-tooltip-enhanced wr-tooltip-caret wr-tooltip-entrance px-5 py-4 font-mono text-xs">
       <div className="flex items-center gap-2 mb-2.5">
         <div className="w-1.5 h-1.5 bg-[#d4f000] rounded-full" style={{ boxShadow: '0 0 6px #d4f000' }} />
         <span className="text-[#666] text-[9px] uppercase tracking-[0.2em] font-bold">{label}</span>
@@ -324,10 +324,10 @@ function LoadingCard({ index = 0 }: { index?: number }) {
         <div className="absolute top-0 left-0 w-[3px] h-full bg-gradient-to-b from-[#333]/40 via-[#333]/20 to-transparent" />
         <div className="pl-2">
           <div className="flex justify-between items-start mb-4">
-            <div className="wr-skeleton h-4 w-24" style={{ animationDelay: `${index * 150}ms` }} />
-            <div className="wr-skeleton h-4 w-12" style={{ animationDelay: `${index * 150 + 100}ms` }} />
+            <div className="wr-skeleton-diagonal h-4 w-24" style={{ animationDelay: `${index * 150}ms` }} />
+            <div className="wr-skeleton-diagonal h-4 w-12" style={{ animationDelay: `${index * 150 + 100}ms` }} />
           </div>
-          <div className="wr-skeleton h-3 w-32 mb-4" style={{ animationDelay: `${index * 150 + 200}ms` }} />
+          <div className="wr-skeleton-diagonal h-3 w-32 mb-4" style={{ animationDelay: `${index * 150 + 200}ms` }} />
           <div className="grid grid-cols-2 gap-x-4 gap-y-4">
             {Array.from({ length: 6 }).map((_, i) => (
               <div key={i}>
