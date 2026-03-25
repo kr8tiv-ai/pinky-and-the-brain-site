@@ -395,13 +395,13 @@ body {
 /* ── Ambient Orb Drift ── */
 @keyframes wr-orb-drift-1 {
   0%, 100% { transform: translate(0, 0); }
-  25% { transform: translate(3.5vw, 2.5vh); }
+  25% { transform: translate(3vw, 2.5vh); }
   50% { transform: translate(-2.5vw, 4.5vh); }
   75% { transform: translate(4.5vw, -1.5vh); }
 }
 @keyframes wr-orb-drift-2 {
   0%, 100% { transform: translate(0, 0); }
-  33% { transform: translate(-4.5vw, -3.5vh); }
+  33% { transform: translate(-4vw, -3.5vh); }
   66% { transform: translate(2.5vw, 3.5vh); }
 }
 @keyframes wr-orb-drift-3 {
@@ -411,7 +411,7 @@ body {
 
 .wr-orb-1 { animation: wr-orb-drift-1 24s ease-in-out infinite; will-change: transform; }
 .wr-orb-2 { animation: wr-orb-drift-2 30s ease-in-out infinite; will-change: transform; }
-.wr-orb-3 { animation: wr-orb-drift-3 21s ease-in-out infinite; will-change: transform; }
+.wr-orb-3 { animation: wr-orb-drift-3 23s ease-in-out infinite; will-change: transform; }
 
 /* ── External Link Hover Underline ── */
 .wr-link-hover {
