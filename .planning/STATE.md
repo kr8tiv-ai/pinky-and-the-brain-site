@@ -4,11 +4,12 @@
 Phase 3: Next.js API Routes & React Query Setup — IN PROGRESS
 
 ## Current Plan
-03-02 (next plan)
+03-02 COMPLETE — Phase 3 complete, next: Phase 4
 
 ## Completed Phases
 - Phase 1: Project Setup & Dependencies (commit 04c6c1c)
 - Phase 2: API Layer (02-01, 02-02, 02-03 all complete)
+- Phase 3: Next.js API Routes & React Query Setup (03-01, 03-02 all complete)
 
 ## Completed Plans (Phase 2)
 - 02-01: Foundational API wrappers (helius.ts, birdeye.ts, solscan.ts) — commits fc6c9a7, cb45666, 89f28e3
@@ -17,6 +18,7 @@ Phase 3: Next.js API Routes & React Query Setup — IN PROGRESS
 
 ## Completed Plans (Phase 3)
 - 03-01: API Route Handlers (price, burns, holders, wallet/[address], lp-fees) — commits 68ab38f, 6128e2f
+- 03-02: React Query hooks (usePrice, useTreasury, useBurns, useHolders, useWallet, useLpFees) — commits dfe6160, 5b78a29
 
 ## Decisions
 - Dashboard route: /war-room
@@ -44,9 +46,13 @@ Phase 3: Next.js API Routes & React Query Setup — IN PROGRESS
 - wallet route uses await params pattern required by Next.js 16 dynamic route Promise params
 - lp-fees route maps inflows to drop fromAddress field to match LpFeeResponse type exactly
 - holders endpoint at /api/holders is canonical war-room endpoint; /api/hall-of-fame stays for landing page compatibility
+- useWallet is a single generic hook serving R6/R7/R8 — callers pass MARKETING_WALLET, DEV_WALLET, LP_WALLET; address in queryKey handles per-wallet cache deduplication
+- usePrice staleTime=30s (below global 60s) so price feels live; refetchInterval=60s caps network load
+- React Query v5: no onError callbacks — error surfaces via result.isError/result.error
+- HolderResponse[] returned as array (not wrapped object) matching /api/holders route output
 
 ## Last Session
-- Stopped at: Completed 03-01-PLAN.md (API route handlers — price, burns, holders, wallet, lp-fees)
+- Stopped at: Completed 03-02-PLAN.md (React Query hooks — usePrice, useTreasury, useBurns, useHolders, useWallet, useLpFees)
 - Date: 2026-03-25
 
 ## API Keys Configured
