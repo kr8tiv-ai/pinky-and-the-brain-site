@@ -909,7 +909,7 @@ button:focus-visible {
 .wr-fire-line {
   background: linear-gradient(90deg, transparent 0%, #ff6b35 20%, #ff9e9e 50%, #ff6b35 80%, transparent 100%);
   background-size: 200% 100%;
-  animation: wr-fire-line 3.5s linear infinite;
+  animation: wr-fire-line 3s linear infinite;
 }
 
 /* ── Fire Gradient Text ── */
