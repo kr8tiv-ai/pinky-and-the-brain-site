@@ -760,8 +760,14 @@ button:focus-visible {
   width: 3px;
   height: 40px;
   background: linear-gradient(to bottom, transparent, currentColor, transparent);
-  opacity: 0.2;
+  opacity: 0.15;
   pointer-events: none;
+  display: none;
+}
+@media (min-width: 768px) {
+  .wr-edge-marker {
+    display: block;
+  }
 }
 
 /* ── Section Number Badge ── */
