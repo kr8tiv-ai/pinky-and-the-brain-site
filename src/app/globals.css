@@ -96,7 +96,7 @@ body {
 .ticker-track {
   display: flex;
   width: max-content;
-  animation: ticker-scroll 24s linear infinite;
+  animation: ticker-scroll 26s linear infinite;
   will-change: transform;
 }
 .ticker-track:hover {
@@ -821,7 +821,7 @@ button:focus-visible {
   100% { transform: translate(-3px, 0); }
 }
 .wr-watermark {
-  animation: wr-watermark-drift 35s ease-in-out infinite;
+  animation: wr-watermark-drift 38s ease-in-out infinite;
   will-change: transform;
 }
 
@@ -1183,7 +1183,7 @@ section:hover > .wr-section-badge-fire {
 /* ── Logo Hover Pulse ── */
 @keyframes wr-logo-pulse {
   0% { text-shadow: 0 0 0 transparent; }
-  50% { text-shadow: 0 0 10px rgba(212, 240, 0, 0.35); }
+  50% { text-shadow: 0 0 8px rgba(212, 240, 0, 0.3); }
   100% { text-shadow: 0 0 0 transparent; }
 }
 .wr-logo-pulse:hover {
