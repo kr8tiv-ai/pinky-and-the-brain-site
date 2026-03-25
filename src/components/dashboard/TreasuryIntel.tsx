@@ -142,7 +142,7 @@ function CustomChartTooltip({ active, payload, label }: TooltipContentProps) {
   return (
     <div className="wr-tooltip-enhanced wr-tooltip-caret wr-tooltip-entrance px-4 py-3.5 font-mono text-xs">
       <div className="flex items-center gap-2 mb-2.5">
-        <div className="w-1.5 h-1.5 bg-[#d4f000] rounded-full" style={{ boxShadow: '0 0 6px #d4f000' }} />
+        <div className="w-1.5 h-1.5 bg-[#d4f000] rounded-full" style={{ boxShadow: '0 0 4px #d4f000' }} />
         <span className="text-[#666] text-[8px] uppercase tracking-[0.25em] font-black">{label}</span>
       </div>
       <div className="text-[#d4f000] font-black text-lg tabular-nums wr-gradient-text-lime leading-tight">{formatUsd(numericValue)}</div>
@@ -240,7 +240,7 @@ function TreasuryValueChart({
                 fill="url(#treasuryGradient)"
                 dot={false}
                 activeDot={{
-                  r: 5,
+                  r: 4.5,
                   fill: '#d4f000',
                   stroke: '#0a0a0a',
                   strokeWidth: 2,
@@ -632,7 +632,7 @@ function DivestedSection() {
                 <tr key={h.mint} className={`border-b border-[#333]/10 transition-all duration-200 hover:bg-[#ff9e9e]/[0.02] hover:border-l-2 hover:border-l-[#ff9e9e]/20 ${i % 2 === 1 ? 'bg-white/[0.008]' : ''}`}>
                   <td className="py-3.5 pr-6">
                     <span className="flex items-center gap-2">
-                      <span className="w-1 h-1 bg-[#ff9e9e]/20 rounded-full" />
+                      <span className="w-1.5 h-1.5 bg-[#ff9e9e]/15 rounded-full" />
                       <span className="text-[#ff9e9e]/80 font-black uppercase">{h.symbol}</span>
                     </span>
                   </td>
