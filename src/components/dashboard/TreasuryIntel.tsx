@@ -373,8 +373,12 @@ function ClassifiedCard({ mint }: { mint: string }) {
           <div className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#444] mb-3 font-bold">
             ASSET #{mint.slice(0, 8)}
           </div>
-          <div className="text-xl font-black text-[#1a1a1a] tracking-widest select-none flicker mb-4 leading-none">
+          <div className="text-xl font-black text-[#1a1a1a] tracking-widest select-none flicker mb-1 leading-none group-hover/classified:text-[#222] transition-colors duration-700">
             ████████████████
+          </div>
+          {/* Peek reveal — faded mint on hover */}
+          <div className="font-mono text-[8px] text-transparent group-hover/classified:text-[#333]/40 transition-colors duration-1000 mb-4 truncate">
+            {mint}
           </div>
           <div className="flex items-center gap-2 mb-4">
             <div className="wr-tag border-[#ff9e9e]/20 text-[#ff9e9e]/40">
@@ -389,9 +393,10 @@ function ClassifiedCard({ mint }: { mint: string }) {
               href={`https://solscan.io/token/${mint}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-mono text-[10px] text-[#d4f000]/60 hover:text-[#d4f000] transition-colors wr-link-hover"
+              className="font-mono text-[9px] text-[#d4f000]/50 hover:text-[#d4f000] transition-all duration-200 wr-link-hover flex items-center gap-1 group/link"
             >
-              SOLSCAN ↗
+              SOLSCAN
+              <span className="text-[7px] opacity-50 group-hover/link:opacity-100 transition-opacity">↗</span>
             </a>
           </div>
         </div>
@@ -502,41 +507,32 @@ function HoldingCard({
 
       {/* Description */}
       {holding.description && (
-        <div className="text-[#555] text-[10px] italic mb-3 border-t border-[#333]/20 pt-3 pl-2 leading-relaxed font-mono">
-          {holding.description}
+        <div className="relative border-t border-[#333]/20 pt-3 pl-4 mb-3">
+          <div className="absolute top-3 left-0 w-[2px] h-[calc(100%-12px)] bg-gradient-to-b from-[#d4f000]/20 to-transparent" />
+          <div className="text-[#555] text-[10px] italic leading-relaxed font-mono">
+            &ldquo;{holding.description}&rdquo;
+          </div>
         </div>
       )}
 
       {/* External links */}
-      <div className="flex flex-wrap gap-4 pt-3 border-t border-[#333]/20 pl-2">
-        <a
-          href={`https://solscan.io/token/${holding.mint}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="font-mono text-[10px] text-[#d4f000]/60 hover:text-[#d4f000] transition-colors wr-link-hover"
-        >
-          SOLSCAN ↗
-        </a>
-        {holding.bagsLink && (
+      <div className="flex flex-wrap gap-3 pt-3 border-t border-[#333]/20 pl-2">
+        {[
+          { label: 'SOLSCAN', href: `https://solscan.io/token/${holding.mint}` },
+          ...(holding.bagsLink ? [{ label: 'BAGS.FM', href: holding.bagsLink }] : []),
+          ...(holding.xAccount ? [{ label: '𝕏', href: holding.xAccount }] : []),
+        ].map(({ label, href }) => (
           <a
-            href={holding.bagsLink}
+            key={label}
+            href={href}
             target="_blank"
             rel="noopener noreferrer"
-            className="font-mono text-[10px] text-[#d4f000]/60 hover:text-[#d4f000] transition-colors wr-link-hover"
+            className="font-mono text-[9px] text-[#d4f000]/50 hover:text-[#d4f000] transition-all duration-200 wr-link-hover flex items-center gap-1 group/link"
           >
-            BAGS.FM ↗
+            {label}
+            <span className="text-[7px] opacity-50 group-hover/link:opacity-100 group-hover/link:translate-x-0.5 transition-all duration-200">↗</span>
           </a>
-        )}
-        {holding.xAccount && (
-          <a
-            href={holding.xAccount}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-mono text-[10px] text-[#d4f000]/60 hover:text-[#d4f000] transition-colors wr-link-hover"
-          >
-            𝕏 ↗
-          </a>
-        )}
+        ))}
       </div>
       </div>{/* end inner card */}
     </div>
