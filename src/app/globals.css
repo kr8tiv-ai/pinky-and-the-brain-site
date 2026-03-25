@@ -1122,7 +1122,7 @@ section:hover > .wr-section-badge-fire {
 
 /* ── Fire Summary Bar Bottom Accent ── */
 .wr-summary-accent-fire::after {
-  background: linear-gradient(90deg, transparent, rgba(255, 107, 53, 0.1), rgba(255, 107, 53, 0.05), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 107, 53, 0.08), rgba(255, 107, 53, 0.04), transparent);
 }
 
 /* ── Empty State Pulse Ring ── */
