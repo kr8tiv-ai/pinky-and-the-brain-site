@@ -1096,7 +1096,7 @@ section:hover > .wr-section-badge-fire {
 /* ── Fire Particle Dots ── */
 @keyframes wr-ember-rise {
   0% { transform: translateY(0) scale(1); opacity: 0.45; }
-  100% { transform: translateY(-30px) scale(0.3); opacity: 0; }
+  100% { transform: translateY(-25px) scale(0.3); opacity: 0; }
 }
 .wr-ember {
   position: absolute;

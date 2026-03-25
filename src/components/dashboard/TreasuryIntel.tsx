@@ -401,7 +401,7 @@ function ClassifiedCard({ mint }: { mint: string }) {
             <div className="wr-tag wr-tag-glow border-[#ff9e9e]/20 text-[#ff9e9e]/40">
               CLASSIFIED
             </div>
-            <div className="wr-tag wr-tag-glow border-[#333]/30 text-[#333]">
+            <div className="wr-tag wr-tag-glow border-[#333]/25 text-[#333]">
               REDACTED
             </div>
           </div>
