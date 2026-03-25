@@ -302,7 +302,7 @@ export default function BurnOperations() {
       {/* Section header */}
       <div className="relative flex justify-between items-center px-5 lg:px-8 py-6 border-b border-[#333]/20 wr-brackets wr-brackets-fire">
         <div className="flex items-center gap-3">
-          <div className="w-1 h-5 bg-[#ff6b35]" />
+          <div className="w-1 bg-[#ff6b35] wr-accent-bar" />
           <div>
             <div className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#555] font-bold mb-0.5">
               SECTION 02

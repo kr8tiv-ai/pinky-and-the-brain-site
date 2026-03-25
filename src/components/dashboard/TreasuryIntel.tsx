@@ -341,10 +341,10 @@ function ClassifiedCard({ mint }: { mint: string }) {
     <div data-wr-reveal className="relative p-[1px] overflow-hidden group/classified wr-card-lift">
       {/* Conic gradient spinner — pulsing red/dark */}
       <div
-        className="absolute inset-[-100%] animate-spin opacity-0 group-hover/classified:opacity-40 transition-opacity duration-700 pointer-events-none"
+        className="absolute inset-[-100%] animate-spin opacity-[0.08] group-hover/classified:opacity-40 transition-opacity duration-700 pointer-events-none"
         style={{
-          background: 'conic-gradient(from 0deg, transparent 70%, #ff9e9e 85%, #333 100%)',
-          animationDuration: '8s',
+          background: 'conic-gradient(from 0deg, transparent 60%, #ff9e9e 80%, #333 90%, transparent 100%)',
+          animationDuration: '6s',
         }}
       />
 
@@ -464,11 +464,20 @@ function HoldingCard({
             <div className="text-[#444] text-[10px] font-mono mt-0.5">${holding.symbol}</div>
           )}
         </div>
-        <span className={`text-[10px] font-black tabular-nums font-mono px-2 py-0.5 rounded-sm ${gainLoss.colorClass} ${
-          !holding.gainLossPct ? '' : holding.gainLossPct >= 0 ? 'bg-[#d4f000]/[0.06]' : 'bg-[#ff9e9e]/[0.06]'
-        }`}>
-          {gainLoss.text}
-        </span>
+        <div className="flex flex-col items-end gap-1">
+          <span className={`text-[10px] font-black tabular-nums font-mono px-2 py-0.5 rounded-sm ${gainLoss.colorClass} ${
+            !holding.gainLossPct ? '' : holding.gainLossPct >= 0 ? 'bg-[#d4f000]/[0.06]' : 'bg-[#ff9e9e]/[0.06]'
+          }`}>
+            {gainLoss.text}
+          </span>
+          {holding.gainLossPct !== undefined && (
+            <span className={`text-[7px] font-bold font-mono uppercase tracking-[0.15em] ${
+              holding.gainLossPct >= 0 ? 'text-[#d4f000]/30' : 'text-[#ff9e9e]/30'
+            }`}>
+              {holding.gainLossPct > 5 ? '▲ RISING' : holding.gainLossPct < -5 ? '▼ DECLINING' : '● STABLE'}
+            </span>
+          )}
+        </div>
       </div>
 
       {/* Contract address */}
@@ -652,7 +661,7 @@ export default function TreasuryIntel() {
       <div className="px-5 lg:px-8 py-6 border-b border-[#333]/20 wr-brackets">
         <div className="flex justify-between items-center">
           <div className="flex items-center gap-3">
-            <div className="w-1 h-5 bg-[#d4f000]" />
+            <div className="w-1 bg-[#d4f000] wr-accent-bar" />
             <div>
               <div className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#555] font-bold mb-0.5">
                 SECTION 01
