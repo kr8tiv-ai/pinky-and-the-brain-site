@@ -69,7 +69,7 @@ body {
   to   { opacity: 1; transform: translateY(0); }
 }
 .page-enter {
-  animation: fadeInUp 1s ease-out forwards;
+  animation: fadeInUp 1.2s ease-out forwards;
 }
 
 /* ── Classified Flicker ── */
@@ -581,7 +581,7 @@ body {
 /* ── Breathing Glow ── */
 @keyframes wr-breathe {
   0%, 100% { opacity: 0.01; text-shadow: none; }
-  50% { opacity: 0.025; text-shadow: 0 0 40px rgba(212, 240, 0, 0.03); }
+  50% { opacity: 0.02; text-shadow: 0 0 35px rgba(212, 240, 0, 0.025); }
 }
 .wr-breathe {
   animation: wr-breathe 4.5s ease-in-out infinite;

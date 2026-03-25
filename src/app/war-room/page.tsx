@@ -283,7 +283,7 @@ export default function WarRoomPage() {
                 <span className="font-mono text-[7px] uppercase tracking-[0.1em] text-[#1a1a1a] hover:text-[#444] transition-colors duration-300 flex items-center gap-1.5">
                   © 2025–2026 $BRAIN
                   <span className="text-[5px] text-[#333]/20">·</span>
-                  <span className="text-[6px] text-[#1a1a1a]/60">v2.0.190</span>
+                  <span className="text-[6px] text-[#1a1a1a]/60">v2.0.200</span>
                 </span>
               </div>
             </div>
