@@ -516,7 +516,7 @@ function HoldingCard({
       <div className="flex items-center gap-2 mb-4 pl-2">
         <button
           onClick={handleCopy}
-          className="font-mono text-[10px] text-[#444] hover:text-[#d4f000] transition-all duration-200 flex items-center gap-1.5 group/copy"
+          className="font-mono text-[10px] text-[#444] hover:text-[#d4f000] transition-all duration-200 flex items-center gap-1.5 group/copy active:scale-95"
           title="Copy full address"
         >
           <svg width="10" height="10" viewBox="0 0 16 16" fill="currentColor" className="opacity-40 group-hover/copy:opacity-100 group-hover/copy:drop-shadow-[0_0_4px_rgba(212,240,0,0.3)] transition-all duration-200">
