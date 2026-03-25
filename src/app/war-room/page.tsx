@@ -147,7 +147,7 @@ export default function WarRoomPage() {
             </div>
 
             {/* Watermark */}
-            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-[16rem] font-black text-white/[0.01] leading-none select-none pointer-events-none font-sans wr-breathe wr-watermark">
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-[16rem] font-black text-white/[0.01] leading-none select-none pointer-events-none font-sans wr-breathe wr-watermark" style={{ animationDuration: '6s' }}>
               03
             </div>
 

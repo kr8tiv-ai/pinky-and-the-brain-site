@@ -179,7 +179,7 @@ function TreasuryValueChart({
         </div>
       ) : chartData.length < 2 ? (
         <div className="h-[240px] flex flex-col items-center justify-center gap-3">
-          <div className="w-8 h-8 border border-[#333]/30 flex items-center justify-center wr-float wr-empty-ring">
+          <div className="w-8 h-8 border border-[#333]/30 flex items-center justify-center wr-float wr-empty-ring hover:border-[#d4f000]/20 transition-colors duration-500">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-[#333]">
               <path d="M3 3v18h18" />
               <path d="M7 16l4-4 4 4 5-5" />

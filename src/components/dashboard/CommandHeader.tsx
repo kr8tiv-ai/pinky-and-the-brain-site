@@ -117,7 +117,7 @@ function DataCell({
   return (
     <div
       data-wr-reveal
-      className="group relative px-5 lg:px-6 py-5 transition-all duration-300 hover:bg-white/[0.02]"
+      className="group relative px-5 lg:px-6 py-5 transition-all duration-300 hover:bg-white/[0.015]"
       style={{ transitionDelay: `${index * 50}ms` }}
     >
       {/* Hover accent line at top */}
