@@ -215,7 +215,7 @@ function TreasuryValueChart({
                   </feMerge>
                 </filter>
               </defs>
-              <CartesianGrid strokeDasharray="3 6" stroke="rgba(51,51,51,0.12)" vertical={false} />
+              <CartesianGrid strokeDasharray="3 6" stroke="rgba(51,51,51,0.15)" vertical={false} />
               <XAxis
                 dataKey="label"
                 tick={{ fill: '#444', fontSize: 9, fontFamily: 'var(--font-mono)' }}
@@ -488,8 +488,8 @@ function HoldingCard({
           </div>
         </div>
         <div className="flex flex-col items-end gap-1">
-          <span className={`text-[10px] font-black tabular-nums font-mono px-2 py-0.5 rounded-sm flex items-center gap-1.5 ${gainLoss.colorClass} ${
-            !holding.gainLossPct ? '' : holding.gainLossPct >= 0 ? 'bg-[#d4f000]/[0.06]' : 'bg-[#ff9e9e]/[0.06]'
+          <span className={`text-[10px] font-black tabular-nums font-mono px-2 py-0.5 rounded-sm flex items-center gap-1.5 transition-all duration-300 group-hover/card:shadow-sm ${gainLoss.colorClass} ${
+            !holding.gainLossPct ? '' : holding.gainLossPct >= 0 ? 'bg-[#d4f000]/[0.06] group-hover/card:bg-[#d4f000]/[0.1]' : 'bg-[#ff9e9e]/[0.06] group-hover/card:bg-[#ff9e9e]/[0.1]'
           }`}>
             {/* Mini spark bars */}
             {holding.gainLossPct !== undefined && (
