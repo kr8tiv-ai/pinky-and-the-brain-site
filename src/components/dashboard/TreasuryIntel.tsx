@@ -496,7 +496,7 @@ function HoldingCard({
             {/* Mini spark bars */}
             {holding.gainLossPct !== undefined && (
               <span className="flex items-end gap-[1px]">
-                {[3, 5, holding.gainLossPct >= 0 ? 7 : 2].map((h, i) => (
+                {[2, 5, holding.gainLossPct >= 0 ? 8 : 2].map((h, i) => (
                   <span key={i} className={`w-[2px] rounded-sm ${holding.gainLossPct! >= 0 ? 'bg-[#d4f000]/40' : 'bg-[#ff9e9e]/40'}`} style={{ height: `${h}px` }} />
                 ))}
               </span>

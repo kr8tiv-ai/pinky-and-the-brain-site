@@ -154,7 +154,7 @@ function TransactionRow({
     >
       {/* Burn intensity bar (background) */}
       <div
-        className="absolute left-0 top-0 bottom-0 bg-gradient-to-r from-[#ff6b35]/[0.03] to-transparent pointer-events-none"
+        className="absolute left-0 top-0 bottom-0 bg-gradient-to-r from-[#ff6b35]/[0.03] to-transparent pointer-events-none rounded-r-sm"
         style={{ width: `${intensity}%` }}
       />
       <div className="wr-row-num">{String(index + 1).padStart(2, '0')}</div>
