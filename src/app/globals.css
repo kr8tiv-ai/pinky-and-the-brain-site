@@ -85,7 +85,7 @@ body {
   89% { opacity: 1; }
 }
 .flicker {
-  animation: grain-flicker 3s infinite;
+  animation: grain-flicker 3.5s infinite;
 }
 
 /* ── Marquee Ticker ── */

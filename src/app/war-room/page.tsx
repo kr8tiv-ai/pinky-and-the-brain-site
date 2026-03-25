@@ -32,7 +32,7 @@ export default function WarRoomPage() {
       <div className="fixed inset-0 z-0 pointer-events-none wr-scanlines" />
 
       {/* ── Layer 4: Noise texture ── */}
-      <div className="fixed inset-0 z-0 pointer-events-none bg-[url('/noise.gif')] opacity-[0.03] mix-blend-overlay" />
+      <div className="fixed inset-0 z-0 pointer-events-none bg-[url('/noise.gif')] opacity-[0.025] mix-blend-overlay" />
 
       {/* ── Layer 5: Bottom depth gradient ── */}
       <div className="wr-depth-gradient" />
@@ -283,7 +283,7 @@ export default function WarRoomPage() {
                 <span className="font-mono text-[7px] uppercase tracking-[0.1em] text-[#1a1a1a] hover:text-[#444] transition-colors duration-300 flex items-center gap-1.5">
                   © 2025–2026 $BRAIN
                   <span className="text-[5px] text-[#333]/20">·</span>
-                  <span className="text-[6px] text-[#1a1a1a]/60">v2.0.180</span>
+                  <span className="text-[6px] text-[#1a1a1a]/60">v2.0.190</span>
                 </span>
               </div>
             </div>
