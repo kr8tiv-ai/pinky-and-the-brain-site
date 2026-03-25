@@ -140,7 +140,7 @@ function CustomChartTooltip({ active, payload, label }: TooltipContentProps) {
   const rawValue = (payload[0] as { value?: TooltipValueType }).value
   const numericValue = typeof rawValue === 'number' ? rawValue : 0
   return (
-    <div className="wr-tooltip-enhanced wr-tooltip-caret wr-tooltip-entrance px-5 py-4 font-mono text-xs">
+    <div className="wr-tooltip-enhanced wr-tooltip-caret wr-tooltip-entrance px-4 py-3.5 font-mono text-xs">
       <div className="flex items-center gap-2 mb-2.5">
         <div className="w-1.5 h-1.5 bg-[#d4f000] rounded-full" style={{ boxShadow: '0 0 6px #d4f000' }} />
         <span className="text-[#666] text-[8px] uppercase tracking-[0.25em] font-black">{label}</span>

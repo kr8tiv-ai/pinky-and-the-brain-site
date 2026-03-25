@@ -770,7 +770,7 @@ button:focus-visible {
 /* ── Section Number Badge ── */
 .wr-section-badge {
   position: absolute;
-  left: -1px;
+  left: 0;
   top: 50%;
   transform: translateY(-50%);
   font-family: var(--font-mono);
@@ -1518,7 +1518,7 @@ section:hover > .wr-section-badge-fire {
 .wr-footer-link-grow::after {
   content: '';
   position: absolute;
-  bottom: -2px;
+  bottom: -1px;
   left: 50%;
   width: 0;
   height: 1px;
