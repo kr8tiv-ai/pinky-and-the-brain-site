@@ -323,7 +323,7 @@ export default function BurnOperations() {
       <div className="absolute inset-0 wr-bg-burn pointer-events-none" />
 
       {/* Watermark section number */}
-      <div className="absolute -right-4 -top-8 text-[12rem] font-black text-white/[0.015] leading-none select-none pointer-events-none font-sans wr-watermark" style={{ WebkitTextStroke: '1px rgba(255, 107, 53, 0.025)' }}>
+      <div className="absolute -right-4 -top-8 text-[12rem] font-black text-white/[0.012] leading-none select-none pointer-events-none font-sans wr-watermark" style={{ WebkitTextStroke: '1px rgba(255, 107, 53, 0.02)' }}>
         02
       </div>
 

@@ -281,7 +281,7 @@ export default function CommandHeader() {
         </div>
         <div className="flex items-center gap-4">
           <LiveClock />
-          <div className="w-px h-3 bg-gradient-to-b from-transparent via-[#333]/30 to-transparent" />
+          <div className="w-px h-4 bg-gradient-to-b from-transparent via-[#333]/25 to-transparent" />
           <LiveIndicator status={status} />
         </div>
       </div>
