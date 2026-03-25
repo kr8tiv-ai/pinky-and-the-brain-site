@@ -192,7 +192,7 @@ function TreasuryValueChart({
                   <stop offset="95%" stopColor="#d4f000" stopOpacity={0} />
                 </linearGradient>
               </defs>
-              <CartesianGrid strokeDasharray="2 8" stroke="rgba(51,51,51,0.3)" vertical={false} />
+              <CartesianGrid strokeDasharray="3 6" stroke="rgba(51,51,51,0.15)" vertical={false} />
               <XAxis
                 dataKey="label"
                 tick={{ fill: '#444', fontSize: 9, fontFamily: 'var(--font-mono)' }}
@@ -437,7 +437,9 @@ function HoldingCard({
             <div className="text-[#444] text-[10px] font-mono mt-0.5">${holding.symbol}</div>
           )}
         </div>
-        <span className={`text-xs font-black tabular-nums font-mono ${gainLoss.colorClass}`}>
+        <span className={`text-[10px] font-black tabular-nums font-mono px-2 py-0.5 rounded-sm ${gainLoss.colorClass} ${
+          !holding.gainLossPct ? '' : holding.gainLossPct >= 0 ? 'bg-[#d4f000]/[0.06]' : 'bg-[#ff9e9e]/[0.06]'
+        }`}>
           {gainLoss.text}
         </span>
       </div>
@@ -446,15 +448,15 @@ function HoldingCard({
       <div className="flex items-center gap-2 mb-4 pl-2">
         <button
           onClick={handleCopy}
-          className="font-mono text-[10px] text-[#444] hover:text-[#d4f000] transition-colors flex items-center gap-1.5"
+          className="font-mono text-[10px] text-[#444] hover:text-[#d4f000] transition-all duration-200 flex items-center gap-1.5 group/copy"
           title="Copy full address"
         >
-          <svg width="10" height="10" viewBox="0 0 16 16" fill="currentColor" className="opacity-50">
+          <svg width="10" height="10" viewBox="0 0 16 16" fill="currentColor" className="opacity-50 group-hover/copy:opacity-100 transition-opacity">
             <path d="M4 4V1h11v11h-3v3H1V4h3zm1-1V1.5a.5.5 0 01.5-.5h9a.5.5 0 01.5.5v9a.5.5 0 01-.5.5H13V4.5a.5.5 0 00-.5-.5H5z" />
             <path d="M1.5 5a.5.5 0 00-.5.5v9a.5.5 0 00.5.5h9a.5.5 0 00.5-.5v-9a.5.5 0 00-.5-.5h-9z" />
           </svg>
           {copied
-            ? <span className="text-[#d4f000]">COPIED</span>
+            ? <span className="text-[#d4f000] font-bold" style={{ textShadow: '0 0 8px rgba(212, 240, 0, 0.3)' }}>COPIED ✓</span>
             : `${holding.mint.slice(0, 6)}…${holding.mint.slice(-4)}`}
         </button>
       </div>

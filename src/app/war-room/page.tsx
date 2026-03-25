@@ -121,11 +121,11 @@ export default function WarRoomPage() {
                 </div>
               </div>
 
-              <div className="flex items-center gap-6 mt-2">
+              <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6 mt-2">
                 {['STAKING', 'GOVERNANCE', 'YIELD MECHANICS'].map((item, i) => (
                   <div key={item} className="flex items-center gap-3">
-                    {i > 0 && <div className="w-px h-3 bg-[#222]" />}
-                    <span className="font-mono text-[8px] uppercase tracking-[0.2em] text-[#222] font-bold">
+                    {i > 0 && <div className="hidden md:block w-px h-3 bg-[#222]" />}
+                    <span className="font-mono text-[7px] md:text-[8px] uppercase tracking-[0.2em] text-[#222] font-bold">
                       {item}
                     </span>
                   </div>
