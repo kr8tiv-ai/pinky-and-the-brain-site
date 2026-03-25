@@ -115,7 +115,7 @@ export default function WarRoomPage() {
 
         {/* Staking stub — dramatic classified section */}
         <SectionReveal>
-          <section className="w-full bg-[#0a0a0a] py-24 relative overflow-hidden wr-section-fade-top wr-section-fade-bottom wr-noise">
+          <section className="w-full bg-[#0a0a0a] py-24 relative overflow-hidden wr-section-fade-top wr-section-fade-bottom wr-noise wr-classified-border">
             {/* Layered diagonal pattern */}
             <div className="absolute inset-0 opacity-[0.02] pointer-events-none"
               style={{

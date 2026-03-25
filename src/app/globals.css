@@ -134,6 +134,8 @@ body {
   .wr-row-flash,
   .wr-count-badge,
   .wr-border-shimmer::before,
+  .wr-ember,
+  .wr-classified-border,
   .animate-spin {
     animation: none !important;
   }
@@ -1056,6 +1058,52 @@ section:hover > .wr-section-badge-fire {
   background: rgba(10, 10, 10, 0.97);
   clip-path: polygon(0 0, 100% 0, 50% 100%);
   border-bottom: 1px solid rgba(51, 51, 51, 0.5);
+}
+
+/* ── Fire Particle Dots ── */
+@keyframes wr-ember-rise {
+  0% { transform: translateY(0) scale(1); opacity: 0.6; }
+  100% { transform: translateY(-30px) scale(0.3); opacity: 0; }
+}
+.wr-ember {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: #ff6b35;
+  animation: wr-ember-rise 3s ease-out infinite;
+  pointer-events: none;
+}
+
+/* ── Section Header Line Extend ── */
+.wr-header-line {
+  position: relative;
+  overflow: hidden;
+}
+.wr-header-line::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: linear-gradient(90deg, currentColor, transparent);
+  transition: width 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.wr-header-line:hover::after {
+  width: 100%;
+}
+
+/* ── Classified Border Flicker ── */
+@keyframes wr-classified-border {
+  0%, 90%, 100% { border-color: rgba(255, 158, 158, 0.05); }
+  92% { border-color: rgba(255, 158, 158, 0.2); }
+  94% { border-color: rgba(255, 158, 158, 0.05); }
+  96% { border-color: rgba(255, 158, 158, 0.15); }
+}
+.wr-classified-border {
+  animation: wr-classified-border 6s ease-in-out infinite;
+  border: 1px solid rgba(255, 158, 158, 0.05);
 }
 
 /* ── Classified Radar Enhancement ── */

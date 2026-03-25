@@ -318,11 +318,18 @@ export default function BurnOperations() {
       {/* Fire glow at top */}
       <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-[#ff6b35]/[0.04] to-transparent pointer-events-none" />
 
+      {/* Fire ember particles */}
+      <div className="absolute bottom-0 left-0 right-0 h-40 pointer-events-none overflow-hidden">
+        {[10, 25, 40, 60, 75, 88].map((left, i) => (
+          <div key={i} className="wr-ember" style={{ left: `${left}%`, bottom: '0', animationDelay: `${i * 0.5}s`, animationDuration: `${2.5 + i * 0.3}s` }} />
+        ))}
+      </div>
+
       {/* Animated fire accent line */}
       <div className="h-[2px] wr-fire-line" />
 
       {/* Section header */}
-      <div className="relative flex justify-between items-center px-5 lg:px-8 py-6 border-b border-[#333]/20 wr-brackets wr-brackets-fire">
+      <div className="relative flex justify-between items-center px-5 lg:px-8 py-6 border-b border-[#333]/20 wr-brackets wr-brackets-fire wr-header-line text-[#ff6b35]">
         <div className="flex items-center gap-3">
           <div className="w-1 bg-[#ff6b35] wr-accent-bar" />
           <div>
