@@ -54,7 +54,7 @@ function useStaggerReveal(containerRef: React.RefObject<HTMLElement | null>) {
           filter: 'blur(0px)',
           duration: 0.6,
           ease: 'power3.out',
-          stagger: { amount: 0.5, from: 'start' },
+          stagger: { amount: 0.4, from: 'start' },
           delay: 0.15,
         }
       )
@@ -236,7 +236,7 @@ function TreasuryValueChart({
                 type="monotone"
                 dataKey="valueUsd"
                 stroke="url(#treasuryStroke)"
-                strokeWidth={1.5}
+                strokeWidth={1.2}
                 fill="url(#treasuryGradient)"
                 dot={false}
                 activeDot={{

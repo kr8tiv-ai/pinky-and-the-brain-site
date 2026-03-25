@@ -1487,10 +1487,10 @@ section:hover > .wr-section-badge-fire {
 
 /* ── Tooltip Entrance Scale ── */
 .wr-tooltip-entrance {
-  animation: wr-tooltip-pop 0.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation: wr-tooltip-pop 0.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 @keyframes wr-tooltip-pop {
-  0% { opacity: 0; transform: scale(0.92) translateY(4px); }
+  0% { opacity: 0; transform: scale(0.94) translateY(3px); }
   100% { opacity: 1; transform: scale(1) translateY(0); }
 }
 
