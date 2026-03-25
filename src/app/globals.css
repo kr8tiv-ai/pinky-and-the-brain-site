@@ -371,7 +371,7 @@ body {
 }
 .wr-brackets-fire:hover::before,
 .wr-brackets-fire:hover::after {
-  border-color: rgba(255, 107, 53, 0.5);
+  border-color: rgba(255, 107, 53, 0.4);
 }
 
 /* ── Glitch Text Effect ── */
@@ -850,7 +850,7 @@ button:focus-visible {
 }
 .wr-accent-bar {
   animation: wr-accent-grow 0.7s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-  animation-delay: 0.3s;
+  animation-delay: 0.35s;
   height: 0;
   opacity: 0;
 }
@@ -1419,7 +1419,7 @@ section:hover > .wr-section-badge-fire {
   background: linear-gradient(to top, rgba(10, 10, 10, 0.8), transparent);
   pointer-events: none;
   z-index: 5;
-  opacity: 0.45;
+  opacity: 0.4;
 }
 
 /* ── Row Flash Entrance ── */
