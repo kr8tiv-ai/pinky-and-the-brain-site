@@ -606,7 +606,7 @@ function DivestedSection() {
 // ─── Main TreasuryIntel Component ─────────────────────────────────────────────
 
 export default function TreasuryIntel() {
-  const { data, isLoading, isError } = useTreasury()
+  const { data, isLoading, isError, dataUpdatedAt } = useTreasury()
   const gridRef = useRef<HTMLDivElement>(null)
   const sectionRef = useRef<HTMLElement>(null)
   const spotlightRef = useRef<HTMLDivElement>(null)
@@ -657,8 +657,15 @@ export default function TreasuryIntel() {
               </h2>
             </div>
           </div>
-          <div className="wr-tag border-[#d4f000]/20 text-[#d4f000]/60">
-            TS/SCI
+          <div className="flex items-center gap-3">
+            {dataUpdatedAt > 0 && (
+              <span className="font-mono text-[7px] uppercase tracking-[0.15em] text-[#333] tabular-nums hidden md:inline">
+                {new Date(dataUpdatedAt).toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' })} UTC
+              </span>
+            )}
+            <div className="wr-tag border-[#d4f000]/20 text-[#d4f000]/60">
+              TS/SCI
+            </div>
           </div>
         </div>
       </div>

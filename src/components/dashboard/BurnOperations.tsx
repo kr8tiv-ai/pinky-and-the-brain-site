@@ -237,7 +237,7 @@ function BurnTransactionsTable({
 // ─── Main BurnOperations Component ───────────────────────────────────────────
 
 export default function BurnOperations() {
-  const { data, isLoading, isError } = useBurns()
+  const { data, isLoading, isError, dataUpdatedAt } = useBurns()
   const sectionRef = useRef<HTMLElement>(null)
   const glowRef = useRef<HTMLDivElement>(null)
 
@@ -309,9 +309,16 @@ export default function BurnOperations() {
             <div className="w-1.5 h-1.5 rounded-full bg-[#ff6b35]" style={{ boxShadow: '0 0 6px #ff6b35, 0 0 12px rgba(255, 107, 53, 0.3)' }} />
             <div className="absolute w-1.5 h-1.5 rounded-full bg-[#ff6b35] wr-pulse-ring" />
           </div>
-          <span className="wr-tag border-[#ff6b35]/30 text-[#ff6b35]/80">
-            INCINERATED
-          </span>
+          <div className="flex items-center gap-3">
+            {dataUpdatedAt > 0 && (
+              <span className="font-mono text-[7px] uppercase tracking-[0.15em] text-[#333] tabular-nums hidden md:inline">
+                {new Date(dataUpdatedAt).toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' })}
+              </span>
+            )}
+            <span className="wr-tag border-[#ff6b35]/30 text-[#ff6b35]/80">
+              INCINERATED
+            </span>
+          </div>
         </div>
       </div>
 
