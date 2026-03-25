@@ -128,7 +128,7 @@ export default function WarRoomPage() {
             {/* Layered diagonal pattern */}
             <div className="absolute inset-0 opacity-[0.025] pointer-events-none"
               style={{
-                backgroundImage: 'repeating-linear-gradient(-45deg, transparent, transparent 24px, rgba(255,255,255,0.06) 24px, rgba(255,255,255,0.06) 25px)',
+                backgroundImage: 'repeating-linear-gradient(-45deg, transparent, transparent 26px, rgba(255,255,255,0.06) 26px, rgba(255,255,255,0.06) 27px)',
               }}
             />
             {/* Radial glow center — dual layer */}
