@@ -225,7 +225,7 @@ function TreasuryValueChart({
                 tickLine={false}
               />
               <YAxis
-                tick={{ fill: '#444', fontSize: 8, fontFamily: 'var(--font-mono)' }}
+                tick={{ fill: '#555', fontSize: 8, fontFamily: 'var(--font-mono)' }}
                 axisLine={false}
                 tickLine={false}
                 tickFormatter={(v) => v >= 1000 ? `$${(v / 1000).toFixed(1)}k` : `$${v.toFixed(0)}`}
@@ -316,7 +316,7 @@ function LoadingCard({ index = 0 }: { index?: number }) {
         className="absolute inset-[-100%] animate-spin opacity-10 pointer-events-none"
         style={{
           background: 'conic-gradient(from 0deg, transparent 80%, #333 95%, transparent 100%)',
-          animationDuration: '4s',
+          animationDuration: '5s',
           animationDelay: `${index * 0.3}s`,
         }}
       />
@@ -608,7 +608,7 @@ function DivestedSection() {
       </div>
       {soldTokens.length === 0 ? (
         <div className="text-center py-6">
-          <span className="text-[#333] font-mono text-xs tracking-[0.2em]">
+          <span className="text-[#333]/80 font-mono text-xs tracking-[0.25em]">
             NO DIVESTED POSITIONS RECORDED
           </span>
         </div>
