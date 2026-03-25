@@ -243,7 +243,7 @@ function BurnTransactionsTable({
             <div className="w-8 h-8 border border-[#ff9e9e]/20 flex items-center justify-center wr-float wr-empty-ring">
               <span className="text-[#ff9e9e]/40 font-mono text-sm">!</span>
             </div>
-            <span className="text-[#ff9e9e]/40 font-mono text-[10px] tracking-[0.2em]">DATA FEED OFFLINE</span>
+            <span className="text-[#ff9e9e]/50 font-mono text-[10px] tracking-[0.25em]">DATA FEED OFFLINE</span>
           </div>
         ) : transactions.length === 0 ? (
           <div className="py-10 flex flex-col items-center justify-center gap-3">

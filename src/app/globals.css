@@ -523,7 +523,7 @@ body {
 }
 .wr-shine:hover::after {
   opacity: 1;
-  animation: wr-shine-sweep 0.8s ease-out;
+  animation: wr-shine-sweep 0.7s ease-out;
 }
 
 /* ── Blinking Cursor ── */
