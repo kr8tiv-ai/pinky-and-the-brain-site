@@ -1175,7 +1175,7 @@ section:hover > .wr-section-badge-fire {
   background: linear-gradient(90deg, transparent 0%, rgba(255, 107, 53, 0.1) 40%, rgba(255, 158, 158, 0.06) 60%, transparent 100%);
   filter: blur(3px);
   pointer-events: none;
-  opacity: 0.6;
+  opacity: 0.55;
 }
 
 /* ── Logo Hover Pulse ── */

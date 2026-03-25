@@ -321,7 +321,7 @@ function LoadingCard({ index = 0 }: { index?: number }) {
           animationDelay: `${index * 0.3}s`,
         }}
       />
-      <div className="relative bg-[#0d0d0d] p-5 border border-[#333]/5" style={{ boxShadow: 'inset 0 0 35px rgba(51, 51, 51, 0.035)' }}>
+      <div className="relative bg-[#0d0d0d] p-5 border border-[#333]/4" style={{ boxShadow: 'inset 0 0 35px rgba(51, 51, 51, 0.035)' }}>
         {/* Accent bar */}
         <div className="absolute top-0 left-0 w-[3px] h-full bg-gradient-to-b from-[#333]/40 via-[#333]/20 to-transparent" />
         <div className="pl-2">
