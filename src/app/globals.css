@@ -850,7 +850,7 @@ button:focus-visible {
 }
 .wr-accent-bar {
   animation: wr-accent-grow 0.7s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-  animation-delay: 0.35s;
+  animation-delay: 0.4s;
   height: 0;
   opacity: 0;
 }
@@ -1042,7 +1042,7 @@ section:hover > .wr-section-badge-fire {
 /* ── Classified Peek Reveal ── */
 .wr-peek-reveal {
   clip-path: inset(0 100% 0 0);
-  transition: clip-path 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: clip-path 0.9s cubic-bezier(0.25, 1, 0.5, 1);
 }
 .group\/classified:hover .wr-peek-reveal {
   clip-path: inset(0 0 0 0);
@@ -1238,7 +1238,7 @@ section:hover > .wr-section-badge-fire {
   font-family: var(--font-mono);
   font-size: 8px;
   font-weight: 900;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   padding: 2px 5px;
   background: linear-gradient(135deg, rgba(212, 240, 0, 0.04) 0%, rgba(212, 240, 0, 0.012) 100%);
