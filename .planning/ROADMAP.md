@@ -29,12 +29,19 @@ Plans:
 
 ### Phase 3: Next.js API Routes & React Query Setup
 - /app/api/price/route.ts — $BRAIN and SOL prices (60s revalidate)
-- /app/api/treasury/route.ts — upgrade existing: full SPL holdings with valuations
 - /app/api/burns/route.ts — burn transactions and totals
-- /app/api/holders/route.ts — top 100 holders
+- /app/api/holders/route.ts — top 100 holders (canonical endpoint)
 - /app/api/wallet/[address]/route.ts — generic wallet in/out/balance
-- /app/api/lp-fees/route.ts — LP fee inflows
-- React Query provider setup with auto-refresh intervals
+- /app/api/lp-fees/route.ts — LP fee inflows + distribution
+- React Query hooks for all data domains with auto-refresh intervals
+
+**Goal:** All API routes serving typed data and all React Query hooks wired for client consumption
+**Plans:** 2 plans
+**Requirements:** [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11]
+
+Plans:
+- [ ] 03-01-PLAN.md — Create 5 new API route handlers (price, burns, holders, wallet, lp-fees)
+- [ ] 03-02-PLAN.md — Create 6 React Query hooks (usePrice, useTreasury, useBurns, useHolders, useWallet, useLpFees)
 
 ---
 
