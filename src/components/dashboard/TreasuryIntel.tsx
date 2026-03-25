@@ -396,7 +396,7 @@ function ClassifiedCard({ mint }: { mint: string }) {
           <div className="font-mono text-[9px] text-[#333]/30 mb-4 truncate wr-peek-reveal">
             {mint}
           </div>
-          <div className="flex items-center gap-2 mb-4">
+          <div className="flex items-center gap-2.5 mb-4">
             <div className="wr-tag wr-tag-glow border-[#ff9e9e]/20 text-[#ff9e9e]/40">
               CLASSIFIED
             </div>

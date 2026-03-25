@@ -303,7 +303,7 @@ body {
 .wr-burn-bar {
   position: relative;
   height: 3px;
-  background: rgba(51, 51, 51, 0.3);
+  background: rgba(51, 51, 51, 0.25);
   overflow: hidden;
 }
 
@@ -1397,9 +1397,9 @@ section:hover > .wr-section-badge-fire {
   right: 6px;
   font-family: var(--font-mono);
   font-size: 6px;
-  color: rgba(51, 51, 51, 0.3);
+  color: rgba(51, 51, 51, 0.25);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.15em;
   opacity: 0;
   transition: opacity 0.3s ease;
 }
