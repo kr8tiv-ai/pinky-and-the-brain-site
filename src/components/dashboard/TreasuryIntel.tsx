@@ -55,7 +55,7 @@ function useStaggerReveal(containerRef: React.RefObject<HTMLElement | null>) {
           duration: 0.6,
           ease: 'power3.out',
           stagger: { amount: 0.5, from: 'start' },
-          delay: 0.2,
+          delay: 0.15,
         }
       )
     }, containerRef)
@@ -393,7 +393,7 @@ function ClassifiedCard({ mint }: { mint: string }) {
             ████████████████
           </div>
           {/* Peek reveal — faded mint on hover */}
-          <div className="font-mono text-[8px] text-[#333]/30 mb-4 truncate wr-peek-reveal">
+          <div className="font-mono text-[9px] text-[#333]/30 mb-4 truncate wr-peek-reveal">
             {mint}
           </div>
           <div className="flex items-center gap-2 mb-4">
