@@ -388,7 +388,7 @@ export default function BurnOperations() {
             <span>TOTAL SUPPLY INCINERATION</span>
             <div className="flex-1 h-px bg-gradient-to-r from-[#ff6b35]/20 to-transparent" />
           </div>
-          <div className="font-mono text-[9px] text-[#ff6b35] font-bold tabular-nums">
+          <div className="font-mono text-[9px] text-[#ff6b35] font-black tabular-nums wr-fire-text">
             {isLoading ? '—' : `${(data?.burnedPct ?? 0).toFixed(2)}%`}
           </div>
         </div>

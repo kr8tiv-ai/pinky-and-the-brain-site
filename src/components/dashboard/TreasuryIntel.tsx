@@ -480,7 +480,7 @@ function HoldingCard({
             {(holding.symbol || holding.name).charAt(0)}
           </div>
           <div>
-            <div className="text-[#d4f000] font-black text-sm uppercase tracking-wider font-mono">
+            <div className="text-[#d4f000] font-black text-sm uppercase tracking-wider font-mono transition-all duration-300 group-hover/card:text-shadow-[0_0_12px_rgba(212,240,0,0.3)]">
               {holding.name}
             </div>
             {holding.symbol && holding.symbol !== holding.name && (
@@ -615,9 +615,14 @@ function DivestedSection() {
         <div className="overflow-x-auto wr-scroll">
           <table className="w-full font-mono text-[10px]">
             <thead>
-              <tr className="border-b border-[#ff9e9e]/10">
-                {['TOKEN', 'SOLD DATE', 'AMOUNT', 'STATUS'].map(h => (
-                  <th key={h} className="text-left uppercase tracking-[0.15em] text-[#444] pb-2.5 pr-6 font-bold text-[9px]">{h}</th>
+              <tr className="border-b border-[#ff9e9e]/10 relative">
+                {['TOKEN', 'SOLD DATE', 'AMOUNT', 'STATUS'].map((h, i) => (
+                  <th key={h} className="text-left uppercase tracking-[0.15em] text-[#444] pb-2.5 pr-6 font-bold text-[9px]">
+                    <span className="flex items-center gap-1.5">
+                      {i === 0 && <span className="text-[#ff9e9e]/20 text-[5px]">◆</span>}
+                      {h}
+                    </span>
+                  </th>
                 ))}
               </tr>
             </thead>
