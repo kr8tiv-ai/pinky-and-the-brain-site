@@ -458,8 +458,12 @@ function HoldingCard({
 
       {/* Inner card */}
       <div className="relative h-full w-full bg-[#0d0d0d] p-5 overflow-hidden z-10">
-      {/* Accent border left */}
-      <div className="absolute top-0 left-0 w-[3px] h-full bg-gradient-to-b from-[#d4f000] via-[#d4f000]/50 to-transparent" />
+      {/* Accent border left — color reflects position status */}
+      <div className="absolute top-0 left-0 w-[3px] h-full bg-gradient-to-b to-transparent" style={{
+        backgroundImage: holding.gainLossPct !== undefined && holding.gainLossPct < -5
+          ? 'linear-gradient(to bottom, #ff9e9e, rgba(255, 158, 158, 0.5), transparent)'
+          : 'linear-gradient(to bottom, #d4f000, rgba(212, 240, 0, 0.5), transparent)',
+      }} />
 
       {/* Header: token name + gain/loss */}
       <div className="flex justify-between items-start mb-3 pl-2">

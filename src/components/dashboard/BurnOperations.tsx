@@ -67,7 +67,14 @@ function BurnSummaryBar({
       ) : isError ? (
         <span className="text-[#ff9e9e]">&mdash;</span>
       ) : (
-        <span ref={totalRef} className="text-[#ff6b35] wr-fire-text">{formatBurnAmount(totalBurned)}</span>
+        <span className="flex items-center">
+          <span ref={totalRef} className="text-[#ff6b35] wr-fire-text">{formatBurnAmount(totalBurned)}</span>
+          <span className="wr-micro-spark text-[#ff6b35]">
+            {[3, 5, 7, 4, 8, 6, 10, 12].map((h, i) => (
+              <span key={i} className="wr-micro-spark-bar" style={{ height: `${h}px` }} />
+            ))}
+          </span>
+        </span>
       ),
     },
     {
