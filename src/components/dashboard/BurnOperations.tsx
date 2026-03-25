@@ -150,7 +150,7 @@ function TransactionRow({
   return (
     <div
       ref={rowRef}
-      className="grid grid-cols-[24px_1fr_1fr] md:grid-cols-[24px_1fr_1fr_1.2fr] gap-2 md:gap-3 items-center py-3.5 px-3 md:px-4 wr-row-stripe wr-row-flash wr-row-accent wr-row-glow-intensity border-b border-[#333]/10 font-mono text-[9px] md:text-[10px] transition-colors duration-200 relative"
+      className="grid grid-cols-[24px_1fr_1fr] md:grid-cols-[24px_1fr_1fr_1.2fr] gap-3 md:gap-4 items-center py-3.5 px-3 md:px-4 wr-row-stripe wr-row-flash wr-row-accent wr-row-glow-intensity border-b border-[#333]/10 font-mono text-[9px] md:text-[10px] transition-colors duration-200 relative"
     >
       {/* Burn intensity bar (background) */}
       <div
