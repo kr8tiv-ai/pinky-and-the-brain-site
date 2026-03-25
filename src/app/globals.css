@@ -1374,7 +1374,7 @@ section:hover > .wr-section-badge-fire {
   position: absolute;
   inset: 0;
   padding: 1px;
-  background: linear-gradient(90deg, transparent 15%, rgba(212, 240, 0, 0.15) 50%, transparent 85%);
+  background: linear-gradient(90deg, transparent 15%, rgba(212, 240, 0, 0.12) 50%, transparent 85%);
   background-size: 200% 100%;
   -webkit-mask:
     linear-gradient(#fff 0 0) content-box,

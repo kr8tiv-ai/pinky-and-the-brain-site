@@ -193,7 +193,7 @@ export default function CommandHeader() {
       // Header slide down
       gsap.fromTo(
         headerRef.current,
-        { y: -30, opacity: 0 },
+        { y: -25, opacity: 0 },
         { y: 0, opacity: 1, duration: 0.45, ease: 'power3.out' }
       )
 

@@ -58,7 +58,7 @@ export default function WarRoomPage() {
         {/* Scroll indicator */}
         <div className="flex flex-col items-center py-4 wr-scroll-hint md:py-5">
           <span className="font-mono text-[7px] uppercase tracking-[0.35em] text-[#333]/60 mb-1.5">SCROLL TO EXPLORE</span>
-          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-[#d4f000]/20">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-[#d4f000]/15">
             <path d="M12 5v14" />
             <path d="M5 12l7 7 7-7" />
           </svg>
