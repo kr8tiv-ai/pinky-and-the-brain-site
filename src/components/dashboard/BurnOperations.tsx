@@ -332,7 +332,7 @@ export default function BurnOperations() {
 
       {/* Fire ember particles */}
       <div className="absolute bottom-0 left-0 right-0 h-40 pointer-events-none overflow-hidden" aria-hidden="true">
-        {[10, 25, 40, 60, 75, 88].map((left, i) => (
+        {[15, 35, 65, 85].map((left, i) => (
           <div key={i} className="wr-ember" style={{ left: `${left}%`, bottom: '0', animationDelay: `${i * 0.5}s`, animationDuration: `${2.5 + i * 0.3}s` }} />
         ))}
       </div>

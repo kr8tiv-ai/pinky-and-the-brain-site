@@ -465,7 +465,7 @@ function HoldingCard({
       />
 
       {/* Inner card */}
-      <div className="relative h-full w-full bg-[#0d0d0d] p-5 overflow-hidden z-10 wr-border-shimmer wr-card-inner-glow">
+      <div className="relative h-full w-full bg-[#0d0d0d] p-5 overflow-hidden z-10 wr-border-shimmer wr-card-inner-glow wr-card-top-line">
       {/* Accent border left — color reflects position status */}
       <div className="absolute top-0 left-0 w-[2px] md:w-[3px] h-full bg-gradient-to-b to-transparent" style={{
         backgroundImage: holding.gainLossPct !== undefined && holding.gainLossPct < -5

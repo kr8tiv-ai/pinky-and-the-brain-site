@@ -198,9 +198,9 @@ export default function WarRoomPage() {
               <div className="font-mono text-[7px] uppercase tracking-[0.3em] text-[#1a1a1a]/80 mb-2 wr-cursor">
                 DEPLOYMENT PROGRESS: 0%
               </div>
-              <div className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#1a1a1a] flex items-center gap-2">
+              <div className="font-mono text-[8px] uppercase tracking-[0.25em] text-[#1a1a1a] flex items-center gap-2">
                 <span className="text-[#d4f000]/10">◆</span>
-                <span>ETA:</span>
+                <span className="text-[#1a1a1a]/60">ETA:</span>
                 <span className="tabular-nums text-[#222] wr-classified-glitch" style={{ animationDuration: '3s' }}>██:██:██</span>
               </div>
               <div className="mt-3 flex items-center gap-4 font-mono text-[7px] text-[#1a1a1a]">

@@ -1539,6 +1539,25 @@ section:hover > .wr-section-badge-fire {
   letter-spacing: 0.7em;
 }
 
+/* ── Card Top Line Accent ── */
+.wr-card-top-line {
+  position: relative;
+}
+.wr-card-top-line::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: linear-gradient(90deg, #d4f000, #e4ff57, transparent);
+  transition: width 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  z-index: 20;
+}
+.group\/card:hover .wr-card-top-line::after {
+  width: 100%;
+}
+
 /* ── Glass Surface ── */
 .wr-glass {
   backdrop-filter: blur(8px);
