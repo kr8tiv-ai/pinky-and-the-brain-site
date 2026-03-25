@@ -69,7 +69,7 @@ body {
   to   { opacity: 1; transform: translateY(0); }
 }
 .page-enter {
-  animation: fadeInUp 1.2s ease-out forwards;
+  animation: fadeInUp 1.4s ease-out forwards;
 }
 
 /* ── Classified Flicker ── */
@@ -312,7 +312,7 @@ body {
   height: 100%;
   background: linear-gradient(90deg, #ff6b35 0%, #ff9e9e 35%, #ff6b35 65%, #ffadad 100%);
   background-size: 200% 100%;
-  animation: wr-burn-sweep 3.5s ease-in-out infinite;
+  animation: wr-burn-sweep 4s ease-in-out infinite;
   transition: width 2.2s cubic-bezier(0.25, 1, 0.5, 1);
   box-shadow: 0 0 8px rgba(255, 107, 53, 0.3), 0 0 3px rgba(255, 107, 53, 0.45);
 }
@@ -566,7 +566,7 @@ body {
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  border: 1px solid rgba(212, 240, 0, 0.025);
+  border: 1px solid rgba(212, 240, 0, 0.02);
 }
 .wr-radar::after {
   content: '';
