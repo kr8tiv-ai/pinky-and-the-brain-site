@@ -188,7 +188,7 @@ function TreasuryValueChart({
           <span className="text-[#333] font-mono text-[10px] tracking-[0.2em]">INSUFFICIENT DATA POINTS</span>
         </div>
       ) : (
-        <div className="h-[260px] relative border border-[#333]/10 bg-[#0a0a0a]/50 p-3 rounded-sm wr-chart-frame wr-chart-entrance">
+        <div className="h-[260px] relative border border-[#333]/10 bg-[#0a0a0a]/50 p-3 rounded wr-chart-frame wr-chart-entrance">
           {/* Animated corner brackets */}
           <div className="wr-chart-corner wr-chart-corner--tl" />
           <div className="wr-chart-corner wr-chart-corner--tr" />
@@ -542,7 +542,7 @@ function HoldingCard({
         ].map(({ label, value, highlight }, i) => (
           <div key={label} className={`py-2 relative wr-data-cell ${i >= 2 ? 'border-t border-[#333]/10' : ''}`}>
             <div className="uppercase tracking-[0.15em] text-[#444] mb-1 font-bold font-mono flex items-center gap-1.5">
-              <span className="text-[#d4f000]/15 text-[6px]">▸</span>
+              <span className="text-[#d4f000]/10 text-[6px] group-hover/card:text-[#d4f000]/25 transition-colors duration-300">▸</span>
               {label}
             </div>
             <div className={`tabular-nums font-bold font-mono wr-data-cell-value ${highlight ? 'text-[#d4f000] wr-value-highlight' : 'text-white'}`}>{value}</div>
