@@ -145,7 +145,7 @@ function CustomChartTooltip({ active, payload, label }: TooltipContentProps) {
         <div className="w-1.5 h-1.5 bg-[#d4f000] rounded-full" style={{ boxShadow: '0 0 4px #d4f000' }} />
         <span className="text-[#666] text-[8px] uppercase tracking-[0.25em] font-black">{label}</span>
       </div>
-      <div className="text-[#d4f000] font-black text-lg tabular-nums wr-gradient-text-lime leading-tight">{formatUsd(numericValue)}</div>
+      <div className="text-[#d4f000] font-black text-lg tabular-nums wr-gradient-text-lime leading-none">{formatUsd(numericValue)}</div>
       <div className="mt-1.5 font-mono text-[7px] text-[#333]/70 uppercase tracking-[0.2em]">PORTFOLIO VALUE</div>
     </div>
   )

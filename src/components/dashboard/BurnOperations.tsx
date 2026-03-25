@@ -158,7 +158,7 @@ function TransactionRow({
         style={{ width: `${intensity}%` }}
       />
       <div className="wr-row-num">{String(index + 1).padStart(2, '0')}</div>
-      <div className="text-[#666] tabular-nums flex items-center gap-2">
+      <div className="text-[#5a5a5a] tabular-nums flex items-center gap-2">
         <span className="text-[#ff6b35]/35 text-[8px]">●</span>
         <span className="wr-row-date transition-colors duration-200">{format(fromUnixTime(tx.timestamp), 'yyyy-MM-dd HH:mm')}</span>
       </div>
