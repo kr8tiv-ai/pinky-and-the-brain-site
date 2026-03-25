@@ -1,17 +1,19 @@
 # Project State
 
 ## Current Phase
-Phase 2: War Room Data Hooks & API Routes — Plan 03 (Next.js Route Handlers)
+Phase 2: War Room Data Hooks & API Routes — COMPLETE
 
 ## Current Plan
-02-03-PLAN.md — Next.js Route Handlers (/api/treasury, /api/burns, /api/reflections)
+Ready for Phase 3
 
 ## Completed Phases
 - Phase 1: Project Setup & Dependencies (commit 04c6c1c)
+- Phase 2: API Layer (02-01, 02-02, 02-03 all complete)
 
 ## Completed Plans (Phase 2)
 - 02-01: Foundational API wrappers (helius.ts, birdeye.ts, solscan.ts) — commits fc6c9a7, cb45666, 89f28e3
 - 02-02: Composite API functions (treasury.ts, burns.ts, reflections.ts) — commits e7a267f, 30133d5
+- 02-03: Shared types + route handler upgrades (types.ts, treasury route, hall-of-fame route) — commit e131374
 
 ## Decisions
 - Dashboard route: /war-room
@@ -32,9 +34,12 @@ Phase 2: War Room Data Hooks & API Routes — Plan 03 (Next.js Route Handlers)
 - burnedPct = totalBurned / (totalBurned + currentSupply) * 100 (% of original supply burned)
 - getFeeDistribution is a pure function (no API calls) for R4 fee distribution ledger
 - Token decimals always read from API transfer.token_decimals field, never hardcoded
+- Thin route handler pattern: all complexity in lib/api/, routes are 15-line proxies only
+- types.ts defines API contract once at src/lib/api/types.ts — Phase 3 routes import from there
+- revalidate=60 for treasury (price data), revalidate=300 for holders (slower-changing)
 
 ## Last Session
-- Stopped at: Completed 02-02-PLAN.md (composite API functions)
+- Stopped at: Completed 02-03-PLAN.md (shared types + route handler upgrades)
 - Date: 2026-03-25
 
 ## API Keys Configured
