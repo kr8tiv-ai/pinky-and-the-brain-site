@@ -117,16 +117,19 @@ function DataCell({
   return (
     <div
       data-wr-reveal
-      className="group relative px-5 lg:px-6 py-5 transition-colors duration-300 hover:bg-white/[0.02]"
+      className="group relative px-5 lg:px-6 py-5 transition-all duration-300 hover:bg-white/[0.02]"
       style={{ transitionDelay: `${index * 50}ms` }}
     >
       {/* Hover accent line at top */}
-      <div className="absolute top-0 left-0 right-0 h-[2px] bg-[#d4f000] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#d4f000] to-[#d4f000]/40 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
 
-      <div className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#666] mb-2 font-bold group-hover:text-[#888] transition-colors">
+      {/* Subtle bottom glow on hover */}
+      <div className="absolute bottom-0 left-[10%] right-[10%] h-px bg-[#d4f000]/0 group-hover:bg-[#d4f000]/[0.06] transition-colors duration-500" />
+
+      <div className="font-mono text-[8px] uppercase tracking-[0.2em] text-[#555] mb-2 font-bold group-hover:text-[#888] transition-colors duration-300">
         {label}
       </div>
-      <div className="font-mono text-lg md:text-xl font-black text-white tabular-nums leading-none">
+      <div className="font-mono text-lg md:text-xl font-black text-white tabular-nums leading-none group-hover:text-shadow-[0_0_20px_rgba(255,255,255,0.1)] transition-all duration-300">
         {children}
       </div>
     </div>
@@ -266,8 +269,13 @@ export default function CommandHeader() {
           {isLoading ? (
             <div className="wr-skeleton h-5 w-16" style={{ animationDelay: '300ms' }} />
           ) : (
-            <span ref={changeRef} className={changeColor}>
-              {formatChange(data?.priceChange24h ?? 0)}
+            <span className={`flex items-center gap-1.5 ${changeColor}`}>
+              {data && data.priceChange24h !== 0 && (
+                <span className="text-[10px]">{data.priceChange24h > 0 ? '▲' : '▼'}</span>
+              )}
+              <span ref={changeRef}>
+                {formatChange(data?.priceChange24h ?? 0)}
+              </span>
             </span>
           )}
         </DataCell>
