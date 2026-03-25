@@ -312,9 +312,9 @@ body {
   height: 100%;
   background: linear-gradient(90deg, #ff6b35 0%, #ff9e9e 35%, #ff6b35 65%, #ffadad 100%);
   background-size: 200% 100%;
-  animation: wr-burn-sweep 4.5s ease-in-out infinite;
+  animation: wr-burn-sweep 5s ease-in-out infinite;
   transition: width 2.2s cubic-bezier(0.25, 1, 0.5, 1);
-  box-shadow: 0 0 8px rgba(255, 107, 53, 0.3), 0 0 2.5px rgba(255, 107, 53, 0.4);
+  box-shadow: 0 0 8px rgba(255, 107, 53, 0.25), 0 0 2.5px rgba(255, 107, 53, 0.4);
 }
 
 /* ── Gradient Mesh Background (per-section) ── */
@@ -1492,7 +1492,7 @@ section:hover > .wr-section-badge-fire {
   animation: wr-tooltip-pop 0.18s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 @keyframes wr-tooltip-pop {
-  0% { opacity: 0; transform: scale(0.94) translateY(3px); }
+  0% { opacity: 0; transform: scale(0.95) translateY(3px); }
   100% { opacity: 1; transform: scale(1) translateY(0); }
 }
 
