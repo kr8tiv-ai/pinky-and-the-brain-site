@@ -388,7 +388,7 @@ body {
 
 /* ── Dot Grid Pattern (alternative to line grid) ── */
 .wr-dot-grid {
-  background-image: radial-gradient(circle, rgba(212, 240, 0, 0.06) 1px, transparent 1px);
+  background-image: radial-gradient(circle, rgba(212, 240, 0, 0.05) 1px, transparent 1px);
   background-size: 20px 20px;
 }
 
@@ -406,7 +406,7 @@ body {
 }
 @keyframes wr-orb-drift-3 {
   0%, 100% { transform: translate(0, 0); }
-  50% { transform: translate(-3vw, 2vh); }
+  50% { transform: translate(-3.5vw, 2.5vh); }
 }
 
 .wr-orb-1 { animation: wr-orb-drift-1 22s ease-in-out infinite; will-change: transform; }

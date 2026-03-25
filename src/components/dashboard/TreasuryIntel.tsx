@@ -280,7 +280,7 @@ function SummaryCell({
     gsap.fromTo(
       valueRef.current,
       { color: '#d4f000', textShadow: '0 0 14px rgba(212, 240, 0, 0.6)' },
-      { color: '#ffffff', textShadow: '0 0 0px transparent', duration: 1.2, ease: 'power2.out' }
+      { color: '#ffffff', textShadow: '0 0 0px transparent', duration: 1.4, ease: 'power2.out' }
     )
   }, [isLoading, isError])
 
