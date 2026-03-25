@@ -51,6 +51,15 @@ export default function WarRoomPage() {
         {/* Quick intel strip with links + ticker */}
         <TokenInfoStrip />
 
+        {/* Scroll indicator */}
+        <div className="flex flex-col items-center py-4 wr-scroll-hint">
+          <span className="font-mono text-[7px] uppercase tracking-[0.3em] text-[#333] mb-1.5">SCROLL TO EXPLORE</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-[#d4f000]/30">
+            <path d="M12 5v14" />
+            <path d="M5 12l7 7 7-7" />
+          </svg>
+        </div>
+
         {/* Decorative divider with label */}
         <div className="relative py-2">
           <div className="wr-divider" />

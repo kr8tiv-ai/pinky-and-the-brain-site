@@ -125,7 +125,8 @@ body {
   .wr-data-dot-fire,
   .wr-divider-dot,
   .wr-float,
-  .wr-watermark {
+  .wr-watermark,
+  .wr-scroll-hint {
     animation: none !important;
   }
   [data-wr-reveal] {
@@ -766,6 +767,16 @@ button:focus-visible {
   border-radius: 50%;
   background: currentColor;
   animation: wr-dot-breathe 3s ease-in-out infinite;
+}
+
+/* ── Scroll Indicator ── */
+@keyframes wr-scroll-bounce {
+  0%, 100% { transform: translateY(0); opacity: 0.4; }
+  50% { transform: translateY(4px); opacity: 0.8; }
+}
+.wr-scroll-hint {
+  animation: wr-scroll-bounce 2s ease-in-out infinite;
+  transition: opacity 0.5s ease;
 }
 
 /* ── Watermark Parallax Drift ── */
