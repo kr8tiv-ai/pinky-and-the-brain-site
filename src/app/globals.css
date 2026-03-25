@@ -439,7 +439,7 @@ body {
 }
 /* ── Alternating Row Stripes ── */
 .wr-row-stripe:nth-child(even) {
-  background: rgba(255, 255, 255, 0.008);
+  background: rgba(255, 255, 255, 0.006);
 }
 .wr-row-stripe:hover {
   background: rgba(255, 107, 53, 0.03) !important;
@@ -1560,8 +1560,8 @@ section:hover > .wr-section-badge-fire {
 
 /* ── Glass Surface ── */
 .wr-glass {
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   background: rgba(10, 10, 10, 0.6);
 }
 
