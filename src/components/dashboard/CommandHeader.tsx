@@ -249,7 +249,7 @@ export default function CommandHeader() {
     : 'text-white'
 
   return (
-    <header ref={headerRef} className="relative w-full bg-[#0a0a0a]/80 backdrop-blur-xl border-b border-[#333]/40 overflow-hidden">
+    <header ref={headerRef} className="relative w-full bg-[#0a0a0a]/80 backdrop-blur-xl border-b border-[#333]/30 overflow-hidden">
       {/* Ambient mesh glow */}
       <div className="absolute inset-0 pointer-events-none" style={{
         background: 'radial-gradient(ellipse 40% 60% at 20% 50%, rgba(212, 240, 0, 0.012), transparent 70%), radial-gradient(ellipse 30% 50% at 80% 50%, rgba(74, 144, 226, 0.01), transparent 70%)',
