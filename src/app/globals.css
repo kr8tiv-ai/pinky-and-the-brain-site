@@ -219,7 +219,7 @@ body {
     rgba(212, 240, 0, 0.15) 85%,
     transparent 100%
   );
-  animation: wr-divider-pulse 4s ease-in-out infinite;
+  animation: wr-divider-pulse 4.5s ease-in-out infinite;
   box-shadow: 0 0 6px rgba(212, 240, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
@@ -233,7 +233,7 @@ body {
     rgba(255, 107, 53, 0.15) 85%,
     transparent 100%
   );
-  animation: wr-divider-pulse 4s ease-in-out infinite;
+  animation: wr-divider-pulse 4.5s ease-in-out infinite;
   box-shadow: 0 0 6px rgba(255, 107, 53, 0.05), 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
@@ -1093,7 +1093,7 @@ section:hover > .wr-section-badge-fire {
 
 /* ── Fire Particle Dots ── */
 @keyframes wr-ember-rise {
-  0% { transform: translateY(0) scale(1); opacity: 0.6; }
+  0% { transform: translateY(0) scale(1); opacity: 0.5; }
   100% { transform: translateY(-30px) scale(0.3); opacity: 0; }
 }
 .wr-ember {
@@ -1550,8 +1550,8 @@ section:hover > .wr-section-badge-fire {
   left: 0;
   width: 0;
   height: 1px;
-  background: linear-gradient(90deg, #d4f000, #e4ff57, transparent);
-  transition: width 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  background: linear-gradient(90deg, #d4f000, #e4ff57 60%, transparent);
+  transition: width 0.7s cubic-bezier(0.25, 1, 0.5, 1);
   z-index: 20;
 }
 .group\/card:hover .wr-card-top-line::after {
