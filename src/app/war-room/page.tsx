@@ -86,7 +86,7 @@ export default function WarRoomPage() {
         <div className="flex justify-center py-1">
           <div className="flex items-center gap-1.5">
             {[1, 2, 3].map(i => (
-              <div key={i} className="w-[3px] h-[3px] bg-[#333]/20 rounded-full" />
+              <div key={i} className="w-[2px] h-[2px] bg-[#333]/25 rounded-full" />
             ))}
           </div>
         </div>
@@ -243,7 +243,7 @@ export default function WarRoomPage() {
 
             {/* Disclaimer */}
             <div className="text-center mb-4">
-              <span className="font-mono text-[6px] uppercase tracking-[0.2em] text-[#1a1a1a]">
+              <span className="font-mono text-[6px] uppercase tracking-[0.25em] text-[#1a1a1a]/80">
                 NOT FINANCIAL ADVICE — DYOR — ALL DATA FOR INFORMATIONAL PURPOSES ONLY
               </span>
             </div>

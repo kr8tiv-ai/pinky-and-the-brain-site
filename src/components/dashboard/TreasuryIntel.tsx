@@ -220,7 +220,7 @@ function TreasuryValueChart({
               <CartesianGrid strokeDasharray="4 8" stroke="rgba(51,51,51,0.12)" vertical={false} />
               <XAxis
                 dataKey="label"
-                tick={{ fill: '#444', fontSize: 9, fontFamily: 'var(--font-mono)' }}
+                tick={{ fill: '#555', fontSize: 8, fontFamily: 'var(--font-mono)' }}
                 axisLine={false}
                 tickLine={false}
               />
