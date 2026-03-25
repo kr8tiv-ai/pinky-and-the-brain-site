@@ -425,6 +425,7 @@ body {
   width: 0;
   height: 1px;
   background: currentColor;
+  opacity: 0.7;
   transition: width 0.3s cubic-bezier(0.25, 1, 0.5, 1);
 }
 .wr-link-hover:hover::after {
@@ -1041,7 +1042,7 @@ section:hover > .wr-section-badge-fire {
 /* ── Classified Peek Reveal ── */
 .wr-peek-reveal {
   clip-path: inset(0 100% 0 0);
-  transition: clip-path 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: clip-path 0.7s cubic-bezier(0.25, 1, 0.5, 1);
 }
 .group\/classified:hover .wr-peek-reveal {
   clip-path: inset(0 0 0 0);
