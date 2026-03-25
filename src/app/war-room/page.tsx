@@ -279,12 +279,10 @@ export default function WarRoomPage() {
                   ALL DATA LIVE ON-CHAIN
                 </span>
                 <span className="w-px h-3 bg-[#333]/20 hidden md:block" />
-                <span className="font-mono text-[7px] uppercase tracking-[0.1em] text-[#1a1a1a] hover:text-[#333] transition-colors duration-300">
+                <span className="font-mono text-[7px] uppercase tracking-[0.1em] text-[#1a1a1a] hover:text-[#333] transition-colors duration-300 flex items-center gap-1.5">
                   © 2025–2026 $BRAIN
-                </span>
-                <span className="w-px h-3 bg-[#333]/20 hidden md:block" />
-                <span className="font-mono text-[6px] uppercase tracking-[0.15em] text-[#1a1a1a]">
-                  v2.0.100
+                  <span className="text-[5px] text-[#333]/20">·</span>
+                  <span className="text-[6px] text-[#1a1a1a]/60">v2.0.100</span>
                 </span>
               </div>
             </div>

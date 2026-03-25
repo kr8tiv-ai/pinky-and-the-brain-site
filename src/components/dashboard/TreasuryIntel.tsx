@@ -210,7 +210,7 @@ function TreasuryValueChart({
                   <stop offset="100%" stopColor="#d4f000" stopOpacity={0.6} />
                 </linearGradient>
                 <filter id="chartGlow">
-                  <feGaussianBlur stdDeviation="3" result="blur" />
+                  <feGaussianBlur stdDeviation="2.5" result="blur" />
                   <feMerge>
                     <feMergeNode in="blur" />
                     <feMergeNode in="SourceGraphic" />
@@ -371,7 +371,7 @@ function ClassifiedCard({ mint }: { mint: string }) {
           {[15, 35, 55, 75].map((top, i) => (
             <div
               key={i}
-              className="absolute left-2 right-2 h-[6px] bg-[#111] group-hover/classified:translate-x-[-110%] transition-transform duration-700"
+              className="absolute left-2 right-2 h-[5px] bg-[#111]/90 group-hover/classified:translate-x-[-110%] transition-transform duration-700"
               style={{
                 top: `${top}%`,
                 transitionDelay: `${i * 120}ms`,
