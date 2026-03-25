@@ -53,7 +53,7 @@ body {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #0d0d0d;
+  background: #0c0c0c;
 }
 ::-webkit-scrollbar-thumb {
   background: #333;
@@ -169,7 +169,7 @@ body {
     #1a1a1a 65%
   );
   background-size: 400% 100%;
-  animation: wr-shimmer 2.2s ease infinite;
+  animation: wr-shimmer 2.4s ease infinite;
   border-radius: 2px;
 }
 
@@ -409,7 +409,7 @@ body {
   50% { transform: translate(-3.5vw, 2.5vh); }
 }
 
-.wr-orb-1 { animation: wr-orb-drift-1 22s ease-in-out infinite; will-change: transform; }
+.wr-orb-1 { animation: wr-orb-drift-1 24s ease-in-out infinite; will-change: transform; }
 .wr-orb-2 { animation: wr-orb-drift-2 28s ease-in-out infinite; will-change: transform; }
 .wr-orb-3 { animation: wr-orb-drift-3 19s ease-in-out infinite; will-change: transform; }
 
