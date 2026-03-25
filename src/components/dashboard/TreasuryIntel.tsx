@@ -54,7 +54,7 @@ function useStaggerReveal(containerRef: React.RefObject<HTMLElement | null>) {
           filter: 'blur(0px)',
           duration: 0.6,
           ease: 'power3.out',
-          stagger: { amount: 0.4, from: 'start' },
+          stagger: { amount: 0.35, from: 'start' },
           delay: 0.15,
         }
       )

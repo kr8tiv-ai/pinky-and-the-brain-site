@@ -1473,7 +1473,7 @@ section:hover > .wr-section-badge-fire {
 /* ── Card Description Accent ── */
 .wr-desc-accent {
   position: relative;
-  transition: border-color 0.4s ease;
+  transition: border-color 0.5s ease;
 }
 .group\/card:hover .wr-desc-accent {
   border-color: rgba(212, 240, 0, 0.06);
