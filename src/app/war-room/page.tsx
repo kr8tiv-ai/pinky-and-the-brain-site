@@ -160,7 +160,7 @@ export default function WarRoomPage() {
             <div className="relative flex flex-col items-center justify-center gap-6 wr-brackets" style={{ padding: '2rem' }}>
               <div className="flex items-center gap-3">
                 <div className="w-8 h-px bg-[#333]/40" />
-                <div className="font-mono text-[9px] uppercase tracking-[0.3em] text-[#333] font-bold wr-section-num">
+                <div className="font-mono text-[9px] uppercase tracking-[0.3em] text-[#333]/80 font-bold wr-section-num">
                   SECTION 03 — PHASE 2
                 </div>
                 <div className="w-8 h-px bg-[#333]/40" />

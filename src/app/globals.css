@@ -808,7 +808,7 @@ button:focus-visible {
   50% { transform: translateY(4px); opacity: 0.8; }
 }
 .wr-scroll-hint {
-  animation: wr-scroll-bounce 2.5s ease-in-out infinite;
+  animation: wr-scroll-bounce 2.5s ease-in-out 1s infinite;
   transition: opacity 0.4s ease;
 }
 
@@ -909,7 +909,7 @@ button:focus-visible {
 .wr-fire-line {
   background: linear-gradient(90deg, transparent 0%, #ff6b35 20%, #ff9e9e 50%, #ff6b35 80%, transparent 100%);
   background-size: 200% 100%;
-  animation: wr-fire-line 4s linear infinite;
+  animation: wr-fire-line 3.5s linear infinite;
 }
 
 /* ── Fire Gradient Text ── */
