@@ -132,7 +132,7 @@ export default function WarRoomPage() {
               }}
             />
             {/* Radial glow center — dual layer */}
-            <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_40%_40%_at_50%_50%,rgba(212,240,0,0.02),transparent_70%)]" />
+            <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_40%_40%_at_50%_50%,rgba(212,240,0,0.015),transparent_70%)]" />
             <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_60%_30%_at_50%_80%,rgba(255,158,158,0.01),transparent_70%)]" />
 
             {/* Scan line */}

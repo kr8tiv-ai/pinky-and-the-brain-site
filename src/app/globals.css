@@ -434,7 +434,7 @@ body {
 
 /* ── Gradient Text (section numbers, accents) ── */
 .wr-gradient-text-lime {
-  background: linear-gradient(135deg, #d4f000 0%, #e4ff57 50%, #d4f000 100%);
+  background: linear-gradient(135deg, #d4f000 0%, #e4ff57 45%, #d4f000 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -793,7 +793,7 @@ button:focus-visible {
 
 /* ── Divider Center Dot ── */
 @keyframes wr-dot-breathe {
-  0%, 100% { opacity: 0.15; box-shadow: none; }
+  0%, 100% { opacity: 0.12; box-shadow: none; }
   50% { opacity: 0.6; box-shadow: 0 0 5px currentColor; }
 }
 .wr-divider-dot {
