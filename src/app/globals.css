@@ -911,7 +911,7 @@ button:focus-visible {
 .wr-fire-line {
   background: linear-gradient(90deg, transparent 0%, #ff6b35 15%, #ff9e9e 50%, #ff6b35 85%, transparent 100%);
   background-size: 200% 100%;
-  animation: wr-fire-line 3s linear infinite;
+  animation: wr-fire-line 3.5s linear infinite;
 }
 
 /* ── Fire Gradient Text ── */
@@ -928,10 +928,10 @@ button:focus-visible {
   display: inline-block;
 }
 .wr-row-stripe:hover .wr-row-date {
-  color: #888;
+  color: #777;
 }
 .wr-row-stripe:hover .wr-burn-amount {
-  transform: scale(1.03);
+  transform: scale(1.02);
   text-shadow: 0 0 8px rgba(255, 107, 53, 0.35);
 }
 
