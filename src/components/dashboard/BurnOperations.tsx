@@ -1,11 +1,13 @@
 'use client'
 
+import { useRef, useEffect } from 'react'
 import { format, fromUnixTime } from 'date-fns'
+import gsap from 'gsap'
 import { useBurns } from '@/hooks/useBurns'
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
-const LP_LOCKED_PCT = 100 // LP is 100% locked — static fact, not API-derived
+const LP_LOCKED_PCT = 100
 
 // ─── Utility formatters ──────────────────────────────────────────────────────
 
@@ -20,7 +22,7 @@ function formatPct(n: number): string {
   return `${n.toFixed(2)}%`
 }
 
-// ─── BurnSummaryBar ──────────────────────────────────────────────────────────
+// ─── Burn Summary Bar ──────────────────────────────────────────────────────────
 
 function BurnSummaryBar({
   totalBurned,
@@ -33,78 +35,131 @@ function BurnSummaryBar({
   isLoading: boolean
   isError: boolean
 }) {
+  const totalRef = useRef<HTMLSpanElement>(null)
+  const pctRef = useRef<HTMLSpanElement>(null)
+
+  // Count-up animation
+  useEffect(() => {
+    if (isLoading || isError) return
+    const targets = [
+      { ref: totalRef, end: totalBurned, fmt: formatBurnAmount },
+      { ref: pctRef, end: burnedPct, fmt: formatPct },
+    ]
+    targets.forEach(({ ref, end, fmt }) => {
+      if (!ref.current) return
+      const obj = { val: 0 }
+      gsap.to(obj, {
+        val: end,
+        duration: 1.8,
+        ease: 'power2.out',
+        onUpdate: () => {
+          if (ref.current) ref.current.textContent = fmt(obj.val)
+        },
+      })
+    })
+  }, [totalBurned, burnedPct, isLoading, isError])
+
+  const cells = [
+    {
+      label: 'TOTAL INCINERATED',
+      content: isLoading ? (
+        <div className="wr-skeleton h-6 w-32" />
+      ) : isError ? (
+        <span className="text-[#ff9e9e]">&mdash;</span>
+      ) : (
+        <span ref={totalRef} className="text-[#ff6b35]">{formatBurnAmount(totalBurned)}</span>
+      ),
+    },
+    {
+      label: '% SUPPLY BURNED',
+      content: isLoading ? (
+        <div className="wr-skeleton h-6 w-20" />
+      ) : isError ? (
+        <span className="text-[#ff9e9e]">&mdash;</span>
+      ) : (
+        <span ref={pctRef} className="text-[#ff6b35]">{formatPct(burnedPct)}</span>
+      ),
+    },
+    {
+      label: '% BURNED + LP LOCKED',
+      content: isLoading ? (
+        <div className="wr-skeleton h-6 w-36" />
+      ) : isError ? (
+        <span className="text-[#ff9e9e]">&mdash;</span>
+      ) : (
+        <span className="text-[#ff6b35]">
+          <span className="text-[#ff6b35]">{formatPct(burnedPct)}</span>
+          <span className="text-[#666] mx-1.5">+</span>
+          <span className="text-[#ff6b35]">{LP_LOCKED_PCT}%</span>
+          <span className="text-[#444] text-[9px] ml-1.5">LOCKED</span>
+        </span>
+      ),
+    },
+  ]
+
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-[#333]/50 border-b border-[#333]/50">
-      {/* TOTAL INCINERATED */}
-      <div className="px-6 py-5">
-        <div className="font-mono text-[10px] uppercase tracking-widest text-[#cccccc] mb-1 font-bold">
-          TOTAL INCINERATED
+    <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-[#333]/20 border-b border-[#333]/20">
+      {cells.map(({ label, content }) => (
+        <div key={label} className="px-5 lg:px-6 py-5">
+          <div className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#666] mb-2 font-bold">
+            {label}
+          </div>
+          <div className="font-mono text-xl lg:text-2xl font-black tabular-nums leading-none">
+            {content}
+          </div>
         </div>
-        <div className="font-mono text-2xl font-black tabular-nums">
-          {isLoading ? (
-            <span className="text-[#ff6b35]">████████</span>
-          ) : isError ? (
-            <span className="text-[#ff9e9e]">&mdash;</span>
-          ) : (
-            <span className="text-[#ff6b35]">{formatBurnAmount(totalBurned)}</span>
-          )}
-        </div>
-      </div>
+      ))}
+    </div>
+  )
+}
 
-      {/* % SUPPLY BURNED */}
-      <div className="px-6 py-5">
-        <div className="font-mono text-[10px] uppercase tracking-widest text-[#cccccc] mb-1 font-bold">
-          % SUPPLY BURNED
-        </div>
-        <div className="font-mono text-2xl font-black tabular-nums">
-          {isLoading ? (
-            <span className="text-[#ff6b35]">████████</span>
-          ) : isError ? (
-            <span className="text-[#ff9e9e]">&mdash;</span>
-          ) : (
-            <span className="text-[#ff6b35]">{formatPct(burnedPct)}</span>
-          )}
-        </div>
-      </div>
+// ─── Transaction Row ──────────────────────────────────────────────────────────
 
-      {/* % BURNED + LP LOCKED */}
-      <div className="px-6 py-5">
-        <div className="font-mono text-[10px] uppercase tracking-widest text-[#cccccc] mb-1 font-bold">
-          % BURNED + LP LOCKED
-        </div>
-        <div className="font-mono text-2xl font-black tabular-nums">
-          {isLoading ? (
-            <span className="text-[#ff6b35]">████████</span>
-          ) : isError ? (
-            <span className="text-[#ff9e9e]">&mdash;</span>
-          ) : (
-            <span className="text-[#ff6b35]">
-              {formatPct(burnedPct)} burned, {LP_LOCKED_PCT}% locked
-            </span>
-          )}
-        </div>
+function TransactionRow({
+  tx,
+  index,
+}: {
+  tx: { txHash: string; timestamp: number; amount: number }
+  index: number
+}) {
+  const rowRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (!rowRef.current) return
+    gsap.fromTo(
+      rowRef.current,
+      { opacity: 0, x: -8 },
+      { opacity: 1, x: 0, duration: 0.4, ease: 'power2.out', delay: index * 0.05 }
+    )
+  }, [index])
+
+  return (
+    <div
+      ref={rowRef}
+      className="grid grid-cols-[1fr_1fr_1.2fr] gap-4 items-center py-3 px-4 wr-row-hover-fire border-b border-[#333]/10 font-mono text-[10px]"
+    >
+      <div className="text-[#666] tabular-nums">
+        {format(fromUnixTime(tx.timestamp), 'yyyy-MM-dd HH:mm')}
+      </div>
+      <div className="text-[#ff6b35] font-black tabular-nums">
+        {formatBurnAmount(tx.amount)}
+      </div>
+      <div className="flex items-center gap-2">
+        <a
+          href={`https://solscan.io/tx/${tx.txHash}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-[#ff6b35]/60 hover:text-[#ff6b35] transition-colors flex items-center gap-1"
+        >
+          <span className="tabular-nums">{tx.txHash.slice(0, 8)}...{tx.txHash.slice(-6)}</span>
+          <span className="text-[8px]">↗</span>
+        </a>
       </div>
     </div>
   )
 }
 
-// ─── BurnTransactionsTable ───────────────────────────────────────────────────
-
-function SkeletonRow() {
-  return (
-    <tr className="border-b border-[#333]/30">
-      <td className="py-2 pr-6">
-        <span className="text-[#ff6b35]">████████████</span>
-      </td>
-      <td className="py-2 pr-6">
-        <span className="text-[#ff6b35]">██████████</span>
-      </td>
-      <td className="py-2">
-        <span className="text-[#ff6b35]">████████…██████</span>
-      </td>
-    </tr>
-  )
-}
+// ─── Burn Transactions Table ──────────────────────────────────────────────────
 
 function BurnTransactionsTable({
   transactions,
@@ -116,67 +171,49 @@ function BurnTransactionsTable({
   isError: boolean
 }) {
   return (
-    <div className="px-6 lg:px-12 py-6">
-      <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#cccccc] font-bold mb-4">
-        BURN TRANSACTIONS
+    <div className="px-5 lg:px-8 py-6">
+      <div className="font-mono text-[9px] uppercase tracking-[0.25em] text-[#666] font-bold mb-4 flex items-center gap-3">
+        <span>BURN LEDGER</span>
+        <div className="flex-1 h-px bg-[#333]/30" />
+        {!isLoading && !isError && (
+          <span className="text-[#444] tabular-nums">{transactions.length} RECORDS</span>
+        )}
       </div>
 
-      <div className="max-h-[400px] overflow-y-auto">
-        <table className="w-full font-mono text-[10px]">
-          <thead>
-            <tr className="border-b border-[#333]/50">
-              <th className="text-left uppercase tracking-widest text-[#666] pb-2 pr-6">
-                DATE
-              </th>
-              <th className="text-left uppercase tracking-widest text-[#666] pb-2 pr-6">
-                AMOUNT
-              </th>
-              <th className="text-left uppercase tracking-widest text-[#666] pb-2">
-                TX HASH
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {isLoading ? (
-              Array.from({ length: 5 }).map((_, i) => <SkeletonRow key={i} />)
-            ) : isError ? (
-              <tr>
-                <td colSpan={3} className="py-6 text-center">
-                  <span className="text-[#ff9e9e] tracking-widest">&mdash;</span>
-                </td>
-              </tr>
-            ) : transactions.length === 0 ? (
-              <tr>
-                <td colSpan={3} className="py-6 text-center">
-                  <span className="text-[#666] tracking-widest">
-                    NO BURN TRANSACTIONS RECORDED
-                  </span>
-                </td>
-              </tr>
-            ) : (
-              transactions.map((tx) => (
-                <tr key={tx.txHash} className="border-b border-[#333]/30">
-                  <td className="py-2 pr-6 text-[#cccccc]">
-                    {format(fromUnixTime(tx.timestamp), 'yyyy-MM-dd HH:mm')}
-                  </td>
-                  <td className="py-2 pr-6 text-[#ff6b35] font-black tabular-nums">
-                    {formatBurnAmount(tx.amount)}
-                  </td>
-                  <td className="py-2">
-                    <a
-                      href={`https://solscan.io/tx/${tx.txHash}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-[#ff6b35] hover:underline"
-                    >
-                      {tx.txHash.slice(0, 8)}...{tx.txHash.slice(-6)} ↗
-                    </a>
-                  </td>
-                </tr>
-              ))
-            )}
-          </tbody>
-        </table>
+      {/* Table header */}
+      <div className="grid grid-cols-[1fr_1fr_1.2fr] gap-4 px-4 pb-2 border-b border-[#333]/30">
+        {['DATE', 'AMOUNT', 'TX HASH'].map(h => (
+          <div key={h} className="font-mono text-[8px] font-bold uppercase tracking-[0.2em] text-[#444]">
+            {h}
+          </div>
+        ))}
+      </div>
+
+      {/* Rows */}
+      <div className="max-h-[400px] overflow-y-auto wr-scroll">
+        {isLoading ? (
+          Array.from({ length: 5 }).map((_, i) => (
+            <div key={i} className="grid grid-cols-[1fr_1fr_1.2fr] gap-4 py-3 px-4 border-b border-[#333]/10">
+              <div className="wr-skeleton h-3 w-28" />
+              <div className="wr-skeleton h-3 w-24" />
+              <div className="wr-skeleton h-3 w-32" />
+            </div>
+          ))
+        ) : isError ? (
+          <div className="py-8 text-center">
+            <span className="text-[#ff9e9e] font-mono text-xs tracking-[0.2em]">&mdash;</span>
+          </div>
+        ) : transactions.length === 0 ? (
+          <div className="py-8 text-center">
+            <span className="text-[#333] font-mono text-xs tracking-[0.2em]">
+              NO BURN TRANSACTIONS RECORDED
+            </span>
+          </div>
+        ) : (
+          transactions.map((tx, i) => (
+            <TransactionRow key={tx.txHash} tx={tx} index={i} />
+          ))
+        )}
       </div>
     </div>
   )
@@ -186,19 +223,46 @@ function BurnTransactionsTable({
 
 export default function BurnOperations() {
   const { data, isLoading, isError } = useBurns()
+  const sectionRef = useRef<HTMLElement>(null)
+
+  // Section entrance animation
+  useEffect(() => {
+    if (!sectionRef.current) return
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        sectionRef.current,
+        { opacity: 0, y: 16 },
+        { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }
+      )
+    }, sectionRef)
+    return () => ctx.revert()
+  }, [])
 
   return (
-    <section className="w-full border-b border-[#333] bg-[#0d0d0d] border-t-2 border-t-[#ff6b35] relative overflow-hidden">
-      {/* Subtle top glow */}
-      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-[#ff6b35]/[0.06] to-transparent pointer-events-none" />
+    <section ref={sectionRef} className="w-full bg-[#0a0a0a] relative overflow-hidden">
+      {/* Fire glow at top */}
+      <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-[#ff6b35]/[0.04] to-transparent pointer-events-none" />
+
+      {/* Top accent line */}
+      <div className="h-[2px] bg-gradient-to-r from-transparent via-[#ff6b35]/40 to-transparent" />
 
       {/* Section header */}
-      <div className="relative flex justify-between items-center px-6 lg:px-12 py-4 border-b border-[#333]/50">
-        <div className="font-mono text-xs uppercase tracking-[0.3em] text-[#cccccc] font-bold">
-          BURN OPERATIONS
+      <div className="relative flex justify-between items-center px-5 lg:px-8 py-4 border-b border-[#333]/20">
+        <div className="flex items-center gap-3">
+          <div className="w-1 h-4 bg-[#ff6b35]" />
+          <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#888] font-bold">
+            Burn Operations
+          </div>
         </div>
-        <div className="font-mono text-[10px] uppercase tracking-widest text-[#ff6b35] border border-[#ff6b35] px-2 py-0.5 animate-pulse">
-          INCINERATED
+        <div className="flex items-center gap-2">
+          {/* Pulsing fire dot */}
+          <div className="relative flex items-center justify-center w-3 h-3">
+            <div className="w-1.5 h-1.5 rounded-full bg-[#ff6b35]" style={{ boxShadow: '0 0 6px #ff6b35, 0 0 12px rgba(255, 107, 53, 0.3)' }} />
+            <div className="absolute w-1.5 h-1.5 rounded-full bg-[#ff6b35] wr-pulse-ring" />
+          </div>
+          <span className="wr-tag border-[#ff6b35]/30 text-[#ff6b35]/80">
+            INCINERATED
+          </span>
         </div>
       </div>
 

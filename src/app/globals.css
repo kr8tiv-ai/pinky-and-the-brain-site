@@ -132,3 +132,238 @@ body {
 .ticker-track:hover {
   animation-play-state: paused;
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   WAR ROOM — Dashboard Design System
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Animated Conic Border (scanning radar effect) ── */
+@property --conic-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes conic-spin {
+  to { --conic-angle: 360deg; }
+}
+
+.wr-conic-border {
+  position: relative;
+}
+.wr-conic-border::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  background: conic-gradient(
+    from var(--conic-angle),
+    transparent 0%,
+    #d4f000 8%,
+    #d4f000aa 12%,
+    transparent 20%,
+    transparent 100%
+  );
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  padding: 1px;
+  animation: conic-spin 4s linear infinite;
+  pointer-events: none;
+}
+
+.wr-conic-border-fire::before {
+  background: conic-gradient(
+    from var(--conic-angle),
+    transparent 0%,
+    #ff6b35 8%,
+    #ff6b35aa 12%,
+    transparent 20%,
+    transparent 100%
+  );
+}
+
+/* ── Shimmer Loading Skeleton ── */
+@keyframes wr-shimmer {
+  0% { background-position: 200% 50%; }
+  100% { background-position: -200% 50%; }
+}
+
+.wr-skeleton {
+  background: linear-gradient(
+    90deg,
+    #1a1a1a 25%,
+    #2a2a2a 37%,
+    #1a1a1a 63%
+  );
+  background-size: 400% 100%;
+  animation: wr-shimmer 2s ease infinite;
+  border-radius: 2px;
+}
+
+/* ── Scanline Overlay ── */
+.wr-scanlines {
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.03) 2px,
+    rgba(0, 0, 0, 0.03) 4px
+  );
+  pointer-events: none;
+}
+
+/* ── Grid Background Pattern ── */
+.wr-grid-bg {
+  background-image:
+    linear-gradient(rgba(212, 240, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212, 240, 0, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* ── Card Depth System ── */
+.wr-card {
+  position: relative;
+  background: rgba(13, 13, 13, 0.8);
+  border: 1px solid rgba(51, 51, 51, 0.6);
+  backdrop-filter: blur(12px);
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.wr-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+}
+/* Top edge light reflection */
+.wr-card::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 10%, rgba(255, 255, 255, 0.08) 50%, transparent 90%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.wr-card:hover {
+  border-color: rgba(51, 51, 51, 0.9);
+  background: rgba(20, 20, 20, 0.9);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+/* ── Fire Card Variant ── */
+.wr-card-fire {
+  border-color: rgba(255, 107, 53, 0.2);
+}
+.wr-card-fire::before {
+  background: linear-gradient(90deg, transparent 10%, rgba(255, 107, 53, 0.12) 50%, transparent 90%);
+}
+.wr-card-fire:hover {
+  border-color: rgba(255, 107, 53, 0.4);
+  box-shadow: 0 8px 32px rgba(255, 107, 53, 0.08);
+}
+
+/* ── Animated Number Flash (pulse on value change) ── */
+@keyframes wr-value-flash {
+  0% { color: #d4f000; text-shadow: 0 0 12px rgba(212, 240, 0, 0.5); }
+  100% { color: #ffffff; text-shadow: none; }
+}
+.wr-value-flash {
+  animation: wr-value-flash 1.2s ease-out forwards;
+}
+
+/* ── Horizontal Rule / Section Divider ── */
+.wr-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(212, 240, 0, 0.15) 15%,
+    rgba(212, 240, 0, 0.25) 50%,
+    rgba(212, 240, 0, 0.15) 85%,
+    transparent 100%
+  );
+}
+
+.wr-divider-fire {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 107, 53, 0.15) 15%,
+    rgba(255, 107, 53, 0.3) 50%,
+    rgba(255, 107, 53, 0.15) 85%,
+    transparent 100%
+  );
+}
+
+/* ── Status Indicator Pulse Ring ── */
+@keyframes wr-pulse-ring {
+  0% { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(2.8); opacity: 0; }
+}
+.wr-pulse-ring {
+  animation: wr-pulse-ring 1.5s ease-out infinite;
+}
+
+/* ── Stagger Reveal Base State ── */
+[data-wr-reveal] {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+/* ── War Room Tooltip ── */
+.wr-tooltip {
+  background: rgba(13, 13, 13, 0.95);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(51, 51, 51, 0.6);
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+/* ── Row Hover Shift ── */
+.wr-row-hover {
+  transition: all 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.wr-row-hover:hover {
+  background: rgba(212, 240, 0, 0.03);
+  padding-left: calc(1rem + 4px);
+  border-left: 2px solid rgba(212, 240, 0, 0.2);
+}
+
+.wr-row-hover-fire:hover {
+  background: rgba(255, 107, 53, 0.03);
+  padding-left: calc(1rem + 4px);
+  border-left: 2px solid rgba(255, 107, 53, 0.2);
+}
+
+/* ── Section Header Tag ── */
+.wr-tag {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  padding: 0.2rem 0.5rem;
+  border: 1px solid;
+  line-height: 1;
+}
+
+/* ── Custom scrollbar for war-room tables ── */
+.wr-scroll::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+.wr-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.wr-scroll::-webkit-scrollbar-thumb {
+  background: rgba(51, 51, 51, 0.6);
+  border-radius: 2px;
+}
+.wr-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(212, 240, 0, 0.4);
+}
