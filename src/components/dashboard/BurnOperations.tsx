@@ -228,7 +228,7 @@ function BurnTransactionsTable({
       </div>
 
       {/* Rows */}
-      <div className="max-h-[360px] overflow-y-auto wr-scroll">
+      <div className="max-h-[360px] overflow-y-auto wr-scroll scroll-smooth">
         {isLoading ? (
           Array.from({ length: 5 }).map((_, i) => (
             <div key={i} className="grid grid-cols-[24px_1fr_1fr] md:grid-cols-[24px_1fr_1fr_1.2fr] gap-2 md:gap-3 py-3 px-3 md:px-4 border-b border-[#333]/10">

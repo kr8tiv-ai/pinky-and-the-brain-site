@@ -36,7 +36,7 @@ export default function ScrollProgress() {
         />
       </div>
       {/* Glow reflection — layered */}
-      <div className="h-5 bg-gradient-to-b from-[#d4f000]/[0.04] via-[#d4f000]/[0.015] to-transparent pointer-events-none" />
+      <div className="h-4 bg-gradient-to-b from-[#d4f000]/[0.035] via-[#d4f000]/[0.012] to-transparent pointer-events-none" />
     </div>
   )
 }
