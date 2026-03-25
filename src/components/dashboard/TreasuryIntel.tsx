@@ -504,7 +504,7 @@ function HoldingCard({
             {gainLoss.text}
           </span>
           {holding.gainLossPct !== undefined && (
-            <span className={`text-[7px] font-bold font-mono uppercase tracking-[0.15em] transition-opacity duration-300 ${
+            <span className={`text-[7px] font-bold font-mono uppercase tracking-[0.2em] transition-opacity duration-300 ${
               holding.gainLossPct >= 0 ? 'text-[#d4f000]/30 group-hover/card:text-[#d4f000]/50' : 'text-[#ff9e9e]/30 group-hover/card:text-[#ff9e9e]/50'
             }`}>
               {holding.gainLossPct > 5 ? '▲ RISING' : holding.gainLossPct < -5 ? '▼ DECLINING' : '● STABLE'}

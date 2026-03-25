@@ -41,8 +41,8 @@ export default function WarRoomPage() {
       <div className="fixed inset-0 z-0 pointer-events-none bg-[radial-gradient(ellipse_80%_50%_at_50%_0%,rgba(212,240,0,0.04),transparent_70%)]" />
 
       {/* ── Layer 6: Corner vignettes ── */}
-      <div className="fixed inset-0 z-0 pointer-events-none bg-[radial-gradient(ellipse_50%_50%_at_0%_0%,rgba(0,0,0,0.3),transparent_70%)]" />
-      <div className="fixed inset-0 z-0 pointer-events-none bg-[radial-gradient(ellipse_50%_50%_at_100%_100%,rgba(0,0,0,0.3),transparent_70%)]" />
+      <div className="fixed inset-0 z-0 pointer-events-none bg-[radial-gradient(ellipse_50%_50%_at_0%_0%,rgba(0,0,0,0.25),transparent_70%)]" />
+      <div className="fixed inset-0 z-0 pointer-events-none bg-[radial-gradient(ellipse_50%_50%_at_100%_100%,rgba(0,0,0,0.25),transparent_70%)]" />
 
       {/* ── Scroll Progress ── */}
       <ScrollProgress />

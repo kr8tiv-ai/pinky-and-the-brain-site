@@ -808,7 +808,7 @@ button:focus-visible {
   50% { transform: translateY(4px); opacity: 0.8; }
 }
 .wr-scroll-hint {
-  animation: wr-scroll-bounce 2.5s ease-in-out 1s infinite;
+  animation: wr-scroll-bounce 3s ease-in-out 1s infinite;
   transition: opacity 0.4s ease;
 }
 
