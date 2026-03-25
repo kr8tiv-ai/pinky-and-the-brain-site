@@ -536,7 +536,7 @@ body {
   color: rgba(212, 240, 0, 0.3);
   font-size: 0.75em;
   margin-left: 2px;
-  animation: wr-cursor-blink 1.2s step-end infinite;
+  animation: wr-cursor-blink 1s step-end infinite;
 }
 .wr-cursor-fire::after {
   color: rgba(255, 107, 53, 0.3);
@@ -942,7 +942,7 @@ button:focus-visible {
               opacity 0.3s ease;
 }
 .group\/card:hover .wr-links-reveal {
-  max-height: 60px;
+  max-height: 50px;
   opacity: 1;
 }
 
