@@ -639,7 +639,7 @@ body {
 }
 .wr-chart-frame:hover {
   border-color: rgba(212, 240, 0, 0.08);
-  box-shadow: inset 0 0 30px rgba(212, 240, 0, 0.015);
+  box-shadow: inset 0 0 25px rgba(212, 240, 0, 0.012);
 }
 .wr-chart-frame:hover .wr-chart-corner {
   opacity: 1;
@@ -821,7 +821,7 @@ button:focus-visible {
   100% { transform: translate(-3px, 0); }
 }
 .wr-watermark {
-  animation: wr-watermark-drift 30s ease-in-out infinite;
+  animation: wr-watermark-drift 35s ease-in-out infinite;
   will-change: transform;
 }
 
@@ -1538,7 +1538,7 @@ section:hover > .wr-section-badge-fire {
   cursor: default;
 }
 .wr-divider-label:hover {
-  letter-spacing: 0.7em;
+  letter-spacing: 0.8em;
 }
 
 /* ── Card Top Line Accent ── */
