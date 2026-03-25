@@ -1444,6 +1444,32 @@ section:hover > .wr-section-badge-fire {
   pointer-events: none;
 }
 
+/* ── Card Description Accent ── */
+.wr-desc-accent {
+  position: relative;
+  transition: border-color 0.4s ease;
+}
+.group\/card:hover .wr-desc-accent {
+  border-color: rgba(212, 240, 0, 0.08);
+}
+
+/* ── Row Glow Intensity ── */
+.wr-row-glow-intensity {
+  transition: box-shadow 0.3s ease;
+}
+.wr-row-glow-intensity:hover {
+  box-shadow: inset 0 0 20px rgba(255, 107, 53, 0.02);
+}
+
+/* ── Divider Label Hover ── */
+.wr-divider-label {
+  transition: letter-spacing 0.6s cubic-bezier(0.25, 1, 0.5, 1), color 0.3s ease;
+  cursor: default;
+}
+.wr-divider-label:hover {
+  letter-spacing: 0.7em;
+}
+
 /* ── Vignette Corners ── */
 .wr-vignette-corners::before {
   content: '';

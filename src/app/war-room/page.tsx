@@ -71,7 +71,7 @@ export default function WarRoomPage() {
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#0a0a0a] px-5 flex items-center gap-2.5">
             <div className="w-5 h-px bg-[#d4f000]/10" />
             <div className="wr-divider-dot text-[#d4f000]" style={{ animationDelay: '0s' }} />
-            <span className="font-mono text-[7px] uppercase tracking-[0.5em] text-[#d4f000]/25 font-bold">▼ INTEL</span>
+            <span className="font-mono text-[7px] uppercase tracking-[0.5em] text-[#d4f000]/25 font-bold wr-divider-label">▼ INTEL</span>
             <div className="wr-divider-dot text-[#d4f000]" style={{ animationDelay: '1.5s' }} />
             <div className="w-5 h-px bg-[#d4f000]/10" />
           </div>
@@ -98,7 +98,7 @@ export default function WarRoomPage() {
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#0a0a0a] px-6 flex items-center gap-3">
             <div className="w-6 h-px bg-gradient-to-r from-transparent to-[#ff6b35]/20" />
             <div className="wr-divider-dot text-[#ff6b35]" />
-            <span className="font-mono text-[7px] uppercase tracking-[0.5em] text-[#ff6b35]/35 font-bold">INCINERATION ZONE</span>
+            <span className="font-mono text-[7px] uppercase tracking-[0.5em] text-[#ff6b35]/35 font-bold wr-divider-label">INCINERATION ZONE</span>
             <div className="wr-divider-dot text-[#ff6b35]" />
             <div className="w-6 h-px bg-gradient-to-l from-transparent to-[#ff6b35]/20" />
           </div>
@@ -116,7 +116,7 @@ export default function WarRoomPage() {
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#0a0a0a] px-6 flex items-center gap-3">
             <div className="w-6 h-px bg-gradient-to-r from-transparent to-[#333]/30" />
             <div className="wr-divider-dot text-[#555]" />
-            <span className="font-mono text-[7px] uppercase tracking-[0.5em] text-[#333]/60 font-bold">CLASSIFIED ZONE</span>
+            <span className="font-mono text-[7px] uppercase tracking-[0.5em] text-[#333]/60 font-bold wr-divider-label">CLASSIFIED ZONE</span>
             <div className="wr-divider-dot text-[#555]" />
             <div className="w-6 h-px bg-gradient-to-l from-transparent to-[#333]/30" />
           </div>
