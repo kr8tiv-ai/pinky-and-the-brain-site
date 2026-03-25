@@ -157,7 +157,7 @@ export default function WarRoomPage() {
             <div className="absolute bottom-4 left-4 text-[#333]/10 text-[7px] font-mono select-none pointer-events-none transition-colors duration-700">+</div>
             <div className="absolute bottom-4 right-4 text-[#333]/10 text-[7px] font-mono select-none pointer-events-none transition-colors duration-700">+</div>
 
-            <div className="relative flex flex-col items-center justify-center gap-6 wr-brackets" style={{ padding: '2rem' }}>
+            <div className="relative flex flex-col items-center justify-center gap-6 wr-brackets" style={{ padding: '2.5rem 2rem' }}>
               <div className="flex items-center gap-3">
                 <div className="w-8 h-px bg-[#333]/40" />
                 <div className="font-mono text-[9px] uppercase tracking-[0.3em] text-[#333]/80 font-bold wr-section-num">
@@ -283,7 +283,7 @@ export default function WarRoomPage() {
                 <span className="font-mono text-[7px] uppercase tracking-[0.1em] text-[#1a1a1a] hover:text-[#333] transition-colors duration-300 flex items-center gap-1.5">
                   © 2025–2026 $BRAIN
                   <span className="text-[5px] text-[#333]/20">·</span>
-                  <span className="text-[6px] text-[#1a1a1a]/60">v2.0.100</span>
+                  <span className="text-[6px] text-[#1a1a1a]/60">v2.0.150</span>
                 </span>
               </div>
             </div>

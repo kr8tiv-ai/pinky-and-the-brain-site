@@ -1292,7 +1292,7 @@ section:hover > .wr-section-badge-fire {
   left: 0;
   width: 0;
   height: 1px;
-  background: linear-gradient(90deg, currentColor, transparent);
+  background: linear-gradient(90deg, currentColor, transparent 80%);
   transition: width 0.8s cubic-bezier(0.25, 1, 0.5, 1);
 }
 .wr-header-line:hover::after {
