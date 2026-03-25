@@ -273,7 +273,7 @@ export default function WarRoomPage() {
                 </a>
                 <span className="w-px h-3.5 bg-[#333]/30 hidden md:block" />
                 <span className="font-mono text-[7px] uppercase tracking-[0.15em] text-[#222] flex items-center gap-1.5 hover:text-[#444] transition-colors duration-300 cursor-default">
-                  <span className="text-[#d4f000]/25 text-[9px]">◎</span> BUILT ON SOLANA
+                  <span className="text-[#d4f000]/25 text-[9px] transition-all duration-300 group-hover/footer-links:text-[#d4f000]/40">◎</span> BUILT ON SOLANA
                 </span>
                 <span className="w-px h-3.5 bg-[#333]/20 hidden md:block" />
                 <span className="font-mono text-[7px] uppercase tracking-[0.15em] text-[#222]">

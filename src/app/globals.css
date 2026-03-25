@@ -449,7 +449,7 @@ body {
 .wr-row-num {
   font-family: var(--font-mono);
   font-size: 7px;
-  color: rgba(255, 107, 53, 0.2);
+  color: rgba(255, 107, 53, 0.15);
   min-width: 18px;
   text-align: right;
   user-select: none;
