@@ -129,6 +129,8 @@ body {
   .wr-divider,
   .wr-divider-fire,
   .wr-skeleton,
+  .wr-progress-marker,
+  .wr-footer-border::before,
   .animate-spin {
     animation: none !important;
   }
@@ -929,6 +931,68 @@ section:hover > .wr-section-badge-fire {
 }
 .wr-footer-link:hover {
   text-shadow: 0 0 12px rgba(212, 240, 0, 0.3);
+}
+
+/* ── Data Cell Hover Glow ── */
+.wr-data-cell {
+  position: relative;
+  transition: background-color 0.3s ease;
+}
+.wr-data-cell::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: rgba(212, 240, 0, 0);
+  transition: background 0.3s ease;
+}
+.wr-data-cell:hover {
+  background-color: rgba(212, 240, 0, 0.015);
+}
+.wr-data-cell:hover::after {
+  background: rgba(212, 240, 0, 0.08);
+}
+.wr-data-cell:hover .wr-data-cell-value {
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.1);
+}
+
+/* ── Burn Progress Live Marker ── */
+@keyframes wr-progress-pulse {
+  0%, 100% { box-shadow: 0 0 4px #ff6b35, 0 0 8px rgba(255, 107, 53, 0.4); }
+  50% { box-shadow: 0 0 8px #ff6b35, 0 0 16px rgba(255, 107, 53, 0.6); }
+}
+.wr-progress-marker {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ff6b35;
+  border: 2px solid #0a0a0a;
+  animation: wr-progress-pulse 2s ease-in-out infinite;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+/* ── Footer Breathing Border ── */
+@keyframes wr-footer-breathe {
+  0%, 100% { opacity: 0.15; }
+  50% { opacity: 0.4; }
+}
+.wr-footer-border {
+  position: relative;
+}
+.wr-footer-border::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, #d4f000 30%, #e4ff57 50%, #d4f000 70%, transparent 100%);
+  animation: wr-footer-breathe 4s ease-in-out infinite;
 }
 
 /* ── Horizontal Scan Line (animated) ── */

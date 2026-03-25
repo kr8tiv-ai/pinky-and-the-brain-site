@@ -374,6 +374,10 @@ export default function BurnOperations() {
             className="wr-burn-bar-fill"
             style={{ width: isLoading ? '0%' : `${Math.min(data?.burnedPct ?? 0, 100)}%` }}
           />
+          {/* Live position marker */}
+          {!isLoading && (data?.burnedPct ?? 0) > 0 && (
+            <div className="wr-progress-marker" style={{ left: `${Math.min(data?.burnedPct ?? 0, 100)}%` }} />
+          )}
           {/* Milestone markers */}
           {[25, 50, 75].map(pct => (
             <div key={pct} className="absolute top-0 bottom-0" style={{ left: `${pct}%` }}>

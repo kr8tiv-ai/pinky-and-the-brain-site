@@ -185,7 +185,7 @@ export default function WarRoomPage() {
         </SectionReveal>
 
         {/* Footer */}
-        <footer className="w-full border-t border-[#333]/15 bg-[#0a0a0a] relative overflow-hidden" role="contentinfo" aria-label="War Room footer">
+        <footer className="w-full bg-[#0a0a0a] relative overflow-hidden wr-footer-border" role="contentinfo" aria-label="War Room footer">
           {/* Subtle dot grid */}
           <div className="absolute inset-0 wr-dot-grid opacity-20 pointer-events-none" />
 
