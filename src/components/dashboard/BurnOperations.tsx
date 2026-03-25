@@ -299,8 +299,8 @@ export default function BurnOperations() {
       {/* Fire glow at top */}
       <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-[#ff6b35]/[0.04] to-transparent pointer-events-none" />
 
-      {/* Top accent line */}
-      <div className="h-[2px] bg-gradient-to-r from-transparent via-[#ff6b35]/40 to-transparent" />
+      {/* Animated fire accent line */}
+      <div className="h-[2px] wr-fire-line" />
 
       {/* Section header */}
       <div className="relative flex justify-between items-center px-5 lg:px-8 py-6 border-b border-[#333]/20 wr-brackets wr-brackets-fire">
@@ -311,7 +311,7 @@ export default function BurnOperations() {
               SECTION 02
             </div>
             <h2 className="text-lg md:text-xl font-black uppercase tracking-tight text-[#cccccc] font-sans wr-cursor wr-cursor-fire">
-              Burn <span className="text-[#ff6b35]">Operations</span>
+              Burn <span className="wr-gradient-text-fire">Operations</span>
             </h2>
           </div>
         </div>

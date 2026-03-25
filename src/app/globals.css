@@ -126,7 +126,8 @@ body {
   .wr-divider-dot,
   .wr-float,
   .wr-watermark,
-  .wr-scroll-hint {
+  .wr-scroll-hint,
+  .wr-fire-line {
     animation: none !important;
   }
   [data-wr-reveal] {
@@ -821,6 +822,25 @@ button:focus-visible {
 }
 .group\/card:hover .wr-desc-clamp {
   -webkit-line-clamp: unset;
+}
+
+/* ── Animated Fire Accent Line ── */
+@keyframes wr-fire-line {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+.wr-fire-line {
+  background: linear-gradient(90deg, transparent 0%, #ff6b35 20%, #ff9e9e 50%, #ff6b35 80%, transparent 100%);
+  background-size: 200% 100%;
+  animation: wr-fire-line 4s linear infinite;
+}
+
+/* ── Fire Gradient Text ── */
+.wr-gradient-text-fire {
+  background: linear-gradient(135deg, #ff6b35 0%, #ff9e9e 50%, #ff6b35 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 /* ── Burn Amount Hover Scale ── */
