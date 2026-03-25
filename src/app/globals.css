@@ -14,50 +14,19 @@
 :root {
   --background: #1a1a1a;
   --foreground: #cccccc;
+  --wr-lime: #d4f000;
+  --wr-lime-bright: #e4ff57;
+  --wr-fire: #ff6b35;
+  --wr-pink: #ff9e9e;
+  --wr-surface: #0a0a0a;
+  --wr-surface-raised: #0d0d0d;
+  --wr-border: #333;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
   overflow-x: hidden;
-}
-
-.brand-pink { color: #ffadad; }
-.brand-yellow { color: #e4ff57; }
-.brand-dark { color: #1a1a1a; }
-.brand-steel { color: #cccccc; }
-
-.brutalist-button {
-  background-color: var(--color-brand-yellow);
-  color: #111;
-  font-weight: 900;
-  text-transform: uppercase;
-  padding: 1rem 2.5rem;
-  border: 3px solid #111;
-  box-shadow: 5px 5px 0px #111;
-  transition: all 0.2s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-.brutalist-button:hover {
-  transform: translate(2px, 2px);
-  box-shadow: 3px 3px 0px #111;
-}
-
-.brutalist-button:active {
-  transform: translate(5px, 5px);
-  box-shadow: 0px 0px 0px #111;
-}
-
-.glass-panel {
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
-}
-
-.neon-text-pink {
-  color: var(--color-brand-pink);
-  text-shadow: 0 0 5px rgba(255, 173, 173, 0.6), 0 0 15px rgba(255, 173, 173, 0.3);
 }
 
 .noise-overlay {
