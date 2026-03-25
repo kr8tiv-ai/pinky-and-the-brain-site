@@ -36,7 +36,7 @@ body {
   width: 100vw;
   height: 100vh;
   background-image: url('/noise.gif');
-  opacity: 0.035;
+  opacity: 0.03;
   pointer-events: none;
   z-index: 9999;
   mix-blend-mode: overlay;
@@ -1173,7 +1173,7 @@ section:hover > .wr-section-badge-fire {
   left: 0;
   right: 0;
   background: linear-gradient(90deg, transparent 0%, rgba(255, 107, 53, 0.1) 40%, rgba(255, 158, 158, 0.06) 60%, transparent 100%);
-  filter: blur(4px);
+  filter: blur(3px);
   pointer-events: none;
   opacity: 0.6;
 }
