@@ -40,7 +40,7 @@ Plans:
 **Requirements:** [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11]
 
 Plans:
-- [ ] 03-01-PLAN.md — Create 5 new API route handlers (price, burns, holders, wallet, lp-fees)
+- [x] 03-01-PLAN.md — Create 5 new API route handlers (price, burns, holders, wallet, lp-fees) ✓ 2026-03-25
 - [ ] 03-02-PLAN.md — Create 6 React Query hooks (usePrice, useTreasury, useBurns, useHolders, useWallet, useLpFees)
 
 ---

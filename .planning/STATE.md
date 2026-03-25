@@ -1,10 +1,10 @@
 # Project State
 
 ## Current Phase
-Phase 2: War Room Data Hooks & API Routes — COMPLETE
+Phase 3: Next.js API Routes & React Query Setup — IN PROGRESS
 
 ## Current Plan
-Ready for Phase 3
+03-02 (next plan)
 
 ## Completed Phases
 - Phase 1: Project Setup & Dependencies (commit 04c6c1c)
@@ -14,6 +14,9 @@ Ready for Phase 3
 - 02-01: Foundational API wrappers (helius.ts, birdeye.ts, solscan.ts) — commits fc6c9a7, cb45666, 89f28e3
 - 02-02: Composite API functions (treasury.ts, burns.ts, reflections.ts) — commits e7a267f, 30133d5
 - 02-03: Shared types + route handler upgrades (types.ts, treasury route, hall-of-fame route) — commit e131374
+
+## Completed Plans (Phase 3)
+- 03-01: API Route Handlers (price, burns, holders, wallet/[address], lp-fees) — commits 68ab38f, 6128e2f
 
 ## Decisions
 - Dashboard route: /war-room
@@ -37,9 +40,13 @@ Ready for Phase 3
 - Thin route handler pattern: all complexity in lib/api/, routes are 15-line proxies only
 - types.ts defines API contract once at src/lib/api/types.ts — Phase 3 routes import from there
 - revalidate=60 for treasury (price data), revalidate=300 for holders (slower-changing)
+- revalidate=60 for price endpoint (fast-changing), revalidate=300 for burns/holders/wallet/lp-fees
+- wallet route uses await params pattern required by Next.js 16 dynamic route Promise params
+- lp-fees route maps inflows to drop fromAddress field to match LpFeeResponse type exactly
+- holders endpoint at /api/holders is canonical war-room endpoint; /api/hall-of-fame stays for landing page compatibility
 
 ## Last Session
-- Stopped at: Completed 02-03-PLAN.md (shared types + route handler upgrades)
+- Stopped at: Completed 03-01-PLAN.md (API route handlers — price, burns, holders, wallet, lp-fees)
 - Date: 2026-03-25
 
 ## API Keys Configured
