@@ -172,9 +172,18 @@ function TransactionRow({
           rel="noopener noreferrer"
           className="text-[#ff6b35]/60 hover:text-[#ff6b35] transition-colors flex items-center gap-1 wr-link-hover"
         >
-          <span className="tabular-nums">{tx.txHash.slice(0, 8)}...{tx.txHash.slice(-6)}</span>
+          <span className="tabular-nums">{tx.txHash.slice(0, 8)}…{tx.txHash.slice(-6)}</span>
           <span className="text-[8px]">↗</span>
         </a>
+        <button
+          onClick={() => navigator.clipboard.writeText(tx.txHash)}
+          className="text-[#333] hover:text-[#ff6b35]/60 transition-colors"
+          title="Copy TX hash"
+        >
+          <svg width="10" height="10" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M4 4V1h11v11h-3v3H1V4h3zm1-1V1.5a.5.5 0 01.5-.5h9a.5.5 0 01.5.5v9a.5.5 0 01-.5.5H13V4.5a.5.5 0 00-.5-.5H5z" />
+          </svg>
+        </button>
       </div>
     </div>
   )

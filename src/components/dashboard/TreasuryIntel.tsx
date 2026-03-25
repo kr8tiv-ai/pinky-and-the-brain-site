@@ -469,7 +469,7 @@ function HoldingCard({
       <div className="flex justify-between items-start mb-3 pl-2">
         <div className="flex items-center gap-2.5">
           {/* Monogram avatar */}
-          <div className="w-8 h-8 flex items-center justify-center bg-[#d4f000]/[0.06] border border-[#d4f000]/10 text-[#d4f000] font-black text-xs font-mono shrink-0">
+          <div className="w-8 h-8 flex items-center justify-center text-[#d4f000] font-black text-xs font-mono shrink-0 wr-monogram">
             {(holding.symbol || holding.name).charAt(0)}
           </div>
           <div>

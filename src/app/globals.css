@@ -1075,6 +1075,18 @@ section:hover > .wr-section-badge-fire {
   pointer-events: none;
 }
 
+/* ── Monogram Gradient ── */
+.wr-monogram {
+  background: linear-gradient(135deg, rgba(212, 240, 0, 0.1) 0%, rgba(212, 240, 0, 0.04) 100%);
+  border: 1px solid rgba(212, 240, 0, 0.12);
+  transition: all 0.3s ease;
+}
+.group\/card:hover .wr-monogram {
+  background: linear-gradient(135deg, rgba(212, 240, 0, 0.15) 0%, rgba(212, 240, 0, 0.06) 100%);
+  border-color: rgba(212, 240, 0, 0.2);
+  box-shadow: 0 0 12px rgba(212, 240, 0, 0.1);
+}
+
 /* ── Section Header Line Extend ── */
 .wr-header-line {
   position: relative;
