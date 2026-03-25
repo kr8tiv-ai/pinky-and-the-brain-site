@@ -948,14 +948,16 @@ button:focus-visible {
 
 /* ── Section Badge Hover ── */
 .wr-section-badge {
-  transition: opacity 0.4s ease, color 0.4s ease;
+  transition: opacity 0.4s ease, color 0.4s ease, letter-spacing 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
 section:hover > .wr-section-badge {
   opacity: 1;
   color: rgba(212, 240, 0, 0.2);
+  letter-spacing: 0.25em;
 }
 section:hover > .wr-section-badge-fire {
   color: rgba(255, 107, 53, 0.2);
+  letter-spacing: 0.25em;
 }
 
 /* ── Footer Link Glow ── */

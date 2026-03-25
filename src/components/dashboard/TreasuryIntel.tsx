@@ -235,7 +235,7 @@ function TreasuryValueChart({
                 type="monotone"
                 dataKey="valueUsd"
                 stroke="url(#treasuryStroke)"
-                strokeWidth={2}
+                strokeWidth={1.5}
                 fill="url(#treasuryGradient)"
                 dot={false}
                 activeDot={{
@@ -466,7 +466,7 @@ function HoldingCard({
       {/* Inner card */}
       <div className="relative h-full w-full bg-[#0d0d0d] p-5 overflow-hidden z-10 wr-border-shimmer wr-card-inner-glow">
       {/* Accent border left — color reflects position status */}
-      <div className="absolute top-0 left-0 w-[3px] h-full bg-gradient-to-b to-transparent" style={{
+      <div className="absolute top-0 left-0 w-[2px] md:w-[3px] h-full bg-gradient-to-b to-transparent" style={{
         backgroundImage: holding.gainLossPct !== undefined && holding.gainLossPct < -5
           ? 'linear-gradient(to bottom, #ff9e9e, rgba(255, 158, 158, 0.5), transparent)'
           : 'linear-gradient(to bottom, #d4f000, rgba(212, 240, 0, 0.5), transparent)',
