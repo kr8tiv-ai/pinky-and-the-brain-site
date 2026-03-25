@@ -152,10 +152,10 @@ export default function WarRoomPage() {
             </div>
 
             {/* Registration marks */}
-            <div className="absolute top-4 left-4 text-[#333]/10 text-[8px] font-mono select-none pointer-events-none">+</div>
-            <div className="absolute top-4 right-4 text-[#333]/10 text-[8px] font-mono select-none pointer-events-none">+</div>
-            <div className="absolute bottom-4 left-4 text-[#333]/10 text-[8px] font-mono select-none pointer-events-none">+</div>
-            <div className="absolute bottom-4 right-4 text-[#333]/10 text-[8px] font-mono select-none pointer-events-none">+</div>
+            <div className="absolute top-4 left-4 text-[#333]/10 text-[7px] font-mono select-none pointer-events-none transition-colors duration-700">+</div>
+            <div className="absolute top-4 right-4 text-[#333]/10 text-[7px] font-mono select-none pointer-events-none transition-colors duration-700">+</div>
+            <div className="absolute bottom-4 left-4 text-[#333]/10 text-[7px] font-mono select-none pointer-events-none transition-colors duration-700">+</div>
+            <div className="absolute bottom-4 right-4 text-[#333]/10 text-[7px] font-mono select-none pointer-events-none transition-colors duration-700">+</div>
 
             <div className="relative flex flex-col items-center justify-center gap-6 wr-brackets" style={{ padding: '2rem' }}>
               <div className="flex items-center gap-3">

@@ -422,9 +422,9 @@ export default function BurnOperations() {
           ))}
         </div>
         <div className="flex justify-between mt-1.5 relative">
-          <span className="font-mono text-[7px] text-[#333] uppercase tracking-[0.1em] tabular-nums">0%</span>
+          <span className="font-mono text-[7px] text-[#333] uppercase tracking-[0.15em] tabular-nums">0%</span>
           {[25, 50, 75].map(pct => (
-            <span key={pct} className="font-mono text-[6px] text-[#222] uppercase tracking-[0.1em] absolute" style={{ left: `${pct}%`, transform: 'translateX(-50%)' }}>
+            <span key={pct} className="font-mono text-[6px] text-[#222] uppercase tracking-[0.15em] absolute" style={{ left: `${pct}%`, transform: 'translateX(-50%)' }}>
               {pct}%
             </span>
           ))}
