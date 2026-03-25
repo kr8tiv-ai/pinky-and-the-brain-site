@@ -275,7 +275,7 @@ body {
   transition: all 0.25s ease;
 }
 .wr-tag:hover {
-  filter: brightness(1.15);
+  filter: brightness(1.2);
 }
 
 /* ── Custom scrollbar for war-room tables ── */
@@ -593,7 +593,7 @@ body {
   cursor: default;
 }
 .wr-sub-header:hover {
-  padding-left: 4px;
+  padding-left: 3px;
 }
 .wr-sub-header:hover .wr-sub-diamond {
   color: rgba(212, 240, 0, 0.5);

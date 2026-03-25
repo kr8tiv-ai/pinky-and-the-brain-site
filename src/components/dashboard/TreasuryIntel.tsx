@@ -636,7 +636,7 @@ function DivestedSection() {
                       <span className="text-[#ff9e9e]/80 font-black uppercase">{h.symbol}</span>
                     </span>
                   </td>
-                  <td className="py-3.5 pr-6 text-[#555] tabular-nums">
+                  <td className="py-3.5 pr-6 text-[#666] tabular-nums">
                     {h.soldDate ? format(fromUnixTime(h.soldDate), 'yyyy-MM-dd') : '—'}
                   </td>
                   <td className="py-3.5 pr-6 text-[#555] tabular-nums">
