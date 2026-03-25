@@ -199,12 +199,19 @@ export default function CommandHeader() {
       {/* Top bar */}
       <div className="flex justify-between items-center px-5 lg:px-8 py-3 border-b border-[#333]/20">
         <div className="flex items-center gap-4">
-          <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#666] font-bold">
-            $BRAIN
+          <div className="flex items-center gap-2">
+            <div className="w-1.5 h-1.5 bg-[#d4f000]" />
+            <div className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#d4f000] font-black">
+              $BRAIN
+            </div>
           </div>
           <div className="w-px h-3 bg-[#333]/50" />
           <div className="font-mono text-[10px] uppercase tracking-[0.15em] text-[#444] font-medium">
-            Intelligence Dashboard
+            War Room
+          </div>
+          <div className="hidden md:block w-px h-3 bg-[#333]/30" />
+          <div className="hidden md:block font-mono text-[8px] uppercase tracking-[0.2em] text-[#333]">
+            Intelligence Dashboard v2.0
           </div>
         </div>
         <LiveIndicator status={status} />

@@ -148,21 +148,25 @@ function TreasuryValueChart({
   const chartData = buildChartData(holdings)
 
   return (
-    <div className="px-5 lg:px-8 py-6">
-      <div className="font-mono text-[9px] uppercase tracking-[0.25em] text-[#666] font-bold mb-5 flex items-center gap-3">
+    <div className="px-5 lg:px-8 py-6 relative">
+      {/* Subtle glow behind chart */}
+      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_60%_50%_at_50%_60%,rgba(212,240,0,0.015),transparent_70%)]" />
+
+      <div className="relative font-mono text-[9px] uppercase tracking-[0.25em] text-[#666] font-bold mb-5 flex items-center gap-3">
         <span>TREASURY VALUE OVER TIME</span>
         <div className="flex-1 h-px bg-[#333]/30" />
+        <span className="text-[#333]">CUMULATIVE</span>
       </div>
       {isLoading ? (
-        <div className="h-[220px] flex items-center justify-center">
-          <div className="wr-skeleton h-[180px] w-full rounded" />
+        <div className="h-[240px] flex items-center justify-center">
+          <div className="wr-skeleton h-[200px] w-full rounded" />
         </div>
       ) : chartData.length < 2 ? (
-        <div className="h-[220px] flex items-center justify-center">
+        <div className="h-[240px] flex items-center justify-center">
           <span className="text-[#333] font-mono text-xs tracking-[0.2em]">INSUFFICIENT DATA</span>
         </div>
       ) : (
-        <div className="h-[220px]">
+        <div className="h-[240px] relative">
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart data={chartData} margin={{ top: 10, right: 0, left: 0, bottom: 0 }}>
               <defs>
@@ -509,7 +513,7 @@ export default function TreasuryIntel() {
       </div>
 
       {/* Section header */}
-      <div className="px-5 lg:px-8 py-6 border-b border-[#333]/20">
+      <div className="px-5 lg:px-8 py-6 border-b border-[#333]/20 wr-brackets">
         <div className="flex justify-between items-center">
           <div className="flex items-center gap-3">
             <div className="w-1 h-5 bg-[#d4f000]" />

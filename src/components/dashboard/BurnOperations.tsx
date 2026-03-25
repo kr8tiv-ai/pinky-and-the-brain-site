@@ -255,7 +255,7 @@ export default function BurnOperations() {
       <div className="h-[2px] bg-gradient-to-r from-transparent via-[#ff6b35]/40 to-transparent" />
 
       {/* Section header */}
-      <div className="relative flex justify-between items-center px-5 lg:px-8 py-6 border-b border-[#333]/20">
+      <div className="relative flex justify-between items-center px-5 lg:px-8 py-6 border-b border-[#333]/20 wr-brackets wr-brackets-fire">
         <div className="flex items-center gap-3">
           <div className="w-1 h-5 bg-[#ff6b35]" />
           <div>
