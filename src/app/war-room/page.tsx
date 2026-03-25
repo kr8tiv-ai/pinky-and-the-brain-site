@@ -128,7 +128,7 @@ export default function WarRoomPage() {
             {/* Layered diagonal pattern */}
             <div className="absolute inset-0 opacity-[0.025] pointer-events-none"
               style={{
-                backgroundImage: 'repeating-linear-gradient(-45deg, transparent, transparent 20px, rgba(255,255,255,0.06) 20px, rgba(255,255,255,0.06) 21px)',
+                backgroundImage: 'repeating-linear-gradient(-45deg, transparent, transparent 24px, rgba(255,255,255,0.06) 24px, rgba(255,255,255,0.06) 25px)',
               }}
             />
             {/* Radial glow center — dual layer */}
@@ -283,7 +283,7 @@ export default function WarRoomPage() {
                 <span className="font-mono text-[7px] uppercase tracking-[0.1em] text-[#1a1a1a] hover:text-[#444] transition-colors duration-300 flex items-center gap-1.5">
                   © 2025–2026 $BRAIN
                   <span className="text-[5px] text-[#333]/20">·</span>
-                  <span className="text-[6px] text-[#1a1a1a]/60">v2.0.290</span>
+                  <span className="text-[6px] text-[#1a1a1a]/60">v2.0.300</span>
                 </span>
               </div>
             </div>
