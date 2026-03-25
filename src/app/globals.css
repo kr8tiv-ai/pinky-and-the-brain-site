@@ -452,13 +452,13 @@ body {
   font-family: var(--font-mono);
   font-size: 7px;
   color: rgba(255, 107, 53, 0.15);
-  min-width: 18px;
+  min-width: 16px;
   text-align: right;
   user-select: none;
   transition: color 0.2s ease;
 }
 .wr-row-stripe:hover .wr-row-num {
-  color: rgba(255, 107, 53, 0.45);
+  color: rgba(255, 107, 53, 0.4);
 }
 
 /* ── Enhanced Tooltip ── */
