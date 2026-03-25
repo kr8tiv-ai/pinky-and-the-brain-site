@@ -21,6 +21,9 @@ const TICKER_ITEMS = [
   { text: '100% LP LOCKED', color: 'text-[#333]' },
   { text: 'ON-CHAIN TRANSPARENCY', color: 'text-[#333]' },
   { text: 'COMMUNITY GOVERNED', color: 'text-[#333]' },
+  { text: 'THE SAME THING WE DO EVERY NIGHT', color: 'text-[#333]/60' },
+  { text: '$BRAIN', color: 'text-[#d4f000]/30' },
+  { text: 'TRY TO TAKE OVER THE WORLD', color: 'text-[#ffadad]/15' },
 ]
 
 export default function TokenInfoStrip() {

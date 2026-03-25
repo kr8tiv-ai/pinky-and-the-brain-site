@@ -140,11 +140,13 @@ function DataCell({
 
 function LiveClock() {
   const [time, setTime] = useState('')
+  const [date, setDate] = useState('')
 
   useEffect(() => {
     const update = () => {
       const now = new Date()
-      setTime(now.toISOString().slice(11, 19) + ' UTC')
+      setTime(now.toISOString().slice(11, 19))
+      setDate(now.toISOString().slice(0, 10))
     }
     update()
     const interval = setInterval(update, 1000)
@@ -152,9 +154,14 @@ function LiveClock() {
   }, [])
 
   return (
-    <span className="font-mono text-[8px] uppercase tracking-[0.2em] text-[#444] tabular-nums">
-      {time}
-    </span>
+    <div className="flex items-center gap-2">
+      <span className="font-mono text-[7px] uppercase tracking-[0.15em] text-[#333] tabular-nums hidden md:inline">
+        {date}
+      </span>
+      <span className="font-mono text-[8px] uppercase tracking-[0.2em] text-[#444] tabular-nums">
+        {time} <span className="text-[#333]">UTC</span>
+      </span>
+    </div>
   )
 }
 
@@ -221,6 +228,9 @@ export default function CommandHeader() {
 
   return (
     <header ref={headerRef} className="relative w-full bg-[#0a0a0a]/80 backdrop-blur-xl border-b border-[#333]/40">
+      {/* Bottom gradient accent line */}
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#d4f000]/15 to-transparent z-10" />
+
       {/* Top bar */}
       <div className="flex justify-between items-center px-5 lg:px-8 py-3 border-b border-[#333]/20">
         <div className="flex items-center gap-4">
