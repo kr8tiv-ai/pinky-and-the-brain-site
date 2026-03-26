@@ -90,9 +90,9 @@ export async function getBurnSummary(): Promise<BurnSummary> {
   ])
 
   const totalBurned = incineratorBalance.uiAmount
-  const currentSupply = supplyData.uiAmount
-  const originalSupply = totalBurned + currentSupply
-  const burnedPct = originalSupply > 0 ? (totalBurned / originalSupply) * 100 : 0
+  const onChainSupply = supplyData.uiAmount  // Total minted (includes incinerator)
+  const circulatingSupply = onChainSupply - totalBurned  // Subtract what's in the incinerator
+  const burnedPct = onChainSupply > 0 ? (totalBurned / onChainSupply) * 100 : 0
 
   // Step 2: Try Helius parsed tx history first, then Solscan as fallback
   let transactions: BurnTransaction[] = []
@@ -123,7 +123,7 @@ export async function getBurnSummary(): Promise<BurnSummary> {
 
   return {
     totalBurned,
-    totalSupply: currentSupply,
+    totalSupply: circulatingSupply,
     burnedPct,
     burnSourceBalance: burnSourceBalance.uiAmount,
     transactions,
