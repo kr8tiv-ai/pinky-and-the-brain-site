@@ -3,6 +3,7 @@ import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import SmoothScrolling from "@/components/SmoothScrolling";
 import { QueryProvider } from "@/providers/query-client";
+import { SolanaWalletProvider } from "@/providers/wallet-provider";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -62,8 +63,10 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         <QueryProvider>
-          <div className="noise-overlay"></div>
-          <SmoothScrolling>{children}</SmoothScrolling>
+          <SolanaWalletProvider>
+            <div className="noise-overlay"></div>
+            <SmoothScrolling>{children}</SmoothScrolling>
+          </SolanaWalletProvider>
         </QueryProvider>
       </body>
     </html>

@@ -115,6 +115,7 @@ body {
   .wr-scan-line,
   .wr-pulse-ring,
   .wr-burn-bar-fill,
+  .wr-vote-bar-fill,
   .flicker,
   .wr-breathe,
   .wr-data-dot,
@@ -315,6 +316,85 @@ body {
   animation: wr-burn-sweep 5s ease-in-out infinite;
   transition: width 2.2s cubic-bezier(0.25, 1, 0.5, 1);
   box-shadow: 0 0 8px rgba(255, 107, 53, 0.25), 0 0 2.5px rgba(255, 107, 53, 0.4);
+}
+
+/* ── Governance Vote Bar (lime variant of burn bar) ── */
+@keyframes wr-vote-sweep {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.wr-vote-bar {
+  position: relative;
+  height: 3px;
+  background: rgba(51, 51, 51, 0.22);
+  overflow: hidden;
+  border-radius: 3px;
+}
+
+.wr-vote-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #d4f000 0%, #e4ff57 35%, #d4f000 65%, #e4ff57 100%);
+  background-size: 200% 100%;
+  animation: wr-vote-sweep 5s ease-in-out infinite;
+  transition: width 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+  box-shadow: 0 0 8px rgba(212, 240, 0, 0.25), 0 0 2.5px rgba(212, 240, 0, 0.4);
+}
+
+/* ── Governance Vote Button ── */
+.wr-vote-btn {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  padding: 0.35rem 0.75rem;
+  border: 1px solid rgba(212, 240, 0, 0.2);
+  color: rgba(212, 240, 0, 0.7);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.wr-vote-btn:hover:not(:disabled) {
+  border-color: rgba(212, 240, 0, 0.5);
+  color: #d4f000;
+  background: rgba(212, 240, 0, 0.05);
+  box-shadow: 0 0 12px rgba(212, 240, 0, 0.1), inset 0 0 12px rgba(212, 240, 0, 0.03);
+}
+
+.wr-vote-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* ── Wallet Adapter Dark Theme Override ── */
+.wallet-adapter-button {
+  font-family: var(--font-mono) !important;
+  font-size: 0.625rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.15em !important;
+}
+
+.wallet-adapter-modal-wrapper {
+  background: #0a0a0a !important;
+  border: 1px solid rgba(51, 51, 51, 0.3) !important;
+}
+
+.wallet-adapter-modal-title {
+  font-family: var(--font-mono) !important;
+  color: #ccc !important;
+}
+
+.wallet-adapter-modal-list .wallet-adapter-button {
+  color: #888 !important;
+}
+
+.wallet-adapter-modal-list .wallet-adapter-button:hover {
+  background: rgba(212, 240, 0, 0.05) !important;
+  color: #d4f000 !important;
 }
 
 /* ── Gradient Mesh Background (per-section) ── */

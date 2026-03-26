@@ -5,6 +5,8 @@ import TreasuryIntel from '@/components/dashboard/TreasuryIntel'
 import BurnOperations from '@/components/dashboard/BurnOperations'
 import SectionReveal from '@/components/dashboard/SectionReveal'
 import ScrollProgress from '@/components/dashboard/ScrollProgress'
+import Governance from '@/components/dashboard/Governance'
+import GovernanceAdmin from '@/components/dashboard/GovernanceAdmin'
 
 export const metadata: Metadata = {
   title: 'War Room | Pinky and The Brain $BRAIN Fund',
@@ -73,6 +75,27 @@ export default function WarRoomPage() {
         {/* Quick intel strip with links + ticker */}
         <TokenInfoStrip />
 
+        {/* Governance divider */}
+        <div className="relative py-4">
+          <div className="wr-divider" />
+          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#d4f000]/[0.08] to-transparent" />
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#0a0a0a] px-6 flex items-center gap-3">
+            <div className="w-6 h-px bg-gradient-to-r from-transparent to-[#d4f000]/20" />
+            <div className="wr-divider-dot text-[#d4f000]" />
+            <span className="font-mono text-[11px] uppercase tracking-[0.5em] text-[#d4f000]/70 font-bold wr-divider-label drop-shadow-[0_0_8px_rgba(212,240,0,0.15)]">GOVERNANCE</span>
+            <div className="wr-divider-dot text-[#d4f000]" />
+            <div className="w-6 h-px bg-gradient-to-l from-transparent to-[#d4f000]/20" />
+          </div>
+        </div>
+
+        {/* Governance — Treasury Purchase Vote */}
+        <SectionReveal>
+          <Governance />
+        </SectionReveal>
+
+        {/* Admin Panel — hidden behind password gate */}
+        <GovernanceAdmin />
+
         {/* Scroll indicator */}
         <div className="flex flex-col items-center py-4 wr-scroll-hint md:py-5">
           <span className="font-mono text-[11px] uppercase tracking-[0.35em] text-[#888]/60 mb-1.5">SCROLL TO EXPLORE</span>
@@ -125,121 +148,6 @@ export default function WarRoomPage() {
         {/* Burn Operations — scroll-triggered reveal */}
         <SectionReveal>
           <BurnOperations />
-        </SectionReveal>
-
-        {/* Separator before classified zone */}
-        <div className="relative py-4">
-          <div className="wr-divider" />
-          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#333]/[0.08] to-transparent" />
-          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#0a0a0a] px-6 flex items-center gap-3">
-            <div className="w-6 h-px bg-gradient-to-r from-transparent to-[#333]/30" />
-            <div className="wr-divider-dot text-[#555]" />
-            <span className="font-mono text-[11px] uppercase tracking-[0.5em] text-[#888]/70 font-bold wr-divider-label">CLASSIFIED ZONE</span>
-            <div className="wr-divider-dot text-[#555]" />
-            <div className="w-6 h-px bg-gradient-to-l from-transparent to-[#333]/30" />
-          </div>
-        </div>
-
-        {/* Staking stub — dramatic classified section */}
-        <SectionReveal>
-          <section className="w-full bg-[#0a0a0a] py-24 relative overflow-hidden wr-section-fade-top wr-section-fade-bottom wr-noise wr-classified-border wr-vignette-corners">
-            {/* Atmospheric video background */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none">
-              <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="absolute inset-0 w-full h-full object-cover opacity-[0.12] mix-blend-screen"
-                src="/videos/war-room-bg.mp4"
-              />
-              {/* Dark overlay to keep video ultra-subtle */}
-              <div className="absolute inset-0 bg-[#0a0a0a]/60" />
-            </div>
-            {/* Layered diagonal pattern */}
-            <div className="absolute inset-0 opacity-[0.025] pointer-events-none"
-              style={{
-                backgroundImage: 'repeating-linear-gradient(-45deg, transparent, transparent 26px, rgba(255,255,255,0.06) 26px, rgba(255,255,255,0.06) 27px)',
-              }}
-            />
-            {/* Radial glow center — dual layer */}
-            <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_40%_40%_at_50%_50%,rgba(212,240,0,0.035),transparent_70%)]" />
-            <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_60%_30%_at_50%_80%,rgba(255,158,158,0.02),transparent_70%)]" />
-
-            {/* Scan line */}
-            <div className="wr-scan-line" style={{ animationDelay: '2s' }} />
-
-            {/* Radar sweep */}
-            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none">
-              <div className="wr-radar-glow" />
-              <div className="wr-radar" />
-              <div className="wr-radar" style={{ width: '300px', height: '300px', animationDelay: '1s' }} />
-              <div className="wr-radar" style={{ width: '400px', height: '400px', animationDelay: '2s' }} />
-            </div>
-
-            {/* Watermark */}
-            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-[14rem] font-black text-white/[0.03] leading-none select-none pointer-events-none font-sans tracking-tighter wr-breathe wr-watermark" style={{ animationDuration: '6s' }}>
-              03
-            </div>
-
-            {/* Registration marks */}
-            <div className="absolute top-4 left-4 text-[#333]/35 text-[11px] font-mono select-none pointer-events-none transition-colors duration-700">+</div>
-            <div className="absolute top-4 right-4 text-[#333]/35 text-[11px] font-mono select-none pointer-events-none transition-colors duration-700">+</div>
-            <div className="absolute bottom-4 left-4 text-[#333]/35 text-[11px] font-mono select-none pointer-events-none transition-colors duration-700">+</div>
-            <div className="absolute bottom-4 right-4 text-[#333]/35 text-[11px] font-mono select-none pointer-events-none transition-colors duration-700">+</div>
-
-            <div className="relative flex flex-col items-center justify-center gap-6 wr-brackets" style={{ padding: '2.5rem 2rem' }}>
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-px bg-[#333]/40" />
-                <div className="font-mono text-[11px] uppercase tracking-[0.3em] text-[#888]/80 font-bold wr-section-num">
-                  SECTION 03 — PHASE 2
-                </div>
-                <div className="w-8 h-px bg-[#333]/40" />
-              </div>
-
-              <h2 className="text-2xl md:text-3xl font-black uppercase tracking-tight text-[#555] font-sans wr-classified-glitch select-none">
-                ████████████████████████
-              </h2>
-
-              <div className="flex items-center gap-2">
-                <div className="wr-tag wr-tag-glow border-[#555]/50 text-[#888]">
-                  CLASSIFIED
-                </div>
-                <span className="w-1 h-px bg-[#555]/25" />
-                <div className="wr-tag wr-tag-glow border-[#d4f000]/30 text-[#d4f000]/60">
-                  TS/SCI
-                </div>
-              </div>
-
-              <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6 mt-2">
-                {['STAKING', 'GOVERNANCE', 'YIELD MECHANICS'].map((item, i) => (
-                  <div key={item} className="flex items-center gap-3">
-                    {i > 0 && <div className="hidden md:block w-px h-3 bg-[#444]" />}
-                    <span className="font-mono text-[11px] md:text-[12px] uppercase tracking-[0.2em] text-[#666] font-black flex items-center gap-1.5">
-                      <span className="w-1 h-1 bg-[#555]/40 rounded-full wr-breathe" style={{ animationDuration: `${4 + i}s` }} />
-                      {item}
-                    </span>
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-4 wr-burn-bar w-36" style={{ height: '3px' }}>
-                <div className="wr-burn-bar-fill" style={{ width: '0%' }} />
-              </div>
-              <div className="font-mono text-[11px] uppercase tracking-[0.35em] text-[#888]/80 mb-2 wr-cursor">
-                DEPLOYMENT PROGRESS: 0%
-              </div>
-              <div className="font-mono text-[12px] uppercase tracking-[0.25em] text-[#666] flex items-center gap-2">
-                <span className="text-[#d4f000]/25 wr-breathe" style={{ animationDuration: '6s' }}>◆</span>
-                <span className="text-[#666]/60">ETA:</span>
-                <span className="tabular-nums text-[#555] wr-classified-glitch" style={{ animationDuration: '3s' }}>██:██:██</span>
-              </div>
-              <div className="mt-3 flex items-center gap-5 font-mono text-[11px] text-[#555] tracking-[0.1em]">
-                <span className="flex items-center gap-1.5"><span className="w-1 h-1 bg-[#d4f000]/20 rounded-full" /> AUTH REQUIRED</span>
-                <span className="flex items-center gap-1.5"><span className="w-1 h-1 bg-[#ff9e9e]/15 rounded-full" /> PENDING REVIEW</span>
-              </div>
-            </div>
-          </section>
         </SectionReveal>
 
         {/* Footer */}
