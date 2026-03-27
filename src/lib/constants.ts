@@ -11,6 +11,11 @@ export const TEAM_WALLET = '' // To be configured when known
 export const SOLANA_NETWORK = 'mainnet-beta' as const
 export const SOL_MINT = 'So11111111111111111111111111111111111111112'
 
+// Bags.fm Program IDs
+export const BAGS_FEE_SHARE_V2 = 'FEE2tBhCKAt7shrod19QttSVREUYPiyMzoku1mL1gqVK'
+export const BAGS_API_BASE = 'https://public-api-v2.bags.fm/api/v1'
+export const PAYOUT_THRESHOLD_SOL = 10
+
 // API Configuration (server-side only — import in Route Handlers, not client components)
 export const HELIUS_RPC_URL = `https://mainnet.helius-rpc.com/?api-key=${process.env.HELIUS_API_KEY}`
 export const HELIUS_API_URL = `https://api-mainnet.helius-rpc.com/v0`

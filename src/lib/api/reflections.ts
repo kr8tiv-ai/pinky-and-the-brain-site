@@ -5,7 +5,7 @@
 // Combines solscan (paginated account transfers) foundational wrapper.
 
 import { getAllAccountTransfers } from './solscan'
-import { LP_WALLET } from '@/lib/constants'
+import { LP_WALLET, SOL_RPC } from '@/lib/constants'
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -83,6 +83,26 @@ export async function getLpFeeInflows(): Promise<{
   const totalFeeSol = inflows.reduce((sum, i) => sum + i.amountSol, 0)
 
   return { totalFeeSol, inflows }
+}
+
+/**
+ * Fetches the current SOL balance of the LP wallet via Solana RPC.
+ * This represents how much SOL has accrued toward the next payout.
+ */
+export async function getLpWalletBalance(): Promise<number> {
+  const res = await fetch(SOL_RPC, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      jsonrpc: '2.0',
+      id: 1,
+      method: 'getBalance',
+      params: [LP_WALLET],
+    }),
+    next: { revalidate: 60 },
+  })
+  const json = (await res.json()) as { result?: { value?: number } }
+  return (json.result?.value ?? 0) / 1_000_000_000
 }
 
 /**

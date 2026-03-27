@@ -3,6 +3,7 @@ import CommandHeader from '@/components/dashboard/CommandHeader'
 import TokenInfoStrip from '@/components/dashboard/TokenInfoStrip'
 import TreasuryIntel from '@/components/dashboard/TreasuryIntel'
 import BurnOperations from '@/components/dashboard/BurnOperations'
+import ReflectionsIntel from '@/components/dashboard/ReflectionsIntel'
 import SectionReveal from '@/components/dashboard/SectionReveal'
 import ScrollProgress from '@/components/dashboard/ScrollProgress'
 import Governance from '@/components/dashboard/Governance'
@@ -121,6 +122,24 @@ export default function WarRoomPage() {
         {/* Treasury Intel — scroll-triggered reveal */}
         <SectionReveal>
           <TreasuryIntel />
+        </SectionReveal>
+
+        {/* Reflections divider */}
+        <div className="relative py-4">
+          <div className="wr-divider" />
+          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#d4f000]/[0.35] to-transparent" />
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#0a0a0a] px-5 flex items-center gap-2.5">
+            <div className="w-5 h-px bg-[#d4f000]/45" />
+            <div className="wr-divider-dot text-[#d4f000]" style={{ animationDelay: '0s' }} />
+            <span className="font-mono text-[11px] uppercase tracking-[0.5em] text-[#d4f000] font-bold wr-divider-label drop-shadow-[0_0_12px_rgba(212,240,0,0.6)]">◆ REFLECTIONS</span>
+            <div className="wr-divider-dot text-[#d4f000]" style={{ animationDelay: '1.5s' }} />
+            <div className="w-5 h-px bg-[#d4f000]/45" />
+          </div>
+        </div>
+
+        {/* Reflections Intel — scroll-triggered reveal */}
+        <SectionReveal>
+          <ReflectionsIntel />
         </SectionReveal>
 
         {/* Transition marker */}

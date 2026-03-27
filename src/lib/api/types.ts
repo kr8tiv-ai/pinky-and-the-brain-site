@@ -99,6 +99,26 @@ export interface ReflectionResponse {
   }>
 }
 
+// ─── Reflections Dashboard (comprehensive) ──────────────────────────────────
+
+export interface ReflectionsDashboardResponse {
+  totalFeesLifetimeSol: number
+  totalReflectedSol: number
+  currentAccruedSol: number
+  payoutThresholdSol: number
+  estimatedVolumeSol: number
+  solPriceUsd: number
+  lastPayoutTimestamp: number | null
+  nextPayoutEstimate: number | null
+  feeBreakdown: Record<string, { pct: number; sol: number }>
+  distributions: Array<{
+    txHash: string
+    timestamp: number
+    amountSol: number
+    toAddress: string
+  }>
+}
+
 // ─── Price (Command Header) ───────────────────────────────────────────────────
 
 export interface PriceResponse {
