@@ -593,15 +593,15 @@ export default function ReflectionsIntel() {
         </SummaryCell>
         <SummaryCell label="Daily Accrual" isLoading={isLoading} isError={isError}>
           {(() => {
-            // Use lifetime-averaged rate: totalFees / days since first distribution
-            // Avoids wild extrapolation from short payout cycles
-            const now = Math.floor(Date.now() / 1000)
+            // Compute from actual distribution events — sum distributed / time span
+            // This avoids dividing lifetime fees by a short claim window
             const dists = data?.distributions ?? []
-            const earliest = dists.length > 0 ? dists[dists.length - 1].timestamp : 0
-            const lifetimeSec = earliest > 0 ? now - earliest : 0
-            const daily = lifetimeSec > 3600
-              ? (data?.totalFeesLifetimeSol ?? 0) / lifetimeSec * 86400
-              : 0
+            let daily = 0
+            if (dists.length >= 2) {
+              const totalDist = dists.reduce((s, d) => s + d.amountSol, 0)
+              const spanSec = dists[0].timestamp - dists[dists.length - 1].timestamp
+              if (spanSec > 3600) daily = (totalDist / spanSec) * 86400
+            }
             const trendUp = dists.length >= 2 ? dists[0].amountSol >= dists[1].amountSol : true
             return (
               <span className="flex items-baseline gap-1.5">
@@ -615,13 +615,13 @@ export default function ReflectionsIntel() {
         </SummaryCell>
         <SummaryCell label="Weekly Avg" isLoading={isLoading} isError={isError}>
           {(() => {
-            const now = Math.floor(Date.now() / 1000)
             const dists = data?.distributions ?? []
-            const earliest = dists.length > 0 ? dists[dists.length - 1].timestamp : 0
-            const lifetimeSec = earliest > 0 ? now - earliest : 0
-            const daily = lifetimeSec > 3600
-              ? (data?.totalFeesLifetimeSol ?? 0) / lifetimeSec * 86400
-              : 0
+            let daily = 0
+            if (dists.length >= 2) {
+              const totalDist = dists.reduce((s, d) => s + d.amountSol, 0)
+              const spanSec = dists[0].timestamp - dists[dists.length - 1].timestamp
+              if (spanSec > 3600) daily = (totalDist / spanSec) * 86400
+            }
             return `${(daily * 7).toFixed(2)} SOL`
           })()}
         </SummaryCell>
