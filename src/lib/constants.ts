@@ -14,7 +14,7 @@ export const SOL_MINT = 'So11111111111111111111111111111111111111112'
 // Bags.fm Fee Share V2
 export const BAGS_FEE_SHARE_V2 = 'FEE2tBhCKAt7shrod19QttSVREUYPiyMzoku1mL1gqVK'
 export const BAGS_API_BASE = 'https://public-api-v2.bags.fm/api/v1'
-export const PAYOUT_THRESHOLD_SOL = 10
+export const PAYOUT_THRESHOLD_SOL = 7
 
 // Fee Share V2 PDAs (derived for BRAIN/SOL pair)
 export const FEE_SHARE_AUTHORITY_PDA = 'C5mhxrR5VBCLRxaM3GyNJG57wdG55aAfyVw98zrR9onY'
