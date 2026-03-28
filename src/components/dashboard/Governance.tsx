@@ -115,6 +115,18 @@ function CandidateCard({
         </p>
       )}
 
+      {/* bags.fm link */}
+      <div className="mb-3">
+        <a
+          href={`https://bags.fm/b/${candidate.mint}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.15em] text-[#d4f000]/70 hover:text-[#d4f000] transition-colors"
+        >
+          View on bags.fm <span className="text-[9px]">&#8599;</span>
+        </a>
+      </div>
+
       {/* Vote bar */}
       <div className="wr-vote-bar mb-2">
         <div ref={barRef} className="wr-vote-bar-fill" style={{ width: 0 }} />

@@ -50,3 +50,49 @@ export function buildVoteMessage(roundId: string, candidateId: string): string {
     'This signature does not authorize any on-chain transaction.',
   ].join('\n')
 }
+
+// ─── Proposal Types ──────────────────────────────────────────────────────────
+
+export interface Proposal {
+  id: string
+  title: string
+  description: string
+  referenceLinks: { label: string; url: string }[]
+  createdBy: string
+  createdAt: number
+  duration: 3 | 7
+  votingEndsAt: number
+  status: 'active' | 'closed'
+}
+
+export interface ProposalVote {
+  wallet: string
+  vote: 'yes' | 'no'
+  weight: number
+  timestamp: number
+}
+
+export interface ProposalWithTally extends Proposal {
+  yesWeight: number
+  noWeight: number
+  yesWallets: number
+  noWallets: number
+  userVote?: ProposalVote | null
+}
+
+export function buildProposalCreateMessage(title: string): string {
+  return [
+    '$BRAIN Community Proposal',
+    `Title: ${title}`,
+    'This signature does not authorize any on-chain transaction.',
+  ].join('\n')
+}
+
+export function buildProposalVoteMessage(proposalId: string, vote: 'yes' | 'no'): string {
+  return [
+    '$BRAIN Proposal Vote',
+    `Proposal: ${proposalId}`,
+    `Vote: ${vote}`,
+    'This signature does not authorize any on-chain transaction.',
+  ].join('\n')
+}

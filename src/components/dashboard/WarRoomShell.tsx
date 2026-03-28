@@ -9,6 +9,7 @@ import WarRoomTabBar from './WarRoomTabBar'
 import SectionReveal from './SectionReveal'
 import Governance from './Governance'
 import GovernanceAdmin from './GovernanceAdmin'
+import Proposals from './Proposals'
 import TreasuryIntel from './TreasuryIntel'
 import ReflectionsIntel from './ReflectionsIntel'
 import BurnOperations from './BurnOperations'
@@ -119,6 +120,7 @@ export default function WarRoomShell() {
               <>
                 <Governance />
                 <GovernanceAdmin />
+                <Proposals />
               </>
             )}
             {activeTab === 'treasury' && <TreasuryIntel />}

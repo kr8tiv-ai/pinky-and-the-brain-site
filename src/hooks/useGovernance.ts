@@ -133,3 +133,127 @@ export function useAdminAction(password: string) {
     },
   })
 }
+
+// ─── Proposal Types (client-side mirrors) ────────────────────────────────────
+
+export interface ProposalWithTally {
+  id: string
+  title: string
+  description: string
+  referenceLinks: { label: string; url: string }[]
+  createdBy: string
+  createdAt: number
+  duration: 3 | 7
+  votingEndsAt: number
+  status: 'active' | 'closed'
+  yesWeight: number
+  noWeight: number
+  yesWallets: number
+  noWallets: number
+  userVote?: { wallet: string; vote: 'yes' | 'no'; weight: number; timestamp: number } | null
+}
+
+// ─── Proposals List Hook ─────────────────────────────────────────────────────
+
+export function useProposals(walletAddress: string | null) {
+  return useQuery<{ proposals: ProposalWithTally[] }, Error>({
+    queryKey: ['proposals', walletAddress],
+    queryFn: async () => {
+      const params = walletAddress ? `?wallet=${walletAddress}` : ''
+      try {
+        const res = await fetch(`/api/governance/proposals${params}`)
+        if (!res.ok) return { proposals: [] }
+        return res.json()
+      } catch {
+        return { proposals: [] }
+      }
+    },
+    staleTime: 30_000,
+    refetchInterval: 30_000,
+    retry: false,
+  })
+}
+
+// ─── Create Proposal Mutation ────────────────────────────────────────────────
+
+export function useCreateProposal() {
+  const { publicKey, signMessage } = useWallet()
+  const queryClient = useQueryClient()
+
+  return useMutation<{ success: boolean; proposal?: ProposalWithTally; error?: string }, Error, {
+    title: string
+    description: string
+    referenceLinks: { label: string; url: string }[]
+    duration: 3 | 7
+  }>({
+    mutationFn: async ({ title, description, referenceLinks, duration }) => {
+      if (!publicKey || !signMessage) throw new Error('Wallet not connected')
+
+      const { buildProposalCreateMessage } = await import('@/lib/governance.config')
+      const message = buildProposalCreateMessage(title)
+      const messageBytes = new TextEncoder().encode(message)
+      const signatureBytes = await signMessage(messageBytes)
+
+      const res = await fetch('/api/governance/proposals', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          wallet: publicKey.toBase58(),
+          title,
+          description,
+          referenceLinks,
+          duration,
+          signature: bs58.encode(signatureBytes),
+          message,
+        }),
+      })
+
+      const data = await res.json()
+      if (!res.ok) throw new Error(data.error ?? 'Failed to create proposal')
+      return data
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['proposals'] })
+    },
+  })
+}
+
+// ─── Proposal Vote Mutation ──────────────────────────────────────────────────
+
+export function useProposalVote() {
+  const { publicKey, signMessage } = useWallet()
+  const queryClient = useQueryClient()
+
+  return useMutation<{ success: boolean; weight?: number; error?: string }, Error, {
+    proposalId: string
+    vote: 'yes' | 'no'
+  }>({
+    mutationFn: async ({ proposalId, vote }) => {
+      if (!publicKey || !signMessage) throw new Error('Wallet not connected')
+
+      const { buildProposalVoteMessage } = await import('@/lib/governance.config')
+      const message = buildProposalVoteMessage(proposalId, vote)
+      const messageBytes = new TextEncoder().encode(message)
+      const signatureBytes = await signMessage(messageBytes)
+
+      const res = await fetch('/api/governance/proposals/vote', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          wallet: publicKey.toBase58(),
+          proposalId,
+          vote,
+          signature: bs58.encode(signatureBytes),
+          message,
+        }),
+      })
+
+      const data = await res.json()
+      if (!res.ok) throw new Error(data.error ?? 'Vote failed')
+      return data
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['proposals'] })
+    },
+  })
+}
