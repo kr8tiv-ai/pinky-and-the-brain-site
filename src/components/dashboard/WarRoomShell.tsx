@@ -7,18 +7,21 @@ import CommandHeader from './CommandHeader'
 import TokenInfoStrip from './TokenInfoStrip'
 import WarRoomTabBar from './WarRoomTabBar'
 import SectionReveal from './SectionReveal'
-import Governance from './Governance'
-import GovernanceAdmin from './GovernanceAdmin'
-import Proposals from './Proposals'
 import TreasuryIntel from './TreasuryIntel'
 import ReflectionsIntel from './ReflectionsIntel'
 import BurnOperations from './BurnOperations'
+import dynamic from 'next/dynamic'
+
+// Lazy-load governance + staking sections so Anchor dependencies only load when needed
+const GovernanceTab = dynamic(() => import('./governance/GovernanceTab'), { ssr: false })
+const StakingSection = dynamic(() => import('./StakingSection'), { ssr: false })
 
 const TABS = [
   { id: 'governance',  label: 'GOVERNANCE',  shortLabel: 'GOV' },
   { id: 'treasury',    label: 'TREASURY',    shortLabel: 'TREASURY' },
   { id: 'reflections', label: 'REFLECTIONS', shortLabel: 'REFLECT' },
   { id: 'burns',       label: 'BURNS',       shortLabel: 'BURNS' },
+  { id: 'staking',     label: 'STAKING',     shortLabel: 'STAKE' },
 ] as const
 
 type TabId = typeof TABS[number]['id']
@@ -116,16 +119,11 @@ export default function WarRoomShell() {
         {/* Tab content — key forces remount for entrance animation */}
         <div ref={contentRef} key={activeTab} className="min-h-[60vh]" role="tabpanel" id={`tabpanel-${activeTab}`}>
           <SectionReveal>
-            {activeTab === 'governance' && (
-              <>
-                <Governance />
-                <GovernanceAdmin />
-                <Proposals />
-              </>
-            )}
+            {activeTab === 'governance' && <GovernanceTab />}
             {activeTab === 'treasury' && <TreasuryIntel />}
             {activeTab === 'reflections' && <ReflectionsIntel />}
             {activeTab === 'burns' && <BurnOperations />}
+            {activeTab === 'staking' && <StakingSection />}
           </SectionReveal>
         </div>
 

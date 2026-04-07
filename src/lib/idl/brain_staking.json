@@ -1,0 +1,2091 @@
+{
+  "address": "5o2uBwvKUy4oF78ziR4tEiqz59k7XBXuZBwiZFqCfca2",
+  "metadata": {
+    "name": "brain_staking",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "BRAIN token staking program with SOL rewards"
+  },
+  "instructions": [
+    {
+      "name": "cast_vote",
+      "discriminator": [
+        20,
+        212,
+        15,
+        189,
+        69,
+        180,
+        69,
+        151
+      ],
+      "accounts": [
+        {
+          "name": "voter",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "staking_pool",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  116,
+                  97,
+                  107,
+                  105,
+                  110,
+                  103,
+                  95,
+                  112,
+                  111,
+                  111,
+                  108
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "governance_config",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  103,
+                  111,
+                  118,
+                  101,
+                  114,
+                  110,
+                  97,
+                  110,
+                  99,
+                  101,
+                  95,
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "proposal",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  114,
+                  111,
+                  112,
+                  111,
+                  115,
+                  97,
+                  108
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "proposal.id",
+                "account": "Proposal"
+              }
+            ]
+          }
+        },
+        {
+          "name": "vote_record",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  118,
+                  111,
+                  116,
+                  101
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "proposal.id",
+                "account": "Proposal"
+              },
+              {
+                "kind": "account",
+                "path": "voter"
+              }
+            ]
+          }
+        },
+        {
+          "name": "voter_brain_ata",
+          "docs": [
+            "Voter's BRAIN token account — used to determine wallet balance voting weight"
+          ]
+        },
+        {
+          "name": "staker_account",
+          "docs": [
+            "Optional staker account — present if the voter is also a staker.",
+            "When present, staked_amount is added to the voting weight."
+          ],
+          "optional": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  116,
+                  97,
+                  107,
+                  101,
+                  114
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "voter"
+              }
+            ]
+          }
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        }
+      ],
+      "args": [
+        {
+          "name": "option_index",
+          "type": "u8"
+        }
+      ]
+    },
+    {
+      "name": "claim",
+      "discriminator": [
+        62,
+        198,
+        214,
+        193,
+        213,
+        159,
+        108,
+        210
+      ],
+      "accounts": [
+        {
+          "name": "user",
+          "docs": [
+            "The staker claiming rewards — must be the account owner"
+          ],
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "staking_pool",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  116,
+                  97,
+                  107,
+                  105,
+                  110,
+                  103,
+                  95,
+                  112,
+                  111,
+                  111,
+                  108
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "staker_account",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  116,
+                  97,
+                  107,
+                  101,
+                  114
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "user"
+              }
+            ]
+          }
+        },
+        {
+          "name": "reward_vault",
+          "docs": [
+            "PDA SystemAccount holding SOL rewards"
+          ],
+          "writable": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "close_proposal",
+      "discriminator": [
+        213,
+        178,
+        139,
+        19,
+        50,
+        191,
+        82,
+        245
+      ],
+      "accounts": [
+        {
+          "name": "anyone",
+          "docs": [
+            "Anyone can close a proposal after its voting period ends (permissionless)"
+          ],
+          "signer": true
+        },
+        {
+          "name": "proposal",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  114,
+                  111,
+                  112,
+                  111,
+                  115,
+                  97,
+                  108
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "proposal.id",
+                "account": "Proposal"
+              }
+            ]
+          }
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "complete_exit",
+      "discriminator": [
+        132,
+        120,
+        217,
+        76,
+        221,
+        179,
+        240,
+        30
+      ],
+      "accounts": [
+        {
+          "name": "authority",
+          "docs": [
+            "Authority: must be pool owner OR crank"
+          ],
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "staking_pool",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  116,
+                  97,
+                  107,
+                  105,
+                  110,
+                  103,
+                  95,
+                  112,
+                  111,
+                  111,
+                  108
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "dlmm_exit",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  100,
+                  108,
+                  109,
+                  109,
+                  95,
+                  101,
+                  120,
+                  105,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "dlmm_exit.asset_mint",
+                "account": "DlmmExit"
+              },
+              {
+                "kind": "account",
+                "path": "dlmm_exit.dlmm_pool",
+                "account": "DlmmExit"
+              }
+            ]
+          }
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "create_proposal",
+      "discriminator": [
+        132,
+        116,
+        68,
+        174,
+        216,
+        160,
+        198,
+        22
+      ],
+      "accounts": [
+        {
+          "name": "owner",
+          "writable": true,
+          "signer": true,
+          "relations": [
+            "staking_pool"
+          ]
+        },
+        {
+          "name": "staking_pool",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  116,
+                  97,
+                  107,
+                  105,
+                  110,
+                  103,
+                  95,
+                  112,
+                  111,
+                  111,
+                  108
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "governance_config",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  103,
+                  111,
+                  118,
+                  101,
+                  114,
+                  110,
+                  97,
+                  110,
+                  99,
+                  101,
+                  95,
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "proposal",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  114,
+                  111,
+                  112,
+                  111,
+                  115,
+                  97,
+                  108
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "governance_config.next_proposal_id",
+                "account": "GovernanceConfig"
+              }
+            ]
+          }
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "description_uri",
+          "type": "string"
+        },
+        {
+          "name": "proposal_type",
+          "type": "u8"
+        },
+        {
+          "name": "options",
+          "type": {
+            "vec": "string"
+          }
+        },
+        {
+          "name": "voting_starts",
+          "type": "i64"
+        },
+        {
+          "name": "voting_ends",
+          "type": "i64"
+        }
+      ]
+    },
+    {
+      "name": "deposit_rewards",
+      "discriminator": [
+        52,
+        249,
+        112,
+        72,
+        206,
+        161,
+        196,
+        1
+      ],
+      "accounts": [
+        {
+          "name": "authority",
+          "docs": [
+            "Authority: must be pool owner OR crank (R013)"
+          ],
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "staking_pool",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  116,
+                  97,
+                  107,
+                  105,
+                  110,
+                  103,
+                  95,
+                  112,
+                  111,
+                  111,
+                  108
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "reward_vault",
+          "docs": [
+            "PDA SystemAccount holding SOL rewards"
+          ],
+          "writable": true
+        },
+        {
+          "name": "treasury",
+          "docs": [
+            "Treasury wallet that receives protocol fees"
+          ],
+          "writable": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "emergency_halt",
+      "discriminator": [
+        182,
+        75,
+        142,
+        253,
+        96,
+        137,
+        255,
+        67
+      ],
+      "accounts": [
+        {
+          "name": "authority",
+          "docs": [
+            "Pool owner — only the owner can trigger an emergency halt."
+          ],
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "staking_pool",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  116,
+                  97,
+                  107,
+                  105,
+                  110,
+                  103,
+                  95,
+                  112,
+                  111,
+                  111,
+                  108
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "initialize",
+      "discriminator": [
+        175,
+        175,
+        109,
+        31,
+        13,
+        152,
+        155,
+        237
+      ],
+      "accounts": [
+        {
+          "name": "owner",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "staking_pool",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  116,
+                  97,
+                  107,
+                  105,
+                  110,
+                  103,
+                  95,
+                  112,
+                  111,
+                  111,
+                  108
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "brain_mint",
+          "docs": [
+            "The BRAIN token mint"
+          ]
+        },
+        {
+          "name": "brain_vault",
+          "docs": [
+            "PDA-controlled token account for holding staked BRAIN"
+          ],
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  98,
+                  114,
+                  97,
+                  105,
+                  110,
+                  95,
+                  118,
+                  97,
+                  117,
+                  108,
+                  116
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "reward_vault",
+          "docs": [
+            "PDA SystemAccount for holding SOL rewards"
+          ],
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  114,
+                  101,
+                  119,
+                  97,
+                  114,
+                  100,
+                  95,
+                  118,
+                  97,
+                  117,
+                  108,
+                  116
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "treasury",
+          "docs": [
+            "Treasury wallet that receives protocol fees"
+          ]
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        },
+        {
+          "name": "rent",
+          "address": "SysvarRent111111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "crank",
+          "type": "pubkey"
+        },
+        {
+          "name": "protocol_fee_bps",
+          "type": "u16"
+        },
+        {
+          "name": "min_stake_amount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "initialize_governance",
+      "discriminator": [
+        171,
+        87,
+        101,
+        237,
+        27,
+        107,
+        201,
+        57
+      ],
+      "accounts": [
+        {
+          "name": "owner",
+          "writable": true,
+          "signer": true,
+          "relations": [
+            "staking_pool"
+          ]
+        },
+        {
+          "name": "staking_pool",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  116,
+                  97,
+                  107,
+                  105,
+                  110,
+                  103,
+                  95,
+                  112,
+                  111,
+                  111,
+                  108
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "governance_config",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  103,
+                  111,
+                  118,
+                  101,
+                  114,
+                  110,
+                  97,
+                  110,
+                  99,
+                  101,
+                  95,
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "initiate_exit",
+      "discriminator": [
+        15,
+        194,
+        144,
+        7,
+        247,
+        94,
+        48,
+        161
+      ],
+      "accounts": [
+        {
+          "name": "authority",
+          "docs": [
+            "Authority: must be pool owner"
+          ],
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "staking_pool",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  116,
+                  97,
+                  107,
+                  105,
+                  110,
+                  103,
+                  95,
+                  112,
+                  111,
+                  111,
+                  108
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "dlmm_exit",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  100,
+                  108,
+                  109,
+                  109,
+                  95,
+                  101,
+                  120,
+                  105,
+                  116
+                ]
+              },
+              {
+                "kind": "arg",
+                "path": "asset_mint"
+              },
+              {
+                "kind": "arg",
+                "path": "dlmm_pool"
+              }
+            ]
+          }
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "asset_mint",
+          "type": "pubkey"
+        },
+        {
+          "name": "dlmm_pool",
+          "type": "pubkey"
+        },
+        {
+          "name": "position",
+          "type": "pubkey"
+        }
+      ]
+    },
+    {
+      "name": "record_claim",
+      "discriminator": [
+        111,
+        123,
+        69,
+        192,
+        195,
+        228,
+        137,
+        30
+      ],
+      "accounts": [
+        {
+          "name": "authority",
+          "docs": [
+            "Authority: must be pool owner OR crank"
+          ],
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "staking_pool",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  116,
+                  97,
+                  107,
+                  105,
+                  110,
+                  103,
+                  95,
+                  112,
+                  111,
+                  111,
+                  108
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "dlmm_exit",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  100,
+                  108,
+                  109,
+                  109,
+                  95,
+                  101,
+                  120,
+                  105,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "dlmm_exit.asset_mint",
+                "account": "DlmmExit"
+              },
+              {
+                "kind": "account",
+                "path": "dlmm_exit.dlmm_pool",
+                "account": "DlmmExit"
+              }
+            ]
+          }
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "resume",
+      "discriminator": [
+        1,
+        166,
+        51,
+        170,
+        127,
+        32,
+        141,
+        206
+      ],
+      "accounts": [
+        {
+          "name": "authority",
+          "docs": [
+            "Pool owner — only the owner can resume from a paused state."
+          ],
+          "signer": true
+        },
+        {
+          "name": "staking_pool",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  116,
+                  97,
+                  107,
+                  105,
+                  110,
+                  103,
+                  95,
+                  112,
+                  111,
+                  111,
+                  108
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "stake",
+      "discriminator": [
+        206,
+        176,
+        202,
+        18,
+        200,
+        209,
+        179,
+        108
+      ],
+      "accounts": [
+        {
+          "name": "user",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "staking_pool",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  116,
+                  97,
+                  107,
+                  105,
+                  110,
+                  103,
+                  95,
+                  112,
+                  111,
+                  111,
+                  108
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "staker_account",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  116,
+                  97,
+                  107,
+                  101,
+                  114
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "user"
+              }
+            ]
+          }
+        },
+        {
+          "name": "user_brain_ata",
+          "docs": [
+            "User's BRAIN token account (source)"
+          ],
+          "writable": true
+        },
+        {
+          "name": "brain_vault",
+          "docs": [
+            "PDA-controlled BRAIN vault (destination)"
+          ],
+          "writable": true
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "terminate_exit",
+      "discriminator": [
+        35,
+        38,
+        231,
+        133,
+        52,
+        116,
+        147,
+        245
+      ],
+      "accounts": [
+        {
+          "name": "authority",
+          "docs": [
+            "Authority: must be pool owner only"
+          ],
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "staking_pool",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  116,
+                  97,
+                  107,
+                  105,
+                  110,
+                  103,
+                  95,
+                  112,
+                  111,
+                  111,
+                  108
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "dlmm_exit",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  100,
+                  108,
+                  109,
+                  109,
+                  95,
+                  101,
+                  120,
+                  105,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "dlmm_exit.asset_mint",
+                "account": "DlmmExit"
+              },
+              {
+                "kind": "account",
+                "path": "dlmm_exit.dlmm_pool",
+                "account": "DlmmExit"
+              }
+            ]
+          }
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "unstake",
+      "discriminator": [
+        90,
+        95,
+        107,
+        42,
+        205,
+        124,
+        50,
+        225
+      ],
+      "accounts": [
+        {
+          "name": "user",
+          "docs": [
+            "The staker unstaking — must be the account owner"
+          ],
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "staking_pool",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  116,
+                  97,
+                  107,
+                  105,
+                  110,
+                  103,
+                  95,
+                  112,
+                  111,
+                  111,
+                  108
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "staker_account",
+          "docs": [
+            "Staker PDA — `close = user` returns rent lamports at end of instruction"
+          ],
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  116,
+                  97,
+                  107,
+                  101,
+                  114
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "user"
+              }
+            ]
+          }
+        },
+        {
+          "name": "brain_vault",
+          "docs": [
+            "PDA-controlled BRAIN vault — returns staked tokens"
+          ],
+          "writable": true
+        },
+        {
+          "name": "user_brain_ata",
+          "docs": [
+            "User's BRAIN token account (destination for returned BRAIN)"
+          ],
+          "writable": true
+        },
+        {
+          "name": "reward_vault",
+          "docs": [
+            "PDA SystemAccount holding SOL rewards"
+          ],
+          "writable": true
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "update_crank",
+      "discriminator": [
+        27,
+        180,
+        6,
+        0,
+        213,
+        20,
+        109,
+        201
+      ],
+      "accounts": [
+        {
+          "name": "authority",
+          "docs": [
+            "Authority: must be pool owner only"
+          ],
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "staking_pool",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  116,
+                  97,
+                  107,
+                  105,
+                  110,
+                  103,
+                  95,
+                  112,
+                  111,
+                  111,
+                  108
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "args": [
+        {
+          "name": "new_crank",
+          "type": "pubkey"
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "DlmmExit",
+      "discriminator": [
+        228,
+        30,
+        218,
+        252,
+        15,
+        31,
+        22,
+        36
+      ]
+    },
+    {
+      "name": "GovernanceConfig",
+      "discriminator": [
+        81,
+        63,
+        124,
+        107,
+        210,
+        100,
+        145,
+        70
+      ]
+    },
+    {
+      "name": "Proposal",
+      "discriminator": [
+        26,
+        94,
+        189,
+        187,
+        116,
+        136,
+        53,
+        33
+      ]
+    },
+    {
+      "name": "StakerAccount",
+      "discriminator": [
+        12,
+        152,
+        43,
+        218,
+        164,
+        11,
+        150,
+        174
+      ]
+    },
+    {
+      "name": "StakingPool",
+      "discriminator": [
+        203,
+        19,
+        214,
+        220,
+        220,
+        154,
+        24,
+        102
+      ]
+    },
+    {
+      "name": "VoteRecord",
+      "discriminator": [
+        112,
+        9,
+        123,
+        165,
+        234,
+        9,
+        157,
+        167
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "Unauthorized",
+      "msg": "Unauthorized: signer is not the owner or crank"
+    },
+    {
+      "code": 6001,
+      "name": "PoolPaused",
+      "msg": "Pool is paused"
+    },
+    {
+      "code": 6002,
+      "name": "BelowMinStake",
+      "msg": "Stake amount is below the minimum"
+    },
+    {
+      "code": 6003,
+      "name": "InsufficientRewards",
+      "msg": "Insufficient rewards to claim"
+    },
+    {
+      "code": 6004,
+      "name": "InvalidMint",
+      "msg": "Invalid BRAIN token mint"
+    },
+    {
+      "code": 6005,
+      "name": "ZeroAmount",
+      "msg": "Amount must be greater than zero"
+    },
+    {
+      "code": 6006,
+      "name": "MathOverflow",
+      "msg": "Math overflow"
+    },
+    {
+      "code": 6007,
+      "name": "AlreadyStaking",
+      "msg": "User already has an active stake"
+    },
+    {
+      "code": 6008,
+      "name": "NotStaking",
+      "msg": "User has no active stake"
+    },
+    {
+      "code": 6009,
+      "name": "InvalidFee",
+      "msg": "Protocol fee exceeds maximum"
+    },
+    {
+      "code": 6010,
+      "name": "InvalidMinStake",
+      "msg": "Minimum stake amount must be greater than zero"
+    },
+    {
+      "code": 6011,
+      "name": "ExitAlreadyActive",
+      "msg": "An exit is already active for this asset/pool pair"
+    },
+    {
+      "code": 6012,
+      "name": "ExitNotActive",
+      "msg": "Exit is not in Active status"
+    },
+    {
+      "code": 6013,
+      "name": "ExitAlreadyCompleted",
+      "msg": "Exit has already been completed or terminated"
+    },
+    {
+      "code": 6014,
+      "name": "RentExemptViolation",
+      "msg": "Withdrawal would leave vault below rent-exempt minimum"
+    },
+    {
+      "code": 6015,
+      "name": "ProposalNotActive",
+      "msg": "Proposal is not in Active status"
+    },
+    {
+      "code": 6016,
+      "name": "VotingPeriodEnded",
+      "msg": "Voting period has ended"
+    },
+    {
+      "code": 6017,
+      "name": "VotingPeriodNotStarted",
+      "msg": "Voting period has not started yet"
+    },
+    {
+      "code": 6018,
+      "name": "VotingPeriodNotEnded",
+      "msg": "Voting period has not ended yet"
+    },
+    {
+      "code": 6019,
+      "name": "InvalidOptionIndex",
+      "msg": "Option index is out of range"
+    },
+    {
+      "code": 6020,
+      "name": "InvalidVotingPeriod",
+      "msg": "Voting end must be after voting start"
+    },
+    {
+      "code": 6021,
+      "name": "TooFewOptions",
+      "msg": "Proposal must have at least 2 options"
+    },
+    {
+      "code": 6022,
+      "name": "TooManyOptions",
+      "msg": "Proposal exceeds maximum number of options"
+    },
+    {
+      "code": 6023,
+      "name": "TitleTooLong",
+      "msg": "Proposal title exceeds maximum length"
+    },
+    {
+      "code": 6024,
+      "name": "NoVotingPower",
+      "msg": "Staker has no voting power (zero staked amount)"
+    },
+    {
+      "code": 6025,
+      "name": "GovernanceAlreadyInitialized",
+      "msg": "Governance has already been initialized for this pool"
+    }
+  ],
+  "types": [
+    {
+      "name": "DlmmExit",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "pool",
+            "docs": [
+              "Parent staking pool"
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "owner",
+            "docs": [
+              "Pool owner who initiated the exit"
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "asset_mint",
+            "docs": [
+              "Mint address of the asset being exited"
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "dlmm_pool",
+            "docs": [
+              "DLMM pool where liquidity is being removed"
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "position",
+            "docs": [
+              "DLMM position being unwound"
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "total_sol_claimed",
+            "docs": [
+              "Cumulative SOL claimed from filled bins (lamports)"
+            ],
+            "type": "u64"
+          },
+          {
+            "name": "status",
+            "docs": [
+              "Exit status: 0 = Active, 1 = Completed, 2 = Terminated"
+            ],
+            "type": "u8"
+          },
+          {
+            "name": "created_at",
+            "docs": [
+              "Unix timestamp when exit was initiated"
+            ],
+            "type": "i64"
+          },
+          {
+            "name": "completed_at",
+            "docs": [
+              "Unix timestamp when exit was completed or terminated (0 while active)"
+            ],
+            "type": "i64"
+          },
+          {
+            "name": "bump",
+            "docs": [
+              "PDA bump"
+            ],
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "GovernanceConfig",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "pool",
+            "docs": [
+              "Parent staking pool"
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "next_proposal_id",
+            "docs": [
+              "Auto-incrementing proposal counter"
+            ],
+            "type": "u64"
+          },
+          {
+            "name": "bump",
+            "docs": [
+              "PDA bump"
+            ],
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Proposal",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "id",
+            "docs": [
+              "Unique proposal identifier"
+            ],
+            "type": "u64"
+          },
+          {
+            "name": "pool",
+            "docs": [
+              "Parent staking pool"
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "proposer",
+            "docs": [
+              "Wallet that created the proposal"
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "title",
+            "docs": [
+              "Short title for the proposal"
+            ],
+            "type": "string"
+          },
+          {
+            "name": "description_uri",
+            "docs": [
+              "URI pointing to full proposal description (IPFS, Arweave, etc.)"
+            ],
+            "type": "string"
+          },
+          {
+            "name": "proposal_type",
+            "docs": [
+              "Proposal type identifier (application-defined)"
+            ],
+            "type": "u8"
+          },
+          {
+            "name": "options",
+            "docs": [
+              "Voting options (e.g. [\"Yes\", \"No\", \"Abstain\"])"
+            ],
+            "type": {
+              "vec": "string"
+            }
+          },
+          {
+            "name": "vote_counts",
+            "docs": [
+              "Vote weight tallies per option (parallel to `options`)"
+            ],
+            "type": {
+              "vec": "u64"
+            }
+          },
+          {
+            "name": "voting_starts",
+            "docs": [
+              "Unix timestamp when voting opens"
+            ],
+            "type": "i64"
+          },
+          {
+            "name": "voting_ends",
+            "docs": [
+              "Unix timestamp when voting closes"
+            ],
+            "type": "i64"
+          },
+          {
+            "name": "status",
+            "docs": [
+              "Proposal status: 0 = Active, 1 = Passed, 2 = Rejected, 3 = Cancelled"
+            ],
+            "type": "u8"
+          },
+          {
+            "name": "total_vote_weight",
+            "docs": [
+              "Sum of all vote weights cast"
+            ],
+            "type": "u128"
+          },
+          {
+            "name": "bump",
+            "docs": [
+              "PDA bump"
+            ],
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "StakerAccount",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "owner",
+            "docs": [
+              "Staker's wallet address"
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "staked_amount",
+            "docs": [
+              "Amount of BRAIN tokens staked"
+            ],
+            "type": "u64"
+          },
+          {
+            "name": "stake_timestamp",
+            "docs": [
+              "Unix timestamp when the stake was created"
+            ],
+            "type": "i64"
+          },
+          {
+            "name": "reward_debt",
+            "docs": [
+              "Reward-per-share snapshot × weighted stake at last interaction"
+            ],
+            "type": "u128"
+          },
+          {
+            "name": "pending_rewards",
+            "docs": [
+              "Accumulated unclaimed SOL rewards (lamports)"
+            ],
+            "type": "u64"
+          },
+          {
+            "name": "last_claim_timestamp",
+            "docs": [
+              "Unix timestamp of last claim or reward settlement"
+            ],
+            "type": "i64"
+          },
+          {
+            "name": "current_multiplier",
+            "docs": [
+              "Current multiplier tier (0=pre-cliff, 1=1x, 2=2x, 3=3x)"
+            ],
+            "type": "u8"
+          },
+          {
+            "name": "bump",
+            "docs": [
+              "PDA bump"
+            ],
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "StakingPool",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "owner",
+            "docs": [
+              "Program authority (owner)"
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "crank",
+            "docs": [
+              "Crank wallet — limited authority for deposit_rewards only"
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "brain_mint",
+            "docs": [
+              "$BRAIN token mint address"
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "brain_vault",
+            "docs": [
+              "PDA token account holding staked BRAIN"
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "reward_vault",
+            "docs": [
+              "PDA SystemAccount holding SOL rewards (lamports)"
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "treasury",
+            "docs": [
+              "Treasury wallet for protocol fee"
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "total_staked",
+            "docs": [
+              "Total BRAIN tokens staked across all users"
+            ],
+            "type": "u64"
+          },
+          {
+            "name": "total_weighted_stake",
+            "docs": [
+              "Sum of (stake × multiplier) across all active stakers"
+            ],
+            "type": "u128"
+          },
+          {
+            "name": "reward_per_share",
+            "docs": [
+              "Accumulated rewards per unit of weighted stake, scaled by PRECISION"
+            ],
+            "type": "u128"
+          },
+          {
+            "name": "total_rewards_distributed",
+            "docs": [
+              "Lifetime SOL distributed (tracking only)"
+            ],
+            "type": "u64"
+          },
+          {
+            "name": "protocol_fee_bps",
+            "docs": [
+              "Protocol fee in basis points (e.g. 200 = 2%)"
+            ],
+            "type": "u16"
+          },
+          {
+            "name": "min_stake_amount",
+            "docs": [
+              "Minimum BRAIN tokens required to stake"
+            ],
+            "type": "u64"
+          },
+          {
+            "name": "is_paused",
+            "docs": [
+              "Emergency pause flag"
+            ],
+            "type": "bool"
+          },
+          {
+            "name": "bump",
+            "docs": [
+              "PDA bump for the staking pool"
+            ],
+            "type": "u8"
+          },
+          {
+            "name": "brain_vault_bump",
+            "docs": [
+              "PDA bump for the brain vault"
+            ],
+            "type": "u8"
+          },
+          {
+            "name": "reward_vault_bump",
+            "docs": [
+              "PDA bump for the reward vault"
+            ],
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "VoteRecord",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "proposal_id",
+            "docs": [
+              "Proposal this vote belongs to"
+            ],
+            "type": "u64"
+          },
+          {
+            "name": "voter",
+            "docs": [
+              "Voter's wallet address"
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "option_index",
+            "docs": [
+              "Index into the proposal's `options` array"
+            ],
+            "type": "u8"
+          },
+          {
+            "name": "weight",
+            "docs": [
+              "Vote weight (staked BRAIN amount)"
+            ],
+            "type": "u64"
+          },
+          {
+            "name": "voted_at",
+            "docs": [
+              "Unix timestamp when the vote was cast"
+            ],
+            "type": "i64"
+          },
+          {
+            "name": "bump",
+            "docs": [
+              "PDA bump"
+            ],
+            "type": "u8"
+          }
+        ]
+      }
+    }
+  ]
+}

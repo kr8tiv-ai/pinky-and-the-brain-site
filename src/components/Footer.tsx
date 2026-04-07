@@ -45,8 +45,8 @@ export default function Footer() {
             <a href="#" className="hover:text-[#ffadad] uppercase tracking-widest transition-colors hover:translate-x-2 md:hover:-translate-x-2 flex items-center gap-2">
               Legal Disclaimers (Read) <span className="text-[9px] font-normal text-[#e4ff57]/70 border border-[#e4ff57]/40 px-1.5 py-0.5 rounded-sm tracking-normal normal-case">coming soon</span>
             </a>
-            <a href="#" className="hover:text-[#ffadad] uppercase tracking-widest transition-colors hover:translate-x-2 md:hover:-translate-x-2 flex items-center gap-2">
-              Manifesto <span className="text-[9px] font-normal text-[#e4ff57]/70 border border-[#e4ff57]/40 px-1.5 py-0.5 rounded-sm tracking-normal normal-case">coming soon</span>
+            <a href="/brand" className="hover:text-[#ffadad] uppercase tracking-widest transition-colors hover:translate-x-2 md:hover:-translate-x-2">
+              Brand Guidelines
             </a>
           </div>
 
