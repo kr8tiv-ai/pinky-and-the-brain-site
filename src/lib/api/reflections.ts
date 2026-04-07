@@ -118,7 +118,7 @@ export async function getClaimHistory(): Promise<ClaimEvent[]> {
   if (!apiKey) return []
 
   try {
-    const url = `${HELIUS_API_URL}/addresses/${FEE_SHARE_AUTHORITY_PDA}/transactions?api-key=${apiKey}&limit=50`
+    const url = `${HELIUS_API_URL}/addresses/${FEE_SHARE_AUTHORITY_PDA}/transactions?api-key=${apiKey}&limit=100`
     const res = await fetch(url, { next: { revalidate: 300 } })
     if (!res.ok) return []
 

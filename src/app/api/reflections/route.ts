@@ -33,11 +33,20 @@ export async function GET() {
   ])
 
   const solPriceUsd = solPrice.value ?? 0
-  const totalFeeSol = feeShareData.totalAccumulatedSol
+
+  // Derive lifetime totals from actual claim history (verifiable on-chain txs)
+  // rather than PDA counter offsets which may not map correctly to the
+  // Fee Share V2 Anchor layout and can overstate values.
+  const totalClaimedFromHistory = claimEvents.reduce((sum, e) => sum + e.amountSol, 0)
+
+  // Use claim history total as our source of truth for lifetime fees.
+  // PDA counters (totalAccumulatedSol) include internal recirculation and
+  // can read ~80 SOL when actual distributed is far less.
+  const totalFeeSol = totalClaimedFromHistory + feeShareData.currentUnclaimedSol
   const feeBreakdown = getFeeDistribution(totalFeeSol)
 
   // Reflections = 20% of total claimed (claimer 0 gets 20% for holder distributions)
-  const totalReflectedSol = feeShareData.totalClaimedSol * 0.20
+  const totalReflectedSol = totalClaimedFromHistory * 0.20
 
   // Estimate trading volume from fees
   // bags.fm charges 1% total fee; Meteora takes 20% of that (0.20% of volume)

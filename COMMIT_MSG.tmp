@@ -1,7 +1,8 @@
-Remove Infrastructure section + add Router and Alvara cards 
+Fix overstated reflections data - use claim history instead of PDA offsets 
  
-- Removed Mission Control and Runtime Contracts cards from EcosystemVenture 
-- Added PinkBrain Router (App #002) and PinkBrain Alvara (App #003) cards 
-- Cleaned up orphaned infraRef and GSAP animation code 
+PDA counter offsets (40, 56) include internal recirculation within 
+Fee Share V2 program, overstating total fees by 5.6x (80 SOL vs 14 SOL). 
+Now derives lifetime totals from verifiable on-chain claim transactions. 
+Increased claim history fetch limit from 50 to 100 for accuracy. 
  
 Co-Authored-By: Claude Opus 4.6 <noreply@anthropic.com> 
