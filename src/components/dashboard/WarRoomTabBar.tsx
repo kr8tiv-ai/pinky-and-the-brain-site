@@ -1,7 +1,8 @@
 'use client'
 
-import { useRef, useEffect, useCallback } from 'react'
+import { useRef, useEffect, useCallback, useState } from 'react'
 import gsap from 'gsap'
+import { DataFlowParticles } from './visualizations'
 
 interface Tab {
   id: string
@@ -61,6 +62,11 @@ export default function WarRoomTabBar({ tabs, activeTab, onTabChange }: Props) {
       <div className="relative bg-[#0a0a0a]/70 backdrop-blur-xl border-b border-[#d4f000]/15">
         {/* Ambient glow line */}
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#d4f000]/25 to-transparent" />
+
+        {/* Data flow particles — shows money flowing through the system */}
+        <div className="absolute top-0 left-0 right-0 h-[3px] overflow-hidden pointer-events-none opacity-60">
+          <DataFlowParticles width={1200} height={3} particleCount={12} speed={0.6} />
+        </div>
 
         {/* Tab buttons */}
         <div ref={containerRef} className="relative flex items-center px-4 sm:px-5 lg:px-8 overflow-x-auto scrollbar-none">

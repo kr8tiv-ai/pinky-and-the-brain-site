@@ -1,8 +1,22 @@
-Fix overstated reflections data - use claim history instead of PDA offsets 
+Add 10 War Room visualization enhancements 
  
-PDA counter offsets (40, 56) include internal recirculation within 
-Fee Share V2 program, overstating total fees by 5.6x (80 SOL vs 14 SOL). 
-Now derives lifetime totals from verifiable on-chain claim transactions. 
-Increased claim history fetch limit from 50 to 100 for accuracy. 
+New visualization component library (src/components/dashboard/visualizations/): 
+- DonutRingChart: animated multi-segment ring replacing flat fee distribution bar 
+- Sparkline: pure SVG inline micro-charts for trend visualization 
+- RollingDigits: airport departure board style number animations 
+- ArcGauge: 180 degree instrument panel gauge with spring-physics needle 
+- RadialVoteWheel: concentric arc vote visualization for governance 
+- CandlestickStrip: inline 24H mini candlestick price chart 
+- FlameTimeline: vertical timeline with fire-themed nodes for distributions 
+- TierPyramid: stacking multiplier tier pyramid with active tier glow 
+- DataFlowParticles: canvas particle stream along tab bar 
+ 
+Integrations: 
+- ReflectionsIntel: ArcGauge replaces linear meter, DonutRingChart replaces stacked bar, FlameTimeline replaces table 
+- CommandHeader: inline CandlestickStrip next to USD price 
+- GovernanceTab: RadialVoteWheel on proposals with votes 
+- BurnOperations: FlameTimeline replaces transaction table 
+- MultiplierTiers: TierPyramid replaces flat grid 
+- WarRoomTabBar: DataFlowParticles stream across top 
  
 Co-Authored-By: Claude Opus 4.6 <noreply@anthropic.com> 

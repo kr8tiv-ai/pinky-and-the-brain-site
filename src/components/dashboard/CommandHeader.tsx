@@ -1,9 +1,10 @@
 'use client'
 
-import { useRef, useEffect, useCallback, useState } from 'react'
+import { useRef, useEffect, useCallback, useState, useMemo } from 'react'
 import Link from 'next/link'
 import gsap from 'gsap'
 import { usePrice } from '@/hooks/usePrice'
+import { CandlestickStrip, generateSyntheticCandles } from './visualizations'
 
 // ─── Formatters ──────────────────────────────────────────────────────────────
 
@@ -249,6 +250,12 @@ export default function CommandHeader() {
     : data.priceChange24h < 0 ? 'text-[#ff9e9e]'
     : 'text-white'
 
+  // Generate synthetic candle data from current price + 24h change
+  const candles = useMemo(() => {
+    if (!data?.priceUsd || data.priceUsd <= 0) return []
+    return generateSyntheticCandles(data.priceUsd, data.priceChange24h ?? 0, 24)
+  }, [data?.priceUsd, data?.priceChange24h])
+
   return (
     <header ref={headerRef} className="relative w-full bg-[#0a0a0a]/80 backdrop-blur-xl border-b border-[#d4f000]/40 overflow-hidden">
       {/* Ambient mesh glow — warmer, more visible */}
@@ -304,7 +311,12 @@ export default function CommandHeader() {
           {isLoading ? (
             <div className="wr-skeleton h-5 w-24" style={{ animationDelay: '0ms' }} />
           ) : (
-            <span ref={priceUsdRef}>{formatUsd(data?.priceUsd ?? 0)}</span>
+            <div className="flex items-center gap-3">
+              <span ref={priceUsdRef}>{formatUsd(data?.priceUsd ?? 0)}</span>
+              {candles.length > 0 && (
+                <CandlestickStrip candles={candles} width={120} height={28} className="hidden lg:inline-block opacity-70" />
+              )}
+            </div>
           )}
         </DataCell>
 

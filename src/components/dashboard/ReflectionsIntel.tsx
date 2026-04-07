@@ -1,12 +1,13 @@
 'use client'
 
-import { useRef, useEffect, useCallback, useState, type MouseEvent as ReactMouseEvent } from 'react'
+import { useRef, useEffect, useCallback, useState, useMemo, type MouseEvent as ReactMouseEvent } from 'react'
 import { format, fromUnixTime } from 'date-fns'
 import gsap from 'gsap'
 import { useReflections } from '@/hooks/useReflections'
 import { BRAIN_TOKEN_MINT, LP_WALLET, BAGS_FEE_SHARE_V2 } from '@/lib/constants'
 import ReflectionsCalculator from './ReflectionsCalculator'
 import WalletChecker from './WalletChecker'
+import { ArcGauge, DonutRingChart, FlameTimeline } from './visualizations'
 
 // ─── Utility formatters ───────────────────────────────────────────────────────
 
@@ -488,6 +489,22 @@ export default function ReflectionsIntel() {
   const sectionRef = useRef<HTMLElement>(null)
   const spotlightRef = useRef<HTMLDivElement>(null)
 
+  // Build donut ring segments from fee breakdown
+  const donutSegments = useMemo(() => {
+    const breakdown = data?.feeBreakdown ?? {}
+    const order = ['holders', 'investments', 'dev', 'burned', 'liquidity', 'dexBoosts', 'marketing']
+    return order
+      .filter(key => breakdown[key])
+      .map(key => ({
+        key,
+        label: FEE_CATEGORIES[key]?.label ?? key,
+        value: breakdown[key].sol,
+        pct: breakdown[key].pct,
+        color: FEE_CATEGORIES[key]?.color ?? '#888',
+        glow: FEE_CATEGORIES[key]?.glow ?? 'rgba(136,136,136,0.3)',
+      }))
+  }, [data?.feeBreakdown])
+
   const handleMouseMove = useCallback((e: ReactMouseEvent) => {
     if (!spotlightRef.current || !sectionRef.current) return
     const rect = sectionRef.current.getBoundingClientRect()
@@ -627,20 +644,50 @@ export default function ReflectionsIntel() {
         </SummaryCell>
       </div>
 
-      {/* Accrual progress meter */}
-      <AccrualMeter
-        accrued={data?.currentAccruedSol ?? 0}
-        threshold={data?.payoutThresholdSol ?? 10}
-        nextPayoutEstimate={data?.nextPayoutEstimate ?? null}
-        isLoading={isLoading}
-      />
+      {/* Accrual arc gauge */}
+      <div className="px-5 lg:px-8 py-6">
+        <div className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#e0e0e0] font-bold mb-4 flex items-center gap-3 wr-sub-header">
+          <span className="text-[#d4f000]/70 text-[12px] wr-sub-diamond">◆</span>
+          <span>PAYOUT ACCRUAL</span>
+          <div className="flex-1 h-px bg-gradient-to-r from-[#d4f000]/30 to-transparent" />
+          <span className="text-[#bbb]">
+            {isLoading ? '...' : `${(data?.currentAccruedSol ?? 0).toFixed(2)} / ${(data?.payoutThresholdSol ?? 10).toFixed(0)} SOL`}
+          </span>
+        </div>
+        <div className="flex flex-col items-center">
+          {isLoading ? (
+            <div className="wr-skeleton h-24 w-48 rounded" />
+          ) : (
+            <ArcGauge
+              value={data?.currentAccruedSol ?? 0}
+              max={data?.payoutThresholdSol ?? 10}
+              unit="SOL"
+              size={260}
+            />
+          )}
+          {data?.nextPayoutEstimate && (
+            <span className="font-mono text-[11px] text-[#d4f000]/80 tabular-nums mt-2">
+              Est. {format(fromUnixTime(data.nextPayoutEstimate), 'MMM d, HH:mm')}
+            </span>
+          )}
+        </div>
+      </div>
 
-      {/* Fee distribution visualization */}
-      <FeeDistributionBar
-        breakdown={data?.feeBreakdown ?? {}}
-        solPriceUsd={data?.solPriceUsd ?? 0}
-        isLoading={isLoading}
-      />
+      {/* Fee distribution donut ring */}
+      <div className="px-5 lg:px-8 py-6 border-t border-[#333]/15">
+        <div className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#e0e0e0] font-bold mb-5 flex items-center gap-3 wr-sub-header">
+          <span className="text-[#d4f000]/70 text-[12px] wr-sub-diamond">◆</span>
+          <span>FEE DISTRIBUTION</span>
+          <div className="flex-1 h-px bg-gradient-to-r from-[#d4f000]/30 to-transparent" />
+          <span className="text-[#bbb]">SPLIT</span>
+        </div>
+        <DonutRingChart
+          segments={donutSegments}
+          totalLabel="FEES"
+          totalValue={`${(Object.values(data?.feeBreakdown ?? {}).reduce((s, e) => s + e.sol, 0)).toFixed(1)} SOL`}
+          isLoading={isLoading}
+        />
+      </div>
 
       {/* DEX Boost & LP Compound feature cards */}
       <FeatureCards
@@ -649,12 +696,25 @@ export default function ReflectionsIntel() {
         isLoading={isLoading}
       />
 
-      {/* Distribution history */}
-      <DistributionHistory
-        distributions={data?.distributions ?? []}
-        solPriceUsd={data?.solPriceUsd ?? 0}
-        isLoading={isLoading}
-      />
+      {/* Distribution flame timeline */}
+      <div className="px-5 lg:px-8 py-6 border-t border-[#333]/15">
+        <div className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#e0e0e0] font-bold mb-4 flex items-center gap-3 wr-sub-header">
+          <span className="text-[#d4f000]/70 text-[12px] wr-sub-diamond">◆</span>
+          <span>REFLECTION HISTORY</span>
+          <div className="flex-1 h-px bg-gradient-to-r from-[#d4f000]/30 to-transparent" />
+          <span className="text-[#bbb]">{(data?.distributions ?? []).length} PAYOUTS</span>
+        </div>
+        <FlameTimeline
+          events={(data?.distributions ?? []).map(d => ({
+            txHash: d.txHash,
+            timestamp: d.timestamp,
+            amountSol: d.amountSol,
+            toAddress: d.toAddress,
+          }))}
+          isLoading={isLoading}
+          accentColor="#d4f000"
+        />
+      </div>
 
       {/* Reflections calculator */}
       <ReflectionsCalculator

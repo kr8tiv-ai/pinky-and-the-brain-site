@@ -8,6 +8,12 @@ import {
   getProposalPresentation,
   validateVoteOptionIndex,
 } from './model'
+import { RadialVoteWheel } from '../visualizations'
+
+const VOTE_COLORS = [
+  '#d4f000', '#4a90e2', '#ff9e9e', '#00d4aa', '#c084fc',
+  '#e4ff57', '#ff6b35', '#87ceeb', '#ffadad', '#a8e6cf',
+]
 
 interface ProposalListProps {
   proposals: GovernanceProposalData[]
@@ -182,6 +188,23 @@ function ProposalRow({
           </span>
         </div>
       </header>
+
+      {/* Radial vote visualization */}
+      {totalVotes > BigInt(0) && (
+        <div className="flex justify-center py-2">
+          <RadialVoteWheel
+            options={proposal.options.map((opt, idx) => ({
+              index: idx,
+              label: opt,
+              weight: proposal.voteCounts[idx] ?? BigInt(0),
+              color: VOTE_COLORS[idx % VOTE_COLORS.length],
+            }))}
+            totalWeight={totalVotes}
+            winnerIndex={proposal.winningOptionIndex ?? undefined}
+            size={160}
+          />
+        </div>
+      )}
 
       <div className="space-y-2">
         {proposal.options.map((option, index) => {

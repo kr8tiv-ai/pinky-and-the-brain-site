@@ -4,6 +4,7 @@ import { useRef, useEffect, useCallback, useState } from 'react'
 import { format, fromUnixTime } from 'date-fns'
 import gsap from 'gsap'
 import { useBurns } from '@/hooks/useBurns'
+import { FlameTimeline } from './visualizations'
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
@@ -715,12 +716,28 @@ export default function BurnOperations() {
         isLoading={isLoading}
       />
 
-      {/* Transactions table */}
-      <div className="relative">
-        <BurnTransactionsTable
-          transactions={data?.transactions ?? []}
+      {/* Burn flame timeline */}
+      <div className="px-5 lg:px-8 py-6">
+        <div className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#e0e0e0] font-bold mb-4 flex items-center gap-3 wr-sub-header">
+          <span className="text-[#ff6b35]/70 text-[12px] wr-sub-diamond">◆</span>
+          <span>BURN LEDGER</span>
+          <div className="flex-1 h-px bg-gradient-to-r from-[#ff6b35]/55 to-transparent" />
+          {!isLoading && !isError && (data?.transactions ?? []).length > 0 && (
+            <span className="text-[#bbb] tabular-nums flex items-center gap-1.5">
+              <span className="text-[12px] text-[#ff6b35]/65 font-black px-1.5 py-0.5 bg-[#ff6b35]/[0.04] border border-[#ff6b35]/10 rounded-sm">{(data?.transactions ?? []).length}</span>
+              RECORDS
+            </span>
+          )}
+        </div>
+        <FlameTimeline
+          events={(data?.transactions ?? []).map(tx => ({
+            txHash: tx.txHash,
+            timestamp: tx.timestamp,
+            amountSol: tx.amount,
+          }))}
           isLoading={isLoading}
-          isError={isError}
+          accentColor="#ff6b35"
+          maxVisible={10}
         />
       </div>
     </section>
